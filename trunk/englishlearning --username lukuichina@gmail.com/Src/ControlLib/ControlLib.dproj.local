@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.177,=C:\Users\admin\Documents\RAD Studio\Projects\ControlLib\FullScreen\FullScreen.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.937,C:\Users\admin\Documents\RAD Studio\Projects\Package1.dproj=C:\Users\admin\Documents\RAD Studio\Projects\ControlLib\ControlLib.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.803,=vcl.dcp</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.964,=rtl.dcp</Transaction>
-  </Transactions>
-</BorlandProject>
