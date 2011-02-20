@@ -408,9 +408,9 @@ end;
 
 procedure TWordViewForm.actScreenViewExecute(Sender: TObject);
 begin
-  if (lbxPicture.Items.Count = 0) or (lbxPicture.SelectedItemIndex = -1) then
+  if (lbxPicture.Items.Count = 0) {or (lbxPicture.SelectedItemIndex = -1)} then
   begin
-    MessageDlg('没有选择单词对象，请选择对象后再进行该处理！', mtError, [mbOK], 0);
+    //MessageDlg('没有选择单词对象，请选择对象后再进行该处理！', mtError, [mbOK], 0);
     exit;
   end;
 
@@ -418,7 +418,11 @@ begin
     FullScreenDialogForm := TFullScreenDialogForm.Create(nil);
 
     FullScreenDialogForm.SpWord := spWord;
-    FullScreenDialogForm.CurrentIndex := lbxPicture.SelectedItemIndex;
+
+    if lbxPicture.SelectedItemIndex > 0 then
+      FullScreenDialogForm.CurrentIndex := lbxPicture.SelectedItemIndex
+    else
+      FullScreenDialogForm.CurrentIndex := 0;
 
     FullScreenDialogForm.ShowModal;
 
