@@ -244,6 +244,8 @@ begin
   if edtWordEdit.Text = '' then
     exit;
 
+  grdWord.BeginUpdate;
+
   cmdWordUpdate.Parameters.ParamByName('NewWord').Value := edtWordEdit.Text;
   cmdWordUpdate.Parameters.ParamByName('ImportanceLevel').Value := dblkcbbImportanceEdit.KeyValue;
   cmdWordUpdate.Parameters.ParamByName('DifficultyLevel').Value := dblkcbbDifficultyEdit.KeyValue;
@@ -253,6 +255,8 @@ begin
   ShowWords('%');
 
   qryWord.Locate('Word', edtWordEdit.Text, []);
+
+  grdWord.EndUpdate;
 end;
 
 procedure TWordInputForm.btnWordClick(Sender: TObject);
@@ -313,9 +317,13 @@ end;
 
 procedure TWordInputForm.edtWordExit(Sender: TObject);
 begin
+  grdWord.BeginUpdate;
+
   qryWord.Locate('Word', edtWord.Text, []);
 
   ShowCurrentWord;
+
+  grdWord.EndUpdate;
 end;
 
 procedure TWordInputForm.edtWordKeyDown(Sender: TObject; var Key: Word;
