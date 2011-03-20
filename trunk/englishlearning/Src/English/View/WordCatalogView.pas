@@ -15,11 +15,16 @@ type
     procedure ShowCatalogWord(value:TCustomADODataSet);
 
     function  GetCatalogRelationInfo:TCatalogRelation;
+    function  GetSrcCatalogRelationInfo:TCatalogRelation;
+    function  GetDesCatalogRelationInfo:TCatalogRelation;
     function  GetCatalogInfo:TWordCatalog;
     function  GetWordInfo:TWord;
+
 //    procedure SetCatalogInfo(const value:TWordCatalog);
 
     property CatalogRelationInfo:TCatalogRelation read GetCatalogRelationInfo;
+    property SrcCatalogRelationInfo:TCatalogRelation read GetSrcCatalogRelationInfo;
+    property DesCatalogRelationInfo:TCatalogRelation read GetDesCatalogRelationInfo;
     property CatalogInfo:TWordCatalog read GetCatalogInfo;// write SetCatalogInfo;
     property WordInfo:TWord read GetWordInfo;
   end;
