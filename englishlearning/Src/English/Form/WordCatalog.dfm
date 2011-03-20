@@ -947,6 +947,7 @@ object WordCatalogForm: TWordCatalogForm
           Height = 56
           Action = actDeleteCatalogRelation
           BorderStyle = bsNone
+          ImageIndex = 2
           FocusType = ftHot
           NotesFont.Charset = DEFAULT_CHARSET
           NotesFont.Color = clWindowText
@@ -1775,7 +1776,7 @@ object WordCatalogForm: TWordCatalogForm
             Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
             ParentCtl3D = False
             ParentFont = False
-            PopupMenu = advpmn1
+            PopupMenu = apmWordCatalog
             ScrollBars = ssBoth
             TabOrder = 0
             OnRowChanging = grdWordCatalogRowChanging
@@ -2997,6 +2998,7 @@ object WordCatalogForm: TWordCatalogForm
           Width = 251
           Height = 593
           ShowNodeHint = True
+          OnEndDragTreeNode = dtvWordCatalogTreeEndDragTreeNode
           DataSource = dsWordCatalogTree
           KeyField = 'CatalogID'
           ListField = 'CatalogName'
@@ -3015,8 +3017,8 @@ object WordCatalogForm: TWordCatalogForm
           TabOrder = 0
           OnDragOver = dtvWordCatalogTreeDragOver
           OnStartDrag = dtvWordCatalogTreeStartDrag
-          OnEndDrag = dtvWordCatalogTreeEndDrag
           Images = ImageList
+          OnContextPopup = dtvWordCatalogTreeContextPopup
         end
       end
       object tplWordInfo: TAdvToolPanel
@@ -3366,7 +3368,7 @@ object WordCatalogForm: TWordCatalogForm
     Top = 8
   end
   object dsWordCatalog: TDataSource
-    Left = 400
+    Left = 392
     Top = 200
   end
   object dlgSave1: TSaveDialog
@@ -3378,7 +3380,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 608
     Top = 200
     Bitmap = {
-      494C0101060008004C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000800540110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3714,10 +3716,11 @@ object WordCatalogForm: TWordCatalogForm
     end
     object actDeleteCatalogRelation: TAction
       Caption = #35299#38500
+      ImageIndex = 2
       OnExecute = actDeleteCatalogRelationExecute
     end
   end
-  object advpmn1: TAdvPopupMenu
+  object apmWordCatalog: TAdvPopupMenu
     Version = '2.5.3.3'
     Left = 480
     Top = 200
@@ -3788,7 +3791,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 472
     Top = 376
     Bitmap = {
-      494C010114001900700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010114001900780010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4593,7 +4596,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 400
     Top = 372
     Bitmap = {
-      494C010103000500700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500780010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000080000000000000000000000000000000
@@ -4738,7 +4741,7 @@ object WordCatalogForm: TWordCatalogForm
     Top = 8
   end
   object dsWord: TDataSource
-    Left = 400
+    Left = 392
     Top = 264
   end
   object pmWord: TAdvPopupMenu
@@ -4763,6 +4766,14 @@ object WordCatalogForm: TWordCatalogForm
     end
     object mnuViewPicture: TMenuItem
       Action = actViewPicture
+    end
+  end
+  object apmWordCatalogNode: TAdvPopupMenu
+    Version = '2.5.3.3'
+    Left = 120
+    Top = 264
+    object mnuDelCatalogRelation: TMenuItem
+      Action = actDeleteCatalogRelation
     end
   end
 end
