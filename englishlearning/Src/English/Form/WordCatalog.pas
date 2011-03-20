@@ -113,17 +113,25 @@ type
     procedure actDeleteCatalogRelationExecute(Sender: TObject);
     procedure actViewExplanationExecute(Sender: TObject);
     procedure actLocateCatalogWordExecute(Sender: TObject);
+    procedure dtvWordCatalogTreeStartDrag(Sender: TObject;
+      var DragObject: TDragObject);
+    procedure dtvWordCatalogTreeDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure dtvWordCatalogTreeEndDrag(Sender, Target: TObject; X, Y: Integer);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
     //FCatalogRelationController:IWordCatalogController;
     FWordCatalog:TWordCatalog;
+    FSrcCatalogRelationInfo, FDesCatalogRelationInfo:TCatalogRelation;
     FShowCompleted:Boolean;
   protected
     procedure ShowWordCatalog(value:TCustomADODataSet);
     procedure ShowWordCatalogTree(value:TCustomADODataSet);
     procedure ShowCatalogWord(value:TCustomADODataSet);
     function  GetCatalogRelationInfo:TCatalogRelation;
+    function  GetSrcCatalogRelationInfo:TCatalogRelation;
+    function  GetDesCatalogRelationInfo:TCatalogRelation;
     function  GetCatalogInfo:TWordCatalog;
     function  GetWordInfo:TWord;
     //procedure SetWordInfo;
@@ -133,6 +141,8 @@ type
   public
     { Public declarations }
     property CatalogRelationInfo:TCatalogRelation read GetCatalogRelationInfo;
+    property SrcCatalogRelationInfo:TCatalogRelation read GetSrcCatalogRelationInfo;
+    property DesCatalogRelationInfo:TCatalogRelation read GetDesCatalogRelationInfo;
     property CatalogInfo:TWordCatalog read GetCatalogInfo;// write SetCatalogInfo;
     property WordInfo:TWord read GetWordInfo;
   end;
@@ -236,6 +246,11 @@ end;
 
 procedure TWordCatalogForm.actDeleteCatalogWordExecute(Sender: TObject);
 begin
+  if MessageDlg('ÄúÈ·ÈÏÒªÉ¾³ýÂð£¿', mtconfirmation, [mbYes, mbNo], 0) <> mrYes then
+  begin
+    exit;
+  end;
+
   FWordCatalogController.DeleteCatalogWord({CatalogInfo,} WordInfo);
 
   grdWord.BeginUpdate;
@@ -510,6 +525,17 @@ begin
   Result := CatalogRelationInfo;
 end;
 
+function  TWordCatalogForm.GetSrcCatalogRelationInfo:TCatalogRelation;
+begin
+
+end;
+
+function  TWordCatalogForm.GetDesCatalogRelationInfo:TCatalogRelation;
+begin
+
+end;
+
+
 function  TWordCatalogForm.GetCatalogInfo:TWordCatalog;
 var
   WordCatalogInfo:TWordCatalog;
@@ -659,6 +685,51 @@ begin
      FShowCompleted := True;
   end;
   
+end;
+
+procedure TWordCatalogForm.dtvWordCatalogTreeDragOver(Sender, Source: TObject;
+  X, Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  Caption :=  mdWordCatalogTree.FieldByName('CatalogName').AsString;
+end;
+
+procedure TWordCatalogForm.dtvWordCatalogTreeEndDrag(Sender, Target: TObject; X,
+  Y: Integer);
+begin
+  Caption :=  mdWordCatalogTree.FieldByName('CatalogName').AsString;
+
+  FDesCatalogRelationInfo := TCatalogRelation.Create;
+  FDesCatalogRelationInfo.CatalogID := mdWordCatalogTree.FieldByName('ParentCatalogID').AsString;
+  FDesCatalogRelationInfo.ChildCatalogID := mdWordCatalogTree.FieldByName('CatalogID').AsString;
+
+  if not mdWordCatalogTree.FieldByName('CreateTime').IsNull then
+    FDesCatalogRelationInfo.CreateTime := mdWordCatalogTree.FieldByName('CreateTime').AsDateTime;
+
+  if not mdWordCatalogTree.FieldByName('UpdateTime').IsNull then
+    FDesCatalogRelationInfo.UpdateTime := mdWordCatalogTree.FieldByName('UpdateTime').AsDateTime;
+
+  ShowMessage(FSrcCatalogRelationInfo.ChildCatalogID);
+  ShowMessage(FDesCatalogRelationInfo.ChildCatalogID);
+
+  FSrcCatalogRelationInfo.Free;
+  FDesCatalogRelationInfo.Free;
+
+end;
+
+procedure TWordCatalogForm.dtvWordCatalogTreeStartDrag(Sender: TObject;
+  var DragObject: TDragObject);
+begin
+  Caption :=  mdWordCatalogTree.FieldByName('CatalogName').AsString;
+
+  FSrcCatalogRelationInfo := TCatalogRelation.Create;
+  FSrcCatalogRelationInfo.CatalogID := mdWordCatalogTree.FieldByName('ParentCatalogID').AsString;
+  FSrcCatalogRelationInfo.ChildCatalogID := mdWordCatalogTree.FieldByName('CatalogID').AsString;
+
+  if not mdWordCatalogTree.FieldByName('CreateTime').IsNull then
+    FSrcCatalogRelationInfo.CreateTime := mdWordCatalogTree.FieldByName('CreateTime').AsDateTime;
+
+  if not mdWordCatalogTree.FieldByName('UpdateTime').IsNull then
+    FSrcCatalogRelationInfo.UpdateTime := mdWordCatalogTree.FieldByName('UpdateTime').AsDateTime;
 end;
 
 procedure TWordCatalogForm.ResetCursor;
