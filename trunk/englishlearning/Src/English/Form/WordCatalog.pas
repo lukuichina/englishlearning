@@ -32,7 +32,7 @@ type
     actDeleteCatalog: TAction;
     actImportCatalogToExcel: TAction;
     actViewPicture: TAction;
-    advpmn1: TAdvPopupMenu;
+    apmWordCatalog: TAdvPopupMenu;
     mnuAddExplanation: TMenuItem;
     mnuUpdateExplanation: TMenuItem;
     mnuDelete: TMenuItem;
@@ -89,6 +89,8 @@ type
     mnuViewExplanation: TMenuItem;
     actViewExplanation: TAction;
     actLocateCatalogWord: TAction;
+    apmWordCatalogNode: TAdvPopupMenu;
+    mnuDelCatalogRelation: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
@@ -117,7 +119,10 @@ type
       var DragObject: TDragObject);
     procedure dtvWordCatalogTreeDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
-    procedure dtvWordCatalogTreeEndDrag(Sender, Target: TObject; X, Y: Integer);
+    procedure dtvWordCatalogTreeEndDragTreeNode(Destination, Source: TTreeNode;
+      var AttachMode: TNodeAttachMode);
+    procedure dtvWordCatalogTreeContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -206,14 +211,27 @@ end;
 
 procedure TWordCatalogForm.actDeleteCatalogRelationExecute(Sender: TObject);
 begin
-  CashCursor(atUpdate);
+  CashCursor(atDelete);
 
-  FWordCatalogController.DeleteCatalogRelation;
+  FSrcCatalogRelationInfo := TCatalogRelation.Create;
+  FSrcCatalogRelationInfo.CatalogID := mdWordCatalogTree.FieldByName('ParentCatalogID').AsString;
+  FSrcCatalogRelationInfo.ChildCatalogID := mdWordCatalogTree.FieldByName('CatalogID').AsString;
+
+  FWordCatalogController.DeleteCatalogRelation(FSrcCatalogRelationInfo);
+
+  dtvWordCatalogTree.Items.BeginUpdate;
+
+  dtvWordCatalogTree.DoubleBuffered := True;
+  dtvWordCatalogTree.Items.Clear;
 
   //FWordCatalogController.ShowWordCatalog;
   FWordCatalogController.ShowWordCatalogTree;
 
+  dtvWordCatalogTree.Items.EndUpdate;
+
   ResetCursor;
+
+  FSrcCatalogRelationInfo.Free;
 end;
 
 procedure TWordCatalogForm.actAddCatalogWordExecute(Sender: TObject);
@@ -452,6 +470,11 @@ begin
 
     mdWordCatalogTree.Post;
 
+    dtvWordCatalogTree.DBTreeNodes.Items[dtvWordCatalogTree.DBTreeNodes.Count - 1].Data :=
+        (mdWordCatalogTree.Data);
+//    dtvWordCatalogTree.Items[dtvWordCatalogTree.Items.Count - 1].Data :=
+//        mdWordCatalogTree.Data;
+
     value.Next;
   end;
 
@@ -527,12 +550,12 @@ end;
 
 function  TWordCatalogForm.GetSrcCatalogRelationInfo:TCatalogRelation;
 begin
-
+  Result := nil;
 end;
 
 function  TWordCatalogForm.GetDesCatalogRelationInfo:TCatalogRelation;
 begin
-
+  Result := nil;
 end;
 
 
@@ -660,7 +683,7 @@ begin
     end;
     atDelete:
     begin
-
+      FWordCatalog := CatalogInfo;
     end;
     else
     begin
@@ -687,20 +710,39 @@ begin
   
 end;
 
+procedure TWordCatalogForm.dtvWordCatalogTreeContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
+var
+  p:TPoint;
+  node:TTreeNode;
+begin
+  node := dtvWordCatalogTree.GetNodeAt(MousePos.X, MousePos.Y);
+
+  if not PtInRect(node.DisplayRect(True), MousePos) then
+    exit;
+
+  node.Selected := True;
+
+  p:= dtvWordCatalogTree.ClientToScreen(MousePos);
+  apmWordCatalogNode.Popup(p.X, p.Y);
+end;
+
 procedure TWordCatalogForm.dtvWordCatalogTreeDragOver(Sender, Source: TObject;
   X, Y: Integer; State: TDragState; var Accept: Boolean);
 begin
   Caption :=  mdWordCatalogTree.FieldByName('CatalogName').AsString;
 end;
 
-procedure TWordCatalogForm.dtvWordCatalogTreeEndDrag(Sender, Target: TObject; X,
-  Y: Integer);
+procedure TWordCatalogForm.dtvWordCatalogTreeEndDragTreeNode(Destination,
+  Source: TTreeNode; var AttachMode: TNodeAttachMode);
 begin
   Caption :=  mdWordCatalogTree.FieldByName('CatalogName').AsString;
 
   FDesCatalogRelationInfo := TCatalogRelation.Create;
-  FDesCatalogRelationInfo.CatalogID := mdWordCatalogTree.FieldByName('ParentCatalogID').AsString;
-  FDesCatalogRelationInfo.ChildCatalogID := mdWordCatalogTree.FieldByName('CatalogID').AsString;
+  FDesCatalogRelationInfo.CatalogID := mdWordCatalogTree.FieldByName('CatalogID').AsString;
+  FDesCatalogRelationInfo.ChildCatalogID := FSrcCatalogRelationInfo.ChildCatalogID;
+//  FDesCatalogRelationInfo.CatalogID :=
+//      TdxMemFields(Destination.Data).DataSet.FieldByName('CatalogID').AsString;
 
   if not mdWordCatalogTree.FieldByName('CreateTime').IsNull then
     FDesCatalogRelationInfo.CreateTime := mdWordCatalogTree.FieldByName('CreateTime').AsDateTime;
@@ -708,12 +750,14 @@ begin
   if not mdWordCatalogTree.FieldByName('UpdateTime').IsNull then
     FDesCatalogRelationInfo.UpdateTime := mdWordCatalogTree.FieldByName('UpdateTime').AsDateTime;
 
-  ShowMessage(FSrcCatalogRelationInfo.ChildCatalogID);
-  ShowMessage(FDesCatalogRelationInfo.ChildCatalogID);
+  FWordCatalogController.DeleteCatalogRelation(FSrcCatalogRelationInfo);
+  FWordCatalogController.InsertCatalogRelation(FDesCatalogRelationInfo);
+
+  Destination.Expand(True);
+  Destination.Expanded := True;
 
   FSrcCatalogRelationInfo.Free;
   FDesCatalogRelationInfo.Free;
-
 end;
 
 procedure TWordCatalogForm.dtvWordCatalogTreeStartDrag(Sender: TObject;
