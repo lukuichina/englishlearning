@@ -2,8 +2,8 @@ object WordSearchForm: TWordSearchForm
   Left = 0
   Top = 0
   Caption = #21333#35789#26816#32034
-  ClientHeight = 526
-  ClientWidth = 752
+  ClientHeight = 634
+  ClientWidth = 880
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object WordSearchForm: TWordSearchForm
   object grp1: TGroupBox
     Left = 0
     Top = 0
-    Width = 752
+    Width = 880
     Height = 121
     Align = alTop
     Color = 16773863
@@ -47,21 +47,21 @@ object WordSearchForm: TWordSearchForm
       Height = 13
       Caption = #38590#26131#24230#65306
     end
-    object btn2: TButton
-      Left = 280
+    object btnSearch: TButton
+      Left = 288
       Top = 14
       Width = 75
       Height = 25
       Caption = #26816#32034
-      TabOrder = 0
-      OnClick = btn2Click
+      TabOrder = 3
+      OnClick = btnSearchClick
     end
     object edtWord: TEdit
       Left = 104
       Top = 16
       Width = 145
       Height = 21
-      TabOrder = 1
+      TabOrder = 0
       OnExit = edtWordExit
       OnKeyDown = edtWordKeyDown
     end
@@ -73,7 +73,7 @@ object WordSearchForm: TWordSearchForm
       KeyField = 'ID'
       ListField = 'Disp'
       ListSource = dsImportance
-      TabOrder = 2
+      TabOrder = 1
     end
     object dblkcbbDifficulty: TDBLookupComboBox
       Left = 104
@@ -83,10 +83,10 @@ object WordSearchForm: TWordSearchForm
       KeyField = 'ID'
       ListField = 'Disp'
       ListSource = dsDifficulty
-      TabOrder = 3
+      TabOrder = 2
     end
-    object btn1: TBitBtn
-      Left = 392
+    object btnOK: TBitBtn
+      Left = 400
       Top = 14
       Width = 75
       Height = 25
@@ -100,8 +100,8 @@ object WordSearchForm: TWordSearchForm
   object grp3: TGroupBox
     Left = 0
     Top = 121
-    Width = 752
-    Height = 386
+    Width = 880
+    Height = 494
     Align = alClient
     Caption = #26816#32034#32467#26524
     Color = 16773863
@@ -111,11 +111,11 @@ object WordSearchForm: TWordSearchForm
     object dbdvgrd1: TDBAdvGrid
       Left = 2
       Top = 15
-      Width = 748
-      Height = 369
+      Width = 876
+      Height = 477
       Cursor = crDefault
       Align = alClient
-      ColCount = 11
+      ColCount = 12
       Ctl3D = True
       DrawingStyle = gdsClassic
       RowCount = 101
@@ -337,6 +337,34 @@ object WordSearchForm: TWordSearchForm
           PrintFont.Name = 'Tahoma'
           PrintFont.Style = []
           Width = 64
+        end
+        item
+          Alignment = taCenter
+          Borders = []
+          BorderPen.Color = clSilver
+          CheckFalse = 'N'
+          CheckTrue = 'Y'
+          Color = clWindow
+          FieldName = 'IsCataloged'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header = #20998#31867
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clWindowText
+          HeaderFont.Height = -11
+          HeaderFont.Name = 'Tahoma'
+          HeaderFont.Style = []
+          HeaderAlignment = taCenter
+          PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
+          PrintFont.Charset = DEFAULT_CHARSET
+          PrintFont.Color = clWindowText
+          PrintFont.Height = -11
+          PrintFont.Name = 'Tahoma'
+          PrintFont.Style = []
+          Width = 48
         end
         item
           Alignment = taCenter
@@ -651,13 +679,14 @@ object WordSearchForm: TWordSearchForm
         48
         48
         48
+        48
         64)
     end
   end
   object stat1: TStatusBar
     Left = 0
-    Top = 507
-    Width = 752
+    Top = 615
+    Width = 880
     Height = 19
     Panels = <
       item
@@ -700,6 +729,11 @@ object WordSearchForm: TWordSearchForm
       
         '    CASE WHEN (SELECT COUNT(*) FROM Picture WHERE Picture.Word =' +
         ' Word.Word) > 0 THEN '#39#9675#39' ELSE '#39#215#39' END AS IsPictured,'
+      
+        '    CASE WHEN (SELECT COUNT(*) FROM WordCatalogRelation WHERE Wo' +
+        'rdCatalogRelation.Word = Word.Word AND WordCatalogRelation.Catal' +
+        'ogID BETWEEN '#39'WC00001'#39' AND '#39'WC00010'#39') > 0 THEN '#39#9675#39' ELSE '#39#215#39' END ' +
+        'AS IsCataloged,'
       
         '    (SELECT COUNT(*) FROM (SELECT Distinct WordType FROM WordExp' +
         'lanation WHERE WordExplanation.Word = Word.Word) wt) AS WordType' +

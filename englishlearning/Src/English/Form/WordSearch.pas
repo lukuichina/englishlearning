@@ -11,7 +11,7 @@ uses
 type
   TWordSearchForm = class(TForm)
     grp1: TGroupBox;
-    btn2: TButton;
+    btnSearch: TButton;
     grp3: TGroupBox;
     dbdvgrd1: TDBAdvGrid;
     dsWord: TDataSource;
@@ -32,10 +32,10 @@ type
     lblImportance: TLabel;
     lblDifficulty: TLabel;
     dblkcbbDifficulty: TDBLookupComboBox;
-    btn1: TBitBtn;
+    btnOK: TBitBtn;
     stat1: TStatusBar;
     procedure edtWordExit(Sender: TObject);
-    procedure btn2Click(Sender: TObject);
+    procedure btnSearchClick(Sender: TObject);
     procedure dbdvgrd1DblClick(Sender: TObject);
     procedure edtWordKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -69,7 +69,7 @@ uses
 
 {$R *.dfm}
 
-procedure TWordSearchForm.btn2Click(Sender: TObject);
+procedure TWordSearchForm.btnSearchClick(Sender: TObject);
 begin
   ShowWords(edtWord.Text);
 end;
@@ -134,7 +134,8 @@ begin
   if qryWord.RecordCount = 0 then
     exit;
 
-  qryWord.Locate('Word', edtWord.Text, []);
+  if not qryWord.Locate('Word', edtWord.Text, []) then
+     qryWord.Locate('Word', edtWord.Text, [loPartialKey])
 end;
 
 procedure TWordSearchForm.SetWord(const value:string);
