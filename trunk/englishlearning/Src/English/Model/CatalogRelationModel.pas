@@ -10,8 +10,9 @@ type
     function QueryWordCatalog:TCustomADODataSet;
     function QueryWordCatalogTree:TCustomADODataSet;
 //    function QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
-    function InsertWordCatalog(const value:TWordCatalog):_Recordset;
-    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
+//    function InsertWordCatalog(const value:TWordCatalog):_Recordset;
+//    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
+    function InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
     function DeleteCatalogRelation(const value:TCatalogRelation):_Recordset;
   end;
 
@@ -22,8 +23,9 @@ type
     function QueryWordCatalog:TCustomADODataSet;
     function QueryWordCatalogTree:TCustomADODataSet;
 //    function QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
-    function InsertWordCatalog(const value:TWordCatalog):_Recordset;
-    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
+//    function InsertWordCatalog(const value:TWordCatalog):_Recordset;
+//    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
+    function InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
     function DeleteCatalogRelation(const value:TCatalogRelation):_Recordset;
 
     constructor Create({Controller: IController});
@@ -98,44 +100,61 @@ end;
 //  Result := DoSelect;
 //end;
 
-function TCatalogRelationModel.InsertWordCatalog(const value:TWordCatalog):_Recordset;
+//function TCatalogRelationModel.InsertWordCatalog(const value:TWordCatalog):_Recordset;
+//const
+//  sql:string =
+//'INSERT INTO' + #13#10 +
+//'	WordCatalog(CatalogID, CatalogName, CatalogDisp, CreateTime, UpdateTime)' + #13#10 +
+//'VALUES' + #13#10 +
+//'	((SELECT ''WC'' + RIGHT(''100000'' + (SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(SUBSTRING(CatalogID,3,5)) + 1 END FROM WordCatalog), 5)), :CatalogName, :CatalogDisp, GetDate(), NULL)';
+////'	((SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(CatalogID) + 1 END FROM WordCatalog), :CatalogName, :CatalogDisp, GetDate(), NULL)';
+//begin
+//  SetExecuteSql(sql);
+//
+//  //Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+//  Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
+//  Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
+//
+//  Result := DoExecute;
+//end;
+//
+//function TCatalogRelationModel.UpdateWordCatalog(const value:TWordCatalog):_Recordset;
+//const
+//  sql:string =
+//'UPDATE' + #13#10 +
+//'	WordCatalog' + #13#10 +
+//'SET' + #13#10 +
+//'	CatalogName = :CatalogName,' + #13#10 +
+//'	CatalogDisp = :CatalogDisp,' + #13#10 +
+//'	UpdateTime = GetDate()' + #13#10 +
+//'WHERE' + #13#10 +
+//'	CatalogID = :CatalogID';
+//begin
+//  SetExecuteSql(sql);
+//
+//  Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
+//  Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
+//  Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+//
+//  Result := DoExecute;
+//end;
+
+function TCatalogRelationModel.InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
 const
   sql:string =
 'INSERT INTO' + #13#10 +
-'	WordCatalog(CatalogID, CatalogName, CatalogDisp, CreateTime, UpdateTime)' + #13#10 +
+'	CatalogRelation(CatalogID, ChildCatalogID, CreateTime, UpdateTime)' + #13#10 +
 'VALUES' + #13#10 +
-'	((SELECT ''WC'' + RIGHT(''100000'' + (SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(SUBSTRING(CatalogID,3,5)) + 1 END FROM WordCatalog), 5)), :CatalogName, :CatalogDisp, GetDate(), NULL)';
-//'	((SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(CatalogID) + 1 END FROM WordCatalog), :CatalogName, :CatalogDisp, GetDate(), NULL)';
+'	(:CatalogID, :ChildCatalogID, GetDate(), NULL)';
 begin
   SetExecuteSql(sql);
 
-  //Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
-  Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
-  Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
-
-  Result := DoExecute;
-end;
-
-function TCatalogRelationModel.UpdateWordCatalog(const value:TWordCatalog):_Recordset;
-const
-  sql:string =
-'UPDATE' + #13#10 +
-'	WordCatalog' + #13#10 +
-'SET' + #13#10 +
-'	CatalogName = :CatalogName,' + #13#10 +
-'	CatalogDisp = :CatalogDisp,' + #13#10 +
-'	UpdateTime = GetDate()' + #13#10 +
-'WHERE' + #13#10 +
-'	CatalogID = :CatalogID';
-begin
-  SetExecuteSql(sql);
-
-  Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
-  Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
   Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+  Command.Parameters.ParamByName('ChildCatalogID').Value := value.ChildCatalogID;
 
   Result := DoExecute;
 end;
+
 
 function TCatalogRelationModel.DeleteCatalogRelation(const value:TCatalogRelation):_Recordset;
 const
