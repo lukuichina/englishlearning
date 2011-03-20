@@ -28,7 +28,9 @@ type
     procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
     procedure DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
 
-    procedure DeleteCatalogRelation({const value:TCatalogRelation});
+    procedure InsertCatalogRelation(const value:TCatalogRelation);
+    procedure DeleteCatalogRelation; overload;
+    procedure DeleteCatalogRelation(const value:TCatalogRelation); overload;
   end;
 
   TWordCatalogController = class(TController, IWordCatalogController)
@@ -58,7 +60,9 @@ type
     procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
     procedure DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
 
-    procedure DeleteCatalogRelation({const value:TCatalogRelation});
+    procedure InsertCatalogRelation(const value:TCatalogRelation);
+    procedure DeleteCatalogRelation; overload;
+    procedure DeleteCatalogRelation(const value:TCatalogRelation); overload;
   end;
 
 implementation
@@ -153,9 +157,19 @@ begin
   FCatalogWordModel.DeleteCatalogWord(GetView.CatalogInfo, word);
 end;
 
-procedure TWordCatalogController.DeleteCatalogRelation({const value:TCatalogRelation});
+procedure TWordCatalogController.InsertCatalogRelation(const value:TCatalogRelation);
+begin
+  FCatalogRelationModel.InsertCatalogRelation(value);
+end;
+
+procedure TWordCatalogController.DeleteCatalogRelation;
 begin
   FCatalogRelationModel.DeleteCatalogRelation(GetView.CatalogRelationInfo);
+end;
+
+procedure TWordCatalogController.DeleteCatalogRelation(const value:TCatalogRelation);
+begin
+  FCatalogRelationModel.DeleteCatalogRelation(value);
 end;
 
 end.
