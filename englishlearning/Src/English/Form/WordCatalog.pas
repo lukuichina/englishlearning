@@ -743,6 +743,10 @@ begin
 
   node.Selected := True;
 
+  mnuDelCatalogRelation.Enabled :=
+      (mdWordCatalogTree.RecordCount > 0) and
+      (mdWordCatalogTree.FieldByName('ParentCatalogID').AsString <> '');
+
   p:= dtvWordCatalogTree.ClientToScreen(MousePos);
   apmWordCatalogNode.Popup(p.X, p.Y);
 end;
