@@ -321,6 +321,9 @@ begin
 
   qryWord.Locate('Word', edtWord.Text, []);
 
+  if not qryWord.Locate('Word', edtWord.Text, []) then
+     qryWord.Locate('Word', edtWord.Text, [loPartialKey]);
+
   ShowCurrentWord;
 
   grdWord.EndUpdate;
