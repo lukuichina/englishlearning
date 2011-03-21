@@ -123,6 +123,8 @@ type
       var AttachMode: TNodeAttachMode);
     procedure dtvWordCatalogTreeContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
+    procedure grdWordCatalogContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -599,6 +601,24 @@ begin
     WordInfo.UpdateTime := ds.FieldByName('UpdateTime').AsDateTime;
 
   Result := WordInfo;
+end;
+
+procedure TWordCatalogForm.grdWordCatalogContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
+var
+  p:TPoint;
+  rec:TRect;
+begin
+  rec.Top := grdWordCatalog.Selection.TopLeft.Y;
+  rec.Left := grdWordCatalog.Selection.TopLeft.X;
+  rec.Bottom := grdWordCatalog.Selection.BottomRight.Y;
+  rec.Right := grdWordCatalog.Selection.BottomRight.X;
+
+  if not PtInRect(rec, MousePos) then
+    exit;
+
+  p:= grdWordCatalog.ClientToScreen(MousePos);
+  apmWordCatalog.Popup(p.X, p.Y);
 end;
 
 procedure TWordCatalogForm.grdWordCatalogRowChanging(Sender: TObject; OldRow,
