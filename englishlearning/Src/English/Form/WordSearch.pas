@@ -12,7 +12,7 @@ type
   TWordSearchForm = class(TForm)
     grp1: TGroupBox;
     btnSearch: TButton;
-    grp3: TGroupBox;
+    grpWord: TGroupBox;
     dbdvgrd1: TDBAdvGrid;
     dsWord: TDataSource;
     qryWord: TADOQuery;
@@ -113,6 +113,8 @@ end;
 procedure TWordSearchForm.FormShow(Sender: TObject);
 begin
   edtWord.SetFocus;
+
+  grpWord.Caption := Format('检索结果(记录数：%d)' , [qryWord.RecordCount]);
 end;
 
 procedure TWordSearchForm.ShowWords(const LikeWord:string);
@@ -121,6 +123,8 @@ begin
   qryWord.ExecSQL;
   qryWord.Close;
   qryWord.Open;
+
+  grpWord.Caption := Format('检索结果(记录数：%d)' , [qryWord.RecordCount]);
 end;
 
 function TWordSearchForm.GetWord:string;
