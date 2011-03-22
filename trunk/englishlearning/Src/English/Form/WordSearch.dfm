@@ -97,7 +97,7 @@ object WordSearchForm: TWordSearchForm
       TabOrder = 4
     end
   end
-  object grp3: TGroupBox
+  object grpWord: TGroupBox
     Left = 0
     Top = 121
     Width = 880
