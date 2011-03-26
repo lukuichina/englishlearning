@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DBCtrls, Mask, Grids, AdvObj, BaseGrid, AdvGrid, DBAdvGrid,
   AdvOfficePager, DB, ADODB, Buttons, ComCtrls,
-  ViewData;
+  ViewData, ExtCtrls;
 
 type
   TWordSearchForm = class(TForm)
@@ -34,6 +34,9 @@ type
     dblkcbbDifficulty: TDBLookupComboBox;
     btnOK: TBitBtn;
     stat1: TStatusBar;
+    rgCatalogOption: TRadioGroup;
+    rgExplanationOption: TRadioGroup;
+    rgPictureOption: TRadioGroup;
     procedure edtWordExit(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
     procedure dbdvgrd1DblClick(Sender: TObject);
@@ -120,6 +123,61 @@ end;
 procedure TWordSearchForm.ShowWords(const LikeWord:string);
 begin
   qryWord.Parameters.ParamByName('Word').Value := LikeWord + '%';
+
+  case rgCatalogOption.ItemIndex of
+    0:
+    begin
+      qryWord.Parameters.ParamByName('CatalogOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('CatalogOption2').Value := '¡Á';
+    end;
+    1:
+    begin
+      qryWord.Parameters.ParamByName('CatalogOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('CatalogOption2').Value := '¡ð';
+    end;
+    2:
+    begin
+      qryWord.Parameters.ParamByName('CatalogOption1').Value := '¡Á';
+      qryWord.Parameters.ParamByName('CatalogOption2').Value := '¡Á';
+    end;
+  end;
+
+  case rgExplanationOption.ItemIndex of
+    0:
+    begin
+      qryWord.Parameters.ParamByName('ExplanationOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('ExplanationOption2').Value := '¡Á';
+    end;
+    1:
+    begin
+      qryWord.Parameters.ParamByName('ExplanationOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('ExplanationOption2').Value := '¡ð';
+    end;
+    2:
+    begin
+      qryWord.Parameters.ParamByName('ExplanationOption1').Value := '¡Á';
+      qryWord.Parameters.ParamByName('ExplanationOption2').Value := '¡Á';
+    end;
+  end;
+
+  case rgPictureOption.ItemIndex of
+    0:
+    begin
+      qryWord.Parameters.ParamByName('PictureOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('PictureOption2').Value := '¡Á';
+    end;
+    1:
+    begin
+      qryWord.Parameters.ParamByName('PictureOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('PictureOption2').Value := '¡ð';
+    end;
+    2:
+    begin
+      qryWord.Parameters.ParamByName('PictureOption1').Value := '¡Á';
+      qryWord.Parameters.ParamByName('PictureOption2').Value := '¡Á';
+    end;
+  end;
+
   qryWord.ExecSQL;
   qryWord.Close;
   qryWord.Open;
