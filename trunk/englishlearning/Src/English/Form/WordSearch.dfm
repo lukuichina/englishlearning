@@ -20,45 +20,45 @@ object WordSearchForm: TWordSearchForm
     Left = 0
     Top = 0
     Width = 880
-    Height = 121
+    Height = 97
     Align = alTop
     Color = 16773863
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
     object lblWord: TLabel
-      Left = 24
-      Top = 19
+      Left = 16
+      Top = 20
       Width = 36
       Height = 13
       Caption = #21333#35789#65306
     end
     object lblImportance: TLabel
-      Left = 24
-      Top = 48
+      Left = 272
+      Top = 20
       Width = 48
       Height = 13
       Caption = #37325#35201#24230#65306
     end
     object lblDifficulty: TLabel
-      Left = 24
-      Top = 80
+      Left = 528
+      Top = 20
       Width = 48
       Height = 13
       Caption = #38590#26131#24230#65306
     end
     object btnSearch: TButton
-      Left = 288
-      Top = 14
+      Left = 794
+      Top = 15
       Width = 75
       Height = 25
       Caption = #26816#32034
-      TabOrder = 3
+      TabOrder = 6
       OnClick = btnSearchClick
     end
     object edtWord: TEdit
-      Left = 104
-      Top = 16
+      Left = 96
+      Top = 17
       Width = 145
       Height = 21
       TabOrder = 0
@@ -66,8 +66,8 @@ object WordSearchForm: TWordSearchForm
       OnKeyDown = edtWordKeyDown
     end
     object dblkcbbImportance: TDBLookupComboBox
-      Left = 105
-      Top = 48
+      Left = 352
+      Top = 17
       Width = 145
       Height = 21
       KeyField = 'ID'
@@ -76,8 +76,8 @@ object WordSearchForm: TWordSearchForm
       TabOrder = 1
     end
     object dblkcbbDifficulty: TDBLookupComboBox
-      Left = 104
-      Top = 75
+      Left = 608
+      Top = 17
       Width = 145
       Height = 21
       KeyField = 'ID'
@@ -86,33 +86,77 @@ object WordSearchForm: TWordSearchForm
       TabOrder = 2
     end
     object btnOK: TBitBtn
-      Left = 400
-      Top = 14
+      Left = 794
+      Top = 53
       Width = 75
       Height = 25
       DoubleBuffered = True
       Kind = bkOK
       NumGlyphs = 2
       ParentDoubleBuffered = False
+      TabOrder = 7
+    end
+    object rgCatalogOption: TRadioGroup
+      Left = 8
+      Top = 44
+      Width = 233
+      Height = 38
+      Caption = #20998#31867
+      Columns = 3
+      ItemIndex = 0
+      Items.Strings = (
+        #24573#30053
+        #20998#31867#26377
+        #20998#31867#26080)
+      TabOrder = 3
+    end
+    object rgExplanationOption: TRadioGroup
+      Left = 264
+      Top = 44
+      Width = 233
+      Height = 38
+      Caption = #35299#37322
+      Columns = 3
+      ItemIndex = 0
+      Items.Strings = (
+        #24573#30053
+        #35299#37322#26377
+        #35299#37322#26080)
       TabOrder = 4
+    end
+    object rgPictureOption: TRadioGroup
+      Left = 520
+      Top = 44
+      Width = 232
+      Height = 38
+      Caption = #22270#29255
+      Columns = 3
+      ItemIndex = 0
+      Items.Strings = (
+        #24573#30053
+        #22270#29255#26377
+        #22270#29255#26080)
+      TabOrder = 5
     end
   end
   object grpWord: TGroupBox
     Left = 0
-    Top = 121
+    Top = 97
     Width = 880
-    Height = 494
+    Height = 518
     Align = alClient
     Caption = #26816#32034#32467#26524
     Color = 16773863
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
+    ExplicitTop = 121
+    ExplicitHeight = 494
     object dbdvgrd1: TDBAdvGrid
       Left = 2
       Top = 15
       Width = 876
-      Height = 477
+      Height = 501
       Cursor = crDefault
       Align = alClient
       ColCount = 12
@@ -668,6 +712,7 @@ object WordSearchForm: TWordSearchForm
         80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
         FFC003FF}
       ShowUnicode = False
+      ExplicitHeight = 459
       ColWidths = (
         20
         64
@@ -713,6 +758,42 @@ object WordSearchForm: TWordSearchForm
         Precision = 255
         Size = 20
         Value = '%'
+      end
+      item
+        Name = 'CatalogOption1'
+        DataType = ftWideString
+        Size = 1
+        Value = #9675
+      end
+      item
+        Name = 'CatalogOption2'
+        DataType = ftWideString
+        Size = 1
+        Value = #215
+      end
+      item
+        Name = 'ExplanationOption1'
+        DataType = ftWideString
+        Size = 1
+        Value = #9675
+      end
+      item
+        Name = 'ExplanationOption2'
+        DataType = ftWideString
+        Size = 1
+        Value = #215
+      end
+      item
+        Name = 'PictureOption1'
+        DataType = ftWideString
+        Size = 1
+        Value = #9675
+      end
+      item
+        Name = 'PictureOption2'
+        DataType = ftWideString
+        Size = 1
+        Value = #215
       end>
     SQL.Strings = (
       'SELECT'
@@ -755,6 +836,19 @@ object WordSearchForm: TWordSearchForm
       '    Difficulty on Difficulty.ID = Word.DifficultyLevel'
       'WHERE'
       '    Word.Word LIKE :Word'
+      
+        '    AND CASE WHEN (SELECT COUNT(*) FROM WordCatalogRelation WHER' +
+        'E WordCatalogRelation.Word = Word.Word AND WordCatalogRelation.C' +
+        'atalogID BETWEEN '#39'WC00001'#39' AND '#39'WC00010'#39') > 0 THEN '#39#9675#39' ELSE '#39#215#39' ' +
+        'END IN (:CatalogOption1,:CatalogOption2)'
+      
+        '    AND CASE WHEN (SELECT COUNT(*) FROM WordExplanation WHERE Wo' +
+        'rdExplanation.Word = Word.Word) > 0 THEN '#39#9675#39' ELSE '#39#215#39' END IN (:E' +
+        'xplanationOption1,:ExplanationOption2)'
+      
+        '    AND CASE WHEN (SELECT COUNT(*) FROM Picture WHERE Picture.Wo' +
+        'rd = Word.Word) > 0 THEN '#39#9675#39' ELSE '#39#215#39' END IN (:PictureOption1,:P' +
+        'ictureOption2)'
       'ORDER BY'
       '    Word.Word ASC')
     Left = 32
