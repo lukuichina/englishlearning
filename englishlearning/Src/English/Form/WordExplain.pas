@@ -70,27 +70,27 @@ var
 implementation
 
 uses
-  WordSearch, ExplanationInput, DataModule, WordPicture;
+  WordSearch, ExplanationInputDialog, DataModule, WordPicture;
 
 {$R *.dfm}
 
 procedure TWordExplainForm.actAddExplanationExecute(Sender: TObject);
 begin
   try
-    ExplanationInputForm := TExplanationInputForm.Create(nil);
-    ExplanationInputForm.Word := edtWord.Text;
+    ExplanationInputDialogForm := TExplanationInputDialogForm.Create(nil);
+    ExplanationInputDialogForm.Word := edtWord.Text;
 
-    if ExplanationInputForm.ShowModal  <> mrOk then
+    if ExplanationInputDialogForm.ShowModal  <> mrOk then
       Exit;
 
-    cmdAdd.Parameters.ParamByName('Word').Value := ExplanationInputForm.Word;
-    cmdAdd.Parameters.ParamByName('WordType').Value := ExplanationInputForm.WordType;
-    cmdAdd.Parameters.ParamByName('Word2').Value := ExplanationInputForm.Word;
-    cmdAdd.Parameters.ParamByName('WordType2').Value := ExplanationInputForm.WordType;
+    cmdAdd.Parameters.ParamByName('Word').Value := ExplanationInputDialogForm.Word;
+    cmdAdd.Parameters.ParamByName('WordType').Value := ExplanationInputDialogForm.WordType;
+    cmdAdd.Parameters.ParamByName('Word2').Value := ExplanationInputDialogForm.Word;
+    cmdAdd.Parameters.ParamByName('WordType2').Value := ExplanationInputDialogForm.WordType;
 
-    cmdAdd.Parameters.ParamByName('Explanation').Value := ExplanationInputForm.WordExplanation;
-    cmdAdd.Parameters.ParamByName('ImportanceLevel').Value := ExplanationInputForm.ImportanceLevel;
-    cmdAdd.Parameters.ParamByName('DifficultyLevel').Value := ExplanationInputForm.DifficultyLevel;
+    cmdAdd.Parameters.ParamByName('Explanation').Value := ExplanationInputDialogForm.WordExplanation;
+    cmdAdd.Parameters.ParamByName('ImportanceLevel').Value := ExplanationInputDialogForm.ImportanceLevel;
+    cmdAdd.Parameters.ParamByName('DifficultyLevel').Value := ExplanationInputDialogForm.DifficultyLevel;
     cmdAdd.Execute;
 
     FIsChanged := True;
@@ -98,7 +98,7 @@ begin
     qryWordExplanation.Close;
     qryWordExplanation.Open;
   finally
-    ExplanationInputForm.Free;
+    ExplanationInputDialogForm.Free;
   end;
 end;
 
@@ -118,27 +118,34 @@ end;
 procedure TWordExplainForm.actUpdateExplanationExecute(Sender: TObject);
 begin
   try
-    ExplanationInputForm := TExplanationInputForm.Create(nil);
-    ExplanationInputForm.Word := edtWord.Text;
-    ExplanationInputForm.dblkcbbWordType.Enabled := False;
-    ExplanationInputForm.dblkcbbWordType.KeyValue :=
-        qryWordExplanation.FieldByName('WordTypeID').AsInteger;
-    ExplanationInputForm.dblkcbbImportance.KeyValue :=
-        qryWordExplanation.FieldByName('ImportanceID').AsInteger;
-    ExplanationInputForm.dblkcbbDifficulty.KeyValue :=
-        qryWordExplanation.FieldByName('DifficultyID').AsInteger;
-    ExplanationInputForm.edt1.Text := qryWordExplanation.FieldByName('Explanation').AsString;
+    ExplanationInputDialogForm := TExplanationInputDialogForm.Create(nil);
+    ExplanationInputDialogForm.Word := edtWord.Text;
+//    ExplanationInputDialogForm.dblkcbbWordType.Enabled := False;
+//    ExplanationInputDialogForm.dblkcbbWordType.KeyValue :=
+//        qryWordExplanation.FieldByName('WordTypeID').AsInteger;
+//    ExplanationInputDialogForm.dblkcbbImportance.KeyValue :=
+//        qryWordExplanation.FieldByName('ImportanceID').AsInteger;
+//    ExplanationInputDialogForm.dblkcbbDifficulty.KeyValue :=
+//        qryWordExplanation.FieldByName('DifficultyID').AsInteger;
+    ExplanationInputDialogForm.dbrgrpWordType.Enabled := False;
+    ExplanationInputDialogForm.dbrgrpWordType.Value :=
+        qryWordExplanation.FieldByName('WordTypeID').AsString;
+    ExplanationInputDialogForm.dbrgrpImportance.Value :=
+        qryWordExplanation.FieldByName('ImportanceID').AsString;
+    ExplanationInputDialogForm.dbrgrpDifficulty.Value :=
+        qryWordExplanation.FieldByName('DifficultyID').AsString;
+    ExplanationInputDialogForm.edt1.Text := qryWordExplanation.FieldByName('Explanation').AsString;
 
-    if ExplanationInputForm.ShowModal  <> mrOk then
+    if ExplanationInputDialogForm.ShowModal  <> mrOk then
       Exit;
 
-    cmdUpdate.Parameters.ParamByName('Word').Value := ExplanationInputForm.Word;
-    cmdUpdate.Parameters.ParamByName('WordType').Value := ExplanationInputForm.WordType;
+    cmdUpdate.Parameters.ParamByName('Word').Value := ExplanationInputDialogForm.Word;
+    cmdUpdate.Parameters.ParamByName('WordType').Value := ExplanationInputDialogForm.WordType;
     cmdUpdate.Parameters.ParamByName('ExplanationID').Value := qryWordExplanation.FieldByName('ExplanationID').AsVariant;
 
-    cmdUpdate.Parameters.ParamByName('Explanation').Value := ExplanationInputForm.WordExplanation;
-    cmdUpdate.Parameters.ParamByName('ImportanceLevel').Value := ExplanationInputForm.ImportanceLevel;
-    cmdUpdate.Parameters.ParamByName('DifficultyLevel').Value := ExplanationInputForm.DifficultyLevel;
+    cmdUpdate.Parameters.ParamByName('Explanation').Value := ExplanationInputDialogForm.WordExplanation;
+    cmdUpdate.Parameters.ParamByName('ImportanceLevel').Value := ExplanationInputDialogForm.ImportanceLevel;
+    cmdUpdate.Parameters.ParamByName('DifficultyLevel').Value := ExplanationInputDialogForm.DifficultyLevel;
     cmdUpdate.Execute;
 
     FIsChanged := True;
@@ -146,7 +153,7 @@ begin
     qryWordExplanation.Close;
     qryWordExplanation.Open;
   finally
-    ExplanationInputForm.Free;
+    ExplanationInputDialogForm.Free;
   end;
 end;
 

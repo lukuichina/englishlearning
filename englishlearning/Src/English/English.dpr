@@ -30,7 +30,8 @@ uses
   WordModel in 'Model\WordModel.pas',
   CatalogWordModel in 'Model\CatalogWordModel.pas',
   CatalogRelationModel in 'Model\CatalogRelationModel.pas',
-  CatalogRelationController in 'Controller\CatalogRelationController.pas';
+  CatalogRelationController in 'Controller\CatalogRelationController.pas',
+  ExplanationInputDialog in 'Dialog\ExplanationInputDialog.pas' {ExplanationInputDialogForm};
 
 {$R *.res}
 
@@ -39,5 +40,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmManager, dmManager);
   Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TExplanationInputDialogForm, ExplanationInputDialogForm);
   Application.Run;
 end.
