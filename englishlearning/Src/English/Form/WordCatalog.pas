@@ -17,9 +17,9 @@ type
     AdvFormStyler1: TAdvFormStyler;
     AdvToolBarOfficeStyler1: TAdvToolBarOfficeStyler;
     advtlbrpgr1: TAdvToolBarPager;
-    advtlbrpgrAdvToolBarPager11: TAdvPage;
-    advtlbrpgrAdvToolBarPager12: TAdvPage;
-    advtlbrpgrAdvToolBarPager13: TAdvPage;
+    advpgTopPage: TAdvPage;
+    advpgView: TAdvPage;
+    advpgTool: TAdvPage;
     AdvQuickAccessToolBar1: TAdvQuickAccessToolBar;
     sbnMain: TAdvShapeButton;
     grp2: TAdvSmoothExpanderGroup;
@@ -91,6 +91,19 @@ type
     actLocateCatalogWord: TAction;
     apmWordCatalogNode: TAdvPopupMenu;
     mnuDelCatalogRelation: TMenuItem;
+    tplSearchWord: TAdvToolPanel;
+    edtSearchWord: TEdit;
+    lblSearchWord: TLabel;
+    btnSearchWord: TButton;
+    actSearchWord: TAction;
+    AdvToolBar2: TAdvToolBar;
+    btnShowWordCatalogTree: TAdvGlowButton;
+    btnWordSearh: TAdvGlowButton;
+    btnWordInfo: TAdvGlowButton;
+    AdvGlowButton6: TAdvGlowButton;
+    actShowCatalogTree: TAction;
+    actShowSearchWord: TAction;
+    actShowWordInfo: TAction;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
@@ -125,6 +138,11 @@ type
       var Handled: Boolean);
     procedure grdWordCatalogContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
+    procedure actSearchWordExecute(Sender: TObject);
+    procedure tplSearchWordUnlock(Sender: TObject);
+    procedure actShowCatalogTreeExecute(Sender: TObject);
+    procedure actShowSearchWordExecute(Sender: TObject);
+    procedure actShowWordInfoExecute(Sender: TObject);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -345,6 +363,48 @@ begin
   FWordCatalogController.ShowWordCatalogTree;
 end;
 
+procedure TWordCatalogForm.actSearchWordExecute(Sender: TObject);
+begin
+  if not dsWord.DataSet.Locate('Word', edtSearchWord.Text, []) then
+    dsWord.DataSet.Locate('Word', edtSearchWord.Text, [loPartialKey])
+end;
+
+procedure TWordCatalogForm.actShowCatalogTreeExecute(Sender: TObject);
+begin
+  if tplWordCatalogTree.Hidden then
+    tptWordCatalogTree.UnHidePanel(tplWordCatalogTree);
+
+  if not tplWordCatalogTree.Locked  then
+  begin
+    tptWordCatalogTree.RollOut(tplWordCatalogTree);
+    tplWordCatalogTree.Locked := True;
+  end;
+end;
+
+procedure TWordCatalogForm.actShowSearchWordExecute(Sender: TObject);
+begin
+  if tplSearchWord.Hidden then
+    tptWordCatalogTree.UnHidePanel(tplSearchWord);
+
+  if not tplSearchWord.Locked  then
+  begin
+    tptWordCatalogTree.RollOut(tplSearchWord);
+    tplSearchWord.Locked := True;
+  end;
+end;
+
+procedure TWordCatalogForm.actShowWordInfoExecute(Sender: TObject);
+begin
+  if tplWordInfo.Hidden then
+    tptWordCatalogTree.UnHidePanel(tplWordInfo);
+
+  if not tplWordInfo.Locked  then
+  begin
+    tptWordCatalogTree.RollOut(tplWordInfo);
+    tplWordInfo.Locked := True;
+  end;
+end;
+
 procedure TWordCatalogForm.actUpdateCatalogExecute(Sender: TObject);
 begin
   try
@@ -418,6 +478,8 @@ procedure TWordCatalogForm.FormCreate(Sender: TObject);
 begin
   FWordCatalog := TWordCatalog.Create;
   FWordCatalogController := TWordCatalogController.Create(self);
+
+  advtlbrpgr1.ActivePageIndex := 0;
 
   tptWordCatalogTree.RollOut(tplWordCatalogTree);
   tplWordCatalogTree.Locked := True;
@@ -511,6 +573,12 @@ begin
   tptWordCatalogTree.RollIn(tplWordInfo);
 end;
 
+procedure TWordCatalogForm.tplSearchWordUnlock(Sender: TObject);
+begin
+  tptWordCatalogTree.RollIn(tplSearchWord);
+  edtSearchWord.Clear;
+end;
+
 procedure TWordCatalogForm.tplWordCatalogTreeLock(Sender: TObject);
 begin
 //  if tpl2.Locked then
@@ -526,7 +594,10 @@ end;
 
 procedure TWordCatalogForm.tplWordCatalogTreeUnlock(Sender: TObject);
 begin
-  tplWordCatalogTree.Hide;
+  dtvWordCatalogTree.Items.BeginUpdate;
+  tptWordCatalogTree.RollIn(tplWordCatalogTree);
+//  tplWordCatalogTree.Hide;
+    dtvWordCatalogTree.Items.EndUpdate;
 end;
 
 function  TWordCatalogForm.GetCatalogRelationInfo:TCatalogRelation;
