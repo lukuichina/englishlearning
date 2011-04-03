@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.086,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\FullScreenDialog.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.766,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\Basic.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.144,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\BasicDialog.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.865,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\DataModule.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.416,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\PictureDispDialog.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.766,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\Basic.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.086,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\FullScreenDialog.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.736,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\BasicDialog.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.876,C:\Users\admin\Documents\RAD Studio\Projects\English\WordSearch.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit2.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.769,C:\Users\admin\Documents\RAD Studio\Projects\English\WordPicture.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
@@ -20,8 +20,8 @@
     <Transaction>1899/12/30 00:00:00.000.832,C:\Users\admin\Documents\RAD Studio\Projects\English\WordExplain.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.832,C:\Users\admin\Documents\RAD Studio\Projects\English\WordExplain.pas=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.pas</Transaction>
     <Transaction>1899/12/30 00:00:00.000.529,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordInput.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.691,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.542,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.691,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.044,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordView.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.491,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordInput.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.385,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm</Transaction>
@@ -63,6 +63,8 @@
     <File Path="Dialog\WordRange.dfm"/>
     <File Path="Dialog\WordCatalogDialog.pas"/>
     <File Path="Dialog\WordCatalogDialog.dfm"/>
+    <File Path="Dialog\ExplanationInputDialog.pas"/>
+    <File Path="Dialog\ExplanationInputDialog.dfm"/>
     <File Path="Form"/>
     <File Path="Form\Main.pas"/>
     <File Path="Form\Main.dfm"/>
