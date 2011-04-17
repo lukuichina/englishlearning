@@ -6,10 +6,11 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, AdvObj, BaseGrid,
   AdvGrid, DBAdvGrid, DB, ADODB, StdCtrls, ExtCtrls, DBCtrls, AdvGroupBox,
-  Buttons, Menus, AdvMenus, ActnList, ImgList, ShellAPI;
+  Buttons, Menus, AdvMenus, ActnList, ImgList, ShellAPI, InterfaceDef,
+  ViewData;
 
 type
-  TWordInputForm = class(TForm)
+  TWordInputForm = class(TForm, ICursorable)
     grpWord: TGroupBox;
     grdWord: TDBAdvGrid;
     grp1: TGroupBox;
@@ -120,12 +121,18 @@ type
       Shift: TShiftState);
     procedure grdWordCanSort(Sender: TObject; ACol: Integer;
       var DoSort: Boolean);
+    procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
+      var Allow: Boolean);
   private
     { Private declarations }
+    FWord:TWord;
     procedure ShowCurrentWord;
     procedure ShowWords(const LikeWord:string);
     procedure ShowRecordCount;
     procedure SetRowHeader;
+  protected
+    procedure CashCursor(const value:TActionType; data:TViewData=nil);
+    procedure ResetCursor;
   public
     { Public declarations }
   end;
@@ -142,8 +149,15 @@ uses
 
 procedure TWordInputForm.actDeleteWordExecute(Sender: TObject);
 begin
+  if MessageDlg('ÄúÈ·ÈÏÒªÉ¾³ýÂð£¿', mtconfirmation, [mbYes, mbNo], 0) <> mrYes then
+  begin
+    exit;
+  end;
+
   if edtWordEdit.Text = '' then
     exit;
+
+  CashCursor(atDelete);
 
   cmdWordDelete.Parameters.ParamByName('Word').Value := edtWordEdit.Text;
   cmdWordDelete.Execute;
@@ -151,8 +165,10 @@ begin
   grdWord.BeginUpdate;
   ShowWords('%');
 
-  qryWord.Locate('Word', edtWordEdit.Text, []);
+  //qryWord.Locate('Word', edtWordEdit.Text, []);
   grdWord.EndUpdate;
+
+  ResetCursor;
 end;
 
 procedure TWordInputForm.actImportToExcelExecute(Sender: TObject);
@@ -244,6 +260,8 @@ begin
   if edtWordEdit.Text = '' then
     exit;
 
+  CashCursor(atUpdate);
+
   grdWord.BeginUpdate;
 
   cmdWordUpdate.Parameters.ParamByName('NewWord').Value := edtWordEdit.Text;
@@ -254,15 +272,19 @@ begin
 
   ShowWords('%');
 
-  qryWord.Locate('Word', edtWordEdit.Text, []);
+  //qryWord.Locate('Word', edtWordEdit.Text, []);
 
   grdWord.EndUpdate;
+
+  ResetCursor;
 end;
 
 procedure TWordInputForm.btnWordClick(Sender: TObject);
 begin
   if edtWord.Text = '' then
     exit;
+
+  CashCursor(atInsert);
 
   cmdWord.Parameters.ParamByName('Word').Value := edtWord.Text;
   cmdWord.Parameters.ParamByName('ImportanceLevel').Value := dblkcbbImportance.KeyValue;
@@ -271,8 +293,10 @@ begin
 
   ShowWords('%');
 
-  qryWord.Locate('Word', edtWord.Text, []);
+  //qryWord.Locate('Word', edtWord.Text, []);
   edtWord.Clear;
+
+  ResetCursor;
 end;
 
 procedure TWordInputForm.grdWordCanSort(Sender: TObject; ACol: Integer;
@@ -309,6 +333,12 @@ begin
   //SetRowHeader;
 end;
 
+procedure TWordInputForm.grdWordRowChanging(Sender: TObject; OldRow,
+  NewRow: Integer; var Allow: Boolean);
+begin
+  //ShowCurrentWord
+end;
+
 procedure TWordInputForm.grdWordSelectionChanged(Sender: TObject; ALeft, ATop,
   ARight, ABottom: Integer);
 begin
@@ -318,8 +348,6 @@ end;
 procedure TWordInputForm.edtWordExit(Sender: TObject);
 begin
   grdWord.BeginUpdate;
-
-  qryWord.Locate('Word', edtWord.Text, []);
 
   if not qryWord.Locate('Word', edtWord.Text, []) then
      qryWord.Locate('Word', edtWord.Text, [loPartialKey]);
@@ -338,6 +366,8 @@ end;
 
 procedure TWordInputForm.FormCreate(Sender: TObject);
 begin
+  FWord := TWord.Create;
+
   dblkcbbImportance.KeyValue := 2;
   dblkcbbDifficulty.KeyValue := 3;
 
@@ -404,6 +434,45 @@ begin
   end;
 
   qryWord.First;
+end;
+
+procedure TWordInputForm.CashCursor(const value:TActionType; data:TViewData=nil);
+var
+  RowId:integer;
+begin
+  case value of
+    atInsert:
+    begin
+//      if not (data is TWord) then
+//        exit;
+
+//      FWord := TWord(data);
+      FWord.Word := edtWord.Text;
+    end;
+    atUpdate:
+    begin
+      //FWord.Word := dsWord.DataSet.FieldByName('Word').AsString;
+      FWord.Word := edtWordEdit.Text;
+    end;
+    atDelete:
+    begin
+      RowId := dsWord.DataSet.FieldByName('RowId').AsInteger;
+
+      if dsWord.DataSet.RecordCount > 1 then
+      begin
+        FWord.Word := dsWord.DataSet.Lookup('RowId', RowId - 1, 'Word');
+      end;
+    end;
+    else
+    begin
+      FWord := TWord(data);
+    end;
+  end;
+end;
+
+procedure TWordInputForm.ResetCursor;
+begin
+  dsWord.DataSet.Locate('Word', FWord.Word, []);
 end;
 
 end.
