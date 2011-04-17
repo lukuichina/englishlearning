@@ -211,7 +211,12 @@ end;
 
 procedure TWordCatalogForm.actDeleteCatalogExecute(Sender: TObject);
 begin
-  CashCursor(atUpdate);
+  if MessageDlg('ÄúÈ·ÈÏÒªÉ¾³ýÂð£¿', mtconfirmation, [mbYes, mbNo], 0) <> mrYes then
+  begin
+    exit;
+  end;
+
+  CashCursor(atDelete);
 
   FWordCatalogController.DeleteCatalogInfo;
 //  FWordCatalogController.ShowWordCatalog;
@@ -759,6 +764,8 @@ end;
 //end;
 
 procedure TWordCatalogForm.CashCursor(const value:TActionType; data:TViewData=nil);
+var
+  RowId:integer;
 begin
   case value of
     atInsert:
@@ -774,7 +781,17 @@ begin
     end;
     atDelete:
     begin
-      FWordCatalog := CatalogInfo;
+      //FWordCatalog := TWordCatalog.Create;
+      RowId := dsWordCatalog.DataSet.FieldByName('RowId').AsInteger;
+
+      if dsWordCatalog.DataSet.RecordCount > 1 then
+      begin
+        //dsWordCatalog.DataSet.Lookup('RowId', VarArrayOf(RowId - 1), 'CatalogID')
+        FWordCatalog.CatalogID := dsWordCatalog.DataSet.Lookup('RowId', RowId - 1, 'CatalogID');
+        FWordCatalog.CatalogName := dsWordCatalog.DataSet.Lookup('RowId', RowId - 1, 'CatalogName');
+        FWordCatalog.CatalogDisp := dsWordCatalog.DataSet.Lookup('RowId', RowId - 1, 'CatalogDisp');
+      end;
+
     end;
     else
     begin
