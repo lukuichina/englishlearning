@@ -13,6 +13,7 @@ type
     function InsertCatalogWord(const catalog:TWordCatalog;const word:TWord):_Recordset;
 //    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
     function DeleteCatalogWord(const catalog:TWordCatalog;const word:TWord):_Recordset;
+    function Exist(const catalog:TWordCatalog;const word:TWord):Boolean;
   end;
 
   TCatalogWordModel = class(TModel, ICatalogWordModel)
@@ -25,6 +26,7 @@ type
     function InsertCatalogWord(const catalog:TWordCatalog;const word:TWord):_Recordset;
 //    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
     function DeleteCatalogWord(const catalog:TWordCatalog;const word:TWord):_Recordset;
+    function Exist(const catalog:TWordCatalog;const word:TWord):Boolean;
 
     constructor Create({Controller: IController});
   end;
@@ -124,6 +126,18 @@ begin
   Command.Parameters.ParamByName('Word').Value := word.Word;
 
   Result := DoExecute;
+end;
+
+function TCatalogWordModel.Exist(const catalog:TWordCatalog;const word:TWord):Boolean;
+const
+  sql:string = 'SELECT COUNT(*) COUNT FROM WordCatalogRelation WHERE CatalogID = :CatalogID AND Word = :Word';
+begin
+  SetSelectSql(sql);
+
+  Query.Parameters.ParamByName('CatalogID').Value := catalog.CatalogID;
+  Query.Parameters.ParamByName('Word').Value := word.Word;
+
+  Result := DoSelect.FieldByName('COUNT').AsInteger > 0;
 end;
 
 //function TCatalogWordModel.UpdateWordCatalog(const value:TWordCatalog):_Recordset;

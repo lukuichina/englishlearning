@@ -104,6 +104,10 @@ type
     actShowCatalogTree: TAction;
     actShowSearchWord: TAction;
     actShowWordInfo: TAction;
+    actAddCatalogWords: TAction;
+    mnuAddCatalogWords: TMenuItem;
+    actLocateCatalogWords: TAction;
+    mnuLocateCatalogWords: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
@@ -143,6 +147,8 @@ type
     procedure actShowCatalogTreeExecute(Sender: TObject);
     procedure actShowSearchWordExecute(Sender: TObject);
     procedure actShowWordInfoExecute(Sender: TObject);
+    procedure actAddCatalogWordsExecute(Sender: TObject);
+    procedure actLocateCatalogWordsExecute(Sender: TObject);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -177,7 +183,8 @@ var
 
 implementation
 
-uses WordCatalogDialog, Excel, WordSearch, WordPicture, WordExplain;
+uses WordCatalogDialog, Excel, WordSearch, WordPicture, WordExplain,
+  WordSearchDialog;
 
 {$R *.dfm}
 
@@ -257,6 +264,37 @@ begin
   ResetCursor;
 
   FSrcCatalogRelationInfo.Free;
+end;
+
+procedure TWordCatalogForm.actAddCatalogWordsExecute(Sender: TObject);
+begin
+  try
+    WordSearchDialogForm := TWordSearchDialogForm.Create(nil);
+    //WordSearchForm.Word := edtWord.Text;
+
+    if WordSearchDialogForm.ShowModal <> mrOk then
+    begin
+//      if not IsWordExist(edtWord.Text) then
+//        edtWord.SetFocus;
+
+      exit;
+    end;
+
+    if Low(WordSearchDialogForm.WordsInfo) = High(WordSearchDialogForm.WordsInfo) then
+      Exit;
+
+    FWordCatalogController.InsertCatalogWords({CatalogInfo,} WordSearchDialogForm.WordsInfo);
+
+    grdWord.BeginUpdate;
+
+    FWordCatalogController.ShowCatalogWord;
+
+    dsWord.DataSet.Locate('Word', WordSearchDialogForm.WordsInfo[0].Word, []);
+
+    grdWord.EndUpdate;
+  finally
+    WordSearchDialogForm.Free;
+  end;
 end;
 
 procedure TWordCatalogForm.actAddCatalogWordExecute(Sender: TObject);
@@ -343,6 +381,37 @@ begin
     grdWord.EndUpdate;
   finally
     WordSearchForm.Free;
+  end;
+end;
+
+procedure TWordCatalogForm.actLocateCatalogWordsExecute(Sender: TObject);
+begin
+  try
+    WordSearchDialogForm := TWordSearchDialogForm.Create(nil);
+    WordSearchDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+
+    if WordSearchDialogForm.ShowModal <> mrOk then
+    begin
+//      if not IsWordExist(edtWord.Text) then
+//        edtWord.SetFocus;
+
+      exit;
+    end;
+
+    if Low(WordSearchDialogForm.WordsInfo) = High(WordSearchDialogForm.WordsInfo) then
+      Exit;
+
+    FWordCatalogController.InsertCatalogWords({CatalogInfo,} WordSearchDialogForm.WordsInfo);
+
+    grdWord.BeginUpdate;
+
+    FWordCatalogController.ShowCatalogWord;
+
+    dsWord.DataSet.Locate('Word', WordSearchDialogForm.WordsInfo[0].Word, []);
+
+    grdWord.EndUpdate;
+  finally
+    WordSearchDialogForm.Free;
   end;
 end;
 
