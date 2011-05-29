@@ -57,7 +57,7 @@ begin
 
     ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
     ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
-    ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','TmpPath','');
+    ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');
 
     conEnglish.Connected := False;
     conEnglish.ConnectionString := Format(connectString,
