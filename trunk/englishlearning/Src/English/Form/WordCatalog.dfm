@@ -111,7 +111,6 @@ object WordCatalogForm: TWordCatalogForm
       FFFFFFFFFFFDFD000000FD070707070707FDFD000000FDFDFDFDFDFDFDFDFD00
       0000}
     TabOrder = 1
-    TabStop = True
     Win7ScenicRibbon = True
     object advpgTopPage: TAdvPage
       Left = 0
@@ -1977,7 +1976,7 @@ object WordCatalogForm: TWordCatalogForm
       OfficeHint.Title = #25991#20214
       TabOrder = 9
       Text = #25991#20214
-      Version = '5.0.0.0'
+      Version = '5.0.1.4'
     end
   end
   object grp2: TAdvSmoothExpanderGroup
@@ -1994,6 +1993,7 @@ object WordCatalogForm: TWordCatalogForm
     Fill.BorderColor = clNone
     Fill.Rounding = 0
     Fill.ShadowOffset = 0
+    Fill.Glow = gmNone
     Align = alClient
     object opClient: TAdvOfficePager
       Left = 276
@@ -2278,6 +2278,7 @@ object WordCatalogForm: TWordCatalogForm
         0001010100000100000001010101010101010100000001010101010101010100
         0000}
       ButtonSettings.CloseButtonHint = 'Close'
+      ButtonSettings.InsertButtonHint = 'Insert new page'
       ButtonSettings.PageListButtonHint = 'Page List'
       ButtonSettings.ScrollButtonNextHint = 'Next'
       ButtonSettings.ScrollButtonPrevHint = 'Previous'
@@ -2463,7 +2464,7 @@ object WordCatalogForm: TWordCatalogForm
             SearchFooter.HintHighlight = 'Highlight occurences'
             SearchFooter.MatchCaseCaption = 'Match case'
             SortSettings.Show = True
-            Version = '2.2.0.1'
+            Version = '2.3.0.7'
             AutoCreateColumns = True
             AutoRemoveColumns = False
             Columns = <
@@ -3009,7 +3010,7 @@ object WordCatalogForm: TWordCatalogForm
             SearchFooter.HintHighlight = 'Highlight occurences'
             SearchFooter.MatchCaseCaption = 'Match case'
             SortSettings.Show = True
-            Version = '2.2.0.1'
+            Version = '2.3.0.7'
             AutoCreateColumns = True
             AutoRemoveColumns = False
             Columns = <
@@ -3541,7 +3542,7 @@ object WordCatalogForm: TWordCatalogForm
       TabColorTo = 16765357
       TabHoverColor = 14285309
       TabHoverColorTo = 9102333
-      Version = '1.5.4.0'
+      Version = '1.5.4.1'
       object tplWordCatalogTree: TAdvToolPanel
         Left = 23
         Top = 0
@@ -3592,7 +3593,7 @@ object WordCatalogForm: TWordCatalogForm
         SectionLayout.UnderLineCaption = False
         ShowCaptionBorder = False
         Style = esOffice2010Blue
-        Version = '1.5.4.0'
+        Version = '1.5.4.1'
         OnLock = tplWordCatalogTreeLock
         OnUnlock = tplWordCatalogTreeUnlock
         object dtvWordCatalogTree: TdxDBTreeView
@@ -3674,10 +3675,9 @@ object WordCatalogForm: TWordCatalogForm
         SectionLayout.UnderLineCaption = False
         ShowCaptionBorder = False
         Style = esOffice2010Blue
-        Version = '1.5.4.0'
+        Version = '1.5.4.1'
         OnLock = tplWordInfoLock
         OnUnlock = tplWordInfoUnlock
-        ExplicitHeight = 0
       end
       object tplSearchWord: TAdvToolPanel
         Left = 23
@@ -3729,9 +3729,8 @@ object WordCatalogForm: TWordCatalogForm
         SectionLayout.UnderLineCaption = False
         ShowCaptionBorder = False
         Style = esOffice2010Blue
-        Version = '1.5.4.0'
+        Version = '1.5.4.1'
         OnUnlock = tplSearchWordUnlock
-        ExplicitHeight = 0
         object lblSearchWord: TLabel
           Left = 16
           Top = 59
@@ -4061,7 +4060,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 608
     Top = 200
     Bitmap = {
-      494C010106000800680110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101060008006C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4366,14 +4365,24 @@ object WordCatalogForm: TWordCatalogForm
       OnExecute = actRefreshCatalogTreeExecute
     end
     object actAddCatalogWord: TAction
-      Caption = #28155#21152
+      Caption = #28155#21152'('#21333#26465')'
       ImageIndex = 0
       OnExecute = actAddCatalogWordExecute
     end
+    object actAddCatalogWords: TAction
+      Caption = #28155#21152'('#22810#26465')'
+      ImageIndex = 0
+      OnExecute = actAddCatalogWordsExecute
+    end
     object actLocateCatalogWord: TAction
-      Caption = #23450#20301
+      Caption = #23450#20301'('#21333#26465#28155#21152#27169#24335')'
       ImageIndex = 0
       OnExecute = actLocateCatalogWordExecute
+    end
+    object actLocateCatalogWords: TAction
+      Caption = #23450#20301'('#22810#26465#28155#21152#27169#24335')'
+      ImageIndex = 0
+      OnExecute = actLocateCatalogWordsExecute
     end
     object actDeleteCatalogWord: TAction
       Caption = #21024#38500
@@ -4418,7 +4427,7 @@ object WordCatalogForm: TWordCatalogForm
     end
   end
   object apmWordCatalog: TAdvPopupMenu
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 480
     Top = 200
     object mnuAddExplanation: TMenuItem
@@ -4488,7 +4497,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 472
     Top = 376
     Bitmap = {
-      494C0101140019008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010114001900900010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5293,7 +5302,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 400
     Top = 372
     Bitmap = {
-      494C0101030005008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500900010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000080000000000000000000000000000000
@@ -5443,14 +5452,20 @@ object WordCatalogForm: TWordCatalogForm
   end
   object pmWord: TAdvPopupMenu
     OnPopup = pmWordPopup
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 480
     Top = 264
     object mnuAddCatalogWord: TMenuItem
       Action = actAddCatalogWord
     end
+    object mnuAddCatalogWords: TMenuItem
+      Action = actAddCatalogWords
+    end
     object mnuLocateCatalogWord: TMenuItem
       Action = actLocateCatalogWord
+    end
+    object mnuLocateCatalogWords: TMenuItem
+      Action = actLocateCatalogWords
     end
     object mnuDeleteCatalogWord: TMenuItem
       Action = actDeleteCatalogWord
@@ -5466,7 +5481,7 @@ object WordCatalogForm: TWordCatalogForm
     end
   end
   object apmWordCatalogNode: TAdvPopupMenu
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 120
     Top = 264
     object mnuDelCatalogRelation: TMenuItem

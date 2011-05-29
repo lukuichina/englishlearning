@@ -50,6 +50,9 @@ type
     property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
   end;
 
+  type
+    TWords = array of TWord;
+
 implementation
 
 end.

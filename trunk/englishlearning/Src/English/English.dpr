@@ -31,7 +31,8 @@ uses
   CatalogWordModel in 'Model\CatalogWordModel.pas',
   CatalogRelationModel in 'Model\CatalogRelationModel.pas',
   CatalogRelationController in 'Controller\CatalogRelationController.pas',
-  ExplanationInputDialog in 'Dialog\ExplanationInputDialog.pas' {ExplanationInputDialogForm};
+  ExplanationInputDialog in 'Dialog\ExplanationInputDialog.pas' {ExplanationInputDialogForm},
+  WordSearchDialog in 'Dialog\WordSearchDialog.pas' {WordSearchDialogForm};
 
 {$R *.res}
 

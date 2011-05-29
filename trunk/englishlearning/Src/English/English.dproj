@@ -118,6 +118,9 @@
 			<DCCReference Include="Dialog\ExplanationInputDialog.pas">
 				<Form>ExplanationInputDialogForm</Form>
 			</DCCReference>
+			<DCCReference Include="Dialog\WordSearchDialog.pas">
+				<Form>WordSearchDialogForm</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
@@ -167,104 +170,6 @@
 					<Source>
 						<Source Name="MainSource">English.dpr</Source>
 					</Source>
-					<Excluded_Packages>
-						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k150.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-						<Excluded_Packages Name="$(BDSBIN)\dclofficexp150.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-						<Excluded_Packages Name="$(BDSBIN)\bcboffice2k150.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-						<Excluded_Packages Name="$(BDSBIN)\bcbofficexp150.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxLibraryRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxLibraryRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxEditorsRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxEditorsRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxExtEditorsRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxExtEditorsRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarDBNavRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarDBNavRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarExtDBItemsRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarExtDBItemsRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarExtItemsRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxBarExtItemsRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxRibbonRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxRibbonRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxBarEditItemRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxBarEditItemRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxdbtrRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxdbtrRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxtrmdRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxtrmdRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxDockingRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxDockingRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxFlowChartRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxFlowChartRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPageControlRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPageControlRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxLayoutControlRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxLayoutControlRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxNavBarRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxNavBarRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxOrgCRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxOrgCRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxDBOrRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxDBOrRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxGridRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxGridRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPivotGridRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPivotGridRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPivotGridChartRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPivotGridChartRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPivotGridOLAPRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxPivotGridOLAPRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxTreeListRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxTreeListRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxTreeListdxBarPopupMenuRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxTreeListdxBarPopupMenuRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxSchedulerRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxSchedulerRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxSchedulerGridRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxSchedulerGridRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSBRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSBRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsCoreRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsCoreRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsDesignHelperRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsDesignHelperRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinscxPCPainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinscxPCPainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinscxScheduler3PainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinscxScheduler3PainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsdxBarsPaintersRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsdxBarsPaintersRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsdxNavBar2PainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSkinsdxNavBar2PainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSpellCheckerRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxSpellCheckerRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxSpreadSheetRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxSpreadSheetRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxVerticalGridRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dclcxVerticalGridRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSCoreRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSCoreRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSLnksRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSLnksRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxCommonRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxCommonRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxExtCommonRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxExtCommonRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxGrid6LnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxGrid6LnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxPivotGrid2LnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxPivotGrid2LnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxScheduler3LnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxScheduler3LnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxSSLnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxSSLnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxTL5LnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxTL5LnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxVGridLnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPScxVGridLnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxOCLnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxOCLnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxDBOCLnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxDBOCLnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxDBTVLnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxDBTVLnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxFCLnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxFCLnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxLC2LnkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxLC2LnkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxSkinsHelperRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dcldxPSdxSkinsHelperRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxPScxPCProdRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxPScxPCProdRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxPSPrVwAdvRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxPSPrVwAdvRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxPSPrVwRibbonRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxPSPrVwRibbonRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinscxPCPainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinscxPCPainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinscxScheduler3PainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinscxScheduler3PainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxDLPainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxDLPainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxRibbonPainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxRibbonPainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxBarPainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxBarPainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxNavBar2PainterRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinsdxNavBar2PainterRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinXmas2008BlueRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinXmas2008BlueRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinBlackRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinBlackRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinBlueRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinBlueRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinCaramelRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinCaramelRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinCoffeeRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinCoffeeRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinDarkRoomRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinDarkRoomRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinDarkSideRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinDarkSideRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinFoggyRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinFoggyRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinGlassOceansRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinGlassOceansRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkiniMaginaryRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkiniMaginaryRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinLilianRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinLilianRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinLiquidSkyRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinLiquidSkyRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinLondonLiquidSkyRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinLondonLiquidSkyRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinMcSkinRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinMcSkinRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinMoneyTwinsRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinMoneyTwinsRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007BlackRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007BlackRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007BlueRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007BlueRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007GreenRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007GreenRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007PinkRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007PinkRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007SilverRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2007SilverRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2010BlackRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2010BlackRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2010BlueRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2010BlueRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2010SilverRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinOffice2010SilverRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinPumpkinRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinPumpkinRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSevenRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSevenRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSharpRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSharpRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSilverRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSilverRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSpringTimeRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSpringTimeRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinStardustRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinStardustRS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSummer2008RS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinSummer2008RS15.bpl not found</Excluded_Packages>
-						<Excluded_Packages Name="C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinValentineRS15.bpl">File C:\Users\admin\Documents\DevExpress VCL\Library\RS15\dxSkinValentineRS15.bpl not found</Excluded_Packages>
-					</Excluded_Packages>
 				</Delphi.Personality>
 				<Platforms>
 					<Platform value="Win32">True</Platform>

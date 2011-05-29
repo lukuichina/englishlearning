@@ -27,6 +27,7 @@ type
     procedure ShowCatalogWord;
     procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
     procedure DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
+    procedure InsertCatalogWords({const catalog:TWordCatalog;}const words:TWords);
 
     procedure InsertCatalogRelation(const value:TCatalogRelation);
     procedure DeleteCatalogRelation; overload;
@@ -59,6 +60,8 @@ type
     procedure ShowCatalogWord;
     procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
     procedure DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
+
+    procedure InsertCatalogWords({const catalog:TWordCatalog;}const words:TWords);
 
     procedure InsertCatalogRelation(const value:TCatalogRelation);
     procedure DeleteCatalogRelation; overload;
@@ -155,6 +158,20 @@ end;
 procedure TWordCatalogController.DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
 begin
   FCatalogWordModel.DeleteCatalogWord(GetView.CatalogInfo, word);
+end;
+
+procedure TWordCatalogController.InsertCatalogWords({const catalog:TWordCatalog;}const words:TWords);
+var
+  i:integer;
+begin
+  for i := Low(words) to High(words) do
+  begin
+    if FCatalogWordModel.Exist(GetView.CatalogInfo, words[i]) then
+      Continue;
+
+    FCatalogWordModel.InsertCatalogWord(GetView.CatalogInfo, words[i]);
+  end;
+
 end;
 
 procedure TWordCatalogController.InsertCatalogRelation(const value:TCatalogRelation);
