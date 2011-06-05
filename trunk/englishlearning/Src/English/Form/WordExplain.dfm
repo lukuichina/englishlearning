@@ -299,6 +299,7 @@ object WordExplainForm: TWordExplainForm
       0001010100000100000001010101010101010100000001010101010101010100
       0000}
     ButtonSettings.CloseButtonHint = 'Close'
+    ButtonSettings.InsertButtonHint = 'Insert new page'
     ButtonSettings.PageListButtonHint = 'Page List'
     ButtonSettings.ScrollButtonNextHint = 'Next'
     ButtonSettings.ScrollButtonPrevHint = 'Previous'
@@ -465,7 +466,7 @@ object WordExplainForm: TWordExplainForm
         SearchFooter.HintFindPrev = 'Find previous occurence'
         SearchFooter.HintHighlight = 'Highlight occurences'
         SearchFooter.MatchCaseCaption = 'Match case'
-        Version = '2.2.0.1'
+        Version = '2.3.0.7'
         AutoCreateColumns = True
         AutoRemoveColumns = False
         Columns = <
@@ -1143,7 +1144,7 @@ object WordExplainForm: TWordExplainForm
     Left = 600
     Top = 216
     Bitmap = {
-      494C010105000800D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000800D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1444,7 +1445,8 @@ object WordExplainForm: TWordExplainForm
     end
   end
   object advpmn1: TAdvPopupMenu
-    Version = '2.5.3.3'
+    OnPopup = advpmn1Popup
+    Version = '2.5.3.4'
     Left = 480
     Top = 216
     object mnuAddExplanation: TMenuItem
@@ -1461,7 +1463,7 @@ object WordExplainForm: TWordExplainForm
       Action = actImportToExcel
       Visible = False
     end
-    object N1: TMenuItem
+    object mnuViewPicture: TMenuItem
       Action = actViewPicture
     end
   end
