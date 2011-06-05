@@ -34,7 +34,7 @@ type
     cmdDelete: TADOCommand;
     qryWord: TADOQuery;
     actViewPicture: TAction;
-    N1: TMenuItem;
+    mnuViewPicture: TMenuItem;
     actUpdateExplanation: TAction;
     mnuUpdateExplanation: TMenuItem;
     procedure btnWordSearchClick(Sender: TObject);
@@ -49,6 +49,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure dbdvgrd1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure advpmn1Popup(Sender: TObject);
   private
     { Private declarations }
     FIsChanged:Boolean;
@@ -182,6 +183,16 @@ begin
   finally
     WordPictureForm.Free;
   end;
+end;
+
+procedure TWordExplainForm.advpmn1Popup(Sender: TObject);
+begin
+  mnuUpdateExplanation.Enabled := (qryWordExplanation.RecordCount > 0) and
+   (dbdvgrd1.RowSelectCount > 0);
+  mnuDelete.Enabled := (qryWordExplanation.RecordCount > 0) and
+   (dbdvgrd1.RowSelectCount > 0);
+  mnuViewPicture.Enabled := (qryWordExplanation.RecordCount > 0) and
+   (dbdvgrd1.RowSelectCount > 0);
 end;
 
 procedure TWordExplainForm.btnWordSearchClick(Sender: TObject);
