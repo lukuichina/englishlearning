@@ -17,15 +17,9 @@ type
     dsWord: TDataSource;
     qryWord: TADOQuery;
     tblImportance: TADOTable;
-    intfldImportanceID: TIntegerField;
-    strfldImportanceName: TStringField;
-    strfldImportanceDisp: TStringField;
     dsImportance: TDataSource;
     dsDifficulty: TDataSource;
     tblDifficulty: TADOTable;
-    intfldDifficultyID: TIntegerField;
-    strfldDifficultyName: TStringField;
-    strfldDifficultyDisp: TStringField;
     lblWord: TLabel;
     edtWord: TEdit;
     dblkcbbImportance: TDBLookupComboBox;

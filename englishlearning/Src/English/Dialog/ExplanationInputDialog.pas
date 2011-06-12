@@ -9,15 +9,9 @@ uses
 type
   TExplanationInputDialogForm = class(TForm)
     tblDifficulty: TADOTable;
-    intfldDifficultyID: TIntegerField;
-    strfldDifficultyName: TStringField;
-    strfldDifficultyDisp: TStringField;
     dsDifficulty: TDataSource;
     dsImportance: TDataSource;
     tblImportance: TADOTable;
-    intfldImportanceID: TIntegerField;
-    strfldImportanceName: TStringField;
-    strfldImportanceDisp: TStringField;
     dsWordType: TDataSource;
     tblWordType: TADOTable;
     lbl2: TLabel;

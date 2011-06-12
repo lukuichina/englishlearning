@@ -150,8 +150,6 @@ object WordSearchForm: TWordSearchForm
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
-    ExplicitTop = 121
-    ExplicitHeight = 494
     object dbdvgrd1: TDBAdvGrid
       Left = 2
       Top = 15
@@ -249,7 +247,7 @@ object WordSearchForm: TWordSearchForm
       SearchFooter.HintFindPrev = 'Find previous occurence'
       SearchFooter.HintHighlight = 'Highlight occurences'
       SearchFooter.MatchCaseCaption = 'Match case'
-      Version = '2.2.0.1'
+      Version = '2.3.0.7'
       AutoCreateColumns = True
       AutoRemoveColumns = False
       Columns = <
@@ -712,7 +710,6 @@ object WordSearchForm: TWordSearchForm
         80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
         FFC003FF}
       ShowUnicode = False
-      ExplicitHeight = 459
       ColWidths = (
         20
         64
@@ -861,15 +858,6 @@ object WordSearchForm: TWordSearchForm
     TableName = 'Importance'
     Left = 32
     Top = 330
-    object intfldImportanceID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldImportanceName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldImportanceDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object dsImportance: TDataSource
     DataSet = tblImportance
@@ -888,14 +876,5 @@ object WordSearchForm: TWordSearchForm
     TableName = 'Difficulty'
     Left = 32
     Top = 378
-    object intfldDifficultyID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldDifficultyName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldDifficultyDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
 end

@@ -29,7 +29,7 @@ object ExplanationInputDialogForm: TExplanationInputDialogForm
     Left = 70
     Top = 216
     Width = 381
-    Height = 25
+    Height = 21
     TabOrder = 3
   end
   object btnOK: TBitBtn
@@ -99,15 +99,6 @@ object ExplanationInputDialogForm: TExplanationInputDialogForm
     TableName = 'Difficulty'
     Left = 344
     Top = 146
-    object intfldDifficultyID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldDifficultyName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldDifficultyDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object dsDifficulty: TDataSource
     DataSet = tblDifficulty
@@ -126,15 +117,6 @@ object ExplanationInputDialogForm: TExplanationInputDialogForm
     TableName = 'Importance'
     Left = 344
     Top = 98
-    object intfldImportanceID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldImportanceName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldImportanceDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object dsWordType: TDataSource
     DataSet = tblWordType

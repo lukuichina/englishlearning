@@ -128,7 +128,7 @@ object WordInputForm: TWordInputForm
       SearchFooter.HintHighlight = 'Highlight occurences'
       SearchFooter.MatchCaseCaption = 'Match case'
       SortSettings.Show = True
-      Version = '2.2.0.1'
+      Version = '2.3.0.7'
       AutoCreateColumns = True
       AutoRemoveColumns = False
       Columns = <
@@ -1126,15 +1126,6 @@ object WordInputForm: TWordInputForm
     TableName = 'Difficulty'
     Left = 32
     Top = 378
-    object intfldDifficultyID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldDifficultyName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldDifficultyDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object tblImportance: TADOTable
     Active = True
@@ -1143,15 +1134,6 @@ object WordInputForm: TWordInputForm
     TableName = 'Importance'
     Left = 32
     Top = 330
-    object intfldImportanceID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldImportanceName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldImportanceDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object cmdWord: TADOCommand
     CommandText = 
@@ -1278,15 +1260,6 @@ object WordInputForm: TWordInputForm
     TableName = 'Difficulty'
     Left = 176
     Top = 378
-    object intfld1: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfld1: TStringField
-      FieldName = 'Name'
-    end
-    object strfld2: TStringField
-      FieldName = 'Disp'
-    end
   end
   object tblImportanceEdit: TADOTable
     Active = True
@@ -1295,15 +1268,6 @@ object WordInputForm: TWordInputForm
     TableName = 'Importance'
     Left = 176
     Top = 330
-    object intfld2: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfld3: TStringField
-      FieldName = 'Name'
-    end
-    object strfld4: TStringField
-      FieldName = 'Disp'
-    end
   end
   object dsImportanceEdit: TDataSource
     DataSet = tblImportanceEdit
@@ -1365,7 +1329,7 @@ object WordInputForm: TWordInputForm
     Top = 274
   end
   object advpmn1: TAdvPopupMenu
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 480
     Top = 216
     object mnuWordExplanation: TMenuItem
@@ -1410,7 +1374,7 @@ object WordInputForm: TWordInputForm
     Left = 584
     Top = 216
     Bitmap = {
-      494C010104000800AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000800B00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
