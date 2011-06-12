@@ -112,15 +112,6 @@ object ExplanationInputForm: TExplanationInputForm
     TableName = 'Difficulty'
     Left = 352
     Top = 154
-    object intfldDifficultyID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldDifficultyName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldDifficultyDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object dsDifficulty: TDataSource
     DataSet = tblDifficulty
@@ -139,15 +130,6 @@ object ExplanationInputForm: TExplanationInputForm
     TableName = 'Importance'
     Left = 352
     Top = 106
-    object intfldImportanceID: TIntegerField
-      FieldName = 'ID'
-    end
-    object strfldImportanceName: TStringField
-      FieldName = 'Name'
-    end
-    object strfldImportanceDisp: TStringField
-      FieldName = 'Disp'
-    end
   end
   object dsWordType: TDataSource
     DataSet = tblWordType

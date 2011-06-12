@@ -17,13 +17,7 @@ type
     dsImportance: TDataSource;
     dsDifficulty: TDataSource;
     tblDifficulty: TADOTable;
-    intfldDifficultyID: TIntegerField;
-    strfldDifficultyName: TStringField;
-    strfldDifficultyDisp: TStringField;
     tblImportance: TADOTable;
-    intfldImportanceID: TIntegerField;
-    strfldImportanceName: TStringField;
-    strfldImportanceDisp: TStringField;
     cmdWord: TADOCommand;
     dsWord: TDataSource;
     tblWord: TADOTable;
@@ -40,13 +34,7 @@ type
     lblWordEdit: TLabel;
     dsDifficultyEdit: TDataSource;
     tblDifficultyEdit: TADOTable;
-    intfld1: TIntegerField;
-    strfld1: TStringField;
-    strfld2: TStringField;
     tblImportanceEdit: TADOTable;
-    intfld2: TIntegerField;
-    strfld3: TStringField;
-    strfld4: TStringField;
     dsImportanceEdit: TDataSource;
     grp4: TGroupBox;
     lblDifficulty: TLabel;
