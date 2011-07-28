@@ -121,6 +121,12 @@
 			<DCCReference Include="Dialog\WordSearchDialog.pas">
 				<Form>WordSearchDialogForm</Form>
 			</DCCReference>
+			<DCCReference Include="Controller\WordExtensionController.pas"/>
+			<DCCReference Include="View\WordExtensionView.pas"/>
+			<DCCReference Include="Model\WordExtensionModel.pas"/>
+			<DCCReference Include="Dialog\TypeWordExtentionDialog.pas">
+				<Form>TypeWordExtentionDialogForm</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
