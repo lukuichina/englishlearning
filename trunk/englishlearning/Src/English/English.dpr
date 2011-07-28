@@ -32,7 +32,11 @@ uses
   CatalogRelationModel in 'Model\CatalogRelationModel.pas',
   CatalogRelationController in 'Controller\CatalogRelationController.pas',
   ExplanationInputDialog in 'Dialog\ExplanationInputDialog.pas' {ExplanationInputDialogForm},
-  WordSearchDialog in 'Dialog\WordSearchDialog.pas' {WordSearchDialogForm};
+  WordSearchDialog in 'Dialog\WordSearchDialog.pas' {WordSearchDialogForm},
+  WordExtensionController in 'Controller\WordExtensionController.pas',
+  WordExtensionView in 'View\WordExtensionView.pas',
+  WordExtensionModel in 'Model\WordExtensionModel.pas',
+  TypeWordExtentionDialog in 'Dialog\TypeWordExtentionDialog.pas' {TypeWordExtentionDialogForm};
 
 {$R *.res}
 
@@ -41,6 +45,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmManager, dmManager);
   Application.CreateForm(TMainForm, MainForm);
-  Application.CreateForm(TExplanationInputDialogForm, ExplanationInputDialogForm);
   Application.Run;
 end.

@@ -7,6 +7,24 @@ type
 
   end;
 
+  TTypeWordExtension =  class(TViewData)
+  private
+    FBaseWord:string;
+    FBaseType:integer;
+    FExtendWord:string;
+    FExtendType:integer;
+    FCatalogDisp:string;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property BaseWord:string read FBaseWord write FBaseWord;
+    property BaseType:integer read FBaseType write FBaseType;
+    property ExtendWord:string read FExtendWord write FExtendWord;
+    property ExtendType:integer read FExtendType write FExtendType;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
   TCatalogRelation = class(TViewData)
   private
     FCatalogID:string;
