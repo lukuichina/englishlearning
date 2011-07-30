@@ -29,6 +29,7 @@ object MainForm: TMainForm
     Fill.BorderColor = clNone
     Fill.Rounding = 0
     Fill.ShadowOffset = 0
+    Fill.Glow = gmNone
     Align = alClient
     object pnl1: TAdvSmoothPanel
       Left = 144
@@ -58,8 +59,9 @@ object MainForm: TMainForm
       Fill.BorderColor = 14668485
       Fill.Rounding = 10
       Fill.ShadowOffset = 10
+      Fill.Glow = gmNone
       PictureContainer = pcrWord
-      Version = '1.0.9.2'
+      Version = '1.0.9.6'
       TabOrder = 1
       object btnManageWord: TAdvSmoothButton
         Left = 16
@@ -77,6 +79,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -303,7 +306,7 @@ object MainForm: TMainForm
           1DD8FF5A7CEC217ED73FB7F9DF01008E4113B99EA382E70000000049454E44AE
           426082}
         TabOrder = 0
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
       object btnSearchWord: TAdvSmoothButton
         Left = 128
@@ -321,6 +324,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -522,7 +526,7 @@ object MainForm: TMainForm
           3370437AAD00D9563E97669063C0ABC0E977EA015F12805FE4F17F0300424869
           A8897420FF0000000049454E44AE426082}
         TabOrder = 1
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
       object btnManagePicture: TAdvSmoothButton
         Left = 248
@@ -540,6 +544,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -754,7 +759,7 @@ object MainForm: TMainForm
           6B23E05693CA4A063900BC05F47DD20CF8B000FC3EAFFF1B008DCABEA8D23BDC
           AC0000000049454E44AE426082}
         TabOrder = 6
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
       object btnExplainWord: TAdvSmoothButton
         Left = 248
@@ -772,6 +777,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -952,7 +958,7 @@ object MainForm: TMainForm
           25833C091C94E38CB1D9F8B187F64DFFB9CDFF06004C56C784B1B1F1B2000000
           0049454E44AE426082}
         TabOrder = 2
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
       object btnViewWord: TAdvSmoothButton
         Left = 128
@@ -970,6 +976,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -1184,7 +1191,7 @@ object MainForm: TMainForm
           3CE44DFDAFC48502B07829B81EB83CFE2D00C9F8991F2BC811E079E0F4ABDD01
           BF2E00BFCEEDFF060040B54F3C28F43A3A0000000049454E44AE426082}
         TabOrder = 5
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
       object btnViewWord1: TAdvSmoothButton
         Left = 360
@@ -1202,6 +1209,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -1420,7 +1428,7 @@ object MainForm: TMainForm
           FC3D57877CA3FF95385500869A8255C00CF7331FF0B9BF69AE043C086C020E7C
           590FF86B01F8471EFF370057F2B08EB4501D5A0000000049454E44AE426082}
         TabOrder = 3
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
       object btnViewWord2: TAdvSmoothButton
         Left = 16
@@ -1438,6 +1446,7 @@ object MainForm: TMainForm
         Status.Appearance.Fill.BorderColor = clGray
         Status.Appearance.Fill.Rounding = 0
         Status.Appearance.Fill.ShadowOffset = 0
+        Status.Appearance.Fill.Glow = gmNone
         Status.Appearance.Font.Charset = DEFAULT_CHARSET
         Status.Appearance.Font.Color = clWhite
         Status.Appearance.Font.Height = -11
@@ -1673,7 +1682,7 @@ object MainForm: TMainForm
           58E2BF970363F29BED33C84E608FBF118F9E8E873DC45FFAE336FF3300505B7D
           0DB3DB44DB0000000049454E44AE426082}
         TabOrder = 4
-        Version = '1.6.9.1'
+        Version = '1.6.9.4'
       end
     end
   end

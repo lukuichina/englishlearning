@@ -594,27 +594,37 @@ begin
 //    end;
 //  end;
 
-  while not value.Eof do
+  mdWordCatalogTree.CreateFieldsFromDataSet(value);
+  mdwordcatalogtree.SortedField:='RowID';
+  mdWordCatalogTree.LoadFromDataSet(value);
+  if dtvWordCatalogTree.Items.Count > 0 then
   begin
-    mdWordCatalogTree.Insert;
-
-    mdWordCatalogTree.FieldByName('RowID').AsString := value.FieldByName('RowID').AsString;
-    mdWordCatalogTree.FieldByName('CatalogID').AsString := value.FieldByName('CatalogID').AsString;
-    mdWordCatalogTree.FieldByName('ParentCatalogID').AsString := value.FieldByName('ParentCatalogID').AsString;
-    mdWordCatalogTree.FieldByName('CatalogName').AsString := value.FieldByName('CatalogName').AsString;
-    mdWordCatalogTree.FieldByName('CatalogDisp').AsString := value.FieldByName('CatalogDisp').AsString;
-    mdWordCatalogTree.FieldByName('CreateTime').Value := value.FieldByName('CreateTime').Value;
-    mdWordCatalogTree.FieldByName('UpdateTime').Value := value.FieldByName('UpdateTime').Value;
-
-    mdWordCatalogTree.Post;
-
-    dtvWordCatalogTree.DBTreeNodes.Items[dtvWordCatalogTree.DBTreeNodes.Count - 1].Data :=
-        (mdWordCatalogTree.Data);
-//    dtvWordCatalogTree.Items[dtvWordCatalogTree.Items.Count - 1].Data :=
-//        mdWordCatalogTree.Data;
-
-    value.Next;
+    //dtvWordCatalogTree.Items[0].Selected := True;
+    dtvWordCatalogTree.Items[0].Expand(true);
   end;
+
+//  while not value.Eof do
+//  begin
+//    mdWordCatalogTree.Insert;
+//
+//    mdWordCatalogTree.FieldByName('RowID').AsString := value.FieldByName('RowID').AsString;
+//    mdWordCatalogTree.FieldByName('CatalogID').AsString := value.FieldByName('CatalogID').AsString;
+//    mdWordCatalogTree.FieldByName('ParentCatalogID').AsString := value.FieldByName('ParentCatalogID').AsString;
+//    //disencode problem
+//    mdWordCatalogTree.FieldByName('CatalogName').AsString := value.FieldByName('CatalogName').AsString;
+//    mdWordCatalogTree.FieldByName('CatalogDisp').AsString := value.FieldByName('CatalogDisp').AsString;
+//    mdWordCatalogTree.FieldByName('CreateTime').Value := value.FieldByName('CreateTime').Value;
+//    mdWordCatalogTree.FieldByName('UpdateTime').Value := value.FieldByName('UpdateTime').Value;
+//
+//    mdWordCatalogTree.Post;
+//
+//    dtvWordCatalogTree.DBTreeNodes.Items[dtvWordCatalogTree.DBTreeNodes.Count - 1].Data :=
+//        (mdWordCatalogTree.Data);
+////    dtvWordCatalogTree.Items[dtvWordCatalogTree.Items.Count - 1].Data :=
+////        mdWordCatalogTree.Data;
+//
+//    value.Next;
+//  end;
 
   //mdWordCatalogTree.First;
   if not value.Eof then

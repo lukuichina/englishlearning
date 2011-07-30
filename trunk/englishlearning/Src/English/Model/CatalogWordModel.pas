@@ -3,7 +3,7 @@ unit CatalogWordModel;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData;
+  DB, ADODB, MVC, ViewData, SysUtils;
 
 type
   ICatalogWordModel = interface(IModel)
@@ -89,13 +89,14 @@ const
 'INNER JOIN' + #13#10 +
 '    Difficulty on Difficulty.ID = Word.DifficultyLevel' + #13#10 +
 'WHERE' + #13#10 +
-'    WordCatalogRelation.CatalogID = :CatalogID' + #13#10 +
+'    WordCatalogRelation.CatalogID = ''%s''' + #13#10 +
 'ORDER BY' + #13#10 +
 '    Word.Word ASC';
 begin
-  SetSelectSql(sql);
+  SetSelectSql(format(sql, [value.CatalogID]));
+  //SetSelectSql(sql);
 
-  Query.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+  //Query.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
 
   Result := DoSelect;
 end;
