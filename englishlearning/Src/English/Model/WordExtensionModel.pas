@@ -3,7 +3,7 @@ unit WordExtensionModel;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData;
+  DB, ADODB, MVC, ViewData, SysUtils;
 
 type
   IWordExtensionModel = interface(IModel)
@@ -123,15 +123,16 @@ const
 'LEFT JOIN' + #13#10 +
 '    Difficulty ON Difficulty.ID =Word.DifficultyLevel' + #13#10 +
 'WHERE' + #13#10 +
-'    WordExtention.BaseWord = :BaseWord' + #13#10 +
+'    WordExtention.BaseWord = ''%s''' + #13#10 +
 'ORDER BY' + #13#10 +
 '    WordExtention.BaseWord ASC,' + #13#10 +
 '    WordExtention.ExtendWord ASC,' + #13#10 +
 '    WordExtention.ExtendType ASC';
 begin
-  SetSelectSql(sql);
+  SetSelectSql(Format(sql, [value.Word]));
+  //SetSelectSql(sql);
 
-  Query.Parameters.ParamByName('BaseWord').Value := value.Word;
+  //Query.Parameters.ParamByName('BaseWord').Value := value.Word;
 
   Result := DoSelect;
 end;
