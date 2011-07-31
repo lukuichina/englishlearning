@@ -9,6 +9,9 @@
 			<Projects Include="ControlLib\ControlLib.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="PictureSaver\PictureSaver.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
 		<Target Name="ControlLib:Make">
 			<MSBuild Projects="ControlLib\ControlLib.dproj" Targets="Make"/>
 		</Target>
+		<Target Name="PictureSaver">
+			<MSBuild Projects="PictureSaver\PictureSaver.dproj"/>
+		</Target>
+		<Target Name="PictureSaver:Clean">
+			<MSBuild Projects="PictureSaver\PictureSaver.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="PictureSaver:Make">
+			<MSBuild Projects="PictureSaver\PictureSaver.dproj" Targets="Make"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="English;ControlLib"/>
+			<CallTarget Targets="English;ControlLib;PictureSaver"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="English:Clean;ControlLib:Clean"/>
+			<CallTarget Targets="English:Clean;ControlLib:Clean;PictureSaver:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="English:Make;ControlLib:Make"/>
+			<CallTarget Targets="English:Make;ControlLib:Make;PictureSaver:Make"/>
 		</Target>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>

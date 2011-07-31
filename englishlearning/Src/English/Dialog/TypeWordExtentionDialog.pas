@@ -34,8 +34,8 @@ type
     { Public declarations }
     property BaseWord:string read FBaseWord write FBaseWord;
     property BaseType:integer read FBaseType write FBaseType;
-    property Word:string read FExtendWord write FExtendWord;
-    property WordType:integer read FExtendType write FExtendType;
+    property ExtendWord:string read FExtendWord write FExtendWord;
+    property ExtendType:integer read FExtendType write FExtendType;
   end;
 
 var

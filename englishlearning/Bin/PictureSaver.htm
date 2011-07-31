@@ -1,0 +1,7 @@
+<script language="VBScript">
+set srcEvent = external.menuArguments.event 
+set img = external.menuArguments.document.elementFromPoint(srcEvent.clientX, srcEvent.clientY) 
+set ps = CreateObject("PictureSaver.AutoSaver") 
+call ps.SaveImage("", img.href, "") 
+set ps = nothing 
+</script>
