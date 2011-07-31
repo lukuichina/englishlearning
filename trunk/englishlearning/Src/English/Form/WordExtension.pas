@@ -46,27 +46,28 @@ type
     actViewExplanation: TAction;
     mnuViewExplanation: TMenuItem;
     advtlbr2: TAdvToolBar;
-    btnPictureDisp: TAdvGlowButton;
     advtlbr1: TAdvToolBar;
     btnRemoveMainPicture: TAdvGlowButton;
     btnAddMainPicture: TAdvGlowButton;
-    btnAddPicture: TAdvGlowButton;
-    btnRemovePicture: TAdvGlowButton;
-    btnReplacePicture: TAdvGlowButton;
     btnRefreshPicture: TAdvGlowButton;
     actMainMenu: TActionList;
-    actAddMainPicture: TAction;
-    actRemoveMainPicture: TAction;
-    actAddPicture: TAction;
-    actRemovePicture: TAction;
-    actRefreshPicture: TAction;
+    actPreviousPage: TAction;
+    actNextPage: TAction;
+    actAddExtention: TAction;
+    actRemoveExtention: TAction;
+    actUpdateExtention: TAction;
     actAddDisp: TAction;
     actGooglePicture: TAction;
-    actReplacePicture: TAction;
+    actGoTo: TAction;
     actWordExplanation: TAction;
     actFind: TAction;
     dlgFind: TFindDialog;
     dlgFindDialog: TAdvGridFindDialog;
+    advtlbr3: TAdvToolBar;
+    btnPictureDisp: TAdvGlowButton;
+    btnReplacePicture: TAdvGlowButton;
+    btnRemovePicture: TAdvGlowButton;
+    btnAddPicture: TAdvGlowButton;
     procedure FormCreate(Sender: TObject);
     procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
       var Allow: Boolean);
@@ -78,6 +79,12 @@ type
     procedure actViewExplanationExecute(Sender: TObject);
     procedure actFindExecute(Sender: TObject);
     procedure dlgFindFind(Sender: TObject);
+    procedure actNextPageExecute(Sender: TObject);
+    procedure actPreviousPageExecute(Sender: TObject);
+    procedure actGoToExecute(Sender: TObject);
+    procedure actAddExtentionExecute(Sender: TObject);
+    procedure actRemoveExtentionExecute(Sender: TObject);
+    procedure actUpdateExtentionExecute(Sender: TObject);
   private
     { Private declarations }
     FWordExtensionController:TWordExtensionController;
@@ -99,6 +106,7 @@ uses TypeWordExtentionDialog, WordPicture, WordExplain;
 
 {$R *.dfm}
 
+
 procedure TWordExtensionForm.actAddTypeWordExtentionExecute(Sender: TObject);
 var
   typeWordExtendInfo:TTypeWordExtension;
@@ -108,8 +116,9 @@ begin
     TypeWordExtentionDialogForm := TTypeWordExtentionDialogForm.Create(nil);
     TypeWordExtentionDialogForm.BaseWord := dsWord.DataSet.FieldByName('Word').AsString;
     TypeWordExtentionDialogForm.BaseType := 1;
-    TypeWordExtentionDialogForm.Word := dsTypeWordExtention.DataSet.FieldByName('Word').AsString;
-    TypeWordExtentionDialogForm.WordType := dsTypeWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    //TypeWordExtentionDialogForm.ExtendWord := dsTypeWordExtention.DataSet.FieldByName('Word').AsString;
+    TypeWordExtentionDialogForm.ExtendWord := dsWord.DataSet.FieldByName('Word').AsString;
+    TypeWordExtentionDialogForm.ExtendType := 1;
 
     if TypeWordExtentionDialogForm.ShowModal  <> mrOk then
       Exit;
@@ -117,21 +126,20 @@ begin
     typeWordExtendInfo := TTypeWordExtension.Create;
     typeWordExtendInfo.BaseWord := TypeWordExtentionDialogForm.BaseWord;
     typeWordExtendInfo.BaseType := TypeWordExtentionDialogForm.BaseType;
-    typeWordExtendInfo.ExtendWord := TypeWordExtentionDialogForm.Word;
-    typeWordExtendInfo.ExtendType := TypeWordExtentionDialogForm.WordType;
+    typeWordExtendInfo.ExtendWord := TypeWordExtentionDialogForm.ExtendWord;
+    typeWordExtendInfo.ExtendType := TypeWordExtentionDialogForm.ExtendType;
 
     dbdvgrd1.BeginUpdate;
 
     FWordExtensionController.InsertTypeWordExtention(typeWordExtendInfo);
 
-    grdWordRowChanging(Sender, 0, 1, Allow);
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
     dsTypeWordExtention.DataSet.Locate('Word', typeWordExtendInfo.ExtendWord, []);
 
     dbdvgrd1.EndUpdate;
   finally
     TypeWordExtentionDialogForm.Free;
     typeWordExtendInfo.Free;
-
   end;
 end;
 
@@ -156,7 +164,7 @@ begin
 
     FWordExtensionController.DeleteTypeWordExtention(typeWordExtendInfo);
 
-    grdWordRowChanging(Sender, 0, 1, Allow);
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
     //dsTypeWordExtention.DataSet.Locate('Word', typeWordExtendInfo.Word, []);
 
     dbdvgrd1.EndUpdate;
@@ -174,6 +182,53 @@ begin
   //dsWord.DataSet.Locate('Word', dlgFind.FindText,[]);
 end;
 
+procedure TWordExtensionForm.actGoToExecute(Sender: TObject);
+var
+  strLineNo:string;
+begin
+  strLineNo:= InputBox('转到指定行',  '行号（L）：', '');
+  //grdWord.ScrollBy(StrToInt(strLineNo), 0);
+
+  grdWord.BeginUpdate;
+  dsWord.DataSet.Locate('RowID', strLineNo, []);
+  grdWord.EndUpdate;
+end;
+
+procedure TWordExtensionForm.actNextPageExecute(Sender: TObject);
+begin
+  SendMessage(grdWord.Handle, WM_KEYDOWN, VK_NEXT, 0);
+end;
+
+procedure TWordExtensionForm.actPreviousPageExecute(Sender: TObject);
+begin
+  SendMessage(grdWord.Handle, WM_KEYDOWN, VK_PRIOR, 0);
+end;
+
+procedure TWordExtensionForm.actAddExtentionExecute(Sender: TObject);
+begin
+  case aopWordExtension.ActivePageIndex of
+     0:
+       actAddTypeWordExtentionExecute(Sender);
+  end;
+end;
+
+procedure TWordExtensionForm.actRemoveExtentionExecute(Sender: TObject);
+begin
+  case aopWordExtension.ActivePageIndex of
+     0:
+       actDeleteTypeWordExtentionExecute(Sender);
+  end;
+end;
+
+procedure TWordExtensionForm.actUpdateExtentionExecute(Sender: TObject);
+begin
+   case aopWordExtension.ActivePageIndex of
+     0:
+       actUpdateTypeWordExtentionExecute(Sender);
+       //end;
+   end;
+end;
+
 procedure TWordExtensionForm.actUpdateTypeWordExtentionExecute(Sender: TObject);
 var
   typeWordExtendInfo, oldTypeWordExtendInfo:TTypeWordExtension;
@@ -183,14 +238,14 @@ begin
     TypeWordExtentionDialogForm := TTypeWordExtentionDialogForm.Create(nil);
     TypeWordExtentionDialogForm.BaseWord := dsWord.DataSet.FieldByName('Word').AsString;
     TypeWordExtentionDialogForm.BaseType := dsTypeWordExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
-    TypeWordExtentionDialogForm.Word := dsTypeWordExtention.DataSet.FieldByName('Word').AsString;
-    TypeWordExtentionDialogForm.WordType := dsTypeWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    TypeWordExtentionDialogForm.ExtendWord := dsTypeWordExtention.DataSet.FieldByName('Word').AsString;
+    TypeWordExtentionDialogForm.ExtendType := dsTypeWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 
     oldTypeWordExtendInfo := TTypeWordExtension.Create;
     oldTypeWordExtendInfo.BaseWord := TypeWordExtentionDialogForm.BaseWord;
     oldTypeWordExtendInfo.BaseType := TypeWordExtentionDialogForm.BaseType;
-    oldTypeWordExtendInfo.ExtendWord := TypeWordExtentionDialogForm.Word;
-    oldTypeWordExtendInfo.ExtendType := TypeWordExtentionDialogForm.WordType;
+    oldTypeWordExtendInfo.ExtendWord := TypeWordExtentionDialogForm.ExtendWord;
+    oldTypeWordExtendInfo.ExtendType := TypeWordExtentionDialogForm.ExtendType;
 
     if TypeWordExtentionDialogForm.ShowModal  <> mrOk then
       Exit;
@@ -199,14 +254,14 @@ begin
     typeWordExtendInfo := TTypeWordExtension.Create;
     typeWordExtendInfo.BaseWord := TypeWordExtentionDialogForm.BaseWord;
     typeWordExtendInfo.BaseType := TypeWordExtentionDialogForm.BaseType;
-    typeWordExtendInfo.ExtendWord := TypeWordExtentionDialogForm.Word;
-    typeWordExtendInfo.ExtendType := TypeWordExtentionDialogForm.WordType;
+    typeWordExtendInfo.ExtendWord := TypeWordExtentionDialogForm.ExtendWord;
+    typeWordExtendInfo.ExtendType := TypeWordExtentionDialogForm.ExtendType;
 
     dbdvgrd1.BeginUpdate;
 
     FWordExtensionController.UpdateTypeWordExtention(typeWordExtendInfo, oldTypeWordExtendInfo);
 
-    grdWordRowChanging(Sender, 0, 1, Allow);
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
     dsTypeWordExtention.DataSet.Locate('Word', typeWordExtendInfo.ExtendWord, []);
 
     dbdvgrd1.EndUpdate;
@@ -319,8 +374,17 @@ var
   word:TWord;
   ResultVariant:Variant;
 begin
+
   if FFormInit then
+  begin
+    actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
+      (grdWord.RowSelectCount > 0);
+    actUpdateExtention.Enabled := (dsTypeWordExtention.DataSet.RecordCount > 0) and
+     (dbdvgrd1.RowSelectCount > 0);
+    actRemoveExtention.Enabled := (dsTypeWordExtention.DataSet.RecordCount > 0) and
+     (dbdvgrd1.RowSelectCount > 0);
     exit;
+  end;
 
   word := TWord.Create;
   ResultVariant := dsWord.DataSet.Lookup('RowID', NewRow , 'Word');
@@ -329,6 +393,13 @@ begin
   FWordExtensionController.ShowTypeWordExtention(word);
 
   word.Free;
+
+  actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
+    (grdWord.RowSelectCount > 0);
+  actUpdateExtention.Enabled := (dsTypeWordExtention.DataSet.RecordCount > 0) and
+   (dbdvgrd1.RowSelectCount > 0);
+  actRemoveExtention.Enabled := (dsTypeWordExtention.DataSet.RecordCount > 0) and
+   (dbdvgrd1.RowSelectCount > 0);
 end;
 
 procedure TWordExtensionForm.ShowWord(value:TCustomADODataSet);
