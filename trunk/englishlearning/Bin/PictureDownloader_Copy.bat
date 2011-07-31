@@ -1,0 +1,1 @@
+XCOPY PictureDownloader.cpl %systemroot%\system32\ /EY

@@ -146,13 +146,15 @@ begin
   begin
    PictureSavePath := edtSavePath.Text + '\';
 
+   strWord := grdCsvInfo.Rows[RowIndex][1];
+   URL := grdCsvInfo.Rows[RowIndex][2];
+
+   //ShowMessage(strWord);
+
    if strWord <> '' then
       PictureSavePath := PictureSavePath + UpperCase(Copy(strWord, 1, 1)) + '\' + strWord + '\'
     else
       PictureSavePath := PictureSavePath + 'temp\';
-
-   strWord := grdCsvInfo.Rows[RowIndex][1];
-   URL := grdCsvInfo.Rows[RowIndex][2];
 
    len := length(Url);
    p := rpos('/', Url);
@@ -160,6 +162,7 @@ begin
 
    name := ReplaceStr(name, '?', '');
    name := ReplaceStr(name, '=', '');
+   name := ReplaceStr(name, ':', '');
    if rpos('.', name) > Length(name) then
     name := name + '.jpg';
 
