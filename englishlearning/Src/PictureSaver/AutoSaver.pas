@@ -23,7 +23,7 @@ type
 
 implementation
 
-uses ComServ, UrlMon, SysUtils, Dialogs, StrUtils, Registry, Windows, Classes;
+uses ComServ, UrlMon, SysUtils, Dialogs, StrUtils, Registry, Windows, Classes, UserStrUtils;
 
 function GetInfSavePath:string;
 var
@@ -65,38 +65,6 @@ begin
 
 end;
 
-function DownloadFile(SourceFile, DestFile: string): Boolean;
-begin
-   try
-     Result := UrlDownloadToFile(nil, PChar(SourceFile), PChar(DestFile), 0, nil) = 0;
-   except
-     Result := False;
-   end;
-end;
-
-function rPos(const substr, str: AnsiString): Integer;
-begin
-   Result := length(str) - pos(AnsiReverseString(substr), AnsiReverseString(str)) + 1;
-end;
-
-function rename(filename: string): string;
-var
-   i, p: integer;
-   randomchar: char;
-   name, ext: string;
-begin
-   p := rpos('.', filename);
-   name := copy(filename, 1, p - 1);
-   ext := copy(filename, p + 1, length(filename) - p);
-   result := name;
-   for i := 1 to 5 do
-   begin
-     randomchar := Chr(random(300) mod 26 + 65);
-     result := result + randomchar;
-   end;
-   result := result + '.' + ext;
-end;
-
 procedure TAutoSaver.SaveImage(const Word, URL, Discription: WideString);
 var
    {UrlStr,} DestFile, name, rname, PictureSavePath, InfSavePath, strWord: string;
@@ -134,6 +102,10 @@ begin
     p := rpos('/', Url);
     name := copy(Url, p + 1, len - p);
 
+    name := replace(name);
+    if rpos('.', name) > Length(name) then
+      name := name + '.jpg';
+
 //    if strWord <> '' then
 //      rname := strWord + ExtractFileExt(name)
 //    else
@@ -153,11 +125,13 @@ begin
 //    if PictureSavePath = '' then
     if GetPictureSavePath = '' then
     begin
-      Writeln(F, Format('%s, %s, %s, %s', [strWord, URL, '', Discription]));
+      Writeln(F, Format('%s, %s, %s, %s',
+        [strWord, EscapeComma(URL), '', EscapeComma(Discription)]));
       exit;
     end;
 
-    Writeln(F, Format('%s, %s, %s, %s', [strWord, URL, DestFile, Discription]));
+    Writeln(F, Format('%s, %s, %s, %s',
+      [strWord, EscapeComma(URL), EscapeComma(DestFile), EscapeComma(Discription)]));
 
     if not DirectoryExists(PictureSavePath) then
       ForceDirectories(PictureSavePath);

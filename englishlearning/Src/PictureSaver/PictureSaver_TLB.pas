@@ -12,7 +12,7 @@ unit PictureSaver_TLB;
 // ************************************************************************ //
 
 // $Rev: 34747 $
-// File generated on 2011/7/31 18:31:39 from Type Library described below.
+// File generated on 2011/8/2 23:15:56 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\PictureSaver\PictureSaver (1)
