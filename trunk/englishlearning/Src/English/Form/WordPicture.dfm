@@ -124,7 +124,7 @@ object WordPictureForm: TWordPictureForm
     SimplePanel = False
     URLColor = clBlue
     Styler = AdvOfficeStatusBarOfficeStyler2
-    Version = '1.3.0.2'
+    Version = '1.4.0.0'
   end
   object advtlbrpgr1: TAdvToolBarPager
     Left = 0
@@ -219,8 +219,7 @@ object WordPictureForm: TWordPictureForm
       0707FF000000FD07FFFD07FFFD07FD000000FD07FFFDFDFDFDFDFD000000FD07
       FFFFFFFFFFFDFD000000FD070707070707FDFD000000FDFDFDFDFDFDFDFDFD00
       0000}
-    TabOrder = 2
-    TabStop = True
+    TabOrder = 1
     Win7ScenicRibbon = True
     object advpgAdvToolBarPager11: TAdvPage
       Left = 0
@@ -1818,7 +1817,7 @@ object WordPictureForm: TWordPictureForm
       ParentFont = False
       TabOrder = 1
       Text = #25991#20214
-      Version = '5.0.0.0'
+      Version = '5.0.1.4'
     end
   end
   object tgr1: TAdvSmoothTabPager
@@ -1847,6 +1846,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -1860,6 +1860,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -1892,6 +1893,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -1900,6 +1902,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -1908,6 +1911,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -1916,6 +1920,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -1924,6 +1929,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -1944,6 +1950,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -1966,6 +1973,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -1983,6 +1991,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2019,6 +2028,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2027,6 +2037,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2035,6 +2046,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2043,6 +2055,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2051,6 +2064,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2071,6 +2085,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2093,6 +2108,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2110,6 +2126,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2141,6 +2158,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -2154,6 +2172,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -2186,6 +2205,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2194,6 +2214,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2202,6 +2223,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2210,6 +2232,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2218,6 +2241,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2238,6 +2262,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2260,6 +2285,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2277,6 +2303,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2315,6 +2342,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2323,6 +2351,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2331,6 +2360,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2339,6 +2369,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2347,6 +2378,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2367,6 +2399,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2389,6 +2422,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2406,6 +2440,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2438,6 +2473,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -2451,6 +2487,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -2483,6 +2520,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2491,6 +2529,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2499,6 +2538,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2507,6 +2547,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2515,6 +2556,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2535,6 +2577,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2557,6 +2600,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2574,6 +2618,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2610,6 +2655,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2618,6 +2664,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2626,6 +2673,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2634,6 +2682,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2642,6 +2691,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2662,6 +2712,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2684,6 +2735,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2701,6 +2753,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2732,6 +2785,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -2745,6 +2799,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -2777,6 +2832,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2785,6 +2841,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2793,6 +2850,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2801,6 +2859,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2809,6 +2868,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2829,6 +2889,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2851,6 +2912,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2868,6 +2930,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -2904,6 +2967,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -2912,6 +2976,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -2920,6 +2985,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -2928,6 +2994,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -2936,6 +3003,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -2956,6 +3024,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -2978,6 +3047,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -2995,6 +3065,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3026,6 +3097,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -3039,6 +3111,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -3071,6 +3144,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3079,6 +3153,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3087,6 +3162,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3095,6 +3171,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3103,6 +3180,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -3123,6 +3201,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -3145,6 +3224,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -3162,6 +3242,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3198,6 +3279,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3206,6 +3288,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3214,6 +3297,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3222,6 +3306,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3230,6 +3315,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -3250,6 +3336,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -3272,6 +3359,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -3289,6 +3377,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3320,6 +3409,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -3333,6 +3423,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -3365,6 +3456,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3373,6 +3465,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3381,6 +3474,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3389,6 +3483,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3397,6 +3492,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -3417,6 +3513,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -3439,6 +3536,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -3456,6 +3554,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3492,6 +3591,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3500,6 +3600,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3508,6 +3609,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3516,6 +3618,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3524,6 +3627,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -3544,6 +3648,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -3566,6 +3671,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -3583,6 +3689,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3614,6 +3721,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -3627,6 +3735,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -3659,6 +3768,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3667,6 +3777,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3675,6 +3786,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3683,6 +3795,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3691,6 +3804,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -3711,6 +3825,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -3733,6 +3848,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -3750,6 +3866,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3786,6 +3903,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3794,6 +3912,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3802,6 +3921,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3810,6 +3930,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3818,6 +3939,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -3838,6 +3960,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -3860,6 +3983,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -3877,6 +4001,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -3908,6 +4033,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -3921,6 +4047,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -3953,6 +4080,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -3961,6 +4089,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -3969,6 +4098,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -3977,6 +4107,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -3985,6 +4116,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4005,6 +4137,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4027,6 +4160,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4044,6 +4178,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4080,6 +4215,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4088,6 +4224,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4096,6 +4233,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4104,6 +4242,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4112,6 +4251,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4132,6 +4272,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4154,6 +4295,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4171,6 +4313,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4202,6 +4345,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -4215,6 +4359,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -4247,6 +4392,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4255,6 +4401,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4263,6 +4410,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4271,6 +4419,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4279,6 +4428,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4299,6 +4449,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4321,6 +4472,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4338,6 +4490,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4374,6 +4527,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4382,6 +4536,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4390,6 +4545,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4398,6 +4554,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4406,6 +4563,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4426,6 +4584,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4448,6 +4607,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4465,6 +4625,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4496,6 +4657,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -4509,6 +4671,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -4541,6 +4704,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4549,6 +4713,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4557,6 +4722,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4565,6 +4731,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4573,6 +4740,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4593,6 +4761,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4615,6 +4784,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4632,6 +4802,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4667,6 +4838,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4675,6 +4847,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4683,6 +4856,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4691,6 +4865,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4699,6 +4874,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4719,6 +4895,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4741,6 +4918,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4758,6 +4936,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4790,6 +4969,7 @@ object WordPictureForm: TWordPictureForm
       PageAppearance.BorderColor = 16765357
       PageAppearance.Rounding = 0
       PageAppearance.ShadowOffset = 0
+      PageAppearance.Glow = gmNone
       TabAppearance.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Appearance.Font.Color = clWindowText
       TabAppearance.Appearance.Font.Height = -11
@@ -4803,6 +4983,7 @@ object WordPictureForm: TWordPictureForm
       TabAppearance.Status.Appearance.Fill.BorderColor = clGray
       TabAppearance.Status.Appearance.Fill.Rounding = 0
       TabAppearance.Status.Appearance.Fill.ShadowOffset = 0
+      TabAppearance.Status.Appearance.Fill.Glow = gmNone
       TabAppearance.Status.Appearance.Font.Charset = DEFAULT_CHARSET
       TabAppearance.Status.Appearance.Font.Color = clWhite
       TabAppearance.Status.Appearance.Font.Height = -11
@@ -4835,6 +5016,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4843,6 +5025,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4851,6 +5034,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4859,6 +5043,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4867,6 +5052,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -4887,6 +5073,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -4909,6 +5096,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -4926,6 +5114,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -4961,6 +5150,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Fill.BorderColor = 16765357
         ItemAppearance.Fill.Rounding = 0
         ItemAppearance.Fill.ShadowOffset = 0
+        ItemAppearance.Fill.Glow = gmNone
         ItemAppearance.SelectedFill.Color = 11196927
         ItemAppearance.SelectedFill.ColorTo = 7257087
         ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -4969,6 +5159,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.SelectedFill.BorderColor = 16765357
         ItemAppearance.SelectedFill.Rounding = 0
         ItemAppearance.SelectedFill.ShadowOffset = 0
+        ItemAppearance.SelectedFill.Glow = gmNone
         ItemAppearance.DisabledFill.Color = 15921906
         ItemAppearance.DisabledFill.ColorTo = 11974326
         ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -4977,6 +5168,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.DisabledFill.BorderColor = 16765357
         ItemAppearance.DisabledFill.Rounding = 0
         ItemAppearance.DisabledFill.ShadowOffset = 0
+        ItemAppearance.DisabledFill.Glow = gmNone
         ItemAppearance.HoverFill.Color = 15465983
         ItemAppearance.HoverFill.ColorTo = 11332863
         ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -4985,6 +5177,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.HoverFill.BorderColor = 10079963
         ItemAppearance.HoverFill.Rounding = 0
         ItemAppearance.HoverFill.ShadowOffset = 0
+        ItemAppearance.HoverFill.Glow = gmNone
         ItemAppearance.Splitter.Fill.Color = 11196927
         ItemAppearance.Splitter.Fill.ColorTo = 7257087
         ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -4993,6 +5186,7 @@ object WordPictureForm: TWordPictureForm
         ItemAppearance.Splitter.Fill.BorderColor = 16765357
         ItemAppearance.Splitter.Fill.Rounding = 0
         ItemAppearance.Splitter.Fill.ShadowOffset = 0
+        ItemAppearance.Splitter.Fill.Glow = gmNone
         ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
         ItemAppearance.Splitter.TextFont.Color = clWindowText
         ItemAppearance.Splitter.TextFont.Height = -11
@@ -5013,6 +5207,7 @@ object WordPictureForm: TWordPictureForm
         Header.Fill.BorderColor = 16765615
         Header.Fill.Rounding = 0
         Header.Fill.ShadowOffset = 0
+        Header.Fill.Glow = gmNone
         Header.Navigator.Visible = False
         Header.Navigator.Color = 16773091
         Header.Navigator.HintNext = 'Next Item'
@@ -5035,6 +5230,7 @@ object WordPictureForm: TWordPictureForm
         Footer.Fill.BorderColor = 16765615
         Footer.Fill.Rounding = 0
         Footer.Fill.ShadowOffset = 0
+        Footer.Fill.Glow = gmNone
         Footer.Navigator.Visible = True
         Footer.Navigator.Color = 16773091
         Footer.Navigator.HintNext = 'Next Item'
@@ -5052,6 +5248,7 @@ object WordPictureForm: TWordPictureForm
         Fill.BorderColor = clNone
         Fill.Rounding = 0
         Fill.ShadowOffset = 0
+        Fill.Glow = gmNone
         DefaultHTMLText.Location = cpTopLeft
         DefaultHTMLText.Font.Charset = DEFAULT_CHARSET
         DefaultHTMLText.Font.Color = clWindowText
@@ -5112,7 +5309,7 @@ object WordPictureForm: TWordPictureForm
     end
   end
   object pmnPictureMenu: TAdvPopupMenu
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 40
     Top = 224
     object mnuAddExplanation: TMenuItem

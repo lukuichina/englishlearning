@@ -1,15 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2011/05/29 18:57:32.000.977,=C:\Users\admin\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2011/07/31 20:15:14.000.620,=C:\Users\admin\Documents\RAD Studio\Projects\AppletModule1.pas</Transaction>
     <Transaction>2011/07/31 20:38:25.000.086,C:\Users\admin\Documents\RAD Studio\Projects\AppletModule1.pas=C:\Users\admin\Documents\RAD Studio\Projects\AppletModule.pas</Transaction>
     <Transaction>2011/07/31 20:38:25.000.086,C:\Users\admin\Documents\RAD Studio\Projects\AppletModule1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\AppletModule.dfm</Transaction>
     <Transaction>2011/07/31 20:39:01.000.742,C:\Users\admin\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\PictureDownloader.dproj</Transaction>
     <Transaction>2011/07/31 20:39:35.000.041,C:\Users\admin\Documents\RAD Studio\Projects\AppletModule.pas=C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\AppletModule.pas</Transaction>
     <Transaction>2011/07/31 20:39:35.000.041,C:\Users\admin\Documents\RAD Studio\Projects\AppletModule.dfm=C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\AppletModule.dfm</Transaction>
-    <Transaction>2011/07/31 21:34:28.000.530,=C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\Unit1.pas</Transaction>
-    <Transaction>2011/07/31 21:35:24.000.170,C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\AutoDownloader.pas=C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\Unit1.pas</Transaction>
     <Transaction>2011/07/31 21:35:24.000.170,C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\AutoDownloader.dfm=C:\Users\admin\Documents\RAD Studio\Projects\PictureDownloader\Unit1.dfm</Transaction>
   </Transactions>
 </BorlandProject>

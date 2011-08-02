@@ -223,7 +223,7 @@ begin
       Exit;
 
     if not DirectoryExists(ExtractFileDir(PictureDispDialogForm.RtfPath)) then
-      CreateDirectory(PWideChar(ExtractFileDir(PictureDispDialogForm.RtfPath)),nil);
+      ForceDirectories(PWideChar(ExtractFileDir(PictureDispDialogForm.RtfPath)));
 
     PictureDispDialogForm.redtPictureDisp.Lines.SaveToFile(PictureDispDialogForm.RtfPath);
     FIsChanged := True;
@@ -417,7 +417,7 @@ begin
     MoveFileEx(PWideChar(strPicName), PWideChar(strTmpName), MOVEFILE_REPLACE_EXISTING);
 
   if not DirectoryExists(ExtractFileDir(strPicName)) then
-    CreateDirectory(PWideChar(ExtractFileDir(strPicName)),nil);
+    ForceDirectories(PWideChar(ExtractFileDir(strPicName)));
 
   CopyFile(PWideChar(dlgOpenPic1.FileName), PWideChar(strPicName), False);
 
@@ -712,7 +712,7 @@ begin
       MoveFileEx(PWideChar(strPicName), PWideChar(strTmpName), MOVEFILE_REPLACE_EXISTING);
 
     if not DirectoryExists(ExtractFileDir(strPicName)) then
-      CreateDirectory( PWideChar(ExtractFileDir(strPicName)),nil);
+      ForceDirectories( PWideChar(ExtractFileDir(strPicName)));
 
     CopyFile(PWideChar(dlgOpenPic1.Files[i]), PWideChar(strPicName), False);
   end;

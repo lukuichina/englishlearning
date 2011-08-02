@@ -15,6 +15,9 @@
 			<Projects Include="PictureDownloader\PictureDownloader.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="CommonLib\CommonLib.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
 		<Target Name="PictureDownloader:Make">
 			<MSBuild Projects="PictureDownloader\PictureDownloader.dproj" Targets="Make"/>
 		</Target>
+		<Target Name="CommonLib">
+			<MSBuild Projects="CommonLib\CommonLib.dproj"/>
+		</Target>
+		<Target Name="CommonLib:Clean">
+			<MSBuild Projects="CommonLib\CommonLib.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="CommonLib:Make">
+			<MSBuild Projects="CommonLib\CommonLib.dproj" Targets="Make"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="English;ControlLib;PictureSaver;PictureDownloader"/>
+			<CallTarget Targets="English;ControlLib;PictureSaver;PictureDownloader;CommonLib"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="English:Clean;ControlLib:Clean;PictureSaver:Clean;PictureDownloader:Clean"/>
+			<CallTarget Targets="English:Clean;ControlLib:Clean;PictureSaver:Clean;PictureDownloader:Clean;CommonLib:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="English:Make;ControlLib:Make;PictureSaver:Make;PictureDownloader:Make"/>
+			<CallTarget Targets="English:Make;ControlLib:Make;PictureSaver:Make;PictureDownloader:Make;CommonLib:Make"/>
 		</Target>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>
