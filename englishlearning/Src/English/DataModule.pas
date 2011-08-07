@@ -11,6 +11,9 @@ type
     UserName:string;
     Password:string;
     DbName  :string;
+
+    ImgPath :string;
+    LibPath :string;
     PicPath :string;
     RtfPath :string;
     TmpPath :string;
@@ -52,6 +55,8 @@ begin
     ConfigInfo.Password := myinifile.ReadString('DBServer','Password','');
     ConfigInfo.DbName := myinifile.ReadString('DBServer','DbName','');
 
+    ConfigInfo.ImgPath := myinifile.ReadString('LocalPath','ImgPath','');
+    ConfigInfo.LibPath := myinifile.ReadString('LocalPath','LibPath','');
     ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
     ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
     ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');

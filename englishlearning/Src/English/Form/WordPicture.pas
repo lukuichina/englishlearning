@@ -690,7 +690,17 @@ var
   strPicName,strTmpName :string;
   i:Integer;
 begin
-  dlgOpenPic1.DefaultExt := ConfigInfo.TmpPath;
+  if DirectoryExists(ConfigInfo.ImgPath + UpperCase(FWord[1])) then
+    dlgOpenPic1.InitialDir := ConfigInfo.ImgPath + UpperCase(FWord[1])
+  else if DirectoryExists(ConfigInfo.ImgPath + 'temp') then
+    dlgOpenPic1.InitialDir := ConfigInfo.ImgPath + 'temp'
+  else if DirectoryExists(ConfigInfo.LibPath + UpperCase(FWord[1])) then
+    dlgOpenPic1.InitialDir := ConfigInfo.LibPath + UpperCase(FWord[1])
+  else if DirectoryExists(ConfigInfo.LibPath + 'temp') then
+    dlgOpenPic1.InitialDir := ConfigInfo.LibPath + 'temp'
+  else
+    dlgOpenPic1.InitialDir := ConfigInfo.TmpPath;
+
   dlgOpenPic1.Options := dlgOpenPic1.Options + [ofAllowMultiSelect];
 
   if not dlgOpenPic1.Execute then
