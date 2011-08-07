@@ -10,10 +10,10 @@ type
     function QueryWord:TCustomADODataSet;
     function QueryTypeWordExtention(const value:TWord):TCustomADODataSet;
 //    function QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
-    function InsertTypeWordExtention(const value:TTypeWordExtension):_Recordset;
-    function UpdateTypeWordExtention(const value, oldValue:TTypeWordExtension):_Recordset;
+    function InsertTypeWordExtention(const value:TTypeWordExtention):_Recordset;
+    function UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention):_Recordset;
     //function InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
-    function DeleteTypeWordExtention(const value:TTypeWordExtension):_Recordset;
+    function DeleteTypeWordExtention(const value:TTypeWordExtention):_Recordset;
   end;
 
   TWordExtensionModel = class(TModel, IWordExtensionModel)
@@ -23,10 +23,10 @@ type
     function QueryWord:TCustomADODataSet;
     function QueryTypeWordExtention(const value:TWord):TCustomADODataSet;
 //    function QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
-    function InsertTypeWordExtention(const value:TTypeWordExtension):_Recordset;
-    function UpdateTypeWordExtention(const value, oldValue:TTypeWordExtension):_Recordset;
+    function InsertTypeWordExtention(const value:TTypeWordExtention):_Recordset;
+    function UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention):_Recordset;
     //function InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
-    function DeleteTypeWordExtention(const value:TTypeWordExtension):_Recordset;
+    function DeleteTypeWordExtention(const value:TTypeWordExtention):_Recordset;
 
     constructor Create({Controller: IController});
   end;
@@ -137,7 +137,7 @@ begin
   Result := DoSelect;
 end;
 
-function TWordExtensionModel.InsertTypeWordExtention(const value:TTypeWordExtension):_Recordset;
+function TWordExtensionModel.InsertTypeWordExtention(const value:TTypeWordExtention):_Recordset;
 const
   sql:string =
 'INSERT INTO' + #13#10 +
@@ -155,7 +155,7 @@ begin
   Result := DoExecute;
 end;
 
-function TWordExtensionModel.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtension):_Recordset;
+function TWordExtensionModel.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention):_Recordset;
 const
   sql:string =
 'UPDATE' + #13#10 +
@@ -204,7 +204,7 @@ end;
 //end;
 
 
-function TWordExtensionModel.DeleteTypeWordExtention(const value:TTypeWordExtension):_Recordset;
+function TWordExtensionModel.DeleteTypeWordExtention(const value:TTypeWordExtention):_Recordset;
 const
   sql:string = 'DELETE FROM WordExtention WHERE BaseWord = :BaseWord AND ExtendWord = :ExtendWord AND BaseType = :BaseType AND ExtendType = :ExtendType';
 begin

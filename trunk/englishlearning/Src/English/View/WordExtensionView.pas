@@ -9,6 +9,8 @@ type
   IWordExtensionView = interface(IView)
     procedure ShowWord(value:TCustomADODataSet);
     procedure ShowTypeWordExtention(value:TCustomADODataSet);
+    procedure ShowSynonymExtention(value:TCustomADODataSet);
+    procedure ShowAntonymExtention(value:TCustomADODataSet);
 //    procedure ShowCatalogWord(value:TCustomADODataSet);
 //
 //    function  GetCatalogRelationInfo:TCatalogRelation;

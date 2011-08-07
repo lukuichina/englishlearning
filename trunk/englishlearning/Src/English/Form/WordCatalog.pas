@@ -108,6 +108,10 @@ type
     mnuAddCatalogWords: TMenuItem;
     actLocateCatalogWords: TAction;
     mnuLocateCatalogWords: TMenuItem;
+    mnuViewExtention: TMenuItem;
+    actViewExtention: TAction;
+    mnuWordView: TMenuItem;
+    actViewWord: TAction;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
@@ -149,6 +153,9 @@ type
     procedure actShowWordInfoExecute(Sender: TObject);
     procedure actAddCatalogWordsExecute(Sender: TObject);
     procedure actLocateCatalogWordsExecute(Sender: TObject);
+    procedure actViewExtentionExecute(Sender: TObject);
+    procedure actViewWordExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -184,7 +191,7 @@ var
 implementation
 
 uses WordCatalogDialog, Excel, WordSearch, WordPicture, WordExplain,
-  WordSearchDialog;
+  WordSearchDialog, WordExtension, WordView;
 
 {$R *.dfm}
 
@@ -524,6 +531,30 @@ begin
   end;
 end;
 
+procedure TWordCatalogForm.actViewExtentionExecute(Sender: TObject);
+begin
+  try
+    WordExtensionForm := TWordExtensionForm.Create(nil);
+    WordExtensionForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+//    WordExtensionForm.WordType := 0;
+//    WordExtensionForm.ExplanationID := 0;
+    WordExtensionForm.ShowModal;
+
+    if WordExtensionForm.IsChanged then
+    begin
+      grdWord.BeginUpdate;
+
+      FWordCatalogController.ShowCatalogWord;
+
+      dsWord.DataSet.Locate('Word', WordExtensionForm.Word, []);
+
+      grdWord.EndUpdate;
+    end;
+  finally
+    WordExtensionForm.Free;
+  end;
+end;
+
 procedure TWordCatalogForm.actViewPictureExecute(Sender: TObject);
 begin
   try
@@ -546,6 +577,37 @@ begin
   finally
     WordPictureForm.Free;
   end;
+end;
+
+procedure TWordCatalogForm.actViewWordExecute(Sender: TObject);
+begin
+  try
+    WordViewForm := TWordViewForm.Create(Self);
+    //WordViewForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+//    WordExtensionForm.WordType := 0;
+//    WordExtensionForm.ExplanationID := 0;
+    FWordCatalogController.InsertWordView(CatalogInfo);
+
+    WordViewForm.ShowModal;
+
+//    if WordExtensionForm.IsChanged then
+//    begin
+//      grdWord.BeginUpdate;
+//
+//      FWordCatalogController.ShowCatalogWord;
+//
+//      dsWord.DataSet.Locate('Word', WordExtensionForm.Word, []);
+//
+//      grdWord.EndUpdate;
+//    end;
+  finally
+    WordViewForm.Free;
+  end;
+end;
+
+procedure TWordCatalogForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FWordCatalogController.DeleteWordView;
 end;
 
 procedure TWordCatalogForm.FormCreate(Sender: TObject);
@@ -802,9 +864,7 @@ begin
   if opClient.ActivePageIndex = 2 then
     FWordCatalogController.ShowCatalogWord;
 
-
   tbWordCatalog.Enabled := opClient.ActivePageIndex = 0;
-
 end;
 
 procedure TWordCatalogForm.pmWordPopup(Sender: TObject);

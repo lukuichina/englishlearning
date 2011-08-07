@@ -37,6 +37,8 @@ type
     mnuViewPicture: TMenuItem;
     actUpdateExplanation: TAction;
     mnuUpdateExplanation: TMenuItem;
+    actViewExtention: TAction;
+    mnuViewExtention: TMenuItem;
     procedure btnWordSearchClick(Sender: TObject);
     procedure actAddExplanationExecute(Sender: TObject);
     procedure actDeleteExplanationExecute(Sender: TObject);
@@ -50,6 +52,7 @@ type
     procedure dbdvgrd1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure advpmn1Popup(Sender: TObject);
+    procedure actViewExtentionExecute(Sender: TObject);
   private
     { Private declarations }
     FIsChanged:Boolean;
@@ -71,7 +74,7 @@ var
 implementation
 
 uses
-  WordSearch, ExplanationInputDialog, DataModule, WordPicture;
+  WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension;
 
 {$R *.dfm}
 
@@ -155,6 +158,33 @@ begin
     qryWordExplanation.Open;
   finally
     ExplanationInputDialogForm.Free;
+  end;
+end;
+
+procedure TWordExplainForm.actViewExtentionExecute(Sender: TObject);
+var
+  ExplanationID:Integer;
+begin
+  try
+    WordExtensionForm := TWordExtensionForm.Create(nil);
+    WordExtensionForm.Word := edtWord.Text;
+//    WordExtensionForm.WordType := 0;
+//    WordExtensionForm.ExplanationID := 0;
+    WordExtensionForm.ShowModal;
+
+    if WordExtensionForm.IsChanged then
+    begin
+      FIsChanged := True;
+
+      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      dbdvgrd1.BeginUpdate;
+      ShowWordExplanation;
+      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      dbdvgrd1.EndUpdate;
+    end;
+  finally
+    WordExtensionForm.Free;
   end;
 end;
 

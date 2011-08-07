@@ -6,61 +6,63 @@ uses
   DB, ADODB, MVC, ViewData;
 
 type
-  IWordCatalogModel = interface(IModel)
-    function QueryWordCatalog:TCustomADODataSet;
-    function QueryWordCatalogTree:TCustomADODataSet;
-    function QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
-    function InsertWordCatalog(const value:TWordCatalog):_Recordset;
-    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
-    function DeleteWordCatalog(const value:TWordCatalog):_Recordset;
+  IWordModel = interface(IModel)
+    function QueryBetweenWord(const BeginWord, EndWord:string):TCustomADODataSet;
+    function QueryWord:TCustomADODataSet;
+    function QueryWordTree:TCustomADODataSet;
+    function QueryCatalogWord(const value:TWord):TCustomADODataSet;
+    function InsertWord(const value:TWord):_Recordset;
+    function UpdateWord(const value:TWord):_Recordset;
+    function DeleteWord(const value:TWord):_Recordset;
   end;
 
-  TWordCatalogModel = class(TModel, IWordCatalogModel)
+  TWordModel = class(TModel, IWordModel)
   private
 
   public
-    function QueryWordCatalog:TCustomADODataSet;
-    function QueryWordCatalogTree:TCustomADODataSet;
-    function QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
-    function InsertWordCatalog(const value:TWordCatalog):_Recordset;
-    function UpdateWordCatalog(const value:TWordCatalog):_Recordset;
-    function DeleteWordCatalog(const value:TWordCatalog):_Recordset;
+    function QueryBetweenWord(const BeginWord, EndWord:string):TCustomADODataSet;
+    function QueryWord:TCustomADODataSet;
+    function QueryWordTree:TCustomADODataSet;
+    function QueryCatalogWord(const value:TWord):TCustomADODataSet;
+    function InsertWord(const value:TWord):_Recordset;
+    function UpdateWord(const value:TWord):_Recordset;
+    function DeleteWord(const value:TWord):_Recordset;
 
     constructor Create({Controller: IController});
   end;
 
 implementation
 
-constructor TWordCatalogModel.Create;
+constructor TWordModel.Create;
 begin
   inherited Create;
 end;
 
-function TWordCatalogModel.QueryWordCatalog:TCustomADODataSet;
+function TWordModel.QueryWord:TCustomADODataSet;
 const
   sql:string =
 'SELECT' + #13#10 +
-'	ROW_NUMBER() OVER(ORDER BY WordCatalog.CatalogID ASC) AS RowId,' + #13#10 +
-'	WordCatalog.CatalogID,' + #13#10 +
-'	WordCatalog.CatalogName,' + #13#10 +
-'	WordCatalog.CatalogDisp,' + #13#10 +
-'	WordCatalog.CreateTime,' + #13#10 +
-'	WordCatalog.UpdateTime' + #13#10 +
+'	ROW_NUMBER() OVER(ORDER BY Word.CatalogID ASC) AS RowId,' + #13#10 +
+'	Word.CatalogID,' + #13#10 +
+'	Word.CatalogName,' + #13#10 +
+'	Word.CatalogDisp,' + #13#10 +
+'	Word.CreateTime,' + #13#10 +
+'	Word.UpdateTime' + #13#10 +
 'FROM' + #13#10 +
-'	WordCatalog' + #13#10 +
-'ORDER BY WordCatalog.CatalogID ASC';
+'	Word' + #13#10 +
+'ORDER BY Word.CatalogID ASC';
 begin
   Result := Select(sql);
 end;
 
-function TWordCatalogModel.QueryWordCatalogTree:TCustomADODataSet;
+function TWordModel.QueryWordTree:TCustomADODataSet;
 const
   sql:string ='GetCatalogRelationTree';
 begin
   Result := ExeProc(sql);
 end;
 
-function TWordCatalogModel.QueryCatalogWord(const value:TWordCatalog):TCustomADODataSet;
+function TWordModel.QueryCatalogWord(const value:TWord):TCustomADODataSet;
 const
   sql:string =
 'SELECT' + #13#10 +
@@ -79,48 +81,48 @@ const
 '    Word.CreateTime,' + #13#10 +
 '    Word.UpdateTime' + #13#10 +
 'FROM' + #13#10 +
-'    WordCatalogRelation' + #13#10 +
+'    WordRelation' + #13#10 +
 'INNER JOIN Word ON' + #13#10 +
-'    WordCatalogRelation.Word = Word.Word' + #13#10 +
+'    WordRelation.Word = Word.Word' + #13#10 +
 'INNER JOIN' + #13#10 +
 '    Importance on Importance.ID = Word.ImportanceLevel' + #13#10 +
 'INNER JOIN' + #13#10 +
 '    Difficulty on Difficulty.ID = Word.DifficultyLevel' + #13#10 +
 'WHERE' + #13#10 +
-'    WordCatalogRelation.CatalogID = :CatalogID' + #13#10 +
+'    WordRelation.CatalogID = :CatalogID' + #13#10 +
 'ORDER BY' + #13#10 +
 '    Word.Word ASC';
 begin
   SetSelectSql(sql);
 
-  Query.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+  //Query.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
 
   Result := DoSelect;
 end;
 
-function TWordCatalogModel.InsertWordCatalog(const value:TWordCatalog):_Recordset;
+function TWordModel.InsertWord(const value:TWord):_Recordset;
 const
   sql:string =
 'INSERT INTO' + #13#10 +
-'	WordCatalog(CatalogID, CatalogName, CatalogDisp, CreateTime, UpdateTime)' + #13#10 +
+'	Word(CatalogID, CatalogName, CatalogDisp, CreateTime, UpdateTime)' + #13#10 +
 'VALUES' + #13#10 +
-'	((SELECT ''WC'' + RIGHT(''100000'' + (SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(SUBSTRING(CatalogID,3,5)) + 1 END FROM WordCatalog), 5)), :CatalogName, :CatalogDisp, GetDate(), NULL)';
-//'	((SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(CatalogID) + 1 END FROM WordCatalog), :CatalogName, :CatalogDisp, GetDate(), NULL)';
+'	((SELECT ''WC'' + RIGHT(''100000'' + (SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(SUBSTRING(CatalogID,3,5)) + 1 END FROM Word), 5)), :CatalogName, :CatalogDisp, GetDate(), NULL)';
+//'	((SELECT CASE WHEN MAX(CatalogID) IS NULL THEN 1 ELSE MAX(CatalogID) + 1 END FROM Word), :CatalogName, :CatalogDisp, GetDate(), NULL)';
 begin
   SetExecuteSql(sql);
 
   //Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
-  Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
-  Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
+  //Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
+  //Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
 
   Result := DoExecute;
 end;
 
-function TWordCatalogModel.UpdateWordCatalog(const value:TWordCatalog):_Recordset;
+function TWordModel.UpdateWord(const value:TWord):_Recordset;
 const
   sql:string =
 'UPDATE' + #13#10 +
-'	WordCatalog' + #13#10 +
+'	Word' + #13#10 +
 'SET' + #13#10 +
 '	CatalogName = :CatalogName,' + #13#10 +
 '	CatalogDisp = :CatalogDisp,' + #13#10 +
@@ -130,22 +132,44 @@ const
 begin
   SetExecuteSql(sql);
 
-  Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
-  Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
-  Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+  //Command.Parameters.ParamByName('CatalogName').Value := value.CatalogName;
+  //Command.Parameters.ParamByName('CatalogDisp').Value := value.CatalogDisp;
+  //Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
 
   Result := DoExecute;
 end;
 
-function TWordCatalogModel.DeleteWordCatalog(const value:TWordCatalog):_Recordset;
+function TWordModel.DeleteWord(const value:TWord):_Recordset;
 const
-  sql:string = 'DELETE FROM WordCatalog WHERE CatalogID = :CatalogID';
+  sql:string = 'DELETE FROM Word WHERE CatalogID = :CatalogID';
 begin
   SetExecuteSql(sql);
 
-  Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
+  //Command.Parameters.ParamByName('CatalogID').Value := value.CatalogID;
 
   Result := DoExecute;
+end;
+
+function TWordModel.QueryBetweenWord(const BeginWord, EndWord:string):TCustomADODataSet;
+const
+  sql:string =
+'SELECT' + #13#10 +
+'	ROW_NUMBER() OVER(ORDER BY Word.Word ASC) AS RowId,' + #13#10 +
+'	Word.Word,' + #13#10 +
+'	Word.CreateTime,' + #13#10 +
+'	Word.UpdateTime' + #13#10 +
+'FROM' + #13#10 +
+'	Word' + #13#10 +
+'WHERE' + #13#10 +
+'	Word BETWEEN :BeginWord AND :EndWord' + #13#10 +
+'ORDER BY Word.Word ASC';
+begin
+  SetSelectSql(sql);
+
+  Query.Parameters.ParamByName('BeginWord').Value := BeginWord;
+  Query.Parameters.ParamByName('EndWord').Value := EndWord;
+
+  Result := DoSelect;
 end;
 
 end.

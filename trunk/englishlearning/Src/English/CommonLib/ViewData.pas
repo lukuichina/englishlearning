@@ -7,13 +7,69 @@ type
 
   end;
 
-  TTypeWordExtension =  class(TViewData)
+  TWordView = class(TViewData)
+  private
+    FSessionID:string;
+    FViewID:string;
+    FWord:string;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property SessionID:string read FSessionID write FSessionID;
+    property ViewID:string read FViewID write FViewID;
+    property Word:string read FWord write FWord;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
+  TAntonymExtention =  class(TViewData)
+  private
+    FWord:string;
+    FWordType:integer;
+    FExplanationID:integer;
+    FAntonymWord:string;
+    FAntonymWordType:integer;
+    FAntonymExplanationID:integer;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property Word:string read FWord write FWord;
+    property WordType:integer read FWordType write FWordType;
+    property ExplanationID:integer read FExplanationID write FExplanationID;
+    property AntonymWord:string read FAntonymWord write FAntonymWord;
+    property AntonymWordType:integer read FAntonymWordType write FAntonymWordType;
+    property AntonymExplanationID:integer read FAntonymExplanationID write FAntonymExplanationID;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
+  TSynonymExtention =  class(TViewData)
+  private
+    FWord:string;
+    FWordType:integer;
+    FExplanationID:integer;
+    FSynonymWord:string;
+    FSynonymWordType:integer;
+    FSynonymExplanationID:integer;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property Word:string read FWord write FWord;
+    property WordType:integer read FWordType write FWordType;
+    property ExplanationID:integer read FExplanationID write FExplanationID;
+    property SynonymWord:string read FSynonymWord write FSynonymWord;
+    property SynonymWordType:integer read FSynonymWordType write FSynonymWordType;
+    property SynonymExplanationID:integer read FSynonymExplanationID write FSynonymExplanationID;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
+  TTypeWordExtention =  class(TViewData)
   private
     FBaseWord:string;
     FBaseType:integer;
     FExtendWord:string;
     FExtendType:integer;
-    FCatalogDisp:string;
     FCreateTime:TDateTime;
     FUpdateTime:TDateTime;
   public

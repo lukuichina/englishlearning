@@ -9,10 +9,10 @@ uses
   AdvOfficeButtons, AdvStickyPopupMenu, AdvToolBar, AdvSmoothTouchKeyBoard,
   AdvGlowButton, AdvGlassButton, ActnList, DB, ADODB, Menus, AdvMenus, StdCtrls,
   AdvMenuStylers, ImgList, GDIPPictureContainer,ShellAPI, AdvOfficeImage,
-  ExtCtrls, AdvSplitter;
+  ExtCtrls, AdvSplitter, WordViewView, WordViewController;
 
 type
-  TWordViewForm = class(TForm)
+  TWordViewForm = class(TForm, IWordViewView)
     grp1: TAdvSmoothExpanderGroup;
     lbxPicture: TAdvSmoothImageListBox;
     AdvOfficePagerOfficeStyler1: TAdvOfficePagerOfficeStyler;
@@ -65,6 +65,7 @@ type
     actMultyPicture: TAction;
     btnClientView: TAdvGlowButton;
     actMaxView: TAction;
+    spWordPicture: TADOStoredProc;
     procedure actWordRangeExecute(Sender: TObject);
     procedure lbxPictureItemSelect(Sender: TObject; itemindex: Integer);
     procedure actMainPicExecute(Sender: TObject);
@@ -98,6 +99,8 @@ type
     procedure lbxPictureNavigate(Sender: TObject; NavigationMode:
         TAdvSmoothImageListBoxNavigationMode; var allow: Boolean);
     procedure pmnWordRangePopup(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FBeginWord:string;
     FEndWord:string;
@@ -105,6 +108,7 @@ type
     FWordType:Integer;
     FHavingData:Boolean;
     FIsWordRangeMenuPopuped :Boolean;
+    FWordViewController:IWordViewController;
 
     procedure SetImageList(const qryWordRange:TADOQuery);
     procedure SetPopUpMenuCheck(const ViewType:Integer);
@@ -119,7 +123,8 @@ var
 implementation
 
 uses
-  WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog, AdvAPI;
+  WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog, AdvAPI,
+  CommonInfo;
 
 {$R *.dfm}
 
@@ -137,8 +142,9 @@ begin
     //FWordType := 0;
 
     spWord.Close;
-    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
-    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+//    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+    spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
     spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
     spWord.Parameters.ParamByName('@WordType').Value := 0;
     spWord.Open;
@@ -204,9 +210,12 @@ begin
     FViewType := 1;
     //FWordType := 0;
 
+    FWordViewController.InsertWordView(FBeginWord, FEndWord);
+
     spWord.Close;
-    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
-    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+//    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+    spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
     spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
     spWord.Parameters.ParamByName('@WordType').Value := 0;
     spWord.Open;
@@ -328,8 +337,9 @@ begin
     //FWordType := 0;
 
     spWord.Close;
-    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
-    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+//    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+    spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
     spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
     spWord.Parameters.ParamByName('@WordType').Value := 0;
     spWord.Open;
@@ -358,8 +368,9 @@ begin
     //FWordType := 0;
 
     spWord.Close;
-    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
-    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+//    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+    spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
     spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
     spWord.Parameters.ParamByName('@WordType').Value := 0;
     spWord.Open;
@@ -517,10 +528,17 @@ begin
   end;
 end;
 
+procedure TWordViewForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FWordViewController.DeleteWordView;
+end;
+
 procedure TWordViewForm.FormCreate(Sender: TObject);
 var
   item:TStickyMenuItem;
 begin
+  FWordViewController := TWordViewController.Create(self);
+
   tblWordType.Close;
   tblWordType.Open;
 
@@ -553,6 +571,42 @@ begin
     end;
 
     lbxPicture.Columns := 7;
+  end;
+end;
+
+procedure TWordViewForm.FormShow(Sender: TObject);
+begin
+  try
+    if Self.Owner = nil then
+      exit;
+
+//    WordRangeForm := TWordRangeForm.Create(nil);
+//
+//    if WordRangeForm.ShowModal <> mrOk then
+//      exit;
+//
+//    FBeginWord := WordRangeForm.WordStart;
+//    FEndWord := WordRangeForm.WordEnd;
+//    FViewType := 1;
+    FViewType := 0;
+    //FWordType := 0;
+
+    spWord.Close;
+//    spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//    spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+    spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
+    spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
+    spWord.Parameters.ParamByName('@WordType').Value := 0;
+    spWord.Open;
+
+    FHavingData := True;//spWord.RecordCount > 0;
+    SetPopUpMenuCheck(FViewType);
+
+    SetImageList(nil);
+
+    btnWordRange.Enabled := False;
+  finally
+//    WordRangeForm.Free;
   end;
 end;
 
@@ -628,8 +682,9 @@ begin
   intWordType := 0;
 
   spWord.Close;
-  spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
-  spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+//  spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//  spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+  spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
   spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
   spWord.Parameters.ParamByName('@WordType').Value := intWordType;
   spWord.Open;
@@ -657,8 +712,9 @@ begin
   intWordType := tblWordType.FieldByName('ID').AsInteger;
 
   spWord.Close;
-  spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
-  spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+//  spWord.Parameters.ParamByName('@BeginWord').Value := FBeginWord;
+//  spWord.Parameters.ParamByName('@EndWord').Value := FEndWord;
+  spWord.Parameters.ParamByName('@SessionID').Value := SessionInfo.SessionID;
   spWord.Parameters.ParamByName('@ViewType').Value := FViewType;
   spWord.Parameters.ParamByName('@WordType').Value := intWordType;
   spWord.Open;

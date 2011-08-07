@@ -69,7 +69,7 @@ end;
 procedure TMainForm.actManagePictureExecute(Sender: TObject);
 begin
   try
-    WordPictureForm := TWordPictureForm.Create(nil);
+    WordPictureForm := TWordPictureForm.Create(self);
     WordPictureForm.ShowModal;
   finally
     WordPictureForm.Free;

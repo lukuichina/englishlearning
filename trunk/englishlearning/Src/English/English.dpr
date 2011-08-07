@@ -36,7 +36,17 @@ uses
   WordExtensionController in 'Controller\WordExtensionController.pas',
   WordExtensionView in 'View\WordExtensionView.pas',
   WordExtensionModel in 'Model\WordExtensionModel.pas',
-  TypeWordExtentionDialog in 'Dialog\TypeWordExtentionDialog.pas' {TypeWordExtentionDialogForm};
+  TypeWordExtentionDialog in 'Dialog\TypeWordExtentionDialog.pas' {TypeWordExtentionDialogForm},
+  SynonymModel in 'Model\SynonymModel.pas',
+  SynonymWordExtentionDialog in 'Dialog\SynonymWordExtentionDialog.pas' {SynonymWordExtentionDialogForm},
+  AntonymModel in 'Model\AntonymModel.pas',
+  WordExplanationModel in 'Model\WordExplanationModel.pas',
+  SynonymWordExtentionController in 'Controller\SynonymWordExtentionController.pas',
+  SynonymWordExtentionView in 'View\SynonymWordExtentionView.pas',
+  CommonInfo in 'CommonLib\CommonInfo.pas',
+  WordViewModel in 'Model\WordViewModel.pas',
+  WordViewController in 'Controller\WordViewController.pas',
+  WordViewView in 'View\WordViewView.pas';
 
 {$R *.res}
 

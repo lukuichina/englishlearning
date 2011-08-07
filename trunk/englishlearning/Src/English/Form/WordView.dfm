@@ -13,8 +13,10 @@ object WordViewForm: TWordViewForm
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object grp1: TAdvSmoothExpanderGroup
@@ -31,6 +33,7 @@ object WordViewForm: TWordViewForm
     Fill.BorderColor = clNone
     Fill.Rounding = 0
     Fill.ShadowOffset = 0
+    Fill.Glow = gmNone
     Align = alClient
     object lbxPicture: TAdvSmoothImageListBox
       Left = 0
@@ -55,6 +58,7 @@ object WordViewForm: TWordViewForm
       ItemAppearance.Fill.BorderColor = 16765357
       ItemAppearance.Fill.Rounding = 0
       ItemAppearance.Fill.ShadowOffset = 0
+      ItemAppearance.Fill.Glow = gmNone
       ItemAppearance.SelectedFill.Color = 11196927
       ItemAppearance.SelectedFill.ColorTo = 7257087
       ItemAppearance.SelectedFill.ColorMirror = 4370174
@@ -63,6 +67,7 @@ object WordViewForm: TWordViewForm
       ItemAppearance.SelectedFill.BorderColor = 16765357
       ItemAppearance.SelectedFill.Rounding = 0
       ItemAppearance.SelectedFill.ShadowOffset = 0
+      ItemAppearance.SelectedFill.Glow = gmNone
       ItemAppearance.DisabledFill.Color = 15921906
       ItemAppearance.DisabledFill.ColorTo = 11974326
       ItemAppearance.DisabledFill.ColorMirror = 11974326
@@ -71,6 +76,7 @@ object WordViewForm: TWordViewForm
       ItemAppearance.DisabledFill.BorderColor = 16765357
       ItemAppearance.DisabledFill.Rounding = 0
       ItemAppearance.DisabledFill.ShadowOffset = 0
+      ItemAppearance.DisabledFill.Glow = gmNone
       ItemAppearance.HoverFill.Color = 15465983
       ItemAppearance.HoverFill.ColorTo = 11332863
       ItemAppearance.HoverFill.ColorMirror = 5888767
@@ -79,6 +85,7 @@ object WordViewForm: TWordViewForm
       ItemAppearance.HoverFill.BorderColor = 10079963
       ItemAppearance.HoverFill.Rounding = 0
       ItemAppearance.HoverFill.ShadowOffset = 0
+      ItemAppearance.HoverFill.Glow = gmNone
       ItemAppearance.Splitter.Fill.Color = 11196927
       ItemAppearance.Splitter.Fill.ColorTo = 7257087
       ItemAppearance.Splitter.Fill.ColorMirror = clNone
@@ -87,6 +94,7 @@ object WordViewForm: TWordViewForm
       ItemAppearance.Splitter.Fill.BorderColor = 16765357
       ItemAppearance.Splitter.Fill.Rounding = 0
       ItemAppearance.Splitter.Fill.ShadowOffset = 0
+      ItemAppearance.Splitter.Fill.Glow = gmNone
       ItemAppearance.Splitter.TextFont.Charset = DEFAULT_CHARSET
       ItemAppearance.Splitter.TextFont.Color = clWindowText
       ItemAppearance.Splitter.TextFont.Height = -11
@@ -108,6 +116,7 @@ object WordViewForm: TWordViewForm
       Header.Fill.BorderColor = 16765615
       Header.Fill.Rounding = 0
       Header.Fill.ShadowOffset = 0
+      Header.Fill.Glow = gmNone
       Header.Navigator.Visible = False
       Header.Navigator.Color = 16773091
       Header.Navigator.HintNext = 'Next Item'
@@ -130,6 +139,7 @@ object WordViewForm: TWordViewForm
       Footer.Fill.BorderColor = 16765615
       Footer.Fill.Rounding = 0
       Footer.Fill.ShadowOffset = 0
+      Footer.Fill.Glow = gmNone
       Footer.Navigator.Visible = True
       Footer.Navigator.Color = 16773091
       Footer.Navigator.HintNext = 'Next Item'
@@ -147,6 +157,7 @@ object WordViewForm: TWordViewForm
       Fill.BorderColor = clNone
       Fill.Rounding = 0
       Fill.ShadowOffset = 0
+      Fill.Glow = gmNone
       DefaultImage.Data = {
         89504E470D0A1A0A0000000D494844520000012C0000012C0806000000797D8E
         75000000097048597300000B1300000B1301009A9C180000000467414D410000
@@ -950,6 +961,7 @@ object WordViewForm: TWordViewForm
         0001010100000100000001010101010101010100000001010101010101010100
         0000}
       ButtonSettings.CloseButtonHint = 'Close'
+      ButtonSettings.InsertButtonHint = 'Insert new page'
       ButtonSettings.PageListButtonHint = 'Page List'
       ButtonSettings.ScrollButtonNextHint = 'Next'
       ButtonSettings.ScrollButtonPrevHint = 'Previous'
@@ -3367,6 +3379,7 @@ object WordViewForm: TWordViewForm
     GlowButtonAppearance.BorderColorHot = 10079963
     GlowButtonAppearance.BorderColorDown = 4548219
     GlowButtonAppearance.BorderColorChecked = clBlack
+    GlowButtonAppearance.BorderColorDisabled = 13882323
     GlowButtonAppearance.Color = 15653832
     GlowButtonAppearance.ColorTo = 16178633
     GlowButtonAppearance.ColorChecked = 11918331
@@ -3597,7 +3610,7 @@ object WordViewForm: TWordViewForm
     Left = 24
     Top = 208
     Bitmap = {
-      494C0101040008008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000800940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3873,7 +3886,7 @@ object WordViewForm: TWordViewForm
     TrackButton = tbLeftButton
     OnPopup = pmnWordRangePopup
     MenuStyler = advmnfcstylr1
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 24
     Top = 160
     object N2: TMenuItem
@@ -3895,7 +3908,7 @@ object WordViewForm: TWordViewForm
   end
   object spWord: TADOStoredProc
     Connection = dmManager.conEnglish
-    ProcedureName = 'BetweenWordPicture;1'
+    ProcedureName = 'GetWordView;1'
     Parameters = <
       item
         Name = '@RETURN_VALUE'
@@ -3905,17 +3918,10 @@ object WordViewForm: TWordViewForm
         Value = Null
       end
       item
-        Name = '@BeginWord'
+        Name = '@SessionID'
         Attributes = [paNullable]
         DataType = ftString
-        Size = 20
-        Value = Null
-      end
-      item
-        Name = '@EndWord'
-        Attributes = [paNullable]
-        DataType = ftString
-        Size = 20
+        Size = 38
         Value = Null
       end
       item
@@ -3955,7 +3961,7 @@ object WordViewForm: TWordViewForm
     Left = 24
     Top = 256
     Bitmap = {
-      494C01010A0018006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A001800740010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       000000010119020C11661B5068DE266281F12A6E90F8246585F4000000030000
@@ -4398,5 +4404,55 @@ object WordViewForm: TWordViewForm
     OnItemClick = mnuWordOptionItemClick
     Left = 104
     Top = 160
+  end
+  object spWordPicture: TADOStoredProc
+    Connection = dmManager.conEnglish
+    ProcedureName = 'BetweenWordPicture;1'
+    Parameters = <
+      item
+        Name = '@RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@BeginWord'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = '@EndWord'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = '@ViewType'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@WordType'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@Ret'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Direction = pdInputOutput
+        Precision = 10
+        Value = Null
+      end>
+    Left = 456
+    Top = 248
   end
 end
