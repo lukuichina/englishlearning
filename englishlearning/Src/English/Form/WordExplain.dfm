@@ -1144,7 +1144,7 @@ object WordExplainForm: TWordExplainForm
     Left = 600
     Top = 216
     Bitmap = {
-      494C010105000800D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000800DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1443,6 +1443,11 @@ object WordExplainForm: TWordExplainForm
       ImageIndex = 4
       OnExecute = actViewPictureExecute
     end
+    object actViewExtention: TAction
+      Caption = #26597#30475#25193#23637
+      ImageIndex = 0
+      OnExecute = actViewExtentionExecute
+    end
   end
   object advpmn1: TAdvPopupMenu
     OnPopup = advpmn1Popup
@@ -1465,6 +1470,9 @@ object WordExplainForm: TWordExplainForm
     end
     object mnuViewPicture: TMenuItem
       Action = actViewPicture
+    end
+    object mnuViewExtention: TMenuItem
+      Action = actViewExtention
     end
   end
   object cmdAdd: TADOCommand

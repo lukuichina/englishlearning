@@ -89,6 +89,8 @@ type
     mnuViewPicture: TMenuItem;
     qryWordNoSort: TADOQuery;
     dlgSave1: TSaveDialog;
+    mnuViewExtention: TMenuItem;
+    actViewExtention: TAction;
     procedure FormCreate(Sender: TObject);
     procedure btnWordClick(Sender: TObject);
     procedure grdWordSelectionChanged(Sender: TObject; ALeft, ATop, ARight,
@@ -111,6 +113,7 @@ type
       var DoSort: Boolean);
     procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
       var Allow: Boolean);
+    procedure actViewExtentionExecute(Sender: TObject);
   private
     { Private declarations }
     FWord:TWord;
@@ -131,7 +134,7 @@ var
 implementation
 
 uses
-  DataModule, Excel, WordExplain, WordPicture;
+  DataModule, Excel, WordExplain, WordPicture, WordExtension;
 
 {$R *.dfm}
 
@@ -189,6 +192,30 @@ begin
     end;
   finally
     WordExplainForm.Free;
+  end;
+end;
+
+procedure TWordInputForm.actViewExtentionExecute(Sender: TObject);
+begin
+  try
+    WordExtensionForm := TWordExtensionForm.Create(nil);
+    WordExtensionForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+//    WordExtensionForm.WordType := 0;
+//    WordExtensionForm.ExplanationID := 0;
+    WordExtensionForm.ShowModal;
+
+    if WordExtensionForm.IsChanged then
+    begin
+      grdWord.BeginUpdate;
+
+      ShowWords('%');
+
+      qryWord.Locate('Word', edtWordEdit.Text, []);
+
+      grdWord.EndUpdate;
+    end;
+  finally
+    WordExtensionForm.Free;
   end;
 end;
 

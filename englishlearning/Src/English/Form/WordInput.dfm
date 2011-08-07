@@ -1340,6 +1340,9 @@ object WordInputForm: TWordInputForm
       Action = actViewPicture
       ImageIndex = 1
     end
+    object mnuViewExtention: TMenuItem
+      Action = actViewExtention
+    end
     object mnuExportToCsv: TMenuItem
       Action = actImportToExcel
       ImageIndex = 2
@@ -1369,12 +1372,17 @@ object WordInputForm: TWordInputForm
       Caption = #21024#38500
       OnExecute = actDeleteWordExecute
     end
+    object actViewExtention: TAction
+      Caption = #26597#30475#25193#23637
+      ImageIndex = 0
+      OnExecute = actViewExtentionExecute
+    end
   end
   object ilGridPopMenu: TImageList
     Left = 584
     Top = 216
     Bitmap = {
-      494C010104000800B00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000800B40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -1,10 +1,12 @@
 inherited TypeWordExtentionDialogForm: TTypeWordExtentionDialogForm
   Caption = #35789#24615#25193#23637
+  ClientHeight = 356
+  ClientWidth = 506
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  ExplicitWidth = 488
-  ExplicitHeight = 281
+  ExplicitWidth = 512
+  ExplicitHeight = 384
   PixelsPerInch = 96
   TextHeight = 13
   object lblExtendWord: TLabel
@@ -28,7 +30,7 @@ inherited TypeWordExtentionDialogForm: TTypeWordExtentionDialogForm
   end
   object dbrgrpExtendType: TDBRadioGroup
     Left = 24
-    Top = 130
+    Top = 136
     Width = 425
     Height = 78
     Caption = #25193#23637#35789#24615
@@ -39,8 +41,8 @@ inherited TypeWordExtentionDialogForm: TTypeWordExtentionDialogForm
     TabOrder = 3
   end
   object btnCancel: TBitBtn
-    Left = 280
-    Top = 220
+    Left = 288
+    Top = 284
     Width = 75
     Height = 25
     DoubleBuffered = True
@@ -50,8 +52,8 @@ inherited TypeWordExtentionDialogForm: TTypeWordExtentionDialogForm
     TabOrder = 5
   end
   object btnOK: TBitBtn
-    Left = 128
-    Top = 220
+    Left = 136
+    Top = 284
     Width = 75
     Height = 25
     DoubleBuffered = True

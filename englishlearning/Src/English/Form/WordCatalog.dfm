@@ -13,6 +13,7 @@ object WordCatalogForm: TWordCatalogForm
   Font.Style = []
   OldCreateOrder = False
   Position = poOwnerFormCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -4060,7 +4061,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 608
     Top = 200
     Bitmap = {
-      494C010106000800700110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000800800110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4425,6 +4426,16 @@ object WordCatalogForm: TWordCatalogForm
       Caption = #21333#35789#20449#24687
       OnExecute = actShowWordInfoExecute
     end
+    object actViewExtention: TAction
+      Caption = #26597#30475#25193#23637
+      ImageIndex = 0
+      OnExecute = actViewExtentionExecute
+    end
+    object actViewWord: TAction
+      Caption = #27983#35272#21333#35789
+      ImageIndex = 0
+      OnExecute = actViewWordExecute
+    end
   end
   object apmWordCatalog: TAdvPopupMenu
     Version = '2.5.3.4'
@@ -4445,6 +4456,9 @@ object WordCatalogForm: TWordCatalogForm
     end
     object N1: TMenuItem
       Action = actViewPicture
+    end
+    object mnuWordView: TMenuItem
+      Action = actViewWord
     end
   end
   object mdWordCatalogTree: TdxMemData
@@ -4497,7 +4511,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 472
     Top = 376
     Bitmap = {
-      494C010114001900940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010114001900A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5302,7 +5316,7 @@ object WordCatalogForm: TWordCatalogForm
     Left = 400
     Top = 372
     Bitmap = {
-      494C010103000500940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000080000000000000000000000000000000
@@ -5478,6 +5492,9 @@ object WordCatalogForm: TWordCatalogForm
     end
     object mnuViewPicture: TMenuItem
       Action = actViewPicture
+    end
+    object mnuViewExtention: TMenuItem
+      Action = actViewExtention
     end
   end
   object apmWordCatalogNode: TAdvPopupMenu

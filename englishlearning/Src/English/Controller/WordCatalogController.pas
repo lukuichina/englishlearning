@@ -4,7 +4,7 @@ interface
 
 uses
   DB, ADODB, MVC, ViewData, WordCatalogView, WordCatalogModel, CatalogWordModel,
-  CatalogRelationModel;
+  CatalogRelationModel, WordViewModel;
 
 type
   IWordCatalogController = interface(IController)
@@ -32,12 +32,16 @@ type
     procedure InsertCatalogRelation(const value:TCatalogRelation);
     procedure DeleteCatalogRelation; overload;
     procedure DeleteCatalogRelation(const value:TCatalogRelation); overload;
+
+    procedure InsertWordView(const value:TWordCatalog);
+    procedure DeleteWordView;
   end;
 
   TWordCatalogController = class(TController, IWordCatalogController)
   private
     FCatalogWordModel:TCatalogWordModel;
     FCatalogRelationModel:TCatalogRelationModel;
+    FWordViewModel:TWordViewModel;
   protected
     function GetModel: IWordCatalogModel;
     function GetView: IWordCatalogView;
@@ -55,7 +59,7 @@ type
     procedure InsertCatalogInfo(const value:TWordCatalog);
     procedure UpdateCatalogInfo(const value:TWordCatalog);
     procedure DeleteCatalogInfo;
-//    procedure SetWordCatalogDialogInfo;
+    //procedure SetWordCatalogDialogInfo;
 
     procedure ShowCatalogWord;
     procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
@@ -66,9 +70,14 @@ type
     procedure InsertCatalogRelation(const value:TCatalogRelation);
     procedure DeleteCatalogRelation; overload;
     procedure DeleteCatalogRelation(const value:TCatalogRelation); overload;
+
+    procedure InsertWordView(const value:TWordCatalog);
+    procedure DeleteWordView;
   end;
 
 implementation
+
+uses SysUtils, CommonInfo;
 
 function TWordCatalogController.GetModel: IWordCatalogModel;
 begin
@@ -101,6 +110,7 @@ begin
 
   FCatalogWordModel := TCatalogWordModel.Create;
   FCatalogRelationModel := TCatalogRelationModel.Create;
+  FWordViewModel := TWordViewModel.Create;
 end;
 
 procedure TWordCatalogController.ShowWordCatalog;
@@ -187,6 +197,32 @@ end;
 procedure TWordCatalogController.DeleteCatalogRelation(const value:TCatalogRelation);
 begin
   FCatalogRelationModel.DeleteCatalogRelation(value);
+end;
+
+procedure TWordCatalogController.InsertWordView(const value:TWordCatalog);
+var
+ ds:TCustomADODataSet;
+begin
+  if GetView.CatalogInfo.CatalogID = '' then
+    exit;
+
+  ds := FCatalogWordModel.QueryCatalogWord(GetView.CatalogInfo);
+  //GetView.ShowCatalogWord(ds);
+
+  FWordViewModel.DeleteWordView(SessionInfo.SessionID);
+
+  while not ds.Eof do
+  begin
+    FWordViewModel.InsertWordView(GuidToString(SessionInfo.Session),
+        ds.FieldByName('RowId').AsInteger, ds.FieldByName('Word').AsString);
+
+    ds.Next;
+  end;
+end;
+
+procedure TWordCatalogController.DeleteWordView;
+begin
+  FWordViewModel.DeleteWordView(GuidToString(SessionInfo.Session));
 end;
 
 end.

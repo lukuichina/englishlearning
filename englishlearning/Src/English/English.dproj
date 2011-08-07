@@ -127,6 +127,18 @@
 			<DCCReference Include="Dialog\TypeWordExtentionDialog.pas">
 				<Form>TypeWordExtentionDialogForm</Form>
 			</DCCReference>
+			<DCCReference Include="Model\SynonymModel.pas"/>
+			<DCCReference Include="Dialog\SynonymWordExtentionDialog.pas">
+				<Form>SynonymWordExtentionDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Model\AntonymModel.pas"/>
+			<DCCReference Include="Model\WordExplanationModel.pas"/>
+			<DCCReference Include="Controller\SynonymWordExtentionController.pas"/>
+			<DCCReference Include="View\SynonymWordExtentionView.pas"/>
+			<DCCReference Include="CommonLib\CommonInfo.pas"/>
+			<DCCReference Include="Model\WordViewModel.pas"/>
+			<DCCReference Include="Controller\WordViewController.pas"/>
+			<DCCReference Include="View\WordViewView.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

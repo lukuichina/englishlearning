@@ -25,17 +25,21 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
-    FBaseWord:string;
-    FBaseType:integer;
-    FExtendWord:string;
-    FExtendType:integer;
+    FWord:string;
+    FWordType:integer;
+    FExplanationID:integer;
+    FSynonymWord:string;
+    FSynonymWordType:integer;
+    FSynonymExplanationID:integer;
 
   public
     { Public declarations }
-    property BaseWord:string read FBaseWord write FBaseWord;
-    property BaseType:integer read FBaseType write FBaseType;
-    property ExtendWord:string read FExtendWord write FExtendWord;
-    property ExtendType:integer read FExtendType write FExtendType;
+    property BaseWord:string read FWord write FWord;
+    property BaseType:integer read FWordType write FWordType;
+    //property ExplanationID:integer read FExplanationID write FExplanationID;
+    property ExtendWord:string read FSynonymWord write FSynonymWord;
+    property ExtendType:integer read FSynonymWordType write FSynonymWordType;
+    //property SynonymExplanationID:integer read FSynonymExplanationID write FSynonymExplanationID;
   end;
 
 var
@@ -77,9 +81,9 @@ begin
   inherited;
 
   //FBaseWord := edtWord.Text;
-  FBaseType := StrToInt(dbrgrpBaseType.Value);
-  FExtendWord := edtExtendWord.Text;
-  FExtendType := StrToInt(dbrgrpExtendType.Value);
+  FWordType := StrToInt(dbrgrpBaseType.Value);
+  FSynonymWord := edtExtendWord.Text;
+  FSynonymWordType := StrToInt(dbrgrpExtendType.Value);
 end;
 
 procedure TTypeWordExtentionDialogForm.FormCreate(Sender: TObject);
@@ -112,9 +116,9 @@ procedure TTypeWordExtentionDialogForm.FormShow(Sender: TObject);
 begin
   inherited;
 
-  dbrgrpBaseType.Value := IntToStr(FBaseType);
-  edtExtendWord.Text := FExtendWord;
-  dbrgrpExtendType.Value := IntToStr(FExtendType);
+  dbrgrpBaseType.Value := IntToStr(FWordType);
+  edtExtendWord.Text := FSynonymWord;
+  dbrgrpExtendType.Value := IntToStr(FSynonymWordType);
 end;
 
 end.

@@ -116,6 +116,9 @@ type
     cmdPictureDisp: TADOCommand;
     tblWordType: TADOTable;
     cmdReplacePicture: TADOCommand;
+    advtlbrWord: TAdvToolBar;
+    btnWord: TAdvGlowButton;
+    actWordSelection: TAction;
 
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -142,6 +145,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure actWordExplanationExecute(Sender: TObject);
     procedure mnuWordExplanationItemClick(Sender: TObject; Index: Integer);
+    procedure actWordSelectionExecute(Sender: TObject);
   private
     { Private declarations }
     FWord:string;
@@ -182,7 +186,8 @@ var
 implementation
 
 uses
-  DataModule,IdHashMessageDigest,IdGlobal, IdHash, PictureDispDialog, AdvAPI;
+  DataModule,IdHashMessageDigest,IdGlobal, IdHash, PictureDispDialog, AdvAPI,
+  WordSearch;
 
 {$R *.dfm}
 
@@ -460,6 +465,26 @@ begin
 ////  until qryWordType.Eof;
 end;
 
+procedure TWordPictureForm.actWordSelectionExecute(Sender: TObject);
+begin
+  try
+    WordSearchForm := TWordSearchForm.Create(nil);
+    WordSearchForm.Word := FWord;
+
+    if WordSearchForm.ShowModal <> mrOk then
+    begin
+      exit;
+    end;
+
+    FWord := WordSearchForm.Word;
+
+    FormShow(Sender);
+  finally
+    WordSearchForm.Free;
+  end;
+end;
+
+
 procedure TWordPictureForm.btnWordExplanationMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 var
@@ -575,6 +600,11 @@ begin
 
   tgr1.ActivePageIndex := FWordType;
   advtlbrpgr1.ActivePageIndex := 0;
+
+  if self.Owner <> nil then
+  begin
+    advtlbrWord.Enabled := True;
+  end;
 end;
 
 procedure TWordPictureForm.imgItemZoomedOut(Sender: TObject;

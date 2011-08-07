@@ -45,9 +45,6 @@ var
   myinifile:TInifile;
 begin
   try
-//  ConfigInfo.PicPath := 'E:\Pictures\English\pic\';
-//  ConfigInfo.RtfPath := 'E:\Pictures\English\rtf\';
-//  ConfigInfo.TmpPath := 'E:\Pictures\English\tmp\';
     myinifile := TInifile.Create(GetCurrentDir + '\Config.ini');
 
     ConfigInfo.Server := myinifile.ReadString('DBServer','Server','');

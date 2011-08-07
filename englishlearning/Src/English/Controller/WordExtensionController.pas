@@ -3,7 +3,7 @@ unit WordExtensionController;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordExtensionView, WordExtensionModel;
+  DB, ADODB, MVC, ViewData, WordExtensionView, WordExtensionModel, SynonymModel, AntonymModel;
 
 type
   IWordExtensionController = interface(IController)
@@ -18,9 +18,19 @@ type
 
     procedure ShowWord;
     procedure ShowTypeWordExtention(const value:TWord);
-    procedure InsertTypeWordExtention(const value:TTypeWordExtension);
-    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtension);
-    procedure DeleteTypeWordExtention(const value:TTypeWordExtension);
+    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
+    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
+    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
+
+    procedure ShowSynonymExtention(const value:TWord);
+    procedure InsertSynonymExtention(const value:TSynonymExtention);
+    procedure UpdateSynonymExtention(const value, oldValue:TSynonymExtention);
+    procedure DeleteSynonymExtention(const value:TSynonymExtention);
+
+    procedure ShowAntonymExtention(const value:TWord);
+    procedure InsertAntonymExtention(const value:TAntonymExtention);
+    procedure UpdateAntonymExtention(const value, oldValue:TAntonymExtention);
+    procedure DeleteAntonymExtention(const value:TAntonymExtention);
 ////    procedure SetWordCatalogDialogInfo;
 //
 //    procedure ShowCatalogWord;
@@ -36,6 +46,8 @@ type
   TWordExtensionController = class(TController, IWordExtensionController)
   private
     FCatalogWordModel:TWordExtensionModel;
+    FSynonymModel:TSynonymModel;
+    FAntonymModel:TAntonymModel;
     //FCatalogRelationModel:TCatalogRelationModel;
   protected
     function GetModel: IWordExtensionModel;
@@ -51,9 +63,19 @@ type
     constructor Create(view:IWordExtensionView);
     procedure ShowWord;
     procedure ShowTypeWordExtention(const value:TWord);
-    procedure InsertTypeWordExtention(const value:TTypeWordExtension);
-    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtension);
-    procedure DeleteTypeWordExtention(const value:TTypeWordExtension);
+    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
+    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
+    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
+
+    procedure ShowSynonymExtention(const value:TWord);
+    procedure InsertSynonymExtention(const value:TSynonymExtention);
+    procedure UpdateSynonymExtention(const value, oldValue:TSynonymExtention);
+    procedure DeleteSynonymExtention(const value:TSynonymExtention);
+
+    procedure ShowAntonymExtention(const value:TWord);
+    procedure InsertAntonymExtention(const value:TAntonymExtention);
+    procedure UpdateAntonymExtention(const value, oldValue:TAntonymExtention);
+    procedure DeleteAntonymExtention(const value:TAntonymExtention);
 ////    procedure SetWordCatalogDialogInfo;
 //
 //    procedure ShowCatalogWord;
@@ -98,8 +120,8 @@ begin
   md:=TWordExtensionModel.Create;
   inherited SetModel(md);
 
-//  FCatalogWordModel := TCatalogWordModel.Create;
-//  FCatalogRelationModel := TCatalogRelationModel.Create;
+  FSynonymModel := TSynonymModel.Create;
+  FAntonymModel := TAntonymModel.Create;
 end;
 
 procedure TWordExtensionController.ShowWord;
@@ -118,19 +140,65 @@ begin
   GetView.ShowTypeWordExtention(ds);
 end;
 
-procedure TWordExtensionController.InsertTypeWordExtention(const value:TTypeWordExtension);
+procedure TWordExtensionController.InsertTypeWordExtention(const value:TTypeWordExtention);
 begin
   Model.InsertTypeWordExtention(value);
 end;
 
-procedure TWordExtensionController.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtension);
+procedure TWordExtensionController.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
 begin
   Model.UpdateTypeWordExtention(value, oldValue);
 end;
 
-procedure TWordExtensionController.DeleteTypeWordExtention(const value:TTypeWordExtension);
+procedure TWordExtensionController.DeleteTypeWordExtention(const value:TTypeWordExtention);
 begin
   Model.DeleteTypeWordExtention(value);
+end;
+
+procedure TWordExtensionController.ShowSynonymExtention(const value:TWord);
+var
+ ds:TCustomADODataSet;
+begin
+  ds := FSynonymModel.QuerySynonymExtention(value);
+  GetView.ShowSynonymExtention(ds);
+end;
+
+procedure TWordExtensionController.InsertSynonymExtention(const value:TSynonymExtention);
+begin
+  FSynonymModel.InsertSynonymExtention(value)
+end;
+
+procedure TWordExtensionController.UpdateSynonymExtention(const value, oldValue:TSynonymExtention);
+begin
+  FSynonymModel.UpdateSynonymExtention(value, oldValue)
+end;
+
+procedure TWordExtensionController.DeleteSynonymExtention(const value:TSynonymExtention);
+begin
+  FSynonymModel.DeleteSynonymExtention(value)
+end;
+
+procedure TWordExtensionController.ShowAntonymExtention(const value:TWord);
+var
+ ds:TCustomADODataSet;
+begin
+  ds := FAntonymModel.QueryAntonymExtention(value);
+  GetView.ShowAntonymExtention(ds);
+end;
+
+procedure TWordExtensionController.InsertAntonymExtention(const value:TAntonymExtention);
+begin
+  FAntonymModel.InsertAntonymExtention(value)
+end;
+
+procedure TWordExtensionController.UpdateAntonymExtention(const value, oldValue:TAntonymExtention);
+begin
+  FAntonymModel.UpdateAntonymExtention(value, oldValue)
+end;
+
+procedure TWordExtensionController.DeleteAntonymExtention(const value:TAntonymExtention);
+begin
+  FAntonymModel.DeleteAntonymExtention(value)
 end;
 
 //procedure TWordExtensionController.SetWordCatalogDialogInfo;
