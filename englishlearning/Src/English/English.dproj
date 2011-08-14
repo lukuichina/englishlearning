@@ -124,8 +124,8 @@
 			<DCCReference Include="Controller\WordExtensionController.pas"/>
 			<DCCReference Include="View\WordExtensionView.pas"/>
 			<DCCReference Include="Model\WordExtensionModel.pas"/>
-			<DCCReference Include="Dialog\TypeWordExtentionDialog.pas">
-				<Form>TypeWordExtentionDialogForm</Form>
+			<DCCReference Include="Dialog\DerivativeWordExtentionDialog.pas">
+				<Form>DerivativeWordExtentionDialogForm</Form>
 			</DCCReference>
 			<DCCReference Include="Model\SynonymModel.pas"/>
 			<DCCReference Include="Dialog\SynonymWordExtentionDialog.pas">
@@ -139,6 +139,9 @@
 			<DCCReference Include="Model\WordViewModel.pas"/>
 			<DCCReference Include="Controller\WordViewController.pas"/>
 			<DCCReference Include="View\WordViewView.pas"/>
+			<DCCReference Include="Thread\WordViewThread.pas"/>
+			<DCCReference Include="Model\DerivativeModel.pas"/>
+			<DCCReference Include="Model\HomoionymModel.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

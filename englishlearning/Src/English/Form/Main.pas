@@ -119,7 +119,7 @@ end;
 procedure TMainForm.actWordExtensionExecute(Sender: TObject);
 begin
   try
-    WordExtensionForm := TWordExtensionForm.Create(nil);
+    WordExtensionForm := TWordExtensionForm.Create(Self);
     WordExtensionForm.ShowModal;
   finally
     WordExtensionForm.Free;

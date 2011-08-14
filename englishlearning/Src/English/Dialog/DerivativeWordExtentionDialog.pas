@@ -1,4 +1,4 @@
-unit TypeWordExtentionDialog;
+unit DerivativeWordExtentionDialog;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   Dialogs, BasicDialog, StdCtrls, Buttons, ExtCtrls, DBCtrls, DB, ADODB;
 
 type
-  TTypeWordExtentionDialogForm = class(TBasicDialogForm)
+  TDerivativeWordExtentionDialogForm = class(TBasicDialogForm)
     dsBaseType: TDataSource;
     tblBaseType: TADOTable;
     dbrgrpBaseType: TDBRadioGroup;
@@ -43,7 +43,7 @@ type
   end;
 
 var
-  TypeWordExtentionDialogForm: TTypeWordExtentionDialogForm;
+  DerivativeWordExtentionDialogForm: TDerivativeWordExtentionDialogForm;
 
 implementation
 
@@ -51,7 +51,7 @@ uses WordSearch;
 
 {$R *.dfm}
 
-procedure TTypeWordExtentionDialogForm.btnExtendWordSearchClick(Sender: TObject);
+procedure TDerivativeWordExtentionDialogForm.btnExtendWordSearchClick(Sender: TObject);
 begin
   inherited;
 
@@ -75,7 +75,7 @@ begin
   end;
 end;
 
-procedure TTypeWordExtentionDialogForm.FormClose(Sender: TObject;
+procedure TDerivativeWordExtentionDialogForm.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
@@ -86,7 +86,7 @@ begin
   FSynonymWordType := StrToInt(dbrgrpExtendType.Value);
 end;
 
-procedure TTypeWordExtentionDialogForm.FormCreate(Sender: TObject);
+procedure TDerivativeWordExtentionDialogForm.FormCreate(Sender: TObject);
 begin
   inherited;
 
@@ -112,7 +112,7 @@ begin
   dbrgrpExtendType.Value := '1';
 end;
 
-procedure TTypeWordExtentionDialogForm.FormShow(Sender: TObject);
+procedure TDerivativeWordExtentionDialogForm.FormShow(Sender: TObject);
 begin
   inherited;
 

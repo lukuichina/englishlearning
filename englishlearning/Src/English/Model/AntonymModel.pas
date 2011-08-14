@@ -80,13 +80,13 @@ function TAntonymModel.QueryAntonymExtention(const value:TWord):TCustomADODataSe
 const
   sql:string =
 'SELECT' + #13#10 +
-'    ROW_NUMBER() OVER(ORDER BY Antonym.Word ASC,Antonym.AntonymWord ASC,Antonym.AntonymWordType ASC) AS RowId,' + #13#10 +
-'    Antonym.Word as BaseWord,' + #13#10 +
+'    ROW_NUMBER() OVER(ORDER BY WordAntonym.Word ASC,WordAntonym.AntonymWord ASC,WordAntonym.AntonymWordType ASC) AS RowId,' + #13#10 +
+'    WordAntonym.Word as BaseWord,' + #13#10 +
 '    WordType.ID as BaseWordTypeID,' + #13#10 +
 '    WordType.Disp as BaseWordType,' + #13#10 +
-'    Antonym.ExplanationID as BaseExplanationID,' + #13#10 +
+'    WordAntonym.ExplanationID as BaseExplanationID,' + #13#10 +
 '    WordExplanation.Explanation as BaseExplanation,' + #13#10 +
-'    Antonym.AntonymWord as Word,' + #13#10 +
+'    WordAntonym.AntonymWord as Word,' + #13#10 +
 '    AntonymWordType.ID as WordTypeID,' + #13#10 +
 '    AntonymWordType.Disp as WordType,' + #13#10 +
 '    AntonymExplanation.ExplanationID,' + #13#10 +
@@ -105,34 +105,34 @@ const
 '    (SELECT COUNT(*) FROM WordExplanation WHERE WordExplanation.Word = Word.Word) AS ExplanationCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word) AS PictureCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word AND Picture.MainPicture = 1) AS MainPictureCount,' + #13#10 +
-'    Antonym.CreateTime,' + #13#10 +
-'    Antonym.UpdateTime' + #13#10 +
+'    WordAntonym.CreateTime,' + #13#10 +
+'    WordAntonym.UpdateTime' + #13#10 +
 'FROM' + #13#10 +
-'    Antonym' + #13#10 +
+'    WordAntonym' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    Word ON Word.Word = Antonym.AntonymWord' + #13#10 +
+'    Word ON Word.Word = WordAntonym.AntonymWord' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordExplanation ON Antonym.Word = WordExplanation.Word AND' + #13#10 +
-'    Antonym.WordType = WordExplanation.WordType AND' + #13#10 +
-'    Antonym.ExplanationID = WordExplanation.ExplanationID' + #13#10 +
+'    WordExplanation ON WordAntonym.Word = WordExplanation.Word AND' + #13#10 +
+'    WordAntonym.WordType = WordExplanation.WordType AND' + #13#10 +
+'    WordAntonym.ExplanationID = WordExplanation.ExplanationID' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordExplanation AntonymExplanation ON Antonym.AntonymWord = AntonymExplanation.Word AND' + #13#10 +
-'    Antonym.AntonymWordType = AntonymExplanation.WordType AND' + #13#10 +
-'    Antonym.AntonymExplanationID = AntonymExplanation.ExplanationID' + #13#10 +
+'    WordExplanation AntonymExplanation ON WordAntonym.AntonymWord = AntonymExplanation.Word AND' + #13#10 +
+'    WordAntonym.AntonymWordType = AntonymExplanation.WordType AND' + #13#10 +
+'    WordAntonym.AntonymExplanationID = AntonymExplanation.ExplanationID' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordType ON WordType.ID =  Antonym.WordType' + #13#10 +
+'    WordType ON WordType.ID =  WordAntonym.WordType' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordType AntonymWordType ON AntonymWordType.ID =  Antonym.AntonymWordType' + #13#10 +
+'    WordType AntonymWordType ON AntonymWordType.ID =  WordAntonym.AntonymWordType' + #13#10 +
 'LEFT JOIN' + #13#10 +
 '    Importance ON Importance.ID = Word.ImportanceLevel' + #13#10 +
 'LEFT JOIN' + #13#10 +
 '    Difficulty ON Difficulty.ID =Word.DifficultyLevel' + #13#10 +
 'WHERE' + #13#10 +
-'    Antonym.Word = ''%s''' + #13#10 +
+'    WordAntonym.Word = ''%s''' + #13#10 +
 'ORDER BY' + #13#10 +
-'    Antonym.Word ASC,' + #13#10 +
-'    Antonym.AntonymWord ASC,' + #13#10 +
-'    Antonym.AntonymWordType ASC';
+'    WordAntonym.Word ASC,' + #13#10 +
+'    WordAntonym.AntonymWord ASC,' + #13#10 +
+'    WordAntonym.AntonymWordType ASC';
 begin
   SetSelectSql(Format(sql, [value.Word]));
   //SetSelectSql(sql);
@@ -146,7 +146,7 @@ function TAntonymModel.InsertAntonymExtention(const value:TAntonymExtention):_Re
 const
   sql:string =
 'INSERT INTO' + #13#10 +
-'	Antonym(Word, WordType, ExplanationID, AntonymWord, AntonymWordType, AntonymExplanationID, CreateTime, UpdateTime)' + #13#10 +
+'	WordAntonym(Word, WordType, ExplanationID, AntonymWord, AntonymWordType, AntonymExplanationID, CreateTime, UpdateTime)' + #13#10 +
 'VALUES' + #13#10 +
 '	(:Word, :WordType, :ExplanationID, :AntonymWord, :AntonymWordType, :AntonymExplanationID, GetDate(), NULL)';
 begin
@@ -183,7 +183,7 @@ function TAntonymModel.UpdateAntonymExtention(const value, oldValue:TAntonymExte
 const
   sql:string =
 'UPDATE' + #13#10 +
-'	Antonym' + #13#10 +
+'	WordAntonym' + #13#10 +
 'SET' + #13#10 +
 '	Word = :Word,' + #13#10 +
 '	WordType = :WordType,' + #13#10 +
@@ -259,7 +259,7 @@ end;
 
 function TAntonymModel.DeleteAntonymExtention(const value:TAntonymExtention):_Recordset;
 const
-  sql:string = 'DELETE FROM Antonym WHERE Word = :Word AND AntonymWord = :AntonymWord';
+  sql:string = 'DELETE FROM WordAntonym WHERE Word = :Word AND AntonymWord = :AntonymWord';
 begin
   SetExecuteSql(sql);
 

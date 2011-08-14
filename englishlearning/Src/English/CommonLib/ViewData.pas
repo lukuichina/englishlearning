@@ -22,6 +22,27 @@ type
     property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
   end;
 
+  THomoionymExtention =  class(TViewData)
+  private
+    FWord:string;
+    FWordType:integer;
+    FExplanationID:integer;
+    FHomoionymWord:string;
+    FHomoionymWordType:integer;
+    FHomoionymExplanationID:integer;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property Word:string read FWord write FWord;
+    property WordType:integer read FWordType write FWordType;
+    property ExplanationID:integer read FExplanationID write FExplanationID;
+    property HomoionymWord:string read FHomoionymWord write FHomoionymWord;
+    property HomoionymWordType:integer read FHomoionymWordType write FHomoionymWordType;
+    property HomoionymExplanationID:integer read FHomoionymExplanationID write FHomoionymExplanationID;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
   TAntonymExtention =  class(TViewData)
   private
     FWord:string;
@@ -60,6 +81,23 @@ type
     property SynonymWord:string read FSynonymWord write FSynonymWord;
     property SynonymWordType:integer read FSynonymWordType write FSynonymWordType;
     property SynonymExplanationID:integer read FSynonymExplanationID write FSynonymExplanationID;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
+  TDerivativeExtention =  class(TViewData)
+  private
+    FOriginalWord:string;
+    FOriginalType:integer;
+    FDerivedWord:string;
+    FDerivedType:integer;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property OriginalWord:string read FOriginalWord write FOriginalWord;
+    property OriginalType:integer read FOriginalType write FOriginalType;
+    property DerivedWord:string read FDerivedWord write FDerivedWord;
+    property DerivedType:integer read FDerivedType write FDerivedType;
     property CreateTime:TDateTime read FCreateTime write FCreateTime;
     property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
   end;
