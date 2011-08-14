@@ -3,7 +3,8 @@ unit WordExtensionController;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordExtensionView, WordExtensionModel, SynonymModel, AntonymModel;
+  DB, ADODB, MVC, ViewData, WordExtensionView, WordExtensionModel,
+  DerivativeModel, SynonymModel, AntonymModel, HomoionymModel;
 
 type
   IWordExtensionController = interface(IController)
@@ -17,10 +18,15 @@ type
     property View: IWordExtensionView read GetView write SetView;
 
     procedure ShowWord;
-    procedure ShowTypeWordExtention(const value:TWord);
-    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
-    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
-    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
+//    procedure ShowTypeWordExtention(const value:TWord);
+//    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
+//    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
+//    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
+
+    procedure ShowDerivativeExtention(const value:TWord);
+    procedure InsertDerivativeExtention(const value:TDerivativeExtention);
+    procedure UpdateDerivativeExtention(const value, oldValue:TDerivativeExtention);
+    procedure DeleteDerivativeExtention(const value:TDerivativeExtention);
 
     procedure ShowSynonymExtention(const value:TWord);
     procedure InsertSynonymExtention(const value:TSynonymExtention);
@@ -31,6 +37,11 @@ type
     procedure InsertAntonymExtention(const value:TAntonymExtention);
     procedure UpdateAntonymExtention(const value, oldValue:TAntonymExtention);
     procedure DeleteAntonymExtention(const value:TAntonymExtention);
+
+    procedure ShowHomoionymExtention(const value:TWord);
+    procedure InsertHomoionymExtention(const value:THomoionymExtention);
+    procedure UpdateHomoionymExtention(const value, oldValue:THomoionymExtention);
+    procedure DeleteHomoionymExtention(const value:THomoionymExtention);
 ////    procedure SetWordCatalogDialogInfo;
 //
 //    procedure ShowCatalogWord;
@@ -46,8 +57,10 @@ type
   TWordExtensionController = class(TController, IWordExtensionController)
   private
     FCatalogWordModel:TWordExtensionModel;
+    FDerivativeModel:TDerivativeModel;
     FSynonymModel:TSynonymModel;
     FAntonymModel:TAntonymModel;
+    FHomoionymModel:THomoionymModel;
     //FCatalogRelationModel:TCatalogRelationModel;
   protected
     function GetModel: IWordExtensionModel;
@@ -62,10 +75,15 @@ type
 
     constructor Create(view:IWordExtensionView);
     procedure ShowWord;
-    procedure ShowTypeWordExtention(const value:TWord);
-    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
-    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
-    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
+//    procedure ShowTypeWordExtention(const value:TWord);
+//    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
+//    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
+//    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
+
+    procedure ShowDerivativeExtention(const value:TWord);
+    procedure InsertDerivativeExtention(const value:TDerivativeExtention);
+    procedure UpdateDerivativeExtention(const value, oldValue:TDerivativeExtention);
+    procedure DeleteDerivativeExtention(const value:TDerivativeExtention);
 
     procedure ShowSynonymExtention(const value:TWord);
     procedure InsertSynonymExtention(const value:TSynonymExtention);
@@ -76,6 +94,11 @@ type
     procedure InsertAntonymExtention(const value:TAntonymExtention);
     procedure UpdateAntonymExtention(const value, oldValue:TAntonymExtention);
     procedure DeleteAntonymExtention(const value:TAntonymExtention);
+
+    procedure ShowHomoionymExtention(const value:TWord);
+    procedure InsertHomoionymExtention(const value:THomoionymExtention);
+    procedure UpdateHomoionymExtention(const value, oldValue:THomoionymExtention);
+    procedure DeleteHomoionymExtention(const value:THomoionymExtention);
 ////    procedure SetWordCatalogDialogInfo;
 //
 //    procedure ShowCatalogWord;
@@ -120,8 +143,10 @@ begin
   md:=TWordExtensionModel.Create;
   inherited SetModel(md);
 
+  FDerivativeModel := TDerivativeModel.Create;
   FSynonymModel := TSynonymModel.Create;
   FAntonymModel := TAntonymModel.Create;
+  FHomoionymModel := THomoionymModel.Create;
 end;
 
 procedure TWordExtensionController.ShowWord;
@@ -132,27 +157,50 @@ begin
   GetView.ShowWord(ds);
 end;
 
-procedure TWordExtensionController.ShowTypeWordExtention(const value:TWord);
+//procedure TWordExtensionController.ShowTypeWordExtention(const value:TWord);
+//var
+// ds:TCustomADODataSet;
+//begin
+//  ds := GetModel.QueryTypeWordExtention(value);
+//  GetView.ShowTypeWordExtention(ds);
+//end;
+//
+//procedure TWordExtensionController.InsertTypeWordExtention(const value:TTypeWordExtention);
+//begin
+//  Model.InsertTypeWordExtention(value);
+//end;
+//
+//procedure TWordExtensionController.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
+//begin
+//  Model.UpdateTypeWordExtention(value, oldValue);
+//end;
+//
+//procedure TWordExtensionController.DeleteTypeWordExtention(const value:TTypeWordExtention);
+//begin
+//  Model.DeleteTypeWordExtention(value);
+//end;
+
+procedure TWordExtensionController.ShowDerivativeExtention(const value:TWord);
 var
  ds:TCustomADODataSet;
 begin
-  ds := GetModel.QueryTypeWordExtention(value);
-  GetView.ShowTypeWordExtention(ds);
+  ds := FDerivativeModel.QueryDerivativeExtention(value);
+  GetView.ShowDerivativeExtention(ds);
 end;
 
-procedure TWordExtensionController.InsertTypeWordExtention(const value:TTypeWordExtention);
+procedure TWordExtensionController.InsertDerivativeExtention(const value:TDerivativeExtention);
 begin
-  Model.InsertTypeWordExtention(value);
+  FDerivativeModel.InsertDerivativeExtention(value);
 end;
 
-procedure TWordExtensionController.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
+procedure TWordExtensionController.UpdateDerivativeExtention(const value, oldValue:TDerivativeExtention);
 begin
-  Model.UpdateTypeWordExtention(value, oldValue);
+  FDerivativeModel.UpdateDerivativeExtention(value, oldValue);
 end;
 
-procedure TWordExtensionController.DeleteTypeWordExtention(const value:TTypeWordExtention);
+procedure TWordExtensionController.DeleteDerivativeExtention(const value:TDerivativeExtention);
 begin
-  Model.DeleteTypeWordExtention(value);
+  FDerivativeModel.DeleteDerivativeExtention(value);
 end;
 
 procedure TWordExtensionController.ShowSynonymExtention(const value:TWord);
@@ -199,6 +247,29 @@ end;
 procedure TWordExtensionController.DeleteAntonymExtention(const value:TAntonymExtention);
 begin
   FAntonymModel.DeleteAntonymExtention(value)
+end;
+
+procedure TWordExtensionController.ShowHomoionymExtention(const value:TWord);
+var
+ ds:TCustomADODataSet;
+begin
+  ds := FHomoionymModel.QueryHomoionymExtention(value);
+  GetView.ShowHomoionymExtention(ds);
+end;
+
+procedure TWordExtensionController.InsertHomoionymExtention(const value:THomoionymExtention);
+begin
+  FHomoionymModel.InsertHomoionymExtention(value)
+end;
+
+procedure TWordExtensionController.UpdateHomoionymExtention(const value, oldValue:THomoionymExtention);
+begin
+  FHomoionymModel.UpdateHomoionymExtention(value, oldValue)
+end;
+
+procedure TWordExtensionController.DeleteHomoionymExtention(const value:THomoionymExtention);
+begin
+  FHomoionymModel.DeleteHomoionymExtention(value)
 end;
 
 //procedure TWordExtensionController.SetWordCatalogDialogInfo;

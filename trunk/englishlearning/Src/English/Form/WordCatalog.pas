@@ -607,7 +607,7 @@ end;
 
 procedure TWordCatalogForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  FWordCatalogController.DeleteWordView;
+//  FWordCatalogController.DeleteWordView;
 end;
 
 procedure TWordCatalogForm.FormCreate(Sender: TObject);

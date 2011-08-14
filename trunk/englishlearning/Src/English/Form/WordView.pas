@@ -112,6 +112,7 @@ type
 
     procedure SetImageList(const qryWordRange:TADOQuery);
     procedure SetPopUpMenuCheck(const ViewType:Integer);
+    procedure OnTerminate(Sender:TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -124,7 +125,7 @@ implementation
 
 uses
   WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog, AdvAPI,
-  CommonInfo;
+  CommonInfo, WordViewThread;
 
 {$R *.dfm}
 
@@ -294,33 +295,53 @@ procedure TWordViewForm.SetImageList(const qryWordRange:TADOQuery);
 var
   item: TAdvSmoothImageListBoxItem;
   strPicName: string;
+var
+  WordViewThread:TWordViewThread;
 begin
-  lbxPicture.Items.BeginUpdate;
+  //lbxPicture.Items.BeginUpdate;
 
   lbxPicture.Items.Clear;
   lbxPicture.Header.Caption := '';
   lbxPicture.Footer.Caption := '';
 
-  spWord.First;
-  while not spWord.Eof do
-  begin
-    strPicName := ConfigInfo.PicPath + spWord.FieldByName('PictureName').AsString;
+  WordViewThread := TWordViewThread.Create(True);
+  WordViewThread.WordStoredProc := spWord;
+  WordViewThread.PictureListBox := lbxPicture;
+  WordViewThread.Resume;
+  WordViewThread.OnTerminate := OnTerminate;
 
-    item := lbxPicture.Items.Add;
+//  spWord.First;
+//  while not spWord.Eof do
+//  begin
+//    strPicName := ConfigInfo.PicPath + spWord.FieldByName('PictureName').AsString;
+//
+//    item := lbxPicture.Items.Add;
+//
+//    if FileExists(strPicName) then
+//      item.Image.LoadFromFile(strPicName);
+//
+//    item.FileName := strPicName;
+//    item.Caption.Text := spWord.FieldByName('Word').AsString;
+//    item.Caption.Location := TAdvSmoothImageListBoxLocation(cpCenterCenter);
+//
+//    spWord.Next;
+//  end;
 
-    if FileExists(strPicName) then
-      item.Image.LoadFromFile(strPicName);
+//  lbxPictureItemSelect(lbxPicture, 0);
+//
+//  lbxPicture.Items.EndUpdate;
+end;
 
-    item.FileName := strPicName;
-    item.Caption.Text := spWord.FieldByName('Word').AsString;
-    item.Caption.Location := TAdvSmoothImageListBoxLocation(cpCenterCenter);
-
-    spWord.Next;
-  end;
+procedure TWordViewForm.OnTerminate(Sender: TObject);
+begin
+  MessageDlg(Format('Õº∆¨º”‘ÿÕÍ±œ£°π≤%d∑˘Õº∆¨£°', [lbxPicture.Items.Count]), mtInformation, [mbOK], 0);
 
   lbxPictureItemSelect(lbxPicture, 0);
+  //lbxPicture.SelectedItemIndex := 0;
+  lbxPicture.ScrollToItem(0);
 
-  lbxPicture.Items.EndUpdate;
+  //lbxPicture.Items.EndUpdate;
+
 end;
 
 procedure TWordViewForm.actNoExpExecute(Sender: TObject);

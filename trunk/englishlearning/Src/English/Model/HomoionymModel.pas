@@ -1,4 +1,4 @@
-unit SynonymModel;
+unit HomoionymModel;
 
 interface
 
@@ -6,23 +6,23 @@ uses
   DB, ADODB, MVC, ViewData, SysUtils, Dialogs;
 
 type
-  ISynonymModel = interface(IModel)
+  IHomoionymModel = interface(IModel)
     function QueryWord:TCustomADODataSet;
-    function QuerySynonymExtention(const value:TWord):TCustomADODataSet;
-    function InsertSynonymExtention(const value:TSynonymExtention):_Recordset;
-    function UpdateSynonymExtention(const value, oldValue:TSynonymExtention):_Recordset;
-    function DeleteSynonymExtention(const value:TSynonymExtention):_Recordset;
+    function QueryHomoionymExtention(const value:TWord):TCustomADODataSet;
+    function InsertHomoionymExtention(const value:THomoionymExtention):_Recordset;
+    function UpdateHomoionymExtention(const value, oldValue:THomoionymExtention):_Recordset;
+    function DeleteHomoionymExtention(const value:THomoionymExtention):_Recordset;
   end;
 
-  TSynonymModel = class(TModel, ISynonymModel)
+  THomoionymModel = class(TModel, IHomoionymModel)
   private
 
   public
     function QueryWord:TCustomADODataSet;
-    function QuerySynonymExtention(const value:TWord):TCustomADODataSet;
-    function InsertSynonymExtention(const value:TSynonymExtention):_Recordset;
-    function UpdateSynonymExtention(const value, oldValue:TSynonymExtention):_Recordset;
-    function DeleteSynonymExtention(const value:TSynonymExtention):_Recordset;
+    function QueryHomoionymExtention(const value:TWord):TCustomADODataSet;
+    function InsertHomoionymExtention(const value:THomoionymExtention):_Recordset;
+    function UpdateHomoionymExtention(const value, oldValue:THomoionymExtention):_Recordset;
+    function DeleteHomoionymExtention(const value:THomoionymExtention):_Recordset;
 
     constructor Create({Controller: IController});
   end;
@@ -31,12 +31,12 @@ implementation
 
 uses Variants;
 
-constructor TSynonymModel.Create;
+constructor THomoionymModel.Create;
 begin
   inherited Create;
 end;
 
-function TSynonymModel.QueryWord:TCustomADODataSet;
+function THomoionymModel.QueryWord:TCustomADODataSet;
 const
   sql:string =
 'SELECT' + #13#10 +
@@ -69,28 +69,28 @@ begin
   Result := Select(sql);
 end;
 
-//function TSynonymModel.QueryWordCatalogTree:TCustomADODataSet;
+//function THomoionymModel.QueryWordCatalogTree:TCustomADODataSet;
 //const
 //  sql:string ='GetCatalogRelationTree';
 //begin
 //  Result := ExeProc(sql);
 //end;
 
-function TSynonymModel.QuerySynonymExtention(const value:TWord):TCustomADODataSet;
+function THomoionymModel.QueryHomoionymExtention(const value:TWord):TCustomADODataSet;
 const
   sql:string =
 'SELECT' + #13#10 +
-'    ROW_NUMBER() OVER(ORDER BY WordSynonym.Word ASC,WordSynonym.SynonymWord ASC,WordSynonym.SynonymWordType ASC) AS RowId,' + #13#10 +
-'    WordSynonym.Word as BaseWord,' + #13#10 +
+'    ROW_NUMBER() OVER(ORDER BY WordHomoionym.Word ASC,WordHomoionym.HomoionymWord ASC,WordHomoionym.HomoionymWordType ASC) AS RowId,' + #13#10 +
+'    WordHomoionym.Word as BaseWord,' + #13#10 +
 '    WordType.ID as BaseWordTypeID,' + #13#10 +
 '    WordType.Disp as BaseWordType,' + #13#10 +
-'    WordSynonym.ExplanationID as BaseExplanationID,' + #13#10 +
+'    WordHomoionym.ExplanationID as BaseExplanationID,' + #13#10 +
 '    WordExplanation.Explanation as BaseExplanation,' + #13#10 +
-'    WordSynonym.SynonymWord as Word,' + #13#10 +
-'    SynonymWordType.ID as WordTypeID,' + #13#10 +
-'    SynonymWordType.Disp as WordType,' + #13#10 +
-'    SynonymExplanation.ExplanationID,' + #13#10 +
-'    SynonymExplanation.Explanation,' + #13#10 +
+'    WordHomoionym.HomoionymWord as Word,' + #13#10 +
+'    HomoionymWordType.ID as WordTypeID,' + #13#10 +
+'    HomoionymWordType.Disp as WordType,' + #13#10 +
+'    HomoionymExplanation.ExplanationID,' + #13#10 +
+'    HomoionymExplanation.Explanation,' + #13#10 +
 '    Importance.ID as  ImportanceID,' + #13#10 +
 '    Importance.Disp as ImportanceLevel,' + #13#10 +
 '    Difficulty.ID as DifficultyID,' + #13#10 +
@@ -105,34 +105,34 @@ const
 '    (SELECT COUNT(*) FROM WordExplanation WHERE WordExplanation.Word = Word.Word) AS ExplanationCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word) AS PictureCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word AND Picture.MainPicture = 1) AS MainPictureCount,' + #13#10 +
-'    WordSynonym.CreateTime,' + #13#10 +
-'    WordSynonym.UpdateTime' + #13#10 +
+'    WordHomoionym.CreateTime,' + #13#10 +
+'    WordHomoionym.UpdateTime' + #13#10 +
 'FROM' + #13#10 +
-'    WordSynonym' + #13#10 +
+'    WordHomoionym' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    Word ON Word.Word = WordSynonym.SynonymWord' + #13#10 +
+'    Word ON Word.Word = WordHomoionym.HomoionymWord' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordExplanation ON WordSynonym.Word = WordExplanation.Word AND' + #13#10 +
-'    WordSynonym.WordType = WordExplanation.WordType AND' + #13#10 +
-'    WordSynonym.ExplanationID = WordExplanation.ExplanationID' + #13#10 +
+'    WordExplanation ON WordHomoionym.Word = WordExplanation.Word AND' + #13#10 +
+'    WordHomoionym.WordType = WordExplanation.WordType AND' + #13#10 +
+'    WordHomoionym.ExplanationID = WordExplanation.ExplanationID' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordExplanation SynonymExplanation ON WordSynonym.SynonymWord = SynonymExplanation.Word AND' + #13#10 +
-'    WordSynonym.SynonymWordType = SynonymExplanation.WordType AND' + #13#10 +
-'    WordSynonym.SynonymExplanationID = SynonymExplanation.ExplanationID' + #13#10 +
+'    WordExplanation HomoionymExplanation ON WordHomoionym.HomoionymWord = HomoionymExplanation.Word AND' + #13#10 +
+'    WordHomoionym.HomoionymWordType = HomoionymExplanation.WordType AND' + #13#10 +
+'    WordHomoionym.HomoionymExplanationID = HomoionymExplanation.ExplanationID' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordType ON WordType.ID =  WordSynonym.WordType' + #13#10 +
+'    WordType ON WordType.ID =  WordHomoionym.WordType' + #13#10 +
 'LEFT JOIN' + #13#10 +
-'    WordType SynonymWordType ON SynonymWordType.ID =  WordSynonym.SynonymWordType' + #13#10 +
+'    WordType HomoionymWordType ON HomoionymWordType.ID =  WordHomoionym.HomoionymWordType' + #13#10 +
 'LEFT JOIN' + #13#10 +
 '    Importance ON Importance.ID = Word.ImportanceLevel' + #13#10 +
 'LEFT JOIN' + #13#10 +
 '    Difficulty ON Difficulty.ID =Word.DifficultyLevel' + #13#10 +
 'WHERE' + #13#10 +
-'    WordSynonym.Word = ''%s''' + #13#10 +
+'    WordHomoionym.Word = ''%s''' + #13#10 +
 'ORDER BY' + #13#10 +
-'    WordSynonym.Word ASC,' + #13#10 +
-'    WordSynonym.SynonymWord ASC,' + #13#10 +
-'    WordSynonym.SynonymWordType ASC';
+'    WordHomoionym.Word ASC,' + #13#10 +
+'    WordHomoionym.HomoionymWord ASC,' + #13#10 +
+'    WordHomoionym.HomoionymWordType ASC';
 begin
   SetSelectSql(Format(sql, [value.Word]));
   //SetSelectSql(sql);
@@ -142,13 +142,13 @@ begin
   Result := DoSelect;
 end;
 
-function TSynonymModel.InsertSynonymExtention(const value:TSynonymExtention):_Recordset;
+function THomoionymModel.InsertHomoionymExtention(const value:THomoionymExtention):_Recordset;
 const
   sql:string =
 'INSERT INTO' + #13#10 +
-'	WordSynonym(Word, WordType, ExplanationID, SynonymWord, SynonymWordType, SynonymExplanationID, CreateTime, UpdateTime)' + #13#10 +
+'	WordHomoionym(Word, WordType, ExplanationID, HomoionymWord, HomoionymWordType, HomoionymExplanationID, CreateTime, UpdateTime)' + #13#10 +
 'VALUES' + #13#10 +
-'	(:Word, :WordType, :ExplanationID, :SynonymWord, :SynonymWordType, :SynonymExplanationID, GetDate(), NULL)';
+'	(:Word, :WordType, :ExplanationID, :HomoionymWord, :HomoionymWordType, :HomoionymExplanationID, GetDate(), NULL)';
 begin
   SetExecuteSql(sql);
 
@@ -164,49 +164,49 @@ begin
   else
     Command.Parameters.ParamByName('ExplanationID').Value := value.ExplanationID;
 
-  Command.Parameters.ParamByName('SynonymWord').Value := value.SynonymWord;
+  Command.Parameters.ParamByName('HomoionymWord').Value := value.HomoionymWord;
 
-  if value.SynonymWordType = 0-1 then
-    Command.Parameters.ParamByName('SynonymWordType').Value := Null
+  if value.HomoionymWordType = 0-1 then
+    Command.Parameters.ParamByName('HomoionymWordType').Value := Null
   else
-    Command.Parameters.ParamByName('SynonymWordType').Value := value.SynonymWordType;
+    Command.Parameters.ParamByName('HomoionymWordType').Value := value.HomoionymWordType;
 
-  if value.SynonymExplanationID = 0 then
-    Command.Parameters.ParamByName('SynonymExplanationID').Value := Null
+  if value.HomoionymExplanationID = 0 then
+    Command.Parameters.ParamByName('HomoionymExplanationID').Value := Null
   else
-    Command.Parameters.ParamByName('SynonymExplanationID').Value := value.SynonymExplanationID;
+    Command.Parameters.ParamByName('HomoionymExplanationID').Value := value.HomoionymExplanationID;
 
   Result := DoExecute;
 end;
 
-function TSynonymModel.UpdateSynonymExtention(const value, oldValue:TSynonymExtention):_Recordset;
+function THomoionymModel.UpdateHomoionymExtention(const value, oldValue:THomoionymExtention):_Recordset;
 const
   sql:string =
 'UPDATE' + #13#10 +
-'	WordSynonym' + #13#10 +
+'	WordHomoionym' + #13#10 +
 'SET' + #13#10 +
 '	Word = :Word,' + #13#10 +
 '	WordType = :WordType,' + #13#10 +
 '	ExplanationID = :ExplanationID,' + #13#10 +
-'	SynonymWord = :SynonymWord,' + #13#10 +
-'	SynonymWordType = :SynonymWordType,' + #13#10 +
-'	SynonymExplanationID = :SynonymExplanationID,' + #13#10 +
+'	HomoionymWord = :HomoionymWord,' + #13#10 +
+'	HomoionymWordType = :HomoionymWordType,' + #13#10 +
+'	HomoionymExplanationID = :HomoionymExplanationID,' + #13#10 +
 '	UpdateTime = GetDate()' + #13#10 +
 'WHERE' + #13#10 +
 '	Word = :OldWord AND' + #13#10 +
 //'	WordType = :OldWordType AND' + #13#10 +
-//'	SynonymWord = :OldSynonymWord AND' + #13#10 +
-//'	SynonymWordType = :OldSynonymWordType';
-'	SynonymWord = :OldSynonymWord';
+//'	HomoionymWord = :OldHomoionymWord AND' + #13#10 +
+//'	HomoionymWordType = :OldHomoionymWordType';
+'	HomoionymWord = :OldHomoionymWord';
 begin
   SetExecuteSql(sql);
 
 //  Command.Parameters.ParamByName('Word').Value := value.Word;
 //  Command.Parameters.ParamByName('WordType').Value := value.WordType;
 //  Command.Parameters.ParamByName('ExplanationID').Value := value.ExplanationID;
-//  Command.Parameters.ParamByName('SynonymWord').Value := value.SynonymWord;
-//  Command.Parameters.ParamByName('SynonymWordType').Value := value.SynonymWordType;
-//  Command.Parameters.ParamByName('SynonymExplanationID').Value := value.SynonymExplanationID;
+//  Command.Parameters.ParamByName('HomoionymWord').Value := value.HomoionymWord;
+//  Command.Parameters.ParamByName('HomoionymWordType').Value := value.HomoionymWordType;
+//  Command.Parameters.ParamByName('HomoionymExplanationID').Value := value.HomoionymExplanationID;
 
   Command.Parameters.ParamByName('Word').Value := value.Word;
 
@@ -220,27 +220,27 @@ begin
   else
     Command.Parameters.ParamByName('ExplanationID').Value := value.ExplanationID;
 
-  Command.Parameters.ParamByName('SynonymWord').Value := value.SynonymWord;
+  Command.Parameters.ParamByName('HomoionymWord').Value := value.HomoionymWord;
 
-  if value.SynonymWordType = 0 then
-    Command.Parameters.ParamByName('SynonymWordType').Value := Null
+  if value.HomoionymWordType = 0 then
+    Command.Parameters.ParamByName('HomoionymWordType').Value := Null
   else
-    Command.Parameters.ParamByName('SynonymWordType').Value := value.SynonymWordType;
+    Command.Parameters.ParamByName('HomoionymWordType').Value := value.HomoionymWordType;
 
-  if value.SynonymExplanationID = 0 then
-    Command.Parameters.ParamByName('SynonymExplanationID').Value := Null
+  if value.HomoionymExplanationID = 0 then
+    Command.Parameters.ParamByName('HomoionymExplanationID').Value := Null
   else
-    Command.Parameters.ParamByName('SynonymExplanationID').Value := value.SynonymExplanationID;
+    Command.Parameters.ParamByName('HomoionymExplanationID').Value := value.HomoionymExplanationID;
 
   Command.Parameters.ParamByName('OldWord').Value := oldValue.Word;
   //Command.Parameters.ParamByName('OldBaseType').Value := oldValue.WordType;
-  Command.Parameters.ParamByName('OldSynonymWord').Value := oldValue.SynonymWord;
-  //Command.Parameters.ParamByName('OldExtendType').Value := oldValue.SynonymWordType;
+  Command.Parameters.ParamByName('OldHomoionymWord').Value := oldValue.HomoionymWord;
+  //Command.Parameters.ParamByName('OldExtendType').Value := oldValue.HomoionymWordType;
 
   Result := DoExecute;
 end;
 
-//function TSynonymModel.InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
+//function THomoionymModel.InsertCatalogRelation(const value:TCatalogRelation):_Recordset;
 //const
 //  sql:string =
 //'INSERT INTO' + #13#10 +
@@ -257,16 +257,16 @@ end;
 //end;
 
 
-function TSynonymModel.DeleteSynonymExtention(const value:TSynonymExtention):_Recordset;
+function THomoionymModel.DeleteHomoionymExtention(const value:THomoionymExtention):_Recordset;
 const
-  sql:string = 'DELETE FROM WordSynonym WHERE Word = :Word AND SynonymWord = :SynonymWord';
+  sql:string = 'DELETE FROM WordHomoionym WHERE Word = :Word AND HomoionymWord = :HomoionymWord';
 begin
   SetExecuteSql(sql);
 
   Command.Parameters.ParamByName('Word').Value := value.Word;
   //Command.Parameters.ParamByName('WordType').Value := value.WordType;
-  Command.Parameters.ParamByName('SynonymWord').Value := value.SynonymWord;
-  //Command.Parameters.ParamByName('SynonymWordType').Value := value.SynonymWordType;
+  Command.Parameters.ParamByName('HomoionymWord').Value := value.HomoionymWord;
+  //Command.Parameters.ParamByName('HomoionymWordType').Value := value.HomoionymWordType;
 
   Result := DoExecute;
 end;

@@ -780,7 +780,8 @@ begin
 //  qryWordType.RecNo := tgr1.ActivePageIndex;// + 1;
 //  repeat
     tabindex := qryWordType.FieldByName('WordTypeID').AsInteger;
-    selectedExplanationID[tabindex] := Index;// + 1;
+//    selectedExplanationID[tabindex] := Index;// + 1;
+    selectedExplanationID[tgr1.ActivePageIndex] := Index;// + 1;
     btnAddPicture.DropDownButton := index = 0;//selectedExplanationID[tgr1.ActivePageIndex] = 0;
 
 //    if Index = 0 then

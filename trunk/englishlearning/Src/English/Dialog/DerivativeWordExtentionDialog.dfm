@@ -1,5 +1,5 @@
-inherited TypeWordExtentionDialogForm: TTypeWordExtentionDialogForm
-  Caption = #35789#24615#25193#23637
+inherited DerivativeWordExtentionDialogForm: TDerivativeWordExtentionDialogForm
+  Caption = #27966#29983#25193#23637
   ClientHeight = 356
   ClientWidth = 506
   OnClose = FormClose

@@ -202,6 +202,8 @@ begin
       Caption := '同义扩展';
     3:
       Caption := '反义扩展';
+    4:
+      Caption := '近义扩展';
   end;
 end;
 

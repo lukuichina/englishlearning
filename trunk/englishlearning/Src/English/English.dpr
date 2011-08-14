@@ -36,7 +36,7 @@ uses
   WordExtensionController in 'Controller\WordExtensionController.pas',
   WordExtensionView in 'View\WordExtensionView.pas',
   WordExtensionModel in 'Model\WordExtensionModel.pas',
-  TypeWordExtentionDialog in 'Dialog\TypeWordExtentionDialog.pas' {TypeWordExtentionDialogForm},
+  DerivativeWordExtentionDialog in 'Dialog\DerivativeWordExtentionDialog.pas' {DerivativeWordExtentionDialogForm},
   SynonymModel in 'Model\SynonymModel.pas',
   SynonymWordExtentionDialog in 'Dialog\SynonymWordExtentionDialog.pas' {SynonymWordExtentionDialogForm},
   AntonymModel in 'Model\AntonymModel.pas',
@@ -46,7 +46,10 @@ uses
   CommonInfo in 'CommonLib\CommonInfo.pas',
   WordViewModel in 'Model\WordViewModel.pas',
   WordViewController in 'Controller\WordViewController.pas',
-  WordViewView in 'View\WordViewView.pas';
+  WordViewView in 'View\WordViewView.pas',
+  WordViewThread in 'Thread\WordViewThread.pas',
+  DerivativeModel in 'Model\DerivativeModel.pas',
+  HomoionymModel in 'Model\HomoionymModel.pas';
 
 {$R *.res}
 
