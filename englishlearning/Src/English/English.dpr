@@ -49,7 +49,11 @@ uses
   WordViewView in 'View\WordViewView.pas',
   WordViewThread in 'Thread\WordViewThread.pas',
   DerivativeModel in 'Model\DerivativeModel.pas',
-  HomoionymModel in 'Model\HomoionymModel.pas';
+  HomoionymModel in 'Model\HomoionymModel.pas',
+  DBGridToExcel in 'CommonLib\DBGridToExcel.pas',
+  XLSFile in 'CommonLib\XLSFile.pas',
+  TsycFunctionSet in 'CommonLib\TsycFunctionSet.pas',
+  uExportXls in 'CommonLib\uExportXls.pas';
 
 {$R *.res}
 

@@ -112,6 +112,7 @@ type
     actViewExtention: TAction;
     mnuWordView: TMenuItem;
     actViewWord: TAction;
+    mnuViewWord: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);

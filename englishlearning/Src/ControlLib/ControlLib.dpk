@@ -26,9 +26,11 @@ package ControlLib;
 
 requires
   rtl,
-  vcl;
+  vcl,
+  dbrtl;
 
 contains
-  FullScreen in 'FullScreen\FullScreen.pas';
+  FullScreen in 'FullScreen\FullScreen.pas',
+  LynDataToXls in 'Excel\LynDataToXls.pas';
 
 end.

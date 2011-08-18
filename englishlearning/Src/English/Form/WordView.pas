@@ -9,7 +9,7 @@ uses
   AdvOfficeButtons, AdvStickyPopupMenu, AdvToolBar, AdvSmoothTouchKeyBoard,
   AdvGlowButton, AdvGlassButton, ActnList, DB, ADODB, Menus, AdvMenus, StdCtrls,
   AdvMenuStylers, ImgList, GDIPPictureContainer,ShellAPI, AdvOfficeImage,
-  ExtCtrls, AdvSplitter, WordViewView, WordViewController;
+  ExtCtrls, AdvSplitter, WordViewView, WordViewController, Gauges, WordViewThread;
 
 type
   TWordViewForm = class(TForm, IWordViewView)
@@ -109,13 +109,22 @@ type
     FHavingData:Boolean;
     FIsWordRangeMenuPopuped :Boolean;
     FWordViewController:IWordViewController;
+    FProgressForm: TForm;                                  {进度窗体}
+    FGauge: TGauge;                                        {进度条}
+    FShowProgress :Boolean;
+    //var
+    WordViewThread:TWordViewThread;
+    FThreadFinished:Boolean;
 
     procedure SetImageList(const qryWordRange:TADOQuery);
     procedure SetPopUpMenuCheck(const ViewType:Integer);
     procedure OnTerminate(Sender:TObject);
+    procedure CreateProcessForm(AOwner: TComponent);
+    procedure UpdateProgress(const value:Integer);
     { Private declarations }
   public
     { Public declarations }
+    property ShowProgress: Boolean read FShowProgress write FShowProgress;
   end;
 
 var
@@ -125,7 +134,7 @@ implementation
 
 uses
   WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog, AdvAPI,
-  CommonInfo, WordViewThread;
+  CommonInfo;
 
 {$R *.dfm}
 
@@ -202,13 +211,16 @@ procedure TWordViewForm.actMainPicExecute(Sender: TObject);
 begin
   try
     WordRangeForm := TWordRangeForm.Create(nil);
+    WordRangeForm.WordStart := FBeginWord;
+    WordRangeForm.WordEnd := FEndWord;
+    WordRangeForm.ViewType := FViewType;
 
     if WordRangeForm.ShowModal <> mrOk then
       exit;
 
     FBeginWord := WordRangeForm.WordStart;
     FEndWord := WordRangeForm.WordEnd;
-    FViewType := 1;
+    FViewType := WordRangeForm.ViewType; //1;
     //FWordType := 0;
 
     FWordViewController.InsertWordView(FBeginWord, FEndWord);
@@ -295,18 +307,42 @@ procedure TWordViewForm.SetImageList(const qryWordRange:TADOQuery);
 var
   item: TAdvSmoothImageListBoxItem;
   strPicName: string;
-var
-  WordViewThread:TWordViewThread;
+//var
+//  WordViewThread:TWordViewThread;
 begin
+  TAdvOfficePage1.Enabled := False;
+  TAdvOfficePage2.Enabled := False;
+  TAdvOfficePage3.Enabled := False;
+//  btnWordOption.Enabled := False;
+//  btnWordType.Enabled := False;
+//  btnWordExplanation.Enabled := False;
+//  btnManagePicture.Enabled := False;
+//  btnKingExplanation.Enabled := False;
+//  btnManagePicture1.Enabled := False;
+//
+//  btnNormalView.Enabled := False;
+//  btnClientView.Enabled := False;
+//  btnMaxView.Enabled := False;
+//  btnScreenView.Enabled := False;
+//  btnScreenView1.Enabled := False;
+//  btnGooglePicture2.Enabled := False;
   //lbxPicture.Items.BeginUpdate;
 
   lbxPicture.Items.Clear;
   lbxPicture.Header.Caption := '';
   lbxPicture.Footer.Caption := '';
+  lbxPicture.Enabled := False;
 
+  //显示进度窗体
+  if ShowProgress then
+    CreateProcessForm(nil);
+
+  FThreadFinished := False;
   WordViewThread := TWordViewThread.Create(True);
   WordViewThread.WordStoredProc := spWord;
   WordViewThread.PictureListBox := lbxPicture;
+  WordViewThread.WordViewThreadEvent := UpdateProgress;
+  //WordViewThread.ShowProgress := True;
   WordViewThread.Resume;
   WordViewThread.OnTerminate := OnTerminate;
 
@@ -330,6 +366,7 @@ begin
 //  lbxPictureItemSelect(lbxPicture, 0);
 //
 //  lbxPicture.Items.EndUpdate;
+
 end;
 
 procedure TWordViewForm.OnTerminate(Sender: TObject);
@@ -337,11 +374,31 @@ begin
   MessageDlg(Format('图片加载完毕！共%d幅图片！', [lbxPicture.Items.Count]), mtInformation, [mbOK], 0);
 
   lbxPictureItemSelect(lbxPicture, 0);
-  //lbxPicture.SelectedItemIndex := 0;
+  lbxPicture.SelectedItemIndex := 0;
   lbxPicture.ScrollToItem(0);
+  lbxPicture.Enabled := True;
 
   //lbxPicture.Items.EndUpdate;
+  TAdvOfficePage1.Enabled := True;
+  TAdvOfficePage2.Enabled := True;
+  TAdvOfficePage3.Enabled := True;
+//  btnWordOption.Enabled := True;
+//  btnWordType.Enabled := True;
+//  btnWordExplanation.Enabled := True;
+//  btnManagePicture.Enabled := True;
+//  btnKingExplanation.Enabled := True;
+//  btnManagePicture1.Enabled := True;
+//
+//  btnNormalView.Enabled := True;
+//  btnClientView.Enabled := True;
+//  btnMaxView.Enabled := True;
+//  btnScreenView.Enabled := True;
+//  btnScreenView1.Enabled := True;
+//  btnGooglePicture2.Enabled := True;
+    if ShowProgress then
+      FreeAndNil(FProgressForm);
 
+    FThreadFinished := True;
 end;
 
 procedure TWordViewForm.actNoExpExecute(Sender: TObject);
@@ -552,6 +609,15 @@ end;
 procedure TWordViewForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FWordViewController.DeleteWordView;
+
+  if not FThreadFinished then
+  begin
+    if not WordViewThread.Suspended then
+      WordViewThread.Suspend;
+  end;
+
+  if ShowProgress then
+      FreeAndNil(FProgressForm);
 end;
 
 procedure TWordViewForm.FormCreate(Sender: TObject);
@@ -576,6 +642,10 @@ begin
   end;
 
   TAdvOfficePager1.ActivePageIndex := 0;
+
+  FViewType := 1;
+  FShowProgress := True;
+  FThreadFinished := True;
 end;
 
 procedure TWordViewForm.FormResize(Sender: TObject);
@@ -609,7 +679,7 @@ begin
 //    FBeginWord := WordRangeForm.WordStart;
 //    FEndWord := WordRangeForm.WordEnd;
 //    FViewType := 1;
-    FViewType := 0;
+    FViewType := 1;
     //FWordType := 0;
 
     spWord.Close;
@@ -768,6 +838,80 @@ begin
 
   if FHavingData then
     mnuWordOption.MenuItems[ViewType].Checked := True;
+end;
+
+procedure TWordViewForm.CreateProcessForm(AOwner: TComponent);
+var
+  Panel: TPanel;
+  Prompt: TLabel;                                           {提示的标签}
+  bsNone:TBorderStyle;
+  //bcNone:TBevelCut;
+begin
+  if Assigned(FProgressForm) then
+    exit;
+
+  FProgressForm := TForm.Create(AOwner);
+  with FProgressForm do
+  begin
+    try
+      Font.Name := '宋体';                                  {设置字体}
+      Font.Size := 9;
+      BorderStyle := bsNone;
+      Width := 300;
+      Height := 100;
+      BorderWidth := 1;
+      Color := clBlack;
+      Position := poOwnerFormCenter;
+      //Position := poScreenCenter;
+
+      Panel := TPanel.Create(FProgressForm);
+      with Panel do
+      begin
+        Parent := FProgressForm;
+        Align := alClient;
+        BevelInner := bvNone;
+        BevelOuter := bvRaised;
+        Caption := '';
+      end;
+
+      Prompt := TLabel.Create(Panel);
+      with Prompt do
+      begin
+        Parent := Panel;
+        AutoSize := True;
+        Left := 25;
+        Top := 25;
+        Caption := '正在导出数据，请稍候......';
+        Font.Style := [fsBold];
+      end;
+
+      FGauge := TGauge.Create(Panel);
+      with FGauge do
+      begin
+        Parent := Panel;
+        ForeColor := clBlue;
+        Left := 20;
+        Top := 50;
+        Height := 13;
+        Width := 260;
+        MinValue := 0;
+        MaxValue := spWord.RecordCount;
+      end;
+    except
+
+    end;
+  end;
+
+  FProgressForm.Show;
+  FProgressForm.Update;
+
+//  SetWindowLong(FProgressForm.Handle, GWL_STYLE,
+//      GetWindowLong(FProgressForm.Handle, GWL_STYLE) AND WS_EX_TOPMOST);
+end;
+
+procedure TWordViewForm.UpdateProgress(const value:Integer);
+begin
+  FGauge.Progress := value;
 end;
 
 end.
