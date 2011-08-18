@@ -134,7 +134,8 @@ var
 implementation
 
 uses
-  DataModule, Excel, WordExplain, WordPicture, WordExtension;
+  DataModule, Excel, WordExplain, WordPicture, WordExtension, DBGridToExcel, DateUtils,
+  XLSFile, uExportXls;
 
 {$R *.dfm}
 
@@ -163,8 +164,41 @@ begin
 end;
 
 procedure TWordInputForm.actImportToExcelExecute(Sender: TObject);
+var
+  DBGridToExcel:TDBGridToExcel;
 begin
+//  With ExportXls.Create(TDataSet(grdWord.DataSource.DataSet)) do
+//
+//          Try
+//
+//            Save2File('D:\Word_TMP.xls', True);
+//
+//          finally
+//
+//            Free;
+//
+//          end;
+//          Exit;
+//
+//  DBGridToExcel := TDBGridToExcel.Create(nil);
+
+//  try
+////    StringGridToXLS(grdWord, 'C:\Word_TMP.xls');
+////    Exit;
+//
+//
+//    DBGridToExcel.DBGrid := grdWord;
+//    DBGridToExcel.ShowProgress := True;
+//    DBGridToExcel.TitleName := 'µ•¥ “ª¿¿';
+//    //DBGridToExcel.BeginDate := now;
+//    DBGridToExcel.FileName := 'D:\Word.xls';
+//    DBGridToExcel.Open := True;
+//    DBGridToExcel.ExportToExcel;
+//  finally
+//    DBGridToExcel.Free;
+//  end;
   CopyDbAdvDataToExcel([grdWord]);
+
 //  if not dlgSave1.Execute then
 //    exit;
 //

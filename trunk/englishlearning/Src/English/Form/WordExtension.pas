@@ -46,9 +46,6 @@ type
     mnuViewExplanation: TMenuItem;
     advtlbr2: TAdvToolBar;
     advtlbr1: TAdvToolBar;
-    btnNextPage: TAdvGlowButton;
-    btnPreviousPage: TAdvGlowButton;
-    btnGoto: TAdvGlowButton;
     actMainMenu: TActionList;
     actPreviousPage: TAction;
     actNextPage: TAction;
@@ -92,7 +89,6 @@ type
     actAntonymViewPicture: TAction;
     actAntonymViewExplanation: TAction;
     btnAddPicture: TAdvGlowButton;
-    btnRemovePicture: TAdvGlowButton;
     btnReplacePicture: TAdvGlowButton;
     grdAntonymWordExtention: TDBAdvGrid;
     dsDerivativeExtention: TDataSource;
@@ -110,6 +106,10 @@ type
     actHomoionymViewPicture: TAction;
     actHomoionymViewExplanation: TAction;
     grdHomoionymWordExtention: TDBAdvGrid;
+    btnPreviousPage: TAdvGlowButton;
+    btnNextPage: TAdvGlowButton;
+    btnGoto: TAdvGlowButton;
+    btnRemovePicture: TAdvGlowButton;
     procedure FormCreate(Sender: TObject);
     procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
       var Allow: Boolean);

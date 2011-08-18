@@ -142,6 +142,10 @@
 			<DCCReference Include="Thread\WordViewThread.pas"/>
 			<DCCReference Include="Model\DerivativeModel.pas"/>
 			<DCCReference Include="Model\HomoionymModel.pas"/>
+			<DCCReference Include="CommonLib\DBGridToExcel.pas"/>
+			<DCCReference Include="CommonLib\XLSFile.pas"/>
+			<DCCReference Include="CommonLib\TsycFunctionSet.pas"/>
+			<DCCReference Include="CommonLib\uExportXls.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

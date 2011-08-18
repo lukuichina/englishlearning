@@ -3,7 +3,10 @@ unit WordViewThread;
 interface
 
 uses
-  Classes, ADODB, advsmoothimagelistbox, SysUtils;
+  Classes, ADODB, advsmoothimagelistbox, SysUtils, Gauges, Forms;
+
+type
+  TWordViewThreadEvent = procedure(const value:integer) of object;
 
 type
   TWordViewThread = class(TThread)
@@ -14,14 +17,23 @@ type
 
     item: TAdvSmoothImageListBoxItem;
     strPicName: string;
+    FWordViewThreadEvent:TWordViewThreadEvent;
+
+//    FProgressForm: TForm;                                  {进度窗体}
+//    FGauge: TGauge;                                        {进度条}
+//    FShowProgress :Boolean;
+
   protected
     procedure Execute; override;
     procedure lbxPictureItemSelect(Sender: TObject;itemindex: Integer);
     procedure UpdatePictureBox;
 
   public
+    //constructor Create();override;
     property WordStoredProc:TADOStoredProc write spWord;
     property PictureListBox:TAdvSmoothImageListBox write lbxPicture;
+    property WordViewThreadEvent:TWordViewThreadEvent write FWordViewThreadEvent;
+    //property ShowProgress: Boolean read FShowProgress write FShowProgress;
   end;
 
 implementation
@@ -73,6 +85,8 @@ begin
 //  lbxPicture.Items.Clear;
 //  lbxPicture.Header.Caption := '';
 //  lbxPicture.Footer.Caption := '';
+//  if ShowProgress then
+//    CreateProcessForm(nil);
 
   spWord.First;
   while not spWord.Eof do
@@ -129,6 +143,8 @@ begin
     item.Caption.Location := TAdvSmoothImageListBoxLocation(cpCenterCenter);
 
     //lbxPicture.Items.EndUpdate;
+    if Assigned(FWordViewThreadEvent) then
+      FWordViewThreadEvent(spWord.RecNo);
 end;
 
 end.
