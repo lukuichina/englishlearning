@@ -104,6 +104,9 @@ begin
 
   FProgressForm.Show;
   FProgressForm.Update;
+
+  SetWindowPos(FProgressForm.Handle, HWND_TOPMOST, 0, 0, 0, 0,
+      SWP_NOMOVE OR SWP_NOSIZE OR SWP_SHOWWINDOW);
 end;
 
 {

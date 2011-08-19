@@ -371,6 +371,9 @@ end;
 
 procedure TWordViewForm.OnTerminate(Sender: TObject);
 begin
+  if ShowProgress then
+      FreeAndNil(FProgressForm);
+
   MessageDlg(Format('Õº∆¨º”‘ÿÕÍ±œ£°π≤%d∑˘Õº∆¨£°', [lbxPicture.Items.Count]), mtInformation, [mbOK], 0);
 
   lbxPictureItemSelect(lbxPicture, 0);
@@ -395,8 +398,6 @@ begin
 //  btnScreenView.Enabled := True;
 //  btnScreenView1.Enabled := True;
 //  btnGooglePicture2.Enabled := True;
-    if ShowProgress then
-      FreeAndNil(FProgressForm);
 
     FThreadFinished := True;
 end;
@@ -905,8 +906,8 @@ begin
   FProgressForm.Show;
   FProgressForm.Update;
 
-//  SetWindowLong(FProgressForm.Handle, GWL_STYLE,
-//      GetWindowLong(FProgressForm.Handle, GWL_STYLE) AND WS_EX_TOPMOST);
+  SetWindowPos(FProgressForm.Handle, HWND_TOPMOST, 0, 0, 0, 0,
+      SWP_NOMOVE OR SWP_NOSIZE OR SWP_SHOWWINDOW);
 end;
 
 procedure TWordViewForm.UpdateProgress(const value:Integer);
