@@ -40,9 +40,7 @@ type
     N1: TMenuItem;
     tbWordCatalog: TAdvToolBar;
     btnAddCatalog: TAdvGlowButton;
-    btnRemoveCatalog: TAdvGlowButton;
     btnReplaceCatalog: TAdvGlowButton;
-    btnRefreshCatalog: TAdvGlowButton;
     actRefreshCatalog: TAction;
     mdWordCatalogTree: TdxMemData;
     mdWordCatalogTreeCatalogID: TStringField;
@@ -113,6 +111,8 @@ type
     mnuWordView: TMenuItem;
     actViewWord: TAction;
     mnuViewWord: TMenuItem;
+    btnRemoveCatalog: TAdvGlowButton;
+    btnRefreshCatalog: TAdvGlowButton;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
