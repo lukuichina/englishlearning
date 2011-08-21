@@ -188,7 +188,8 @@ begin
 
   Word := lbxPicture.Items[lbxPicture.SelectedItemIndex].Caption.Text;
   URL := 'http://www.google.com/images?q=' + Word;
-  ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
+  ShellExecute(handle, 'open', PWideChar(configInfo.Browser), PWideChar(URL), nil, SW_SHOWNORMAL);
+  //ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure TWordViewForm.actKingExplanationExecute(Sender: TObject);
@@ -204,8 +205,9 @@ begin
 
   Word := lbxPicture.Items[lbxPicture.SelectedItemIndex].Caption.Text;
   URL := 'http://www.iciba.com/' + Word;
-  ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
-end;
+  ShellExecute(handle, 'open', PWideChar(configInfo.Browser), PWideChar(URL), nil, SW_SHOWNORMAL);
+  //ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
+  end;
 
 procedure TWordViewForm.actMainPicExecute(Sender: TObject);
 begin

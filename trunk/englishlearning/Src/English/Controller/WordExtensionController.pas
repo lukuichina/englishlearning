@@ -4,7 +4,8 @@ interface
 
 uses
   DB, ADODB, MVC, ViewData, WordExtensionView, WordExtensionModel,
-  DerivativeModel, SynonymModel, AntonymModel, HomoionymModel;
+  DerivativeModel, SynonymModel, AntonymModel, HomoionymModel, ResemblanceModel,
+  CongenerModel;
 
 type
   IWordExtensionController = interface(IController)
@@ -22,11 +23,15 @@ type
 //    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
 //    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
 //    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
-
     procedure ShowDerivativeExtention(const value:TWord);
     procedure InsertDerivativeExtention(const value:TDerivativeExtention);
     procedure UpdateDerivativeExtention(const value, oldValue:TDerivativeExtention);
     procedure DeleteDerivativeExtention(const value:TDerivativeExtention);
+
+    procedure ShowResemblanceExtention(const value:TWord);
+    procedure InsertResemblanceExtention(const value:TResemblanceExtention);
+    procedure UpdateResemblanceExtention(const value, oldValue:TResemblanceExtention);
+    procedure DeleteResemblanceExtention(const value:TResemblanceExtention);
 
     procedure ShowSynonymExtention(const value:TWord);
     procedure InsertSynonymExtention(const value:TSynonymExtention);
@@ -42,6 +47,11 @@ type
     procedure InsertHomoionymExtention(const value:THomoionymExtention);
     procedure UpdateHomoionymExtention(const value, oldValue:THomoionymExtention);
     procedure DeleteHomoionymExtention(const value:THomoionymExtention);
+
+    procedure ShowCongenerExtention(const value:TWord);
+    procedure InsertCongenerExtention(const value:TCongenerExtention);
+    procedure UpdateCongenerExtention(const value, oldValue:TCongenerExtention);
+    procedure DeleteCongenerExtention(const value:TCongenerExtention);
 ////    procedure SetWordCatalogDialogInfo;
 //
 //    procedure ShowCatalogWord;
@@ -58,9 +68,11 @@ type
   private
     FCatalogWordModel:TWordExtensionModel;
     FDerivativeModel:TDerivativeModel;
+    FResemblanceModel:TResemblanceModel;
     FSynonymModel:TSynonymModel;
     FAntonymModel:TAntonymModel;
     FHomoionymModel:THomoionymModel;
+    FCongenerModel:TCongenerModel;
     //FCatalogRelationModel:TCatalogRelationModel;
   protected
     function GetModel: IWordExtensionModel;
@@ -85,6 +97,11 @@ type
     procedure UpdateDerivativeExtention(const value, oldValue:TDerivativeExtention);
     procedure DeleteDerivativeExtention(const value:TDerivativeExtention);
 
+    procedure ShowResemblanceExtention(const value:TWord);
+    procedure InsertResemblanceExtention(const value:TResemblanceExtention);
+    procedure UpdateResemblanceExtention(const value, oldValue:TResemblanceExtention);
+    procedure DeleteResemblanceExtention(const value:TResemblanceExtention);
+
     procedure ShowSynonymExtention(const value:TWord);
     procedure InsertSynonymExtention(const value:TSynonymExtention);
     procedure UpdateSynonymExtention(const value, oldValue:TSynonymExtention);
@@ -99,6 +116,11 @@ type
     procedure InsertHomoionymExtention(const value:THomoionymExtention);
     procedure UpdateHomoionymExtention(const value, oldValue:THomoionymExtention);
     procedure DeleteHomoionymExtention(const value:THomoionymExtention);
+
+    procedure ShowCongenerExtention(const value:TWord);
+    procedure InsertCongenerExtention(const value:TCongenerExtention);
+    procedure UpdateCongenerExtention(const value, oldValue:TCongenerExtention);
+    procedure DeleteCongenerExtention(const value:TCongenerExtention);
 ////    procedure SetWordCatalogDialogInfo;
 //
 //    procedure ShowCatalogWord;
@@ -144,9 +166,11 @@ begin
   inherited SetModel(md);
 
   FDerivativeModel := TDerivativeModel.Create;
+  FResemblanceModel := TResemblanceModel.Create;
   FSynonymModel := TSynonymModel.Create;
   FAntonymModel := TAntonymModel.Create;
   FHomoionymModel := THomoionymModel.Create;
+  FCongenerModel := TCongenerModel.Create;
 end;
 
 procedure TWordExtensionController.ShowWord;
@@ -201,6 +225,29 @@ end;
 procedure TWordExtensionController.DeleteDerivativeExtention(const value:TDerivativeExtention);
 begin
   FDerivativeModel.DeleteDerivativeExtention(value);
+end;
+
+procedure TWordExtensionController.ShowResemblanceExtention(const value:TWord);
+var
+ ds:TCustomADODataSet;
+begin
+  ds := FResemblanceModel.QueryResemblanceExtention(value);
+  GetView.ShowResemblanceExtention(ds);
+end;
+
+procedure TWordExtensionController.InsertResemblanceExtention(const value:TResemblanceExtention);
+begin
+  FResemblanceModel.InsertResemblanceExtention(value);
+end;
+
+procedure TWordExtensionController.UpdateResemblanceExtention(const value, oldValue:TResemblanceExtention);
+begin
+  FResemblanceModel.UpdateResemblanceExtention(value, oldValue);
+end;
+
+procedure TWordExtensionController.DeleteResemblanceExtention(const value:TResemblanceExtention);
+begin
+  FResemblanceModel.DeleteResemblanceExtention(value);
 end;
 
 procedure TWordExtensionController.ShowSynonymExtention(const value:TWord);
@@ -272,6 +319,28 @@ begin
   FHomoionymModel.DeleteHomoionymExtention(value)
 end;
 
+procedure TWordExtensionController.ShowCongenerExtention(const value:TWord);
+var
+ ds:TCustomADODataSet;
+begin
+  ds := FCongenerModel.QueryCongenerExtention(value);
+  GetView.ShowCongenerExtention(ds);
+end;
+
+procedure TWordExtensionController.InsertCongenerExtention(const value:TCongenerExtention);
+begin
+  FCongenerModel.InsertCongenerExtention(value)
+end;
+
+procedure TWordExtensionController.UpdateCongenerExtention(const value, oldValue:TCongenerExtention);
+begin
+  FCongenerModel.UpdateCongenerExtention(value, oldValue)
+end;
+
+procedure TWordExtensionController.DeleteCongenerExtention(const value:TCongenerExtention);
+begin
+  FCongenerModel.DeleteCongenerExtention(value)
+end;
 //procedure TWordExtensionController.SetWordCatalogDialogInfo;
 //begin
 //

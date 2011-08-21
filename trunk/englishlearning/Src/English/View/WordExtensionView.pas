@@ -10,9 +10,11 @@ type
     procedure ShowWord(value:TCustomADODataSet);
     procedure ShowTypeWordExtention(value:TCustomADODataSet);
     procedure ShowDerivativeExtention(value:TCustomADODataSet);
+    procedure ShowResemblanceExtention(value:TCustomADODataSet);
     procedure ShowSynonymExtention(value:TCustomADODataSet);
     procedure ShowAntonymExtention(value:TCustomADODataSet);
     procedure ShowHomoionymExtention(value:TCustomADODataSet);
+    procedure ShowCongenerExtention(value:TCustomADODataSet);
 //    procedure ShowCatalogWord(value:TCustomADODataSet);
 //
 //    function  GetCatalogRelationInfo:TCatalogRelation;

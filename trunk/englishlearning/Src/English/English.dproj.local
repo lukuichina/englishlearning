@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.529,C:\Users\admin\Documents\RAD Studio\Projects\English\WordInput.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.044,C:\Users\admin\Documents\RAD Studio\Projects\English\WordView.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.876,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit2.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordSearch.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.491,C:\Users\admin\Documents\RAD Studio\Projects\English\WordInput.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.380,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\ExplanationInput.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.769,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordPicture.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.703,C:\Users\admin\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\admin\Documents\RAD Studio\Projects\English\English.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.491,C:\Users\admin\Documents\RAD Studio\Projects\English\WordInput.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.529,C:\Users\admin\Documents\RAD Studio\Projects\English\WordInput.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.769,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordPicture.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.865,C:\Users\admin\Documents\RAD Studio\Projects\English\DataModule.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.832,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordExplain.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.380,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\ExplanationInput.dfm</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.876,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit2.pas=C:\Users\admin\Documents\RAD Studio\Projects\English\WordSearch.pas</Transaction>
     <Transaction>1899/12/30 00:00:00.000.385,C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.769,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.pas=C:\Users\admin\Documents\RAD Studio\Projects\English\WordPicture.pas</Transaction>
     <Transaction>1899/12/30 00:00:00.000.691,C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.542,C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\WordRange.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.433,C:\Users\admin\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\admin\Documents\RAD Studio\Projects\Main.dfm</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.876,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit2.pas=C:\Users\admin\Documents\RAD Studio\Projects\English\WordSearch.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.876,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit2.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\WordSearch.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.832,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.pas=C:\Users\admin\Documents\RAD Studio\Projects\English\WordExplain.pas</Transaction>
     <Transaction>1899/12/30 00:00:00.000.250,C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.pas=C:\Users\admin\Documents\RAD Studio\Projects\English\CommonLib\Excel.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.865,C:\Users\admin\Documents\RAD Studio\Projects\English\DataModule.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.416,C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\PictureDispDialog.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.086,C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\FullScreenDialog.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
     <Transaction>1899/12/30 00:00:00.000.766,C:\Users\admin\Documents\RAD Studio\Projects\English\Dialog\Basic.dfm=C:\Users\admin\Documents\RAD Studio\Projects\English\Unit1.dfm</Transaction>
@@ -40,6 +40,10 @@
     <Transaction>2011/07/25 23:05:28.000.116,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Unit1.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\TypeWordExtentionDialog.dfm</Transaction>
     <Transaction>2011/08/06 13:39:32.000.098,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\SynonymWordExtentionDialog.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Unit1.dfm</Transaction>
     <Transaction>2011/08/14 16:29:37.000.732,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\TypeWordExtentionDialog.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\DerivativeWordExtentionDialog.dfm</Transaction>
+    <Transaction>2011/08/20 17:46:43.000.775,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Unit1.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\PictureLibrary.dfm</Transaction>
+    <Transaction>2011/08/20 19:16:55.000.620,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\MainMenu.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Unit1.dfm</Transaction>
+    <Transaction>2011/08/20 19:23:08.000.970,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\MainMenu.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Unit1.dfm</Transaction>
+    <Transaction>2011/08/20 19:25:34.000.377,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\MainMenu.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="CommonLib"/>
@@ -100,12 +104,18 @@
     <File Path="Form\WordSearch.dfm"/>
     <File Path="Form\WordView.pas"/>
     <File Path="Form\WordView.dfm"/>
+    <File Path="Form\PictureLibrary.pas"/>
+    <File Path="Form\PictureLibrary.dfm"/>
+    <File Path="Form\MainMenu.pas"/>
+    <File Path="Form\MainMenu.dfm"/>
     <File Path="Model"/>
     <File Path="Model\AntonymModel.pas"/>
     <File Path="Model\CatalogRelationModel.pas"/>
     <File Path="Model\CatalogWordModel.pas"/>
+    <File Path="Model\CongenerModel.pas"/>
     <File Path="Model\DerivativeModel.pas"/>
     <File Path="Model\HomoionymModel.pas"/>
+    <File Path="Model\ResemblanceModel.pas"/>
     <File Path="Model\SynonymModel.pas"/>
     <File Path="Model\WordCatalogModel.pas"/>
     <File Path="Model\WordExplanationModel.pas"/>

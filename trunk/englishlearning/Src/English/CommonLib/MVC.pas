@@ -117,7 +117,7 @@ type
 implementation
 
 uses
-  DataModule;
+  DataModule, CommonInfo;
 
 constructor TModel.Create({Controller: IController});
 begin
@@ -144,6 +144,8 @@ end;
 
 function TModel.Select(const value:string):TCustomADODataSet;
 begin
+  logger.Info('Select:' + #13#10 + value);
+
   FQuery := CreateQueryInstance;
 
   FQuery.Close;
@@ -180,6 +182,8 @@ end;
 
 function TModel.Execute(const value:string):_Recordset;
 begin
+  logger.Info('Execute:' + #13#10 + value);
+
   FCommand.CommandType := cmdText;
   FCommand.CommandText := value;
 
@@ -188,6 +192,8 @@ end;
 
 function TModel.ExeProc(const value:string):TCustomADODataSet;
 begin
+  logger.Info('ExeProc:' + #13#10 + value);
+
   FStoredProc := CreateStoredProcInstance;
 
   FStoredProc.Close;
@@ -199,6 +205,8 @@ end;
 
 procedure TModel.SetSelectSql(const value:string);
 begin
+  logger.Info('SetSelectSql:' + #13#10 + value);
+
   FQuery := CreateQueryInstance;
 
   FQuery.Close;
@@ -208,12 +216,16 @@ end;
 
 procedure TModel.SetExecuteSql(const value:string);
 begin
+  logger.Info('SetExecuteSql:' + #13#10 + value);
+
   FCommand.CommandType := cmdText;
   FCommand.CommandText := value;
 end;
 
 procedure TModel.SetExeProcSql(const value:string);
 begin
+  logger.Info('SetExeProcSql:' + #13#10 + value);
+
   FStoredProc := CreateStoredProcInstance;
 
   FStoredProc.Close;
