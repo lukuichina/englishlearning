@@ -198,12 +198,16 @@ begin
   dbrgrpExtendTypeClick(Sender);
 
   case FExtentionType of
+    1:
+      Caption := '形似扩展';
     2:
       Caption := '同义扩展';
     3:
       Caption := '反义扩展';
     4:
       Caption := '近义扩展';
+    5:
+      Caption := '同类扩展';
   end;
 end;
 

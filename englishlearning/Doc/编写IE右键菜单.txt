@@ -1,0 +1,15 @@
+使用Delphi 7 编写一个IE右键菜单项目：自动保存图片
+http://www.is21.cn/article.asp?id=245
+
+Delphi 编写IE右键菜单
+http://hi.baidu.com/xingfupingguo/blog/item/5790ec102fc5f207213f2e18.html
+
+使用Delphi开发IE右键菜单扩展
+http://www.cnblogs.com/onroad/archive/2009/08/28/1556048.html
+
+
+http://www.codeguru.com/Cpp/misc/misc/internetexplorer/article.php/c11007/
+
+http://support.microsoft.com/kb/888228/ja
+
+1。我要的是加入二级菜单，请不要灌水。 2。一级我知道怎么加入了，但是怎么让它直接调用一个EXE程序，而不是去找那个HTML脚本 你可以把HTML脚本做成资源放在EXE里，就不用那个HTML脚本咯。好像OE是这么做的。to : BeginDelphi, 怎么做写一个资源脚本，名叫 html.rc myhtml html html.html(你的脚本文件名). 然后用brcc32 html.rc， 就生成一个html.res。 在你的工程文件中加入 {$R html.res}就可以了。 调用时可以用 res://test.exe/html/myhtml.

@@ -53,14 +53,32 @@ uses
   DBGridToExcel in 'CommonLib\DBGridToExcel.pas',
   XLSFile in 'CommonLib\XLSFile.pas',
   TsycFunctionSet in 'CommonLib\TsycFunctionSet.pas',
-  uExportXls in 'CommonLib\uExportXls.pas';
+  uExportXls in 'CommonLib\uExportXls.pas',
+  ResemblanceModel in 'Model\ResemblanceModel.pas',
+  CongenerModel in 'Model\CongenerModel.pas',
+  PictureLibrary in 'Form\PictureLibrary.pas' {PictureLibraryForm},
+  MainMenu in 'Form\MainMenu.pas' {MainMenuForm};
 
 {$R *.res}
+{$R UAC.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmManager, dmManager);
+  Application.CreateForm(TMainMenuForm, MainMenuForm);
   Application.CreateForm(TMainForm, MainForm);
+
+  if ConfigInfo.MainForm = 1 then
+  begin
+    MainMenuForm.Hide;
+    MainForm.Show;
+  end
+  else
+  begin
+    MainForm.Hide;
+    MainMenuForm.Show;
+  end;
+
   Application.Run;
 end.

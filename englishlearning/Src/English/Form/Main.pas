@@ -23,7 +23,6 @@ type
     actManagePicture: TAction;
     actExplainWord: TAction;
     btnSearchWord: TAdvSmoothButton;
-    btnManagePicture: TAdvSmoothButton;
     btnExplainWord: TAdvSmoothButton;
     pcrWord: TGDIPPictureContainer;
     btnViewWord: TAdvSmoothButton;
@@ -32,6 +31,12 @@ type
     actWordExtension: TAction;
     btnViewWord2: TAdvSmoothButton;
     actWordCatalog: TAction;
+    actManagePictureLibrary: TAction;
+    AdvSmoothPanel1: TAdvSmoothPanel;
+    btnManagePictureLibrary: TAdvSmoothButton;
+    btnManagePicture: TAdvSmoothButton;
+    btnExit: TAdvSmoothButton;
+    actExit: TAction;
     procedure actManageWordExecute(Sender: TObject);
     procedure actSearchWordExecute(Sender: TObject);
     procedure actManagePictureExecute(Sender: TObject);
@@ -39,6 +44,9 @@ type
     procedure actViewWordExecute(Sender: TObject);
     procedure actWordExtensionExecute(Sender: TObject);
     procedure actWordCatalogExecute(Sender: TObject);
+    procedure actManagePictureLibraryExecute(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure actExitExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,9 +60,14 @@ implementation
 
 uses
   WordInput, WordExplain, WordSearch, WordPicture, WordView, WordExtension,
-  WordCatalog;
+  WordCatalog, PictureLibrary;
 
 {$R *.dfm}
+
+procedure TMainForm.actExitExecute(Sender: TObject);
+begin
+  Application.Terminate;
+end;
 
 procedure TMainForm.actExplainWordExecute(Sender: TObject);
 begin
@@ -73,6 +86,16 @@ begin
     WordPictureForm.ShowModal;
   finally
     WordPictureForm.Free;
+  end;
+end;
+
+procedure TMainForm.actManagePictureLibraryExecute(Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.ShowModal;
+  finally
+    PictureLibraryForm.Free;
   end;
 end;
 
@@ -124,6 +147,14 @@ begin
   finally
     WordExtensionForm.Free;
   end;
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+//    SetWindowPos(Handle, HWND_TOP, 0, 0, 0, 0,
+//      SWP_NOMOVE OR SWP_NOSIZE OR SWP_SHOWWINDOW);
+//    SetWindowLong(Handle, GWL_STYLE,
+//                  GetWindowLong(Handle, GWL_STYLE) AND WS_CAPTION);
 end;
 
 end.

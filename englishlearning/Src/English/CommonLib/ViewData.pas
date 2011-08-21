@@ -22,6 +22,27 @@ type
     property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
   end;
 
+  TCongenerExtention =  class(TViewData)
+  private
+    FWord:string;
+    FWordType:integer;
+    FExplanationID:integer;
+    FResemblanceWord:string;
+    FCongenerWordType:integer;
+    FCongenerExplanationID:integer;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property Word:string read FWord write FWord;
+    property WordType:integer read FWordType write FWordType;
+    property ExplanationID:integer read FExplanationID write FExplanationID;
+    property CongenerWord:string read FResemblanceWord write FResemblanceWord;
+    property CongenerWordType:integer read FCongenerWordType write FCongenerWordType;
+    property CongenerExplanationID:integer read FCongenerExplanationID write FCongenerExplanationID;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
   THomoionymExtention =  class(TViewData)
   private
     FWord:string;
@@ -81,6 +102,27 @@ type
     property SynonymWord:string read FSynonymWord write FSynonymWord;
     property SynonymWordType:integer read FSynonymWordType write FSynonymWordType;
     property SynonymExplanationID:integer read FSynonymExplanationID write FSynonymExplanationID;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
+  TResemblanceExtention =  class(TViewData)
+  private
+    FWord:string;
+    FWordType:integer;
+    FExplanationID:integer;
+    FResemblanceWord:string;
+    FResemblanceWordType:integer;
+    FResemblanceExplanationID:integer;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property Word:string read FWord write FWord;
+    property WordType:integer read FWordType write FWordType;
+    property ExplanationID:integer read FExplanationID write FExplanationID;
+    property ResemblanceWord:string read FResemblanceWord write FResemblanceWord;
+    property ResemblanceWordType:integer read FResemblanceWordType write FResemblanceWordType;
+    property ResemblanceExplanationID:integer read FResemblanceExplanationID write FResemblanceExplanationID;
     property CreateTime:TDateTime read FCreateTime write FCreateTime;
     property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
   end;

@@ -307,7 +307,8 @@ var
   URL:string;
 begin;
   URL := 'http://www.google.com/images?q=' + FWord;
-  ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
+  ShellExecute(handle, 'open', PWideChar(configInfo.Browser), PWideChar(URL), nil, SW_SHOWNORMAL);
+  //ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
 end;
 
 procedure TWordPictureForm.actRefreshPictureExecute(Sender: TObject);

@@ -62,8 +62,8 @@ type
     advtlbr3: TAdvToolBar;
     btnFind: TAdvGlowButton;
     grdSynonymWordExtention: TDBAdvGrid;
-    dsSynonymWordExtention: TDataSource;
-    advpmn2: TAdvPopupMenu;
+    dsSynonymExtention: TDataSource;
+    advpmn3: TAdvPopupMenu;
     mnuAddSynonymExtention: TMenuItem;
     mnuUpdateSynonymExtention: TMenuItem;
     mnuDeleteSynonymExtention: TMenuItem;
@@ -75,8 +75,8 @@ type
     actDeleteSynonymExtention: TAction;
     actSynonymViewPicture: TAction;
     actSynonymViewExplanation: TAction;
-    dsAntonymWordExtention: TDataSource;
-    advpmn3: TAdvPopupMenu;
+    dsAntonymExtention: TDataSource;
+    advpmn4: TAdvPopupMenu;
     mnuAddAntonymExtention: TMenuItem;
     mnuUpdateAntonymExtention: TMenuItem;
     mnuDeleteAntonymExtention: TMenuItem;
@@ -92,8 +92,8 @@ type
     btnReplacePicture: TAdvGlowButton;
     grdAntonymWordExtention: TDBAdvGrid;
     dsDerivativeExtention: TDataSource;
-    dsHomoionymWordExtention: TDataSource;
-    advpmn4: TAdvPopupMenu;
+    dsHomoionymExtention: TDataSource;
+    advpmn5: TAdvPopupMenu;
     mnuAddHomoionymExtention: TMenuItem;
     mnuUpdateHomoionymExtention: TMenuItem;
     mnuDeleteHomoionymExtention: TMenuItem;
@@ -110,6 +110,35 @@ type
     btnNextPage: TAdvGlowButton;
     btnGoto: TAdvGlowButton;
     btnRemovePicture: TAdvGlowButton;
+    dsResemblanceExtention: TDataSource;
+    grdResemblanceWordExtention: TDBAdvGrid;
+    advfcpg6: TAdvOfficePage;
+    grdCongenerWordExtention: TDBAdvGrid;
+    dsCongenerExtention: TDataSource;
+    advpmn2: TAdvPopupMenu;
+    mnuAddResemblanceExtention: TMenuItem;
+    mnuUpdateResemblanceExtention: TMenuItem;
+    mnuDeleteResemblanceExtention: TMenuItem;
+    MenuItem7: TMenuItem;
+    mnuResemblanceViewExplanation: TMenuItem;
+    mnuResemblanceViewPicture: TMenuItem;
+    advpmn6: TAdvPopupMenu;
+    mnuAddCongenerExtention: TMenuItem;
+    mnuUpdateCongenerExtention: TMenuItem;
+    mnuDeleteCongenerExtention: TMenuItem;
+    MenuItem13: TMenuItem;
+    mnuCongenerViewExplanation: TMenuItem;
+    mnuCongenerViewPicture: TMenuItem;
+    actAddResemblanceExtention: TAction;
+    actUpdateResemblanceExtention: TAction;
+    actDeleteResemblanceExtention: TAction;
+    actResemblanceViewExplanation: TAction;
+    actResemblanceViewPicture: TAction;
+    actAddCongenerExtention: TAction;
+    actUpdateCongenerExtention: TAction;
+    actDeleteCongenerExtention: TAction;
+    actCongenerViewExplanation: TAction;
+    actCongenerViewPicture: TAction;
     procedure FormCreate(Sender: TObject);
     procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
       var Allow: Boolean);
@@ -130,11 +159,11 @@ type
     procedure actAddSynonymExtentionExecute(Sender: TObject);
     procedure actUpdateSynonymExtentionExecute(Sender: TObject);
     procedure actDeleteSynonymExtentionExecute(Sender: TObject);
-    procedure advpmn2Popup(Sender: TObject);
+    procedure advpmn3Popup(Sender: TObject);
     procedure actSynonymViewPictureExecute(Sender: TObject);
     procedure actSynonymViewExplanationExecute(Sender: TObject);
     procedure aopWordExtensionChange(Sender: TObject);
-    procedure advpmn3Popup(Sender: TObject);
+    procedure advpmn4Popup(Sender: TObject);
     procedure actAddAntonymExtentionExecute(Sender: TObject);
     procedure actUpdateAntonymExtentionExecute(Sender: TObject);
     procedure actDeleteAntonymExtentionExecute(Sender: TObject);
@@ -146,7 +175,19 @@ type
     procedure actDeleteHomoionymExtentionExecute(Sender: TObject);
     procedure actHomoionymViewPictureExecute(Sender: TObject);
     procedure actHomoionymViewExplanationExecute(Sender: TObject);
-    procedure advpmn4Popup(Sender: TObject);
+    procedure advpmn5Popup(Sender: TObject);
+    procedure advpmn2Popup(Sender: TObject);
+    procedure advpmn6Popup(Sender: TObject);
+    procedure actUpdateCongenerExtentionExecute(Sender: TObject);
+    procedure actUpdateResemblanceExtentionExecute(Sender: TObject);
+    procedure actAddResemblanceExtentionExecute(Sender: TObject);
+    procedure actAddCongenerExtentionExecute(Sender: TObject);
+    procedure actDeleteResemblanceExtentionExecute(Sender: TObject);
+    procedure actDeleteCongenerExtentionExecute(Sender: TObject);
+    procedure actResemblanceViewExplanationExecute(Sender: TObject);
+    procedure actCongenerViewExplanationExecute(Sender: TObject);
+    procedure actCongenerViewPictureExecute(Sender: TObject);
+    procedure actResemblanceViewPictureExecute(Sender: TObject);
   private
     { Private declarations }
     FWordExtensionController:TWordExtensionController;
@@ -164,9 +205,11 @@ type
     procedure ShowWord(value:TCustomADODataSet);
     procedure ShowTypeWordExtention(value:TCustomADODataSet);
     procedure ShowDerivativeExtention(value:TCustomADODataSet);
+    procedure ShowResemblanceExtention(value:TCustomADODataSet);
     procedure ShowSynonymExtention(value:TCustomADODataSet);
     procedure ShowAntonymExtention(value:TCustomADODataSet);
     procedure ShowHomoionymExtention(value:TCustomADODataSet);
+    procedure ShowCongenerExtention(value:TCustomADODataSet);
   end;
 
 var
@@ -175,7 +218,7 @@ var
 implementation
 
 uses {TypeWordExtentionDialog, }WordPicture, WordExplain,
-  SynonymWordExtentionDialog, DerivativeWordExtentionDialog;
+  SynonymWordExtentionDialog, DerivativeWordExtentionDialog, ResemblanceModel;
 
 {$R *.dfm}
 
@@ -210,12 +253,52 @@ begin
     FWordExtensionController.InsertSynonymExtention(synonymWordExtendInfo);
 
     grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
-    dsSynonymWordExtention.DataSet.Locate('Word', synonymWordExtendInfo.SynonymWord, []);
+    dsSynonymExtention.DataSet.Locate('Word', synonymWordExtendInfo.SynonymWord, []);
 
     grdSynonymWordExtention.EndUpdate;
   finally
     SynonymWordExtentionDialogForm.Free;
     synonymWordExtendInfo.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actAddCongenerExtentionExecute(Sender: TObject);
+var
+  CongenerWordExtendInfo:TCongenerExtention;
+  Allow:Boolean;
+begin
+  try
+    CongenerWordExtendInfo := TCongenerExtention.Create;
+
+    SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
+    SynonymWordExtentionDialogForm.ExtentionType := 5;
+    SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.WordType := 0;
+    SynonymWordExtentionDialogForm.SynonymWord := dsWord.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := 0;
+
+    if SynonymWordExtentionDialogForm.ShowModal  <> mrOk then
+      Exit;
+
+    CongenerWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
+    CongenerWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
+    CongenerWordExtendInfo.ExplanationID := SynonymWordExtentionDialogForm.ExplanationID;
+
+    CongenerWordExtendInfo.CongenerWord := SynonymWordExtentionDialogForm.SynonymWord;
+    CongenerWordExtendInfo.CongenerWordType := SynonymWordExtentionDialogForm.SynonymWordType;
+    CongenerWordExtendInfo.CongenerExplanationID := SynonymWordExtentionDialogForm.SynonymExplanationID;
+
+    grdCongenerWordExtention.BeginUpdate;
+
+    FWordExtensionController.InsertCongenerExtention(CongenerWordExtendInfo);
+
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
+    dsCongenerExtention.DataSet.Locate('Word', CongenerWordExtendInfo.CongenerWord, []);
+
+    grdCongenerWordExtention.EndUpdate;
+  finally
+    SynonymWordExtentionDialogForm.Free;
+    CongenerWordExtendInfo.Free;
   end;
 end;
 
@@ -269,7 +352,7 @@ procedure TWordExtensionForm.actAntonymViewExplanationExecute(Sender: TObject);
 begin
   try
     WordExplainForm := TWordExplainForm.Create(nil);
-    WordExplainForm.Word := dsAntonymWordExtention.DataSet.FieldByName('Word').AsString;
+    WordExplainForm.Word := dsAntonymExtention.DataSet.FieldByName('Word').AsString;
     WordExplainForm.ShowModal;
 
     if WordExplainForm.IsChanged then
@@ -293,8 +376,8 @@ procedure TWordExtensionForm.actAntonymViewPictureExecute(Sender: TObject);
 begin
   try
     WordPictureForm := TWordPictureForm.Create(nil);
-    WordPictureForm.Word := dsAntonymWordExtention.DataSet.FieldByName('Word').AsString;
-    WordPictureForm.WordType := dsAntonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    WordPictureForm.Word := dsAntonymExtention.DataSet.FieldByName('Word').AsString;
+    WordPictureForm.WordType := dsAntonymExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 //    WordPictureForm.ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
     WordPictureForm.ShowModal;
 
@@ -308,6 +391,55 @@ begin
 //      ShowWordExplanation;
 //      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
       grdAntonymWordExtention.EndUpdate;
+    end;
+  finally
+    WordPictureForm.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actCongenerViewExplanationExecute(Sender: TObject);
+begin
+  try
+    WordExplainForm := TWordExplainForm.Create(nil);
+    WordExplainForm.Word := dsCongenerExtention.DataSet.FieldByName('Word').AsString;
+    WordExplainForm.ShowModal;
+
+    if WordExplainForm.IsChanged then
+    begin
+      grdCongenerWordExtention.BeginUpdate;
+
+//      ShowWords('%');
+//
+//      qryWord.Locate('Word', edtWordEdit.Text, []);
+
+      grdCongenerWordExtention.EndUpdate;
+    end;
+  finally
+    WordExplainForm.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actCongenerViewPictureExecute(Sender: TObject);
+//var
+//  ExplanationID:Integer;
+begin
+  try
+    WordPictureForm := TWordPictureForm.Create(nil);
+    WordPictureForm.Word := dsCongenerExtention.DataSet.FieldByName('Word').AsString;
+    WordPictureForm.WordType := dsCongenerExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+//    WordPictureForm.ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+    WordPictureForm.ShowModal;
+
+    if WordPictureForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdCongenerWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdCongenerWordExtention.EndUpdate;
     end;
   finally
     WordPictureForm.Free;
@@ -330,7 +462,7 @@ begin
     AntonymWordExtendInfo.Word := dsWord.DataSet.FieldByName('Word').AsString;
     //synonymWordExtendInfo.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
     //synonymWordExtendInfo.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
-    AntonymWordExtendInfo.AntonymWord := dsAntonymWordExtention.DataSet.FieldByName('Word').AsString;
+    AntonymWordExtendInfo.AntonymWord := dsAntonymExtention.DataSet.FieldByName('Word').AsString;
     //synonymWordExtendInfo.SynonymWordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
     //synonymWordExtendInfo.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 
@@ -348,6 +480,41 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actDeleteCongenerExtentionExecute(Sender: TObject);
+var
+  CongenerWordExtendInfo:TCongenerExtention;
+  Allow:Boolean;
+begin
+  try
+    CongenerWordExtendInfo := TCongenerExtention.Create;
+
+    if MessageDlg('您确认要删除吗？', mtconfirmation, [mbYes, mbNo], 0) <> mrYes then
+    begin
+      exit;
+    end;
+
+    CongenerWordExtendInfo.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    CongenerWordExtendInfo.CongenerWord := dsCongenerExtention.DataSet.FieldByName('Word').AsString;
+    //HomoionymWordExtendInfo.HomoionymWordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+
+    grdCongenerWordExtention.BeginUpdate;
+
+    FWordExtensionController.DeleteCongenerExtention(CongenerWordExtendInfo);
+
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
+    //dsAntonymWordExtention.DataSet.Locate('Word', typeWordExtendInfo.Word, []);
+
+    grdCongenerWordExtention.EndUpdate;
+  finally
+    //if Assigned(AntonymWordExtendInfo) then
+    CongenerWordExtendInfo.Free;
+  end;
+end;
+
+
 procedure TWordExtensionForm.actDeleteSynonymExtentionExecute(Sender: TObject);
 var
   synonymWordExtendInfo:TSynonymExtention;
@@ -364,7 +531,7 @@ begin
     synonymWordExtendInfo.Word := dsWord.DataSet.FieldByName('Word').AsString;
     //synonymWordExtendInfo.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
     //synonymWordExtendInfo.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
-    synonymWordExtendInfo.SynonymWord := dsSynonymWordExtention.DataSet.FieldByName('Word').AsString;
+    synonymWordExtendInfo.SynonymWord := dsSynonymExtention.DataSet.FieldByName('Word').AsString;
     //synonymWordExtendInfo.SynonymWordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
     //synonymWordExtendInfo.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 
@@ -439,7 +606,7 @@ begin
     HomoionymWordExtendInfo.Word := dsWord.DataSet.FieldByName('Word').AsString;
     //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
     //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
-    HomoionymWordExtendInfo.HomoionymWord := dsHomoionymWordExtention.DataSet.FieldByName('Word').AsString;
+    HomoionymWordExtendInfo.HomoionymWord := dsHomoionymExtention.DataSet.FieldByName('Word').AsString;
     //HomoionymWordExtendInfo.HomoionymWordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
     //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 
@@ -454,6 +621,41 @@ begin
   finally
     //if Assigned(AntonymWordExtendInfo) then
     HomoionymWordExtendInfo.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actDeleteResemblanceExtentionExecute(
+  Sender: TObject);
+var
+  ResemblanceWordExtendInfo:TResemblanceExtention;
+  Allow:Boolean;
+begin
+  try
+    ResemblanceWordExtendInfo := TResemblanceExtention.Create;
+
+    if MessageDlg('您确认要删除吗？', mtconfirmation, [mbYes, mbNo], 0) <> mrYes then
+    begin
+      exit;
+    end;
+
+    ResemblanceWordExtendInfo.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    ResemblanceWordExtendInfo.ResemblanceWord := dsResemblanceExtention.DataSet.FieldByName('Word').AsString;
+    //HomoionymWordExtendInfo.HomoionymWordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    //HomoionymWordExtendInfo.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+
+    grdResemblanceWordExtention.BeginUpdate;
+
+    FWordExtensionController.DeleteResemblanceExtention(ResemblanceWordExtendInfo);
+
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
+    //dsAntonymWordExtention.DataSet.Locate('Word', typeWordExtendInfo.Word, []);
+
+    grdResemblanceWordExtention.EndUpdate;
+  finally
+    //if Assigned(AntonymWordExtendInfo) then
+    ResemblanceWordExtendInfo.Free;
   end;
 end;
 
@@ -483,7 +685,7 @@ procedure TWordExtensionForm.actHomoionymViewExplanationExecute(
 begin
   try
     WordExplainForm := TWordExplainForm.Create(nil);
-    WordExplainForm.Word := dsHomoionymWordExtention.DataSet.FieldByName('Word').AsString;
+    WordExplainForm.Word := dsHomoionymExtention.DataSet.FieldByName('Word').AsString;
     WordExplainForm.ShowModal;
 
     if WordExplainForm.IsChanged then
@@ -507,8 +709,8 @@ procedure TWordExtensionForm.actHomoionymViewPictureExecute(Sender: TObject);
 begin
   try
     WordPictureForm := TWordPictureForm.Create(nil);
-    WordPictureForm.Word := dsHomoionymWordExtention.DataSet.FieldByName('Word').AsString;
-    WordPictureForm.WordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    WordPictureForm.Word := dsHomoionymExtention.DataSet.FieldByName('Word').AsString;
+    WordPictureForm.WordType := dsHomoionymExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 //    WordPictureForm.ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
     WordPictureForm.ShowModal;
 
@@ -569,7 +771,7 @@ begin
     FWordExtensionController.InsertAntonymExtention(antonymWordExtendInfo);
 
     grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
-    dsAntonymWordExtention.DataSet.Locate('Word', antonymWordExtendInfo.AntonymWord, []);
+    dsAntonymExtention.DataSet.Locate('Word', antonymWordExtendInfo.AntonymWord, []);
 
     grdAntonymWordExtention.EndUpdate;
   finally
@@ -583,18 +785,21 @@ begin
   case aopWordExtension.ActivePageIndex of
      0:
        actAddDerivativeExtentionExecute(Sender);
+     1:
+       actAddResemblanceExtentionExecute(Sender);
      2:
        actAddSynonymExtentionExecute(Sender);
      3:
        actAddAntonymExtentionExecute(Sender);
      4:
        actAddHomoionymExtentionExecute(Sender);
+     5:
+       actAddCongenerExtentionExecute(Sender);
   end;
 end;
 
 procedure TWordExtensionForm.actAddHomoionymExtentionExecute(Sender: TObject);
 var
-//  antonymWordExtendInfo:TAntonymExtention;
   HomoionymWordExtendInfo:THomoionymExtention;
   Allow:Boolean;
 begin
@@ -624,7 +829,7 @@ begin
     FWordExtensionController.InsertHomoionymExtention(HomoionymWordExtendInfo);
 
     grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
-    dsHomoionymWordExtention.DataSet.Locate('Word', HomoionymWordExtendInfo.HomoionymWord, []);
+    dsHomoionymExtention.DataSet.Locate('Word', HomoionymWordExtendInfo.HomoionymWord, []);
 
     grdHomoionymWordExtention.EndUpdate;
   finally
@@ -633,17 +838,112 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actAddResemblanceExtentionExecute(Sender: TObject);
+var
+  ResemblanceWordExtendInfo:TResemblanceExtention;
+  Allow:Boolean;
+begin
+  try
+    ResemblanceWordExtendInfo := TResemblanceExtention.Create;
+
+    SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
+    SynonymWordExtentionDialogForm.ExtentionType := 1;
+    SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.WordType := 0;
+    SynonymWordExtentionDialogForm.SynonymWord := dsWord.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := 0;
+
+    if SynonymWordExtentionDialogForm.ShowModal  <> mrOk then
+      Exit;
+
+    ResemblanceWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
+    ResemblanceWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
+    ResemblanceWordExtendInfo.ExplanationID := SynonymWordExtentionDialogForm.ExplanationID;
+
+    ResemblanceWordExtendInfo.ResemblanceWord := SynonymWordExtentionDialogForm.SynonymWord;
+    ResemblanceWordExtendInfo.ResemblanceWordType := SynonymWordExtentionDialogForm.SynonymWordType;
+    ResemblanceWordExtendInfo.ResemblanceExplanationID := SynonymWordExtentionDialogForm.SynonymExplanationID;
+
+    grdResemblanceWordExtention.BeginUpdate;
+
+    FWordExtensionController.InsertResemblanceExtention(ResemblanceWordExtendInfo);
+
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
+    dsResemblanceExtention.DataSet.Locate('Word', ResemblanceWordExtendInfo.ResemblanceWord, []);
+
+    grdResemblanceWordExtention.EndUpdate;
+  finally
+    SynonymWordExtentionDialogForm.Free;
+    ResemblanceWordExtendInfo.Free;
+  end;
+end;
+
 procedure TWordExtensionForm.actRemoveExtentionExecute(Sender: TObject);
 begin
   case aopWordExtension.ActivePageIndex of
      0:
        actDeleteDerivativeExtentionExecute(Sender);
+     1:
+       actDeleteResemblanceExtentionExecute(Sender);
      2:
        actDeleteSynonymExtentionExecute(Sender);
      3:
        actDeleteAntonymExtentionExecute(Sender);
      4:
        actDeleteHomoionymExtentionExecute(Sender);
+     5:
+       actDeleteCongenerExtentionExecute(Sender);
+  end;
+end;
+
+procedure TWordExtensionForm.actResemblanceViewExplanationExecute(
+  Sender: TObject);
+begin
+  try
+    WordExplainForm := TWordExplainForm.Create(nil);
+    //WordExplainForm.Word := dsTypeWordExtention.DataSet.FieldByName('Word').AsString;
+    WordExplainForm.Word := dsResemblanceExtention.DataSet.FieldByName('Word').AsString;
+    WordExplainForm.ShowModal;
+
+    if WordExplainForm.IsChanged then
+    begin
+      grdResemblanceWordExtention.BeginUpdate;
+
+//      ShowWords('%');
+//
+//      qryWord.Locate('Word', edtWordEdit.Text, []);
+
+      grdResemblanceWordExtention.EndUpdate;
+    end;
+  finally
+    WordExplainForm.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actResemblanceViewPictureExecute(Sender: TObject);
+//var
+//  ExplanationID:Integer;
+begin
+  try
+    WordPictureForm := TWordPictureForm.Create(nil);
+    WordPictureForm.Word := dsResemblanceExtention.DataSet.FieldByName('Word').AsString;
+    WordPictureForm.WordType := dsResemblanceExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+//    WordPictureForm.ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+    WordPictureForm.ShowModal;
+
+    if WordPictureForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdResemblanceWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdResemblanceWordExtention.EndUpdate;
+    end;
+  finally
+    WordPictureForm.Free;
   end;
 end;
 
@@ -651,7 +951,7 @@ procedure TWordExtensionForm.actSynonymViewExplanationExecute(Sender: TObject);
 begin
   try
     WordExplainForm := TWordExplainForm.Create(nil);
-    WordExplainForm.Word := dsSynonymWordExtention.DataSet.FieldByName('Word').AsString;
+    WordExplainForm.Word := dsSynonymExtention.DataSet.FieldByName('Word').AsString;
     WordExplainForm.ShowModal;
 
     if WordExplainForm.IsChanged then
@@ -675,8 +975,8 @@ procedure TWordExtensionForm.actSynonymViewPictureExecute(Sender: TObject);
 begin
   try
     WordPictureForm := TWordPictureForm.Create(nil);
-    WordPictureForm.Word := dsSynonymWordExtention.DataSet.FieldByName('Word').AsString;
-    WordPictureForm.WordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    WordPictureForm.Word := dsSynonymExtention.DataSet.FieldByName('Word').AsString;
+    WordPictureForm.WordType := dsSynonymExtention.DataSet.FieldByName('WordTypeID').AsInteger;
 //    WordPictureForm.ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
     WordPictureForm.ShowModal;
 
@@ -708,11 +1008,11 @@ begin
     SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
     SynonymWordExtentionDialogForm.ExtentionType := 3;
     SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
-    SynonymWordExtentionDialogForm.WordType := dsAntonymWordExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
-    SynonymWordExtentionDialogForm.ExplanationID := dsAntonymWordExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
-    SynonymWordExtentionDialogForm.SynonymWord := dsAntonymWordExtention.DataSet.FieldByName('Word').AsString;
-    SynonymWordExtentionDialogForm.SynonymWordType := dsAntonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
-    SynonymWordExtentionDialogForm.SynonymExplanationID := dsAntonymWordExtention.DataSet.FieldByName('ExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.WordType := dsAntonymExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.ExplanationID := dsAntonymExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymWord := dsAntonymExtention.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := dsAntonymExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymExplanationID := dsAntonymExtention.DataSet.FieldByName('ExplanationID').AsInteger;
 
     oldAntonymWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
     oldAntonymWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
@@ -736,7 +1036,7 @@ begin
     FWordExtensionController.UpdateAntonymExtention(antonymWordExtendInfo, oldAntonymWordExtendInfo);
 
     grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
-    dsAntonymWordExtention.DataSet.Locate('Word', antonymWordExtendInfo.AntonymWord, []);
+    dsAntonymExtention.DataSet.Locate('Word', antonymWordExtendInfo.AntonymWord, []);
 
     grdAntonymWordExtention.EndUpdate;
   finally
@@ -746,17 +1046,71 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actUpdateCongenerExtentionExecute(Sender: TObject);
+var
+  CongenerWordExtendInfo, oldCongenerWordExtendInfo:TCongenerExtention;
+  Allow:Boolean;
+begin
+  try
+    oldCongenerWordExtendInfo := TCongenerExtention.Create;
+    CongenerWordExtendInfo := TCongenerExtention.Create;
+
+    SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
+    SynonymWordExtentionDialogForm.ExtentionType := 5;
+    SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.WordType := dsCongenerExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.ExplanationID := dsCongenerExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymWord := dsCongenerExtention.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := dsCongenerExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymExplanationID := dsCongenerExtention.DataSet.FieldByName('ExplanationID').AsInteger;
+
+    oldCongenerWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
+    oldCongenerWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
+    oldCongenerWordExtendInfo.ExplanationID := SynonymWordExtentionDialogForm.ExplanationID;
+    oldCongenerWordExtendInfo.CongenerWord := SynonymWordExtentionDialogForm.SynonymWord;
+    oldCongenerWordExtendInfo.CongenerWordType := SynonymWordExtentionDialogForm.SynonymWordType;
+    oldCongenerWordExtendInfo.CongenerExplanationID := SynonymWordExtentionDialogForm.SynonymExplanationID;
+
+    if SynonymWordExtentionDialogForm.ShowModal  <> mrOk then
+      Exit;
+
+    CongenerWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
+    CongenerWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
+    CongenerWordExtendInfo.ExplanationID := SynonymWordExtentionDialogForm.ExplanationID;
+    CongenerWordExtendInfo.CongenerWord := SynonymWordExtentionDialogForm.SynonymWord;
+    CongenerWordExtendInfo.CongenerWordType := SynonymWordExtentionDialogForm.SynonymWordType;
+    CongenerWordExtendInfo.CongenerExplanationID := SynonymWordExtentionDialogForm.SynonymExplanationID;
+
+    grdCongenerWordExtention.BeginUpdate;
+
+    FWordExtensionController.UpdateCongenerExtention(CongenerWordExtendInfo, oldCongenerWordExtendInfo);
+
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
+    dsCongenerExtention.DataSet.Locate('Word', CongenerWordExtendInfo.CongenerWord, []);
+
+    grdCongenerWordExtention.EndUpdate;
+  finally
+    SynonymWordExtentionDialogForm.Free;
+    oldCongenerWordExtendInfo.Free;
+    CongenerWordExtendInfo.Free;
+  end;
+end;
+
 procedure TWordExtensionForm.actUpdateExtentionExecute(Sender: TObject);
 begin
    case aopWordExtension.ActivePageIndex of
      0:
        actUpdateDerivativeExtentionExecute(Sender);
+     1:
+       actUpdateResemblanceExtentionExecute(Sender);
      2:
        actUpdateSynonymExtentionExecute(Sender);
      3:
        actUpdateAntonymExtentionExecute(Sender);
      4:
        actUpdateHomoionymExtentionExecute(Sender);
+     5:
+       actUpdateCongenerExtentionExecute(Sender);
    end;
 end;
 
@@ -773,11 +1127,11 @@ begin
     SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
     SynonymWordExtentionDialogForm.ExtentionType := 4;
     SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
-    SynonymWordExtentionDialogForm.WordType := dsHomoionymWordExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
-    SynonymWordExtentionDialogForm.ExplanationID := dsHomoionymWordExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
-    SynonymWordExtentionDialogForm.SynonymWord := dsHomoionymWordExtention.DataSet.FieldByName('Word').AsString;
-    SynonymWordExtentionDialogForm.SynonymWordType := dsHomoionymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
-    SynonymWordExtentionDialogForm.SynonymExplanationID := dsHomoionymWordExtention.DataSet.FieldByName('ExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.WordType := dsHomoionymExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.ExplanationID := dsHomoionymExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymWord := dsHomoionymExtention.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := dsHomoionymExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymExplanationID := dsHomoionymExtention.DataSet.FieldByName('ExplanationID').AsInteger;
 
     oldHomoionymWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
     oldHomoionymWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
@@ -801,13 +1155,64 @@ begin
     FWordExtensionController.UpdateHomoionymExtention(HomoionymWordExtendInfo, oldHomoionymWordExtendInfo);
 
     grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
-    dsHomoionymWordExtention.DataSet.Locate('Word', HomoionymWordExtendInfo.HomoionymWord, []);
+    dsHomoionymExtention.DataSet.Locate('Word', HomoionymWordExtendInfo.HomoionymWord, []);
 
     grdHomoionymWordExtention.EndUpdate;
   finally
     SynonymWordExtentionDialogForm.Free;
     oldHomoionymWordExtendInfo.Free;
     HomoionymWordExtendInfo.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actUpdateResemblanceExtentionExecute(
+  Sender: TObject);
+var
+  ResemblanceWordExtendInfo, oldResemblanceWordExtendInfo:TResemblanceExtention;
+  Allow:Boolean;
+begin
+  try
+    oldResemblanceWordExtendInfo := TResemblanceExtention.Create;
+    ResemblanceWordExtendInfo := TResemblanceExtention.Create;
+
+    SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
+    SynonymWordExtentionDialogForm.ExtentionType := 1;
+    SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.WordType := dsResemblanceExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.ExplanationID := dsResemblanceExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymWord := dsResemblanceExtention.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := dsResemblanceExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymExplanationID := dsResemblanceExtention.DataSet.FieldByName('ExplanationID').AsInteger;
+
+    oldResemblanceWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
+    oldResemblanceWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
+    oldResemblanceWordExtendInfo.ExplanationID := SynonymWordExtentionDialogForm.ExplanationID;
+    oldResemblanceWordExtendInfo.ResemblanceWord := SynonymWordExtentionDialogForm.SynonymWord;
+    oldResemblanceWordExtendInfo.ResemblanceWordType := SynonymWordExtentionDialogForm.SynonymWordType;
+    oldResemblanceWordExtendInfo.ResemblanceExplanationID := SynonymWordExtentionDialogForm.SynonymExplanationID;
+
+    if SynonymWordExtentionDialogForm.ShowModal  <> mrOk then
+      Exit;
+
+    ResemblanceWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
+    ResemblanceWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
+    ResemblanceWordExtendInfo.ExplanationID := SynonymWordExtentionDialogForm.ExplanationID;
+    ResemblanceWordExtendInfo.ResemblanceWord := SynonymWordExtentionDialogForm.SynonymWord;
+    ResemblanceWordExtendInfo.ResemblanceWordType := SynonymWordExtentionDialogForm.SynonymWordType;
+    ResemblanceWordExtendInfo.ResemblanceExplanationID := SynonymWordExtentionDialogForm.SynonymExplanationID;
+
+    grdHomoionymWordExtention.BeginUpdate;
+
+    FWordExtensionController.UpdateResemblanceExtention(ResemblanceWordExtendInfo, oldResemblanceWordExtendInfo);
+
+    grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
+    dsResemblanceExtention.DataSet.Locate('Word', ResemblanceWordExtendInfo.ResemblanceWord, []);
+
+    grdResemblanceWordExtention.EndUpdate;
+  finally
+    SynonymWordExtentionDialogForm.Free;
+    oldResemblanceWordExtendInfo.Free;
+    ResemblanceWordExtendInfo.Free;
   end;
 end;
 
@@ -822,11 +1227,11 @@ begin
 
     SynonymWordExtentionDialogForm := TSynonymWordExtentionDialogForm.Create(nil);
     SynonymWordExtentionDialogForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
-    SynonymWordExtentionDialogForm.WordType := dsSynonymWordExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
-    SynonymWordExtentionDialogForm.ExplanationID := dsSynonymWordExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
-    SynonymWordExtentionDialogForm.SynonymWord := dsSynonymWordExtention.DataSet.FieldByName('Word').AsString;
-    SynonymWordExtentionDialogForm.SynonymWordType := dsSynonymWordExtention.DataSet.FieldByName('WordTypeID').AsInteger;
-    SynonymWordExtentionDialogForm.SynonymExplanationID := dsSynonymWordExtention.DataSet.FieldByName('ExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.WordType := dsSynonymExtention.DataSet.FieldByName('BaseWordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.ExplanationID := dsSynonymExtention.DataSet.FieldByName('BaseExplanationID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymWord := dsSynonymExtention.DataSet.FieldByName('Word').AsString;
+    SynonymWordExtentionDialogForm.SynonymWordType := dsSynonymExtention.DataSet.FieldByName('WordTypeID').AsInteger;
+    SynonymWordExtentionDialogForm.SynonymExplanationID := dsSynonymExtention.DataSet.FieldByName('ExplanationID').AsInteger;
 
     oldSynonymWordExtendInfo.Word := SynonymWordExtentionDialogForm.Word;
     oldSynonymWordExtendInfo.WordType := SynonymWordExtentionDialogForm.WordType;
@@ -850,7 +1255,7 @@ begin
     FWordExtensionController.UpdateSynonymExtention(synonymWordExtendInfo, oldSynonymWordExtendInfo);
 
     grdWordRowChanging(Sender, grdWord.SelectedRow[0], grdWord.SelectedRow[0], Allow);
-    dsSynonymWordExtention.DataSet.Locate('Word', synonymWordExtendInfo.SynonymWord, []);
+    dsSynonymExtention.DataSet.Locate('Word', synonymWordExtendInfo.SynonymWord, []);
 
     grdSynonymWordExtention.EndUpdate;
   finally
@@ -985,44 +1390,72 @@ end;
 
 procedure TWordExtensionForm.advpmn2Popup(Sender: TObject);
 begin
-  mnuAddSynonymExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
+  mnuAddResemblanceExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
     (grdWord.RowSelectCount > 0);
-  mnuUpdateSynonymExtention.Enabled := (dsSynonymWordExtention.DataSet.RecordCount > 0) and
-   (grdSynonymWordExtention.RowSelectCount > 0);
-  mnuDeleteSynonymExtention.Enabled := (dsSynonymWordExtention.DataSet.RecordCount > 0) and
-   (grdSynonymWordExtention.RowSelectCount > 0);
-  mnuSynonymViewPicture.Enabled := (dsSynonymWordExtention.DataSet.RecordCount > 0) and
-   (grdSynonymWordExtention.RowSelectCount > 0);
-  mnuSynonymViewExplanation.Enabled := (dsSynonymWordExtention.DataSet.RecordCount > 0) and
-   (grdSynonymWordExtention.RowSelectCount > 0);
+  mnuUpdateResemblanceExtention.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
+   (grdResemblanceWordExtention.RowSelectCount > 0);
+  mnuDeleteResemblanceExtention.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
+   (grdResemblanceWordExtention.RowSelectCount > 0);
+  mnuResemblanceViewPicture.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
+   (grdResemblanceWordExtention.RowSelectCount > 0);
+  mnuResemblanceViewExplanation.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
+   (grdResemblanceWordExtention.RowSelectCount > 0);
 end;
 
 procedure TWordExtensionForm.advpmn3Popup(Sender: TObject);
 begin
-  mnuAddAntonymExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
+  mnuAddSynonymExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
     (grdWord.RowSelectCount > 0);
-  mnuUpdateAntonymExtention.Enabled := (dsAntonymWordExtention.DataSet.RecordCount > 0) and
-   (grdAntonymWordExtention.RowSelectCount > 0);
-  mnuDeleteAntonymExtention.Enabled := (dsAntonymWordExtention.DataSet.RecordCount > 0) and
-   (grdAntonymWordExtention.RowSelectCount > 0);
-  mnuAntonymViewPicture.Enabled := (dsAntonymWordExtention.DataSet.RecordCount > 0) and
-   (grdAntonymWordExtention.RowSelectCount > 0);
-  mnuAntonymViewExplanation.Enabled := (dsAntonymWordExtention.DataSet.RecordCount > 0) and
-   (grdAntonymWordExtention.RowSelectCount > 0);
+  mnuUpdateSynonymExtention.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
+   (grdSynonymWordExtention.RowSelectCount > 0);
+  mnuDeleteSynonymExtention.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
+   (grdSynonymWordExtention.RowSelectCount > 0);
+  mnuSynonymViewPicture.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
+   (grdSynonymWordExtention.RowSelectCount > 0);
+  mnuSynonymViewExplanation.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
+   (grdSynonymWordExtention.RowSelectCount > 0);
 end;
 
 procedure TWordExtensionForm.advpmn4Popup(Sender: TObject);
 begin
+  mnuAddAntonymExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
+    (grdWord.RowSelectCount > 0);
+  mnuUpdateAntonymExtention.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
+   (grdAntonymWordExtention.RowSelectCount > 0);
+  mnuDeleteAntonymExtention.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
+   (grdAntonymWordExtention.RowSelectCount > 0);
+  mnuAntonymViewPicture.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
+   (grdAntonymWordExtention.RowSelectCount > 0);
+  mnuAntonymViewExplanation.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
+   (grdAntonymWordExtention.RowSelectCount > 0);
+end;
+
+procedure TWordExtensionForm.advpmn5Popup(Sender: TObject);
+begin
   mnuAddHomoionymExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
     (grdWord.RowSelectCount > 0);
-  mnuUpdateHomoionymExtention.Enabled := (dsHomoionymWordExtention.DataSet.RecordCount > 0) and
+  mnuUpdateHomoionymExtention.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
    (grdHomoionymWordExtention.RowSelectCount > 0);
-  mnuDeleteHomoionymExtention.Enabled := (dsHomoionymWordExtention.DataSet.RecordCount > 0) and
+  mnuDeleteHomoionymExtention.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
    (grdHomoionymWordExtention.RowSelectCount > 0);
-  mnuHomoionymViewPicture.Enabled := (dsHomoionymWordExtention.DataSet.RecordCount > 0) and
+  mnuHomoionymViewPicture.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
    (grdHomoionymWordExtention.RowSelectCount > 0);
-  mnuHomoionymViewExplanation.Enabled := (dsHomoionymWordExtention.DataSet.RecordCount > 0) and
+  mnuHomoionymViewExplanation.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
    (grdHomoionymWordExtention.RowSelectCount > 0);
+end;
+
+procedure TWordExtensionForm.advpmn6Popup(Sender: TObject);
+begin
+  mnuAddCongenerExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and
+    (grdWord.RowSelectCount > 0);
+  mnuUpdateCongenerExtention.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
+   (grdCongenerWordExtention.RowSelectCount > 0);
+  mnuDeleteCongenerExtention.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
+   (grdCongenerWordExtention.RowSelectCount > 0);
+  mnuCongenerViewPicture.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
+   (grdCongenerWordExtention.RowSelectCount > 0);
+  mnuCongenerViewExplanation.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
+   (grdCongenerWordExtention.RowSelectCount > 0);
 end;
 
 procedure TWordExtensionForm.aopWordExtensionChange(Sender: TObject);
@@ -1103,9 +1536,11 @@ begin
 
 //  FWordExtensionController.ShowTypeWordExtention(word);
   FWordExtensionController.ShowDerivativeExtention(word);
+  FWordExtensionController.ShowResemblanceExtention(word);
   FWordExtensionController.ShowSynonymExtention(word);
   FWordExtensionController.ShowAntonymExtention(word);
   FWordExtensionController.ShowHomoionymExtention(word);
+  FWordExtensionController.ShowCongenerExtention(word);
 
   word.Free;
 
@@ -1130,19 +1565,29 @@ begin
   dsDerivativeExtention.DataSet := value;
 end;
 
+procedure TWordExtensionForm.ShowResemblanceExtention(value:TCustomADODataSet);
+begin
+  dsResemblanceExtention.DataSet := value;
+end;
+
 procedure TWordExtensionForm.ShowSynonymExtention(value:TCustomADODataSet);
 begin
-  dsSynonymWordExtention.DataSet := value;
+  dsSynonymExtention.DataSet := value;
 end;
 
 procedure TWordExtensionForm.ShowAntonymExtention(value:TCustomADODataSet);
 begin
-  dsAntonymWordExtention.DataSet := value;
+  dsAntonymExtention.DataSet := value;
 end;
 
 procedure TWordExtensionForm.ShowHomoionymExtention(value:TCustomADODataSet);
 begin
-  dsHomoionymWordExtention.DataSet := value;
+  dsHomoionymExtention.DataSet := value;
+end;
+
+procedure TWordExtensionForm.ShowCongenerExtention(value:TCustomADODataSet);
+begin
+  dsCongenerExtention.DataSet := value;
 end;
 
 procedure TWordExtensionForm.SetEditMenuStatus;
@@ -1157,23 +1602,35 @@ begin
         actUpdateExtention.Enabled := (dsDerivativeExtention.DataSet.RecordCount > 0) and (grdDerivativeWordExtention.RowSelectCount > 0);
         actRemoveExtention.Enabled := (dsDerivativeExtention.DataSet.RecordCount > 0) and (grdDerivativeWordExtention.RowSelectCount > 0);
       end;
+    1:
+      begin
+        actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and (grdWord.RowSelectCount > 0);
+        actUpdateExtention.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and (grdResemblanceWordExtention.RowSelectCount > 0);
+        actRemoveExtention.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and (grdResemblanceWordExtention.RowSelectCount > 0);
+      end;
     2:
       begin
         actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and (grdWord.RowSelectCount > 0);
-        actUpdateExtention.Enabled := (dsSynonymWordExtention.DataSet.RecordCount > 0) and (grdSynonymWordExtention.RowSelectCount > 0);
-        actRemoveExtention.Enabled := (dsSynonymWordExtention.DataSet.RecordCount > 0) and (grdSynonymWordExtention.RowSelectCount > 0);
+        actUpdateExtention.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and (grdSynonymWordExtention.RowSelectCount > 0);
+        actRemoveExtention.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and (grdSynonymWordExtention.RowSelectCount > 0);
       end;
     3:
       begin
         actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and (grdWord.RowSelectCount > 0);
-        actUpdateExtention.Enabled := (dsAntonymWordExtention.DataSet.RecordCount > 0) and (grdAntonymWordExtention.RowSelectCount > 0);
-        actRemoveExtention.Enabled := (dsAntonymWordExtention.DataSet.RecordCount > 0) and (grdAntonymWordExtention.RowSelectCount > 0);
+        actUpdateExtention.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and (grdAntonymWordExtention.RowSelectCount > 0);
+        actRemoveExtention.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and (grdAntonymWordExtention.RowSelectCount > 0);
       end;
     4:
       begin
         actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and (grdWord.RowSelectCount > 0);
-        actUpdateExtention.Enabled := (dsHomoionymWordExtention.DataSet.RecordCount > 0) and (grdHomoionymWordExtention.RowSelectCount > 0);
-        actRemoveExtention.Enabled := (dsHomoionymWordExtention.DataSet.RecordCount > 0) and (grdHomoionymWordExtention.RowSelectCount > 0);
+        actUpdateExtention.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and (grdHomoionymWordExtention.RowSelectCount > 0);
+        actRemoveExtention.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and (grdHomoionymWordExtention.RowSelectCount > 0);
+      end;
+    5:
+      begin
+        actAddExtention.Enabled := (dsWord.DataSet.RecordCount > 0) and (grdWord.RowSelectCount > 0);
+        actUpdateExtention.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and (grdCongenerWordExtention.RowSelectCount > 0);
+        actRemoveExtention.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and (grdCongenerWordExtention.RowSelectCount > 0);
       end;
   end;
 end;
