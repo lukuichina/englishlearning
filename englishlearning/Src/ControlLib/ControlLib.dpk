@@ -31,6 +31,7 @@ requires
 
 contains
   FullScreen in 'FullScreen\FullScreen.pas',
-  LynDataToXls in 'Excel\LynDataToXls.pas';
+  LynDataToXls in 'Excel\LynDataToXls.pas',
+  TransPanel in 'TransPanel\TransPanel.pas';
 
 end.

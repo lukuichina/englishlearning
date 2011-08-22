@@ -1640,4 +1640,7 @@ begin
   grpWord.Caption := Format('单词一览(记录数：%d)' , [dsWord.DataSet.RecordCount]);
 end;
 
+initialization
+  RegisterClass(TWordExtensionForm);
+
 end.

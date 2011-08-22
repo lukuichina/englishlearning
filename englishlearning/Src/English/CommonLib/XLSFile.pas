@@ -4,7 +4,7 @@ unit XLSFile;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Grids, Forms, Dialogs,db,dbctrls,comctrls;
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Grids, Dialogs,db,dbctrls,comctrls;
 
 const
 {BOF}
@@ -47,6 +47,8 @@ procedure DataSetToXLS(ds:TDataSet;fname:String);
 procedure StringGridToXLS(grid:TStringGrid;fname:String);
 
 implementation
+
+uses Forms;
 
 procedure DataSetToXLS(ds:TDataSet;fname:String);
 var c,r:Integer;

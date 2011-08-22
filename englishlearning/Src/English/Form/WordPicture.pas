@@ -1137,4 +1137,7 @@ begin
   end;
 end;
 
+initialization
+  RegisterClass(TWordPictureForm);
+
 end.

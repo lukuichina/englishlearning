@@ -157,4 +157,7 @@ begin
 //                  GetWindowLong(Handle, GWL_STYLE) AND WS_CAPTION);
 end;
 
+initialization
+  RegisterClass(TMainForm);
+
 end.

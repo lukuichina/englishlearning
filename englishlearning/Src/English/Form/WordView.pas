@@ -917,4 +917,7 @@ begin
   FGauge.Progress := value;
 end;
 
+initialization
+  RegisterClass(TWordViewForm);
+
 end.

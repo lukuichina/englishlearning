@@ -18,6 +18,12 @@
 			<Projects Include="CommonLib\CommonLib.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="EnglishShell\EnglishShell.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="EnglishForms\EnglishForms.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -71,14 +77,32 @@
 		<Target Name="CommonLib:Make">
 			<MSBuild Projects="CommonLib\CommonLib.dproj" Targets="Make"/>
 		</Target>
+		<Target Name="EnglishShell">
+			<MSBuild Projects="EnglishShell\EnglishShell.dproj"/>
+		</Target>
+		<Target Name="EnglishShell:Clean">
+			<MSBuild Projects="EnglishShell\EnglishShell.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="EnglishShell:Make">
+			<MSBuild Projects="EnglishShell\EnglishShell.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="EnglishForms">
+			<MSBuild Projects="EnglishForms\EnglishForms.dproj"/>
+		</Target>
+		<Target Name="EnglishForms:Clean">
+			<MSBuild Projects="EnglishForms\EnglishForms.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="EnglishForms:Make">
+			<MSBuild Projects="EnglishForms\EnglishForms.dproj" Targets="Make"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="English;ControlLib;PictureSaver;PictureDownloader;CommonLib"/>
+			<CallTarget Targets="English;ControlLib;PictureSaver;PictureDownloader;CommonLib;EnglishShell;EnglishForms"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="English:Clean;ControlLib:Clean;PictureSaver:Clean;PictureDownloader:Clean;CommonLib:Clean"/>
+			<CallTarget Targets="English:Clean;ControlLib:Clean;PictureSaver:Clean;PictureDownloader:Clean;CommonLib:Clean;EnglishShell:Clean;EnglishForms:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="English:Make;ControlLib:Make;PictureSaver:Make;PictureDownloader:Make;CommonLib:Make"/>
+			<CallTarget Targets="English:Make;ControlLib:Make;PictureSaver:Make;PictureDownloader:Make;CommonLib:Make;EnglishShell:Make;EnglishForms:Make"/>
 		</Target>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>

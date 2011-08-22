@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, AdvOfficePager, ExtCtrls,
   Buttons, Grids, AdvObj, DBAdvGrid, Mask, DBCtrls, DB, ADODB, Menus,
-  AdvMenus, ActnList, ImgList, BaseGrid, AdvGrid;
+  AdvMenus, ActnList, ImgList, BaseGrid, AdvGrid, AdvGlowButton;
 
 type
   TWordExplainForm = class(TForm)
@@ -39,6 +39,8 @@ type
     mnuUpdateExplanation: TMenuItem;
     actViewExtention: TAction;
     mnuViewExtention: TMenuItem;
+    actKing: TAction;
+    btnKing: TButton;
     procedure btnWordSearchClick(Sender: TObject);
     procedure actAddExplanationExecute(Sender: TObject);
     procedure actDeleteExplanationExecute(Sender: TObject);
@@ -53,6 +55,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure advpmn1Popup(Sender: TObject);
     procedure actViewExtentionExecute(Sender: TObject);
+    procedure btnKingClick(Sender: TObject);
   private
     { Private declarations }
     FIsChanged:Boolean;
@@ -74,7 +77,7 @@ var
 implementation
 
 uses
-  WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension;
+  WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension, ShellAPI;
 
 {$R *.dfm}
 
@@ -225,6 +228,23 @@ begin
    (dbdvgrd1.RowSelectCount > 0);
 end;
 
+procedure TWordExplainForm.btnKingClick(Sender: TObject);
+var
+  Word:string;
+  URL:string;
+begin
+  if Trim(edtWord.Text) = '' then
+  begin
+    MessageDlg('没有选择单词对象，请选择对象后再进行该处理！', mtError, [mbOK], 0);
+    exit;
+  end;
+
+  Word := edtWord.Text;
+  URL := 'http://www.iciba.com/' + Word;
+  ShellExecute(handle, 'open', PWideChar(configInfo.Browser), PWideChar(URL), nil, SW_SHOWNORMAL);
+  //ShellExecute(handle, 'open', PWideChar(URL), nil, nil, SW_SHOWNORMAL);
+  end;
+
 procedure TWordExplainForm.btnWordSearchClick(Sender: TObject);
 begin
   try
@@ -332,5 +352,8 @@ begin
 
   Result := qryWord.RecordCount > 0;
 end;
+
+initialization
+  RegisterClass(TWordExplainForm);
 
 end.

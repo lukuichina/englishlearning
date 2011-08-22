@@ -80,4 +80,7 @@ implementation
 
 {$R *.dfm}
 
+initialization
+  RegisterClass(TPictureLibraryForm);
+
 end.
