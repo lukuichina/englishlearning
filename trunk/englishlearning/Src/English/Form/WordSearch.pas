@@ -62,7 +62,7 @@ var
 implementation
 
 uses
-  WordExplain, Main;
+  WordExplain;
 
 {$R *.dfm}
 
@@ -73,7 +73,7 @@ end;
 
 procedure TWordSearchForm.dbdvgrd1DblClick(Sender: TObject);
 begin
-  if Owner  <> MainForm then
+  if Owner  = nil then
   begin
     Close;
     ModalResult := mrOk;
@@ -210,5 +210,8 @@ begin
 
   Result := Fword;
 end;
+
+initialization
+  RegisterClass(TWordSearchForm);
 
 end.

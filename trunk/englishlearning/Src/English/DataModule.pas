@@ -47,7 +47,7 @@ var
 
 implementation
 
-uses Forms, Windows;
+uses Forms, Windows, CommonInfo;
 
 var
   myinifile:TInifile;
@@ -65,8 +65,6 @@ const
 begin
   try
     try
-
-
       conEnglish.Connected := False;
 
       if LowerCase(ConfigInfo.OdbcOption) = 'yes' then
@@ -82,10 +80,15 @@ begin
            ConfigInfo.DbName, ConfigInfo.Server, ConfigInfo.Server]);
       end;
 
+      logger.Info(conEnglish.ConnectionString);
+
       conEnglish.Connected := True;
+
+      logger.Info(BoolToStr(conEnglish.Connected));
     except on err:Exception do
       begin
-        //Application.ShowMainForm := False;
+        logger.Error(err.Message);
+
         Application.MessageBox(PWideChar(err.Message), 'Error', MB_OK + MB_ICONSTOP);
 
         if LowerCase(ConfigInfo.ExitOnErr) = 'yes' then
@@ -99,27 +102,27 @@ begin
 end;
 
 initialization
-      myinifile := TInifile.Create(GetCurrentDir + '\Config.ini');
+    myinifile := TInifile.Create(GetCurrentDir + '\Config.ini');
 
-      ConfigInfo.MainForm := myinifile.ReadInteger('StartInfo','MainForm',0);
-      ConfigInfo.ExitOnErr := myinifile.ReadString('StartInfo','ExitOnErr','');
+    ConfigInfo.MainForm := myinifile.ReadInteger('StartInfo','MainForm',0);
+    ConfigInfo.ExitOnErr := myinifile.ReadString('StartInfo','ExitOnErr','');
 
-      ConfigInfo.OdbcOption := myinifile.ReadString('OdbcInfo','OdbcOption','');
-      ConfigInfo.DsnName := myinifile.ReadString('OdbcInfo','DsnName','');
+    ConfigInfo.OdbcOption := myinifile.ReadString('OdbcInfo','OdbcOption','');
+    ConfigInfo.DsnName := myinifile.ReadString('OdbcInfo','DsnName','');
 
-      ConfigInfo.DbType := myinifile.ReadString('DBServer','DbType','');
-      ConfigInfo.Server := myinifile.ReadString('DBServer','Server','');
-      ConfigInfo.UserName := myinifile.ReadString('DBServer','UserName','');
-      ConfigInfo.Password := myinifile.ReadString('DBServer','Password','');
-      ConfigInfo.DbName := myinifile.ReadString('DBServer','DbName','');
+    ConfigInfo.DbType := myinifile.ReadString('DBServer','DbType','');
+    ConfigInfo.Server := myinifile.ReadString('DBServer','Server','');
+    ConfigInfo.UserName := myinifile.ReadString('DBServer','UserName','');
+    ConfigInfo.Password := myinifile.ReadString('DBServer','Password','');
+    ConfigInfo.DbName := myinifile.ReadString('DBServer','DbName','');
 
-      ConfigInfo.ImgPath := myinifile.ReadString('LocalPath','ImgPath','');
-      ConfigInfo.LibPath := myinifile.ReadString('LocalPath','LibPath','');
-      ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
-      ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
-      ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');
+    ConfigInfo.ImgPath := myinifile.ReadString('LocalPath','ImgPath','');
+    ConfigInfo.LibPath := myinifile.ReadString('LocalPath','LibPath','');
+    ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
+    ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
+    ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');
 
-      ConfigInfo.LogPath := myinifile.ReadString('LogInfo','LogPath','');
+    ConfigInfo.LogPath := myinifile.ReadString('LogInfo','LogPath','');
 
-      ConfigInfo.Browser := myinifile.ReadString('Program','browser','');
+    ConfigInfo.Browser := myinifile.ReadString('Program','browser','');
 end.

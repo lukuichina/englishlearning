@@ -2671,10 +2671,6 @@ object PictureLibraryForm: TPictureLibraryForm
     ZoomMode = zmAspectRatio
     Align = alClient
     TabOrder = 5
-    ExplicitLeft = -20
-    ExplicitTop = 97
-    ExplicitWidth = 1038
-    ExplicitHeight = 643
     object imgScreen: TAdvOfficeImage
       Left = 160
       Top = 200

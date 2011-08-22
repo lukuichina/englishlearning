@@ -3,12 +3,14 @@ unit TsycFunctionSet;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls,
   Dialogs, DB, ComCtrls, ExtCtrls, StdCtrls, Gauges, DBGrids, ShellApi, DBAdvGrid;
 
 function sycExportDateToExcel(ASender: TDBGrid): Boolean;
 
 implementation
+
+uses Forms;
 
 //采用BIFF8格式规范二进制流写入XLS文件
 function sycExportDateToExcel(ASender: TDBGrid): Boolean;

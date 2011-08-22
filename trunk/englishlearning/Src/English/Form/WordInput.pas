@@ -524,4 +524,7 @@ begin
   dsWord.DataSet.Locate('Word', FWord.Word, []);
 end;
 
+initialization
+  RegisterClass(TWordInputForm);
+
 end.

@@ -159,4 +159,7 @@ begin
 
 end;
 
+initialization
+  RegisterClass(TMainMenuForm);
+
 end.

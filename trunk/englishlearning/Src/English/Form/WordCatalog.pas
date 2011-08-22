@@ -1033,4 +1033,7 @@ begin
   dsWordCatalog.DataSet.Locate('CatalogID', FWordCatalog.CatalogID, []);
 end;
 
+initialization
+  RegisterClass(TWordCatalogForm);
+
 end.

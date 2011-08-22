@@ -3,7 +3,7 @@ unit Excel;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls,
   Dialogs, DB, ADODB, DBCtrls, StdCtrls, Grids, DBGrids, ComCtrls, ExtCtrls,
   ComObj, DBAdvGrid;
 
@@ -27,7 +27,7 @@ function  RefToCell(RowID, ColID: Integer): string;
 
 implementation
 
-uses gauges;
+uses Forms, gauges;
 
 var
   Args:array of TVarRec;
