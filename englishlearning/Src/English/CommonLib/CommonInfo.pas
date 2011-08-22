@@ -14,6 +14,8 @@ var
   SessionInfo:TSessionInfo;
   logger : TLogger;
 
+  procedure InitCommonInfo;
+
 implementation
 
 uses DataModule, DateUtils, TLevelUnit, TFileAppenderUnit, TSimpleLayoutUnit;
@@ -25,7 +27,8 @@ var
   strLogPath:string;
   appender:TFileAppender;
 
-initialization
+procedure InitCommonInfo;
+begin
   CreateGUID(SessionInfo.Session);
   SessionInfo.SessionID := GuidToString(SessionInfo.Session);
 
@@ -53,6 +56,10 @@ initialization
     end;
 
   end;
+end;
+
+initialization
+
 
 finalization
    TLogger.freeInstances;

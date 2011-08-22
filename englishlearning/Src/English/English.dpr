@@ -63,6 +63,9 @@ uses
 {$R UAC.res}
 
 begin
+  InitConfigInfo;
+  InitCommonInfo;
+
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmManager, dmManager);

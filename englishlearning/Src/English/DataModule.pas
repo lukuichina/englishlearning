@@ -45,6 +45,8 @@ var
   dmManager: TdmManager;
   ConfigInfo :TConfigInfo;
 
+  procedure InitConfigInfo;
+
 implementation
 
 uses Forms, Windows, CommonInfo;
@@ -101,7 +103,8 @@ begin
 
 end;
 
-initialization
+procedure InitConfigInfo;
+begin
     myinifile := TInifile.Create(GetCurrentDir + '\Config.ini');
 
     ConfigInfo.MainForm := myinifile.ReadInteger('StartInfo','MainForm',0);
@@ -125,4 +128,8 @@ initialization
     ConfigInfo.LogPath := myinifile.ReadString('LogInfo','LogPath','');
 
     ConfigInfo.Browser := myinifile.ReadString('Program','browser','');
+end;
+
+initialization
+
 end.
