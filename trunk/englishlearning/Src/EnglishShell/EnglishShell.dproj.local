@@ -5,11 +5,11 @@
     <Transaction>2011/08/21 22:56:52.000.253,=C:\Users\admin\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2011/08/21 23:01:54.000.297,=C:\Users\admin\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2011/08/22 06:06:35.000.215,=C:\Users\admin\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2011/08/22 06:07:37.000.286,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Main.pas=C:\Users\admin\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2011/08/22 06:07:37.000.287,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Main.dfm=C:\Users\admin\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2011/08/22 06:07:55.000.117,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\EnglishShell.dproj=C:\Users\admin\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2011/08/22 06:07:37.000.286,C:\Users\admin\Documents\RAD Studio\Projects\Unit1.pas=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Main.pas</Transaction>
+    <Transaction>2011/08/22 06:07:37.000.287,C:\Users\admin\Documents\RAD Studio\Projects\Unit1.dfm=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Main.dfm</Transaction>
+    <Transaction>2011/08/22 06:07:55.000.117,C:\Users\admin\Documents\RAD Studio\Projects\Project1.dproj=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\EnglishShell.dproj</Transaction>
     <Transaction>2011/08/22 21:24:14.000.191,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\MainMenu.pas</Transaction>
     <Transaction>2011/08/22 22:17:42.000.741,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Unit1.pas</Transaction>
-    <Transaction>2011/08/22 22:18:08.000.169,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Unit1.pas=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\EnglishForms.pas</Transaction>
+    <Transaction>2011/08/22 22:18:08.000.169,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\EnglishForms.pas=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishShell\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
