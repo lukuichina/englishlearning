@@ -110,7 +110,7 @@ begin
 
     FormClass := TFormClass(FindClass('T'+FormName));
 
-    FForm := FormClass.Create(Application);
+    FForm := FormClass.Create(Owner);
 
     FForm.ShowModal;
   finally
