@@ -53,6 +53,11 @@
 			<DelphiCompile Include="EnglishForms.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
+			<RcCompile Include="Ico.rc">
+				<ContainerId>RC</ContainerId>
+				<ContainerId>RC</ContainerId>
+				<Form>Ico.res</Form>
+			</RcCompile>
 			<DCCReference Include="..\English\CommonLib\AdvAPI.pas"/>
 			<DCCReference Include="..\English\CommonLib\CommonInfo.pas"/>
 			<DCCReference Include="..\English\CommonLib\DBGridToExcel.pas"/>

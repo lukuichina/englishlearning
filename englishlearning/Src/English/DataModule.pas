@@ -67,6 +67,8 @@ const
 begin
   try
     try
+      logger.Info('DataModuleCreate');
+
       conEnglish.Connected := False;
 
       if LowerCase(ConfigInfo.OdbcOption) = 'yes' then

@@ -10,11 +10,14 @@ library EnglishForms;
   with your DLL. To avoid using BORLNDMM.DLL, pass string information
   using PChar or ShortString parameters. }
 
+{$R 'Ico.res' 'Ico.rc'}
+
 uses
   SysUtils,
   Classes,
   Forms,
   IniFiles,
+  Windows,
   AdvAPI in '..\English\CommonLib\AdvAPI.pas',
   CommonInfo in '..\English\CommonLib\CommonInfo.pas',
   DBGridToExcel in '..\English\CommonLib\DBGridToExcel.pas',
@@ -86,23 +89,33 @@ begin
   end;
 end;
 
-procedure ShowForm(const FormName:string);
+procedure ShowForm(const FormName:string;const AHandle:THandle;const Owner:TComponent=nil);
 type
   TFormClass = Class of TForm;
 var
   FormClass:TFormClass;
   FForm:TForm;
+  Stream:TStream;
 begin
+  Application.Handle := AHandle;
+  //Application.Icon.Handle := LoadIcon(HInstance, 'app');
+  //Application.Icon.LoadFromFile('..\ico\app.ico');
+
+  Stream := nil;
   FForm:=nil;
 
   try
+    Stream := TResourceStream.Create(HInstance, 'app', RT_RCDATA);
+    Application.Icon.LoadFromStream(Stream);
+
     FormClass := TFormClass(FindClass('T'+FormName));
 
-    FForm := FormClass.Create(nil);
+    FForm := FormClass.Create(Application);
 
     FForm.ShowModal;
   finally
     FForm.Free;
+    Stream.Free;
   end;
 end;
 
@@ -123,4 +136,6 @@ exports
   ReleaseModule;
 
 begin
+  InitConfigInfo;
+  InitCommonInfo;
 end.

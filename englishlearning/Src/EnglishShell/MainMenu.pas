@@ -82,7 +82,7 @@ begin
 //  finally
 //    WordExplainForm.Free;
 //  end;
-  ShowForm('WordExplainForm');
+  ShowForm('WordExplainForm', Handle);
 end;
 
 procedure TMainMenuForm.actManagePictureExecute(Sender: TObject);
@@ -93,7 +93,7 @@ begin
 //  finally
 //    WordPictureForm.Free;
 //  end;
-  ShowForm('WordPictureForm');
+  ShowForm('WordPictureForm', Handle, Self);
 end;
 
 procedure TMainMenuForm.actManagePictureLibraryExecute(Sender: TObject);
@@ -104,7 +104,7 @@ begin
 //  finally
 //    PictureLibraryForm.Free;
 //  end;
-  ShowForm('PictureLibraryForm');
+  ShowForm('PictureLibraryForm', Handle);
 end;
 
 procedure TMainMenuForm.actManageWordExecute(Sender: TObject);
@@ -115,7 +115,7 @@ begin
 //  finally
 //    WordInputForm.Free;
 //  end;
-  ShowForm('WordInputForm');
+  ShowForm('WordInputForm', Handle);
 end;
 
 procedure TMainMenuForm.actSearchWordExecute(Sender: TObject);
@@ -126,7 +126,7 @@ begin
 //  finally
 //    WordSearchForm.Free;
 //  end;
-  ShowForm('WordSearchForm');
+  ShowForm('WordSearchForm', Handle);
 end;
 
 procedure TMainMenuForm.actViewWordExecute(Sender: TObject);
@@ -137,7 +137,7 @@ begin
 //  finally
 //    WordViewForm.Free;
 //  end;
-  ShowForm('WordViewForm');
+  ShowForm('WordViewForm', Handle);
 end;
 
 procedure TMainMenuForm.actWordCatalogExecute(Sender: TObject);
@@ -148,7 +148,7 @@ begin
 //  finally
 //    WordCatalogForm.Free;
 //  end;
-  ShowForm('WordCatalogForm');
+  ShowForm('WordCatalogForm', Handle);
 end;
 
 procedure TMainMenuForm.actWordExtensionExecute(Sender: TObject);
@@ -159,7 +159,7 @@ begin
 //  finally
 //    WordExtensionForm.Free;
 //  end;
-  ShowForm('WordExtensionForm');
+  ShowForm('WordExtensionForm', Handle, Self);
 end;
 
 procedure TMainMenuForm.FormCreate(Sender: TObject);

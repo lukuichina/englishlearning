@@ -75,8 +75,8 @@ procedure TWordSearchForm.dbdvgrd1DblClick(Sender: TObject);
 begin
   if Owner  = nil then
   begin
-    Close;
     ModalResult := mrOk;
+    Close;
   end;
 
 //  if not WordExplainForm.Showing then
