@@ -2,41 +2,6 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2011/08/22 06:48:45.000.769,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\EnglishForms.dproj=C:\Users\admin\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2011/08/22 06:49:21.000.440,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Model\SynonymModel.pas</Transaction>
-    <Transaction>2011/08/22 06:49:21.000.315,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Model\HomoionymModel.pas</Transaction>
-    <Transaction>2011/08/22 06:49:31.000.143,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Form\WordInput.pas</Transaction>
-    <Transaction>2011/08/22 06:49:31.000.586,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Form\WordPicture.pas</Transaction>
-    <Transaction>2011/08/22 06:49:58.000.135,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Controller\WordViewController.pas</Transaction>
-    <Transaction>2011/08/22 06:50:07.000.341,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\CommonLib\Excel.pas</Transaction>
-    <Transaction>2011/08/22 20:31:35.000.600,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Unit1.pas</Transaction>
     <Transaction>2011/08/22 20:31:58.000.065,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Unit1.pas=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Export.pas</Transaction>
-    <Transaction>2011/08/22 22:40:12.000.603,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\CommonLib\Excel.pas=</Transaction>
-    <Transaction>2011/08/22 22:40:19.000.136,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Controller\WordViewController.pas=</Transaction>
-    <Transaction>2011/08/22 22:40:33.000.673,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Form\WordInput.pas=</Transaction>
-    <Transaction>2011/08/22 22:40:33.000.690,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Form\WordPicture.pas=</Transaction>
-    <Transaction>2011/08/22 22:40:40.000.294,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Model\SynonymModel.pas=</Transaction>
-    <Transaction>2011/08/22 22:40:40.000.261,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\EnglishForms\Model\HomoionymModel.pas=</Transaction>
-    <Transaction>2011/08/22 22:41:50.000.628,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\CommonLib\TsycFunctionSet.pas</Transaction>
-    <Transaction>2011/08/22 22:42:19.000.294,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Controller\SynonymWordExtentionController.pas</Transaction>
-    <Transaction>2011/08/22 22:42:40.000.428,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\DerivativeWordExtentionDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:42:41.000.532,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\TypeWordExtentionDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:42:41.000.203,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\PictureDispDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:42:42.000.828,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\WordSearchDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:42:56.000.823,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\PictureDispDialog.pas=</Transaction>
-    <Transaction>2011/08/22 22:42:56.000.900,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\TypeWordExtentionDialog.pas=</Transaction>
-    <Transaction>2011/08/22 22:42:56.000.673,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\DerivativeWordExtentionDialog.pas=</Transaction>
-    <Transaction>2011/08/22 22:42:57.000.010,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\WordSearchDialog.pas=</Transaction>
-    <Transaction>2011/08/22 22:43:27.000.575,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\PictureDispDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:43:27.000.134,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\DerivativeWordExtentionDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:43:27.000.802,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\TypeWordExtentionDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:43:28.000.569,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Dialog\WordSearchDialog.pas</Transaction>
-    <Transaction>2011/08/22 22:43:54.000.440,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\WordCatalog.pas</Transaction>
-    <Transaction>2011/08/22 22:43:54.000.872,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\WordExtension.pas</Transaction>
-    <Transaction>2011/08/22 22:43:54.000.244,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\PictureLibrary.pas</Transaction>
-    <Transaction>2011/08/22 22:43:55.000.389,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Form\WordInput.pas</Transaction>
-    <Transaction>2011/08/22 22:44:13.000.873,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\Model\WordExplanationModel.pas</Transaction>
-    <Transaction>2011/08/22 22:44:44.000.315,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\View\WordCatalogView.pas</Transaction>
-    <Transaction>2011/08/22 22:44:44.000.403,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\View\WordExtensionView.pas</Transaction>
-    <Transaction>2011/08/22 22:44:44.000.206,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\View\SynonymWordExtentionView.pas</Transaction>
   </Transactions>
 </BorlandProject>
