@@ -499,6 +499,8 @@ begin
 end;
 
 procedure TWordViewForm.actScreenViewExecute(Sender: TObject);
+//var
+//  item:array[0..0] of integer;
 begin
   if (lbxPicture.Items.Count = 0) {or (lbxPicture.SelectedItemIndex = -1)} then
   begin
@@ -519,6 +521,7 @@ begin
     FullScreenDialogForm.ShowModal;
 
     lbxPicture.SelectedItemIndex := FullScreenDialogForm.CurrentIndex;
+    lbxPictureItemSelect(Sender, FullScreenDialogForm.CurrentIndex);
   finally
     FullScreenDialogForm.Free;
   end;
