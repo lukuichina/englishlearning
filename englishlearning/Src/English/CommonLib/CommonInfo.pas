@@ -2,7 +2,32 @@ unit CommonInfo;
 
 interface
 
-uses SysUtils, Dialogs, TConfiguratorUnit, TLoggerUnit;
+uses SysUtils, Dialogs, TConfiguratorUnit, TLoggerUnit, IniFiles;
+
+type
+  TConfigInfo = record
+    MainForm :integer;
+    ExitOnErr:string;
+
+    OdbcOption:string;
+    DsnName :string;
+
+    DbType  :string;
+    Server  :string;
+    UserName:string;
+    Password:string;
+    DbName  :string;
+
+    ImgPath :string;
+    LibPath :string;
+    PicPath :string;
+    RtfPath :string;
+    TmpPath :string;
+
+    LogPath :string;
+
+    Browser :string;
+  end;
 
 type
   TSessionInfo = record
@@ -14,11 +39,15 @@ var
   SessionInfo:TSessionInfo;
   logger : TLogger;
 
+var
+  ConfigInfo :TConfigInfo;
+
+  procedure InitConfigInfo;
   procedure InitCommonInfo;
 
 implementation
 
-uses DataModule, DateUtils, TLevelUnit, TFileAppenderUnit, TSimpleLayoutUnit;
+uses TLevelUnit, TFileAppenderUnit, TSimpleLayoutUnit;
 
 const
   LOG_FILE:string = 'log_%s.log';
@@ -26,6 +55,9 @@ const
 var
   strLogPath:string;
   appender:TFileAppender;
+
+var
+  myinifile:TInifile;
 
 procedure InitCommonInfo;
 begin
@@ -58,10 +90,38 @@ begin
   end;
 end;
 
+procedure InitConfigInfo;
+begin
+    myinifile := TInifile.Create(GetCurrentDir + '\Config.ini');
+
+    ConfigInfo.MainForm := myinifile.ReadInteger('StartInfo','MainForm',0);
+    ConfigInfo.ExitOnErr := myinifile.ReadString('StartInfo','ExitOnErr','');
+
+    ConfigInfo.OdbcOption := myinifile.ReadString('OdbcInfo','OdbcOption','');
+    ConfigInfo.DsnName := myinifile.ReadString('OdbcInfo','DsnName','');
+
+    ConfigInfo.DbType := myinifile.ReadString('DBServer','DbType','');
+    ConfigInfo.Server := myinifile.ReadString('DBServer','Server','');
+    ConfigInfo.UserName := myinifile.ReadString('DBServer','UserName','');
+    ConfigInfo.Password := myinifile.ReadString('DBServer','Password','');
+    ConfigInfo.DbName := myinifile.ReadString('DBServer','DbName','');
+
+    ConfigInfo.ImgPath := myinifile.ReadString('LocalPath','ImgPath','');
+    ConfigInfo.LibPath := myinifile.ReadString('LocalPath','LibPath','');
+    ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
+    ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
+    ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');
+
+    ConfigInfo.LogPath := myinifile.ReadString('LogInfo','LogPath','');
+
+    ConfigInfo.Browser := myinifile.ReadString('Program','browser','');
+end;
+
 initialization
 
 
 finalization
    TLogger.freeInstances;
+   myinifile.Free;
 
 end.

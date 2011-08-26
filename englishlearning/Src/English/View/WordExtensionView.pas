@@ -3,7 +3,7 @@ unit WordExtensionView;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordExtensionModel;
+  DB, ADODB, MVC;
 
 type
   IWordExtensionView = interface(IView)

@@ -3,7 +3,7 @@ unit SynonymWordExtentionView;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordExtensionModel;
+  DB, ADODB, MVC;
 
 type
   ISynonymWordExtentionView = interface(IView)

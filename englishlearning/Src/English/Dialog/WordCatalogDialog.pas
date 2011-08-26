@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, BasicDialog, StdCtrls, Buttons, datelbl, ComCtrls,
-  WordCatalogView, WordCatalogModel,
+  WordCatalogView,
   ViewData;
 
 type

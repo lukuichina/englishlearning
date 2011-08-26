@@ -1,7 +1,7 @@
-unit TransPanel; 
+unit TransPanel;
 interface 
-uses {WinTypes, WinProcs,}Windows, Messages, SysUtils, Classes, Controls, Forms, 
-  Graphics, StdCtrls; 
+uses {WinTypes, WinProcs,}Windows, Messages, SysUtils, Classes, Controls, Forms,
+  Graphics;
 type 
   TTransPanel = class(TCustomcontrol) 
   private 

@@ -3,7 +3,7 @@ unit WordViewModel;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, SysUtils, Dialogs;
+  DB, ADODB, MVC, SysUtils, Dialogs;
 
 type
   IWordViewModel = interface(IModel)

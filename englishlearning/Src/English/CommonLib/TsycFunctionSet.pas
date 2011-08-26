@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls,
-  Dialogs, DB, ComCtrls, ExtCtrls, StdCtrls, Gauges, DBGrids, ShellApi, DBAdvGrid;
+  Dialogs, DB, ComCtrls, DBGrids;
 
 function sycExportDateToExcel(ASender: TDBGrid): Boolean;
 

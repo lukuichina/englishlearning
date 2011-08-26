@@ -3,32 +3,7 @@ unit DataModule;
 interface
 
 uses
-  SysUtils, Classes, DB, ADODB, AdvAppStyler, IniFiles;
-
-type
-  TConfigInfo = record
-    MainForm :integer;
-    ExitOnErr:string;
-
-    OdbcOption:string;
-    DsnName :string;
-
-    DbType  :string;
-    Server  :string;
-    UserName:string;
-    Password:string;
-    DbName  :string;
-
-    ImgPath :string;
-    LibPath :string;
-    PicPath :string;
-    RtfPath :string;
-    TmpPath :string;
-
-    LogPath :string;
-
-    Browser :string;
-  end;
+  SysUtils, Classes, DB, ADODB, AdvAppStyler;
 
 type
   TdmManager = class(TDataModule)
@@ -43,16 +18,10 @@ type
 
 var
   dmManager: TdmManager;
-  ConfigInfo :TConfigInfo;
-
-  procedure InitConfigInfo;
 
 implementation
 
 uses Forms, Windows, CommonInfo;
-
-var
-  myinifile:TInifile;
 
 {$R *.dfm}
 
@@ -100,36 +69,9 @@ begin
       end;
     end;
   finally
-    myinifile.Free;
+
   end;
 
-end;
-
-procedure InitConfigInfo;
-begin
-    myinifile := TInifile.Create(GetCurrentDir + '\Config.ini');
-
-    ConfigInfo.MainForm := myinifile.ReadInteger('StartInfo','MainForm',0);
-    ConfigInfo.ExitOnErr := myinifile.ReadString('StartInfo','ExitOnErr','');
-
-    ConfigInfo.OdbcOption := myinifile.ReadString('OdbcInfo','OdbcOption','');
-    ConfigInfo.DsnName := myinifile.ReadString('OdbcInfo','DsnName','');
-
-    ConfigInfo.DbType := myinifile.ReadString('DBServer','DbType','');
-    ConfigInfo.Server := myinifile.ReadString('DBServer','Server','');
-    ConfigInfo.UserName := myinifile.ReadString('DBServer','UserName','');
-    ConfigInfo.Password := myinifile.ReadString('DBServer','Password','');
-    ConfigInfo.DbName := myinifile.ReadString('DBServer','DbName','');
-
-    ConfigInfo.ImgPath := myinifile.ReadString('LocalPath','ImgPath','');
-    ConfigInfo.LibPath := myinifile.ReadString('LocalPath','LibPath','');
-    ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
-    ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
-    ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');
-
-    ConfigInfo.LogPath := myinifile.ReadString('LogInfo','LogPath','');
-
-    ConfigInfo.Browser := myinifile.ReadString('Program','browser','');
 end;
 
 initialization

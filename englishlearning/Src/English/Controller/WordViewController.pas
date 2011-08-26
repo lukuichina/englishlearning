@@ -3,8 +3,8 @@ unit WordViewController;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordCatalogView, WordCatalogModel, CatalogWordModel,
-  CatalogRelationModel, WordViewModel, WordViewView, WordModel;
+  DB, ADODB, MVC, WordCatalogModel,
+  WordViewModel, WordViewView, WordModel;
 
 type
   IWordViewController = interface(IController)

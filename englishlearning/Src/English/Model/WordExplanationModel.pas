@@ -3,7 +3,7 @@ unit WordExplanationModel;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData;
+  DB, ADODB, MVC;
 
 type
   IWordExplanationModel = interface(IModel)

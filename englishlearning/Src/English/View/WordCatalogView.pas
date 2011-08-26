@@ -3,7 +3,7 @@ unit WordCatalogView;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordCatalogModel, Forms;
+  DB, ADODB, MVC, ViewData, Forms;
 
 type
   TEditMode = (emNone, emInsert, emUpdate);

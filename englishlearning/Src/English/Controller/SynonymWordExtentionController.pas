@@ -3,7 +3,7 @@ unit SynonymWordExtentionController;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, SynonymWordExtentionView, WordExplanationModel, SynonymModel, AntonymModel;
+  DB, ADODB, MVC, SynonymWordExtentionView, WordExplanationModel;
 
 type
   ISynonymWordExtentionController = interface(IController)
