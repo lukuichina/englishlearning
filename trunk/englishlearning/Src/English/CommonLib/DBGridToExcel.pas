@@ -3,7 +3,7 @@ unit DBGridToExcel;
 interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ComCtrls, ExtCtrls, StdCtrls, Gauges, DBGrids, ShellApi, DBAdvGrid;
+  Dialogs, DB, ComCtrls, ExtCtrls, StdCtrls, Gauges, ShellApi, DBAdvGrid;
 
 type
   TTitleCell = array of array of String;

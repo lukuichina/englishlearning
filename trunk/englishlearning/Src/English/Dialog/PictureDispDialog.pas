@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, BasicDialog, StdCtrls, Buttons, ComCtrls, ToolWin, ExtActns,
-  StdActns, ActnList, Menus, ImgList;
+  Dialogs, BasicDialog, StdCtrls, Buttons, ComCtrls, ExtActns,
+  StdActns, ActnList, Menus;
 
 type
   TPictureDispDialogForm = class(TBasicDialogForm)

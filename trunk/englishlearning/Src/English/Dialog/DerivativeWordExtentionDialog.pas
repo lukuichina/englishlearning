@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, BasicDialog, StdCtrls, Buttons, ExtCtrls, DBCtrls, DB, ADODB;
+  Dialogs, BasicDialog, StdCtrls, Buttons, DBCtrls, DB, ADODB;
 
 type
   TDerivativeWordExtentionDialogForm = class(TBasicDialogForm)

@@ -3,8 +3,7 @@ unit CatalogRelationController;
 interface
 
 uses
-  DB, ADODB, MVC, ViewData, WordCatalogView, WordCatalogModel, CatalogWordModel,
-  CatalogRelationModel;
+  DB, ADODB;
 
 //type
 //  ICatalogRelationController = interface(IController)

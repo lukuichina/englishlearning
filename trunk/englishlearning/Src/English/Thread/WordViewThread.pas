@@ -3,7 +3,7 @@ unit WordViewThread;
 interface
 
 uses
-  Classes, ADODB, advsmoothimagelistbox, SysUtils, Gauges;
+  Classes, ADODB, advsmoothimagelistbox, SysUtils;
 
 type
   TWordViewThreadEvent = procedure(const value:integer) of object;
@@ -38,7 +38,7 @@ type
 
 implementation
 
-uses DataModule;
+uses CommonInfo;
 
 { 
   Important: Methods and properties of objects in visual components can only be

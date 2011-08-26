@@ -61,7 +61,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
       ParentFont = False
       ShineColor = clWhite
       TabOrder = 0
-      Version = '1.2.3.0'
+      Version = '1.2.3.1'
     end
     object btnNext: TAdvGlassButton
       Left = 165
@@ -86,7 +86,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
       ParentFont = False
       ShineColor = clWhite
       TabOrder = 1
-      Version = '1.2.3.0'
+      Version = '1.2.3.1'
     end
     object btnExit: TAdvGlassButton
       Left = 127
@@ -111,7 +111,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
       ParentFont = False
       ShineColor = clWhite
       TabOrder = 2
-      Version = '1.2.3.0'
+      Version = '1.2.3.1'
     end
     object btnPrevious: TAdvGlassButton
       Left = 73
@@ -137,7 +137,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
       ParentFont = False
       ShineColor = clWhite
       TabOrder = 3
-      Version = '1.2.3.0'
+      Version = '1.2.3.1'
     end
     object btnFirst: TAdvGlassButton
       Left = 22
@@ -163,7 +163,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
       ParentFont = False
       ShineColor = clWhite
       TabOrder = 4
-      Version = '1.2.3.0'
+      Version = '1.2.3.1'
     end
   end
   object FullScreen1: TFullScreen
@@ -173,7 +173,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
   object pmn1: TAdvPopupMenu
     OnPopup = pmn1Popup
     MenuStyler = AdvMenuOfficeStyler2
-    Version = '2.5.3.3'
+    Version = '2.5.3.4'
     Left = 416
     Top = 208
     object mnuNext: TMenuItem

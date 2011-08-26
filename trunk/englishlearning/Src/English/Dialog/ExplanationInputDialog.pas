@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrls, ADODB, DB, Buttons, ExtCtrls;
+  Dialogs, StdCtrls, DBCtrls, ADODB, DB, Buttons;
 
 type
   TExplanationInputDialogForm = class(TForm)

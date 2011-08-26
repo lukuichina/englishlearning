@@ -3,7 +3,7 @@ unit InterfaceDef;
 interface
 
 uses
-  MVC, ViewData;
+  ViewData;
 
 type
   TActionType = (atNone, atInsert, atUpdate, atDelete, atRefresh);

@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, AdvOfficePager, ExtCtrls,
-  Buttons, Grids, AdvObj, DBAdvGrid, Mask, DBCtrls, DB, ADODB, Menus,
-  AdvMenus, ActnList, ImgList, BaseGrid, AdvGrid, AdvGlowButton;
+  Dialogs, StdCtrls, AdvOfficePager,
+  Buttons, DBAdvGrid, DBCtrls, DB, ADODB, Menus,
+  AdvMenus, ActnList, AdvGrid, ImgList, Grids, AdvObj, BaseGrid;
 
 type
   TWordExplainForm = class(TForm)
@@ -77,7 +77,8 @@ var
 implementation
 
 uses
-  WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension, ShellAPI;
+  WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension, ShellAPI,
+  CommonInfo;
 
 {$R *.dfm}
 

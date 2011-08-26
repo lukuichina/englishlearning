@@ -5,10 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, AdvShapeButton, AdvToolBar, AdvToolBarStylers, AdvAppStyler, Grids,
-  AdvObj, BaseGrid, AdvGrid, DBAdvGrid, StdCtrls, AdvGroupBox,
-  AdvSmoothExpanderGroup, MVC, WordCatalogView, WordCatalogController,
-  WordCatalogModel, DB, ADODB, Menus, AdvMenus, ActnList, ImgList,
-  InterfaceDef, AdvGlowButton, ExtCtrls, ComCtrls, TreeList, dxtree, dxdbtree,
+  AdvGrid, DBAdvGrid, StdCtrls, AdvGroupBox,
+  AdvSmoothExpanderGroup, WordCatalogView, WordCatalogController,
+  DB, ADODB, Menus, AdvMenus, ActnList,
+  InterfaceDef, AdvGlowButton, ComCtrls, dxtree, dxdbtree,
   dxmdaset, ToolPanels, AdvGridCSVPager, AdvOfficePager,
   ViewData;
 

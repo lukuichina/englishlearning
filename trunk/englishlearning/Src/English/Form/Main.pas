@@ -4,13 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, AdvMenus,AdvSmoothExpanderGroup, AdvSmoothPanel, AdvSmoothButton,
-  ActnList, GDIPPictureContainer, AdvPreviewMenu, AdvPreviewMenuStylers,
+  Dialogs, AdvMenus,AdvSmoothExpanderGroup, AdvSmoothPanel, AdvSmoothButton,
+  ActnList, GDIPPictureContainer,
   AdvShapeButton, GDIPImageTextButtonItem, GDIPDropDownItem, GDIPHeaderItem,
   GDIPSectionItem, GDIPImageSectionItem, GDIPGroupItem, GDIPRadioItem,
-  GDIPCheckItem, GDIPTextItem, GDIPImageTextItem, GDIPGraphicItem,
-  GDIPButtonItem, GDIPCustomItem, GDIPButtonBarItem, CustomItemsContainer,
-  AdvPolyList, frmshape, StdCtrls, AdvToolBar, AdvAppStyler, AdvGlowButton;
+  GDIPCheckItem, GDIPTextItem, GDIPImageTextItem,
+  GDIPButtonItem, GDIPCustomItem, GDIPButtonBarItem,
+  AdvToolBar, AdvAppStyler;
 
 type
   TMainForm = class(TForm)

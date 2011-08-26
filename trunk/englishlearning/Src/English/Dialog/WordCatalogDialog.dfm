@@ -37,7 +37,7 @@ inherited WordCatalogDialogFrom: TWordCatalogDialogFrom
     Top = 147
     Width = 103
     Height = 13
-    Caption = '2010/11/22 00:04:12'
+    Caption = '2011/08/26 21:38:21'
     DateTimeFormat = 'yyyy/MM/dd hh:mm:ss'
     Version = '1.1.0.0'
     RefreshInterval = 0
@@ -48,7 +48,7 @@ inherited WordCatalogDialogFrom: TWordCatalogDialogFrom
     Top = 107
     Width = 103
     Height = 13
-    Caption = '2010/11/22 00:04:12'
+    Caption = '2011/08/26 21:38:21'
     DateTimeFormat = 'yyyy/MM/dd hh:mm:ss'
     Version = '1.1.0.0'
     RefreshInterval = 0

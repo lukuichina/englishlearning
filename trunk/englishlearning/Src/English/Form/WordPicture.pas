@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ADODB, Menus, AdvMenus, ActnList, ImgList, DB,
-  StdCtrls, AdvSmoothTabPager, AdvSmoothImageListBox,Typinfo, ExtCtrls,
-  AdvSmoothExpanderGroup, DBAdvSmoothImageListBox, AdvSmoothToggleButton,
-  ExtDlgs, AdvSmoothListBox, DBAdvSmoothListBox, AdvGlowButton, AdvToolBar,
-  ToolWin, ComCtrls, AdvToolBarStylers, AdvShapeButton, AdvStickyPopupMenu,
+  Dialogs, ADODB, Menus, AdvMenus, ActnList, DB,
+  AdvSmoothTabPager, AdvSmoothImageListBox,
+  DBAdvSmoothImageListBox,
+  ExtDlgs, AdvSmoothListBox, AdvGlowButton, AdvToolBar,
+  ComCtrls, AdvToolBarStylers, AdvShapeButton, AdvStickyPopupMenu,
   AdvMenuStylers, AdvAppStyler, ShellAPI, AdvOfficeStatusBar,
   AdvOfficeStatusBarStylers;
 
@@ -186,8 +186,8 @@ var
 implementation
 
 uses
-  DataModule,IdHashMessageDigest,IdGlobal, IdHash, PictureDispDialog, AdvAPI,
-  WordSearch;
+  DataModule,PictureDispDialog, AdvAPI,
+  WordSearch, CommonInfo;
 
 {$R *.dfm}
 

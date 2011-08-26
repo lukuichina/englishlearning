@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, AdvSmoothExpanderGroup, AdvOfficeTabSet, AdvOfficePager,
+  Dialogs, AdvSmoothExpanderGroup, AdvOfficePager,
   AdvOfficePagerStylers, ImgList, AdvSmoothButton, AdvSmoothPanel, ActnList,
   GDIPPictureContainer;
 

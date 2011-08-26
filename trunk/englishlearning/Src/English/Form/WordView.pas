@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, AdvSmoothExpanderGroup, AdvSmoothImageListBox, AdvSmoothMenu,
-  AdvSmoothLabel, AdvOfficeTabSet, AdvOfficePager, AdvOfficePagerStylers,
-  AdvOfficeButtons, AdvStickyPopupMenu, AdvToolBar, AdvSmoothTouchKeyBoard,
-  AdvGlowButton, AdvGlassButton, ActnList, DB, ADODB, Menus, AdvMenus, StdCtrls,
-  AdvMenuStylers, ImgList, GDIPPictureContainer,ShellAPI, AdvOfficeImage,
+  Dialogs, AdvSmoothExpanderGroup, AdvSmoothImageListBox,
+  AdvOfficePager, AdvOfficePagerStylers,
+  AdvStickyPopupMenu, AdvToolBar,
+  AdvGlowButton, ActnList, DB, ADODB, Menus, AdvMenus, StdCtrls,
+  AdvMenuStylers, ShellAPI, AdvOfficeImage,
   ExtCtrls, AdvSplitter, WordViewView, WordViewController, Gauges, WordViewThread;
 
 type
@@ -133,7 +133,7 @@ var
 implementation
 
 uses
-  WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog, AdvAPI,
+  WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog,
   CommonInfo;
 
 {$R *.dfm}

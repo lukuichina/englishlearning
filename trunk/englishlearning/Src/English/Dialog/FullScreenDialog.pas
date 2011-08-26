@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, BasicDialog, FullScreen, AdvOfficeImage, ADODB, Menus, AdvMenus,
-  AdvMenuStylers, ActnList, AdvGlassButton, AdvPanel, ExtCtrls, RzPanel;
+  AdvMenuStylers, ActnList, AdvGlassButton, RzPanel, ExtCtrls;
 
 type
   TFullScreenDialogForm = class(TBasicDialogForm)
@@ -55,7 +55,7 @@ var
 implementation
 
 uses
-  DataModule;
+  CommonInfo;
 
 {$R *.dfm}
 

@@ -6,8 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ADODB, AdvOfficeStatusBar, AdvOfficeStatusBarStylers, AdvMenus,
   AdvMenuStylers, AdvStickyPopupMenu, AdvToolBar, AdvToolBarStylers, ExtDlgs,
-  DB, Menus, ActnList, DBAdvSmoothImageListBox, AdvSmoothImageListBox,
-  AdvSmoothTabPager, AdvShapeButton, AdvGlowButton, AdvOfficeImage;
+  DB, Menus, ActnList, AdvSmoothImageListBox,
+  AdvShapeButton, AdvGlowButton, AdvOfficeImage;
 
 type
   TPictureLibraryForm = class(TAdvToolBarForm)

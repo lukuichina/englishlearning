@@ -5,9 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, AdvAppStyler, AdvToolBar, AdvToolBarStylers, AdvShapeButton,
-  StdCtrls, Grids, AdvObj, BaseGrid, AdvGrid, DBAdvGrid, AdvOfficePager,
+  StdCtrls, Grids, AdvGrid, DBAdvGrid, AdvOfficePager,
   WordExtensionView, WordExtensionController, ADODB, DB, ViewData, Menus,
-  AdvMenus, ActnList, ImgList, AdvGlowButton, AsgFindDialog;
+  AdvMenus, ActnList, AdvGlowButton, AsgFindDialog;
 
 type
   TWordExtensionForm = class(TAdvToolBarForm, IWordExtensionView)
@@ -218,7 +218,7 @@ var
 implementation
 
 uses {TypeWordExtentionDialog, }WordPicture, WordExplain,
-  SynonymWordExtentionDialog, DerivativeWordExtentionDialog, ResemblanceModel;
+  SynonymWordExtentionDialog, DerivativeWordExtentionDialog;
 
 {$R *.dfm}
 

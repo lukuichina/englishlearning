@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, AdvObj, BaseGrid,
-  AdvGrid, DBAdvGrid, DB, ADODB, StdCtrls, ExtCtrls, DBCtrls, AdvGroupBox,
-  Buttons, Menus, AdvMenus, ActnList, ImgList, ShellAPI, InterfaceDef,
+  Dialogs,
+  AdvGrid, DBAdvGrid, DB, ADODB, StdCtrls, ExtCtrls, DBCtrls,
+  Buttons, Menus, AdvMenus, ActnList, InterfaceDef,
   ViewData;
 
 type
@@ -134,8 +134,7 @@ var
 implementation
 
 uses
-  DataModule, Excel, WordExplain, WordPicture, WordExtension, DBGridToExcel, DateUtils,
-  XLSFile, uExportXls;
+  Excel, WordExplain, WordPicture, WordExtension, DBGridToExcel;
 
 {$R *.dfm}
 
