@@ -5,6 +5,7 @@ inherited FullScreenDialogForm: TFullScreenDialogForm
   ClientWidth = 488
   Color = clBackground
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnShow = FormShow
   ExplicitWidth = 488
   ExplicitHeight = 281
