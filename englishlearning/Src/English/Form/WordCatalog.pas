@@ -288,7 +288,7 @@ begin
       exit;
     end;
 
-    if Low(WordSearchDialogForm.WordsInfo) = High(WordSearchDialogForm.WordsInfo) then
+    if Length(WordSearchDialogForm.WordsInfo) = 0 then
       Exit;
 
     FWordCatalogController.InsertCatalogWords({CatalogInfo,} WordSearchDialogForm.WordsInfo);
@@ -406,7 +406,7 @@ begin
       exit;
     end;
 
-    if Low(WordSearchDialogForm.WordsInfo) = High(WordSearchDialogForm.WordsInfo) then
+    if Length(WordSearchDialogForm.WordsInfo) = 0 then
       Exit;
 
     FWordCatalogController.InsertCatalogWords({CatalogInfo,} WordSearchDialogForm.WordsInfo);

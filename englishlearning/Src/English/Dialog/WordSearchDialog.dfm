@@ -18,6 +18,7 @@ inherited WordSearchDialogForm: TWordSearchDialogForm
     inherited dbdvgrd1: TDBAdvGrid
       Width = 792
       Height = 597
+      RowCount = 101
       ExplicitWidth = 792
       ExplicitHeight = 597
     end
@@ -39,7 +40,7 @@ inherited WordSearchDialogForm: TWordSearchDialogForm
       end
       object btnDel: TButton
         Left = 6
-        Top = 184
+        Top = 190
         Width = 27
         Height = 25
         Caption = '-'
@@ -57,12 +58,21 @@ inherited WordSearchDialogForm: TWordSearchDialogForm
       end
       object btnClear: TButton
         Left = 6
-        Top = 248
+        Top = 260
         Width = 27
         Height = 25
         Caption = 'x'
         TabOrder = 3
         OnClick = btnClearClick
+      end
+      object btnLocate: TButton
+        Left = 6
+        Top = 330
+        Width = 27
+        Height = 25
+        Caption = '?'
+        TabOrder = 4
+        OnClick = btnLocateClick
       end
     end
   end
@@ -71,5 +81,8 @@ inherited WordSearchDialogForm: TWordSearchDialogForm
     Width = 1008
     ExplicitTop = 711
     ExplicitWidth = 1008
+  end
+  inherited qryWord: TADOQuery
+    Active = True
   end
 end
