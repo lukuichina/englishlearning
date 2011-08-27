@@ -5,7 +5,6 @@ object dmManager: TdmManager
   Height = 359
   Width = 589
   object conEnglish: TADOConnection
-    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Password123;Persist Security Info=T' +
       'rue;User ID=sa;Initial Catalog=English;Data Source=ADMIN-PC'
