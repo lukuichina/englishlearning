@@ -58,6 +58,7 @@
     <File Path="CommonLib\XLSFile.pas"/>
     <File Path="CommonLib\TsycFunctionSet.pas"/>
     <File Path="CommonLib\uExportXls.pas"/>
+    <File Path="CommonLib\AutoComplete.pas"/>
     <File Path="Controller"/>
     <File Path="Controller\CatalogRelationController.pas"/>
     <File Path="Controller\SynonymWordExtentionController.pas"/>

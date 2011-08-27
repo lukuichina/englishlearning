@@ -24,6 +24,7 @@ type
     procedure edtWordEndExit(Sender: TObject);
     procedure btnResetClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure SetWordStart(const value:string);
@@ -46,7 +47,7 @@ var
 implementation
 
 uses
-  WordSearch;
+  WordSearch, DataModule, AutoComplete;
 
 {$R *.dfm}
 
@@ -107,6 +108,16 @@ begin
   inherited;
 
   btnOK.Enabled := (edtWord.Text <> '') and (edtWordEnd.Text <> '');
+end;
+
+procedure TWordRangeForm.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  //引用自动完成功能用以下过程
+  //第二个参数是TStrings类型，用户可以自行取数，只要最终转化为TStrings类型即可
+  SetAutoCompleteControl(edtWord.Handle, dmManager.WordList);
+  SetAutoCompleteControl(edtWordEnd.Handle, dmManager.WordList);
 end;
 
 procedure TWordRangeForm.FormShow(Sender: TObject);

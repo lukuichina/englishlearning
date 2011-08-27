@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, BasicDialog, StdCtrls, Buttons, DBCtrls, DB, ADODB;
+  Dialogs, BasicDialog, StdCtrls, Buttons, DBCtrls, DB, ADODB, ExtCtrls;
 
 type
   TDerivativeWordExtentionDialogForm = class(TBasicDialogForm)
@@ -47,7 +47,7 @@ var
 
 implementation
 
-uses WordSearch;
+uses WordSearch, DataModule, AutoComplete;
 
 {$R *.dfm}
 
@@ -110,6 +110,10 @@ begin
 
   dbrgrpBaseType.Value := '1';
   dbrgrpExtendType.Value := '1';
+
+  //引用自动完成功能用以下过程
+  //第二个参数是TStrings类型，用户可以自行取数，只要最终转化为TStrings类型即可
+  SetAutoCompleteControl(edtExtendWord.Handle, dmManager.WordList);
 end;
 
 procedure TDerivativeWordExtentionDialogForm.FormShow(Sender: TObject);

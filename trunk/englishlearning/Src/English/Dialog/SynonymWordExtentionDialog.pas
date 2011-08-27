@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, BasicDialog, StdCtrls, Buttons, DBCtrls, DB, ADODB,
-  SynonymWordExtentionView, SynonymWordExtentionController;
+  SynonymWordExtentionView, SynonymWordExtentionController, ExtCtrls;
 
 type
   TSynonymWordExtentionDialogForm = class(TBasicDialogForm, ISynonymWordExtentionView)
@@ -66,7 +66,7 @@ var
 
 implementation
 
-uses WordSearch;
+uses WordSearch, DataModule, AutoComplete;
 
 {$R *.dfm}
 
@@ -182,6 +182,10 @@ begin
   FExtentionType := 2;
 
   FSynonymWordExtentionController := TSynonymWordExtentionController.Create(self);
+
+  //引用自动完成功能用以下过程
+  //第二个参数是TStrings类型，用户可以自行取数，只要最终转化为TStrings类型即可
+  SetAutoCompleteControl(edtExtendWord.Handle, dmManager.WordList);
 end;
 
 procedure TSynonymWordExtentionDialogForm.FormShow(Sender: TObject);
