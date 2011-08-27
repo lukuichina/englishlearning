@@ -10,7 +10,7 @@ uses
   DB, ADODB, Menus, AdvMenus, ActnList,
   InterfaceDef, AdvGlowButton, ComCtrls, dxtree, dxdbtree,
   dxmdaset, ToolPanels, AdvGridCSVPager, AdvOfficePager,
-  ViewData;
+  ViewData, ImgList, ExtCtrls, AdvObj, BaseGrid;
 
 type
   TWordCatalogForm = class(TAdvToolBarForm, IWordCatalogView, ICursorable)
@@ -192,7 +192,7 @@ var
 implementation
 
 uses WordCatalogDialog, Excel, WordSearch, WordPicture, WordExplain,
-  WordSearchDialog, WordExtension, WordView;
+  WordSearchDialog, WordExtension, WordView, DataModule, AutoComplete;
 
 {$R *.dfm}
 
@@ -622,6 +622,10 @@ begin
   tplWordCatalogTree.Locked := True;
 
   opClient.ActivePageIndex := 0;
+
+  //引用自动完成功能用以下过程
+  //第二个参数是TStrings类型，用户可以自行取数，只要最终转化为TStrings类型即可
+  SetAutoCompleteControl(edtSearchWord.Handle, dmManager.WordList);
 end;
 
 procedure TWordCatalogForm.FormShow(Sender: TObject);

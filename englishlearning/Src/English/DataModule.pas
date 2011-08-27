@@ -9,11 +9,16 @@ type
   TdmManager = class(TDataModule)
     conEnglish: TADOConnection;
     TAdvAppStyler1: TAdvAppStyler;
+    tblWord: TADOTable;
     procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
+    FWordList:TStrings;
+    procedure InitWordList;
   public
     { Public declarations }
+    property WordList:TStrings read FWordList write FWordList;
   end;
 
 var
@@ -38,6 +43,8 @@ begin
     try
       logger.Info('DataModuleCreate');
 
+      FWordList := TStringList.Create;
+
       conEnglish.Connected := False;
 
       if LowerCase(ConfigInfo.OdbcOption) = 'yes' then
@@ -57,6 +64,8 @@ begin
 
       conEnglish.Connected := True;
 
+      InitWordList;
+
       logger.Info(BoolToStr(conEnglish.Connected));
     except on err:Exception do
       begin
@@ -72,6 +81,23 @@ begin
 
   end;
 
+end;
+
+procedure TdmManager.DataModuleDestroy(Sender: TObject);
+begin
+  FWordList.Free;
+end;
+
+procedure TdmManager.InitWordList;
+begin
+  tblWord.Active := True;
+
+  while not tblWord.Eof do
+  begin
+    FWordList.Add(tblWord.FieldByName('Word').AsString);
+
+    tblWord.Next;
+  end;
 end;
 
 initialization

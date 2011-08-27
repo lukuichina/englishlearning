@@ -57,7 +57,8 @@ uses
   ResemblanceModel in 'Model\ResemblanceModel.pas',
   CongenerModel in 'Model\CongenerModel.pas',
   PictureLibrary in 'Form\PictureLibrary.pas' {PictureLibraryForm},
-  MainMenu in 'Form\MainMenu.pas' {MainMenuForm};
+  MainMenu in 'Form\MainMenu.pas' {MainMenuForm},
+  AutoComplete in 'CommonLib\AutoComplete.pas';
 
 {$R *.res}
 {$R UAC.res}
@@ -71,7 +72,6 @@ begin
   Application.CreateForm(TdmManager, dmManager);
   Application.CreateForm(TMainMenuForm, MainMenuForm);
   Application.CreateForm(TMainForm, MainForm);
-
   if ConfigInfo.MainForm = 1 then
   begin
     MainMenuForm.Hide;

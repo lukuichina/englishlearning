@@ -1,6 +1,7 @@
 object dmManager: TdmManager
   OldCreateOrder = False
   OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   Height = 359
   Width = 589
   object conEnglish: TADOConnection
@@ -17,5 +18,11 @@ object dmManager: TdmManager
     Style = tsOffice2010Blue
     Left = 240
     Top = 184
+  end
+  object tblWord: TADOTable
+    Connection = conEnglish
+    TableName = 'Word'
+    Left = 360
+    Top = 80
   end
 end

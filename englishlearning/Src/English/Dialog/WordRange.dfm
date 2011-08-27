@@ -2,6 +2,7 @@ inherited WordRangeForm: TWordRangeForm
   Caption = #21333#35789#33539#22260
   ClientHeight = 245
   ClientWidth = 361
+  OnCreate = FormCreate
   OnShow = FormShow
   ExplicitWidth = 367
   ExplicitHeight = 273

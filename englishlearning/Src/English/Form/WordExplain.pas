@@ -78,7 +78,7 @@ implementation
 
 uses
   WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension, ShellAPI,
-  CommonInfo;
+  CommonInfo, AutoComplete;
 
 {$R *.dfm}
 
@@ -315,6 +315,10 @@ var
 begin
   for i := 0 to advpmn1.Items.Count - 1 do
     advpmn1.Items[i].Enabled := False;
+
+  //引用自动完成功能用以下过程
+  //第二个参数是TStrings类型，用户可以自行取数，只要最终转化为TStrings类型即可
+  SetAutoCompleteControl(edtWord.Handle, dmManager.WordList);
 end;
 
 procedure TWordExplainForm.FormShow(Sender: TObject);

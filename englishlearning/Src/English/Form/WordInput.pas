@@ -7,7 +7,7 @@ uses
   Dialogs,
   AdvGrid, DBAdvGrid, DB, ADODB, StdCtrls, ExtCtrls, DBCtrls,
   Buttons, Menus, AdvMenus, ActnList, InterfaceDef,
-  ViewData;
+  ViewData, ImgList, Grids, AdvObj, BaseGrid;
 
 type
   TWordInputForm = class(TForm, ICursorable)
@@ -134,7 +134,8 @@ var
 implementation
 
 uses
-  Excel, WordExplain, WordPicture, WordExtension, DBGridToExcel;
+  Excel, WordExplain, WordPicture, WordExtension, DBGridToExcel, DataModule,
+  AutoComplete;
 
 {$R *.dfm}
 
@@ -420,6 +421,10 @@ begin
   dblkcbbDifficulty.KeyValue := 3;
 
   ShowCurrentWord;
+
+  //引用自动完成功能用以下过程
+  //第二个参数是TStrings类型，用户可以自行取数，只要最终转化为TStrings类型即可
+  SetAutoCompleteControl(edtWord.Handle, dmManager.WordList);
 end;
 
 procedure TWordInputForm.qryWordMoveComplete(DataSet: TCustomADODataSet;
