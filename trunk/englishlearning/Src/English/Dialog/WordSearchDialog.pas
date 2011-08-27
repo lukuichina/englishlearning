@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, WordSearch, DB, ADODB, ComCtrls,
   Buttons, DBCtrls, StdCtrls,
-  ViewData;
+  ViewData, Grids, AdvObj, BaseGrid, AdvGrid, DBAdvGrid, ExtCtrls;
 
 type
   TWordSearchDialogForm = class(TWordSearchForm)
@@ -15,10 +15,12 @@ type
     btnDel: TButton;
     lstSelectWords: TListBox;
     btnClear: TButton;
+    btnLocate: TButton;
     procedure btnAddClick(Sender: TObject);
     procedure btnDelClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure dbdvgrd1DblClick(Sender: TObject);
+    procedure btnLocateClick(Sender: TObject);
   private
     { Private declarations }
     FWords:TWords;
@@ -47,6 +49,7 @@ begin
     exit;
 
   lstSelectWords.Items.Add(qryWord.FieldByName('Word').AsString);
+  lstSelectWords.ItemIndex := lstSelectWords.Items.Count - 1;
 end;
 
 procedure TWordSearchDialogForm.btnClearClick(Sender: TObject);
@@ -61,6 +64,14 @@ begin
   inherited;
 
   lstSelectWords.Items.Delete(lstSelectWords.ItemIndex);
+  lstSelectWords.ItemIndex := lstSelectWords.Items.Count - 1;
+end;
+
+procedure TWordSearchDialogForm.btnLocateClick(Sender: TObject);
+begin
+  inherited;
+
+  qryWord.Locate('Word', lstSelectWords.Items[lstSelectWords.ItemIndex], [loPartialKey]);
 end;
 
 procedure TWordSearchDialogForm.dbdvgrd1DblClick(Sender: TObject);
