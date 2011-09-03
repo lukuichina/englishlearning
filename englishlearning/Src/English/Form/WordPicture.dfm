@@ -5517,6 +5517,10 @@ object WordPictureForm: TWordPictureForm
       Caption = #21024#38500
       OnExecute = actRemovePictureExecute
     end
+    object actReplacePicture: TAction
+      Caption = #26367#25442
+      OnExecute = actReplacePictureExecute
+    end
     object actRefreshPicture: TAction
       Caption = #21047#26032
       OnExecute = actRefreshPictureExecute
@@ -5525,21 +5529,17 @@ object WordPictureForm: TWordPictureForm
       Caption = #27880#37322#32534#36753
       OnExecute = actAddDispExecute
     end
-    object actGooglePicture: TAction
-      Caption = #35895#27468#22270#29255
-      OnExecute = actGooglePictureExecute
-    end
-    object actReplacePicture: TAction
-      Caption = #26367#25442
-      OnExecute = actReplacePictureExecute
+    object actWordSelection: TAction
+      Caption = #21333#35789#36873#25321
+      OnExecute = actWordSelectionExecute
     end
     object actWordExplanation: TAction
       Caption = #35299#37322#36873#39033
       OnExecute = actWordExplanationExecute
     end
-    object actWordSelection: TAction
-      Caption = #21333#35789#36873#25321
-      OnExecute = actWordSelectionExecute
+    object actGooglePicture: TAction
+      Caption = #35895#27468#22270#29255
+      OnExecute = actGooglePictureExecute
     end
   end
   object pmnPictureMenu: TAdvPopupMenu

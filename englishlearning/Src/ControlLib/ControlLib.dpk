@@ -32,6 +32,9 @@ requires
 contains
   FullScreen in 'FullScreen\FullScreen.pas',
   LynDataToXls in 'Excel\LynDataToXls.pas',
-  TransPanel in 'TransPanel\TransPanel.pas';
+  TransPanel in 'TransPanel\TransPanel.pas',
+  GlassPanel in 'GlassPanel\GlassPanel.pas',
+  TransparentPanel in 'TransparentPanel\TransparentPanel.pas',
+  GMPub in 'TransPanel\GMPub.pas';
 
 end.

@@ -91,6 +91,8 @@ type
     dlgSave1: TSaveDialog;
     mnuViewExtention: TMenuItem;
     actViewExtention: TAction;
+    actViewPictureLibrary: TAction;
+    mnuViewPictureLibrary: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure btnWordClick(Sender: TObject);
     procedure grdWordSelectionChanged(Sender: TObject; ALeft, ATop, ARight,
@@ -114,6 +116,7 @@ type
     procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
       var Allow: Boolean);
     procedure actViewExtentionExecute(Sender: TObject);
+    procedure actViewPictureLibraryExecute(Sender: TObject);
   private
     { Private declarations }
     FWord:TWord;
@@ -135,7 +138,7 @@ implementation
 
 uses
   Excel, WordExplain, WordPicture, WordExtension, DBGridToExcel, DataModule,
-  AutoComplete;
+  AutoComplete, PictureLibrary;
 
 {$R *.dfm}
 
@@ -274,6 +277,28 @@ begin
     end;
   finally
     WordPictureForm.Free;
+  end;
+end;
+
+procedure TWordInputForm.actViewPictureLibraryExecute(Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := qryWord.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+      grdWord.BeginUpdate;
+
+      ShowWords('%');
+
+      qryWord.Locate('Word', edtWordEdit.Text, []);
+
+      grdWord.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
   end;
 end;
 

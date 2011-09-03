@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2011/08/02 21:56:31.000.392,=rtl.dcp</Transaction>
-    <Transaction>2011/08/02 21:57:16.000.836,C:\Users\admin\Documents\RAD Studio\Projects\Package2.dproj=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\CommonLib\CommonLib.dproj</Transaction>
-    <Transaction>2011/08/02 21:57:35.000.746,=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\CommonLib\Unit1.pas</Transaction>
-    <Transaction>2011/08/02 21:57:54.000.615,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\CommonLib\Unit1.pas=E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\CommonLib\UserStrUtils.pas</Transaction>
+    <Transaction>2011/08/02 21:57:16.000.836,E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\CommonLib\CommonLib.dproj=C:\Users\admin\Documents\RAD Studio\Projects\Package2.dproj</Transaction>
   </Transactions>
 </BorlandProject>

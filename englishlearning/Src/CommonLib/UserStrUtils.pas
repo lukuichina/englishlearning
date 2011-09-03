@@ -9,8 +9,12 @@ function replace(const value:string):string;
 function rPos(const substr, str: AnsiString): Integer;
 function rename(filename: string): string;
 function DownloadFile(SourceFile, DestFile: string): Boolean;
+function GetParentDirName(const value:string):string;
+function GetMd5(const value:string):string;
 
 implementation
+
+uses IdHashMessageDigest;
 
 function EscapeComma(const value:string):string;
 begin
@@ -63,6 +67,26 @@ begin
      Result := False;
    end;
 end;
+
+function GetParentDirName(const value:string):string;
+var
+  i:integer;
+begin
+  Result := ExtractFileDir(value);
+  i := rPos('\', Result);
+  Result := Copy(Result, i+1, Length(Result));
+end;
+
+function GetMd5(const value:string):string;
+var
+  MyMD5: TIdHashMessageDigest5;
+  //Digest: T4x4LongWordRecord;
+begin
+  MyMD5 := TIdHashMessageDigest5.Create;
+  Result := MyMD5.HashStringAsHex(value);
+  MyMD5.Free;
+end;
+
 
 end.
 

@@ -691,14 +691,14 @@ var
   strPicName,strTmpName :string;
   i:Integer;
 begin
-  if DirectoryExists(ConfigInfo.ImgPath + UpperCase(FWord[1])) then
-    dlgOpenPic1.InitialDir := ConfigInfo.ImgPath + UpperCase(FWord[1])
+  if DirectoryExists(ConfigInfo.LibInfo.PicPath + UpperCase(FWord[1]) + '\' + FWord) then
+    dlgOpenPic1.InitialDir := ConfigInfo.LibInfo.PicPath + UpperCase(FWord[1] + '\' + FWord)
+  else if DirectoryExists(ConfigInfo.LibInfo.TmpPath) then
+    dlgOpenPic1.InitialDir := ConfigInfo.LibInfo.TmpPath
+  else if DirectoryExists(ConfigInfo.ImgPath + UpperCase(FWord[1]) + '\' + FWord) then
+    dlgOpenPic1.InitialDir := ConfigInfo.ImgPath + UpperCase(FWord[1]) + '\' + FWord
   else if DirectoryExists(ConfigInfo.ImgPath + 'temp') then
     dlgOpenPic1.InitialDir := ConfigInfo.ImgPath + 'temp'
-  else if DirectoryExists(ConfigInfo.LibPath + UpperCase(FWord[1])) then
-    dlgOpenPic1.InitialDir := ConfigInfo.LibPath + UpperCase(FWord[1])
-  else if DirectoryExists(ConfigInfo.LibPath + 'temp') then
-    dlgOpenPic1.InitialDir := ConfigInfo.LibPath + 'temp'
   else
     dlgOpenPic1.InitialDir := ConfigInfo.TmpPath;
 
