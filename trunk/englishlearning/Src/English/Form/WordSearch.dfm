@@ -2,14 +2,15 @@ object WordSearchForm: TWordSearchForm
   Left = 0
   Top = 0
   Caption = #21333#35789#26816#32034
-  ClientHeight = 634
-  ClientWidth = 880
+  ClientHeight = 730
+  ClientWidth = 1008
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poOwnerFormCenter
   OnCreate = FormCreate
@@ -19,13 +20,14 @@ object WordSearchForm: TWordSearchForm
   object grp1: TGroupBox
     Left = 0
     Top = 0
-    Width = 880
+    Width = 1008
     Height = 97
     Align = alTop
     Color = 16773863
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
+    ExplicitWidth = 880
     object lblWord: TLabel
       Left = 16
       Top = 20
@@ -90,8 +92,26 @@ object WordSearchForm: TWordSearchForm
       Top = 53
       Width = 75
       Height = 25
+      Caption = 'OK'
       DoubleBuffered = True
-      Kind = bkOK
+      Glyph.Data = {
+        DE010000424DDE01000000000000760000002800000024000000120000000100
+        0400000000006801000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3333333333333333333333330000333333333333333333333333F33333333333
+        00003333344333333333333333388F3333333333000033334224333333333333
+        338338F3333333330000333422224333333333333833338F3333333300003342
+        222224333333333383333338F3333333000034222A22224333333338F338F333
+        8F33333300003222A3A2224333333338F3838F338F33333300003A2A333A2224
+        33333338F83338F338F33333000033A33333A222433333338333338F338F3333
+        0000333333333A222433333333333338F338F33300003333333333A222433333
+        333333338F338F33000033333333333A222433333333333338F338F300003333
+        33333333A222433333333333338F338F00003333333333333A22433333333333
+        3338F38F000033333333333333A223333333333333338F830000333333333333
+        333A333333333333333338330000333333333333333333333333333333333333
+        0000}
+      ModalResult = 1
       NumGlyphs = 2
       ParentDoubleBuffered = False
       TabOrder = 7
@@ -142,22 +162,24 @@ object WordSearchForm: TWordSearchForm
   object grpWord: TGroupBox
     Left = 0
     Top = 97
-    Width = 880
-    Height = 518
+    Width = 1008
+    Height = 614
     Align = alClient
     Caption = #26816#32034#32467#26524
     Color = 16773863
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
+    ExplicitWidth = 880
+    ExplicitHeight = 518
     object dbdvgrd1: TDBAdvGrid
       Left = 2
       Top = 15
-      Width = 876
-      Height = 501
+      Width = 1004
+      Height = 597
       Cursor = crDefault
       Align = alClient
-      ColCount = 12
+      ColCount = 14
       Ctl3D = True
       DrawingStyle = gdsClassic
       RowCount = 101
@@ -465,6 +487,34 @@ object WordSearchForm: TWordSearchForm
           Width = 48
         end
         item
+          Alignment = taCenter
+          Borders = []
+          BorderPen.Color = clSilver
+          CheckFalse = 'N'
+          CheckTrue = 'Y'
+          Color = clWindow
+          FieldName = 'IsPictureLibraryed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header = #32032#26448
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clWindowText
+          HeaderFont.Height = -11
+          HeaderFont.Name = 'Tahoma'
+          HeaderFont.Style = []
+          HeaderAlignment = taCenter
+          PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
+          PrintFont.Charset = DEFAULT_CHARSET
+          PrintFont.Color = clWindowText
+          PrintFont.Height = -11
+          PrintFont.Name = 'Tahoma'
+          PrintFont.Style = []
+          Width = 48
+        end
+        item
           Alignment = taRightJustify
           Borders = []
           BorderPen.Color = clSilver
@@ -571,6 +621,33 @@ object WordSearchForm: TWordSearchForm
           PrintFont.Name = 'Tahoma'
           PrintFont.Style = []
           Width = 64
+        end
+        item
+          Alignment = taRightJustify
+          Borders = []
+          BorderPen.Color = clSilver
+          CheckFalse = 'N'
+          CheckTrue = 'Y'
+          Color = clWindow
+          FieldName = 'PictureLibraryCount'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header = #32032#26448#25968
+          HeaderFont.Charset = DEFAULT_CHARSET
+          HeaderFont.Color = clWindowText
+          HeaderFont.Height = -11
+          HeaderFont.Name = 'Tahoma'
+          HeaderFont.Style = []
+          PrintBorders = [cbTop, cbLeft, cbRight, cbBottom]
+          PrintFont.Charset = DEFAULT_CHARSET
+          PrintFont.Color = clWindowText
+          PrintFont.Height = -11
+          PrintFont.Name = 'Tahoma'
+          PrintFont.Style = []
+          Width = 48
         end>
       DataSource = dsWord
       InvalidPicture.Data = {
@@ -710,6 +787,8 @@ object WordSearchForm: TWordSearchForm
         80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
         FFC003FF}
       ShowUnicode = False
+      ExplicitWidth = 876
+      ExplicitHeight = 501
       ColWidths = (
         20
         64
@@ -722,13 +801,15 @@ object WordSearchForm: TWordSearchForm
         48
         48
         48
-        64)
+        48
+        64
+        48)
     end
   end
   object stat1: TStatusBar
     Left = 0
-    Top = 615
-    Width = 880
+    Top = 711
+    Width = 1008
     Height = 19
     Panels = <
       item
@@ -737,6 +818,8 @@ object WordSearchForm: TWordSearchForm
       item
         Width = 50
       end>
+    ExplicitTop = 615
+    ExplicitWidth = 880
   end
   object dsWord: TDataSource
     DataSet = qryWord
@@ -813,6 +896,10 @@ object WordSearchForm: TWordSearchForm
         'ogID BETWEEN '#39'WC00001'#39' AND '#39'WC00010'#39') > 0 THEN '#39#9675#39' ELSE '#39#215#39' END ' +
         'AS IsCataloged,'
       
+        '    CASE WHEN (SELECT COUNT(*) FROM PictureLibrary WHERE Picture' +
+        'Library.Word = Word.Word) > 0 THEN '#39#9675#39' ELSE '#39#215#39' END AS IsPicture' +
+        'Libraryed,'
+      
         '    (SELECT COUNT(*) FROM (SELECT Distinct WordType FROM WordExp' +
         'lanation WHERE WordExplanation.Word = Word.Word) wt) AS WordType' +
         'Count,'
@@ -824,7 +911,10 @@ object WordSearchForm: TWordSearchForm
         ') AS PictureCount,'
       
         '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word' +
-        ' AND Picture.MainPicture = 1) AS MainPictureCount'
+        ' AND Picture.MainPicture = 1) AS MainPictureCount,'
+      
+        '    (SELECT COUNT(*) FROM PictureLibrary WHERE PictureLibrary.Wo' +
+        'rd = Word.Word) AS PictureLibraryCount'
       'FROM'
       '    Word'
       'INNER JOIN '

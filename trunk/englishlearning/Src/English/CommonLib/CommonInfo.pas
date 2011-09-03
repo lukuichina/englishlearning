@@ -5,6 +5,13 @@ interface
 uses SysUtils, Dialogs, TConfiguratorUnit, TLoggerUnit, IniFiles;
 
 type
+  TLibInfo = record
+    PicPath :string;
+    RtfPath :string;
+    TmpPath :string;
+  end;
+
+type
   TConfigInfo = record
     MainForm :integer;
     ExitOnErr:string;
@@ -23,6 +30,8 @@ type
     PicPath :string;
     RtfPath :string;
     TmpPath :string;
+
+    LibInfo :TLibInfo;
 
     LogPath :string;
 
@@ -111,6 +120,10 @@ begin
     ConfigInfo.PicPath := myinifile.ReadString('LocalPath','PicPath','');
     ConfigInfo.RtfPath := myinifile.ReadString('LocalPath','RtfPath','');
     ConfigInfo.TmpPath := myinifile.ReadString('LocalPath','TmpPath','');
+
+    ConfigInfo.LibInfo.PicPath := ConfigInfo.LibPath + 'pic\';
+    ConfigInfo.LibInfo.RtfPath := ConfigInfo.LibPath + 'rtf\';
+    ConfigInfo.LibInfo.TmpPath := ConfigInfo.LibPath + 'tmp\';
 
     ConfigInfo.LogPath := myinifile.ReadString('LogInfo','LogPath','');
 

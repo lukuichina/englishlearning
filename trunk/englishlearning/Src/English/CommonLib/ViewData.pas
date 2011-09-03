@@ -7,6 +7,23 @@ type
 
   end;
 
+  TPicture = class(TViewData)
+  private
+    FWord:string;
+    FPictureID:string;
+    FPictureName:string;
+    FPictureDisp:string;
+    FCreateTime:TDateTime;
+    FUpdateTime:TDateTime;
+  public
+    property Word:string read FWord write FWord;
+    property PictureID:string read FPictureID write FPictureID;
+    property PictureName:string read FPictureName write FPictureName;
+    property PictureDisp:string read FPictureDisp write FPictureDisp;
+    property CreateTime:TDateTime read FCreateTime write FCreateTime;
+    property UpdateTime:TDateTime read FUpdateTime write FUpdateTime;
+  end;
+
   TWordView = class(TViewData)
   private
     FSessionID:string;

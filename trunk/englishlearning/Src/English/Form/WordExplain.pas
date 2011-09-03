@@ -41,6 +41,8 @@ type
     mnuViewExtention: TMenuItem;
     actKing: TAction;
     btnKing: TButton;
+    actViewPictureLibrary: TAction;
+    mnuViewPictureLibrary: TMenuItem;
     procedure btnWordSearchClick(Sender: TObject);
     procedure actAddExplanationExecute(Sender: TObject);
     procedure actDeleteExplanationExecute(Sender: TObject);
@@ -56,6 +58,7 @@ type
     procedure advpmn1Popup(Sender: TObject);
     procedure actViewExtentionExecute(Sender: TObject);
     procedure btnKingClick(Sender: TObject);
+    procedure actViewPictureLibraryExecute(Sender: TObject);
   private
     { Private declarations }
     FIsChanged:Boolean;
@@ -78,7 +81,7 @@ implementation
 
 uses
   WordSearch, ExplanationInputDialog, DataModule, WordPicture, WordExtension, ShellAPI,
-  CommonInfo, AutoComplete;
+  CommonInfo, AutoComplete, PictureLibrary;
 
 {$R *.dfm}
 
@@ -216,6 +219,31 @@ begin
     end;
   finally
     WordPictureForm.Free;
+  end;
+end;
+
+procedure TWordExplainForm.actViewPictureLibraryExecute(Sender: TObject);
+var
+  ExplanationID:Integer;
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := edtWord.Text;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+      FIsChanged := True;
+
+      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      dbdvgrd1.BeginUpdate;
+      ShowWordExplanation;
+      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      dbdvgrd1.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
   end;
 end;
 

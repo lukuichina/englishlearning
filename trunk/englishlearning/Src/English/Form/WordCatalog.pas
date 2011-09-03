@@ -113,6 +113,8 @@ type
     mnuViewWord: TMenuItem;
     btnRemoveCatalog: TAdvGlowButton;
     btnRefreshCatalog: TAdvGlowButton;
+    actViewPictureLibrary: TAction;
+    mnuViewPictureLibrary: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
@@ -157,6 +159,7 @@ type
     procedure actViewExtentionExecute(Sender: TObject);
     procedure actViewWordExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure actViewPictureLibraryExecute(Sender: TObject);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -192,7 +195,8 @@ var
 implementation
 
 uses WordCatalogDialog, Excel, WordSearch, WordPicture, WordExplain,
-  WordSearchDialog, WordExtension, WordView, DataModule, AutoComplete;
+  WordSearchDialog, WordExtension, WordView, DataModule, AutoComplete,
+  PictureLibrary;
 
 {$R *.dfm}
 
@@ -453,6 +457,12 @@ end;
 
 procedure TWordCatalogForm.actShowCatalogTreeExecute(Sender: TObject);
 begin
+  tplSearchWord.Locked := False;
+  tplWordInfo.Locked := False;
+
+  tptWordCatalogTree.RollIn(tplSearchWord);
+  tptWordCatalogTree.RollIn(tplWordInfo);
+
   if tplWordCatalogTree.Hidden then
     tptWordCatalogTree.UnHidePanel(tplWordCatalogTree);
 
@@ -465,6 +475,12 @@ end;
 
 procedure TWordCatalogForm.actShowSearchWordExecute(Sender: TObject);
 begin
+  tplWordCatalogTree.Locked := False;
+  tplWordInfo.Locked := False;
+
+  tptWordCatalogTree.RollIn(tplWordCatalogTree);
+  tptWordCatalogTree.RollIn(tplWordInfo);
+
   if tplSearchWord.Hidden then
     tptWordCatalogTree.UnHidePanel(tplSearchWord);
 
@@ -473,10 +489,18 @@ begin
     tptWordCatalogTree.RollOut(tplSearchWord);
     tplSearchWord.Locked := True;
   end;
+
+  edtSearchWord.SetFocus;
 end;
 
 procedure TWordCatalogForm.actShowWordInfoExecute(Sender: TObject);
 begin
+  tplWordCatalogTree.Locked := False;
+  tplSearchWord.Locked := False;
+
+  tptWordCatalogTree.RollIn(tplWordCatalogTree);
+  tptWordCatalogTree.RollIn(tplSearchWord);
+
   if tplWordInfo.Hidden then
     tptWordCatalogTree.UnHidePanel(tplWordInfo);
 
@@ -577,6 +601,28 @@ begin
     end;
   finally
     WordPictureForm.Free;
+  end;
+end;
+
+procedure TWordCatalogForm.actViewPictureLibraryExecute(Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsWord.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+      grdWord.BeginUpdate;
+
+      FWordCatalogController.ShowCatalogWord;
+
+      dsWord.DataSet.Locate('Word', PictureLibraryForm.Word, []);
+
+      grdWord.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
   end;
 end;
 
@@ -870,6 +916,8 @@ begin
     FWordCatalogController.ShowCatalogWord;
 
   tbWordCatalog.Enabled := opClient.ActivePageIndex = 0;
+  btnWordSearh.Enabled := opClient.ActivePageIndex = 2;
+  btnWordInfo.Enabled := opClient.ActivePageIndex = 2;
 end;
 
 procedure TWordCatalogForm.pmWordPopup(Sender: TObject);

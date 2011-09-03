@@ -25,7 +25,10 @@ package CommonLib;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  IndyCore,
+  IndySystem,
+  IndyProtocols;
 
 contains
   UserStrUtils in 'UserStrUtils.pas';

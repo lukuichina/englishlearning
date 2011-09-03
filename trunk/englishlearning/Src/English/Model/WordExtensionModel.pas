@@ -51,10 +51,12 @@ const
 '    CASE WHEN (SELECT COUNT(*) FROM WordExplanation WHERE WordExplanation.Word = Word.Word) > 0 THEN ''¡ð'' ELSE ''¡Á'' END AS IsExplained,' + #13#10 +
 '    CASE WHEN (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word) > 0 THEN ''¡ð'' ELSE ''¡Á'' END AS IsPictured,' + #13#10 +
 '    CASE WHEN (SELECT COUNT(*) FROM WordCatalogRelation WHERE WordCatalogRelation.Word = Word.Word AND WordCatalogRelation.CatalogID BETWEEN ''WC00001'' AND ''WC00010'') > 0 THEN ''¡ð'' ELSE ''¡Á'' END AS IsCataloged,' + #13#10 +
+'    CASE WHEN (SELECT COUNT(*) FROM PictureLibrary WHERE PictureLibrary.Word = Word.Word) > 0 THEN ''¡ð'' ELSE ''¡Á'' END AS IsPictureLibraryed,' + #13#10 +
 '    (SELECT COUNT(*) FROM (SELECT Distinct WordType FROM WordExplanation WHERE WordExplanation.Word = Word.Word) wt) AS WordTypeCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM WordExplanation WHERE WordExplanation.Word = Word.Word) AS ExplanationCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word) AS PictureCount,' + #13#10 +
 '    (SELECT COUNT(*) FROM Picture WHERE Picture.Word = Word.Word AND Picture.MainPicture = 1) AS MainPictureCount,' + #13#10 +
+'    (SELECT COUNT(*) FROM PictureLibrary WHERE PictureLibrary.Word = Word.Word) AS PictureLibraryCount,' + #13#10 +
 '    Word.CreateTime,' + #13#10 +
 '    Word.UpdateTime' + #13#10 +
 'FROM' + #13#10 +

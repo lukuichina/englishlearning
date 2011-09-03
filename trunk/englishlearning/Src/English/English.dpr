@@ -58,7 +58,10 @@ uses
   CongenerModel in 'Model\CongenerModel.pas',
   PictureLibrary in 'Form\PictureLibrary.pas' {PictureLibraryForm},
   MainMenu in 'Form\MainMenu.pas' {MainMenuForm},
-  AutoComplete in 'CommonLib\AutoComplete.pas';
+  AutoComplete in 'CommonLib\AutoComplete.pas',
+  PictureLibraryController in 'Controller\PictureLibraryController.pas',
+  PictureLibraryModel in 'Model\PictureLibraryModel.pas',
+  PictureLibraryView in 'View\PictureLibraryView.pas';
 
 {$R *.res}
 {$R UAC.res}

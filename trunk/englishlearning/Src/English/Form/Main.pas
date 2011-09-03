@@ -49,6 +49,11 @@ type
     procedure actExitExecute(Sender: TObject);
   private
     { Private declarations }
+
+  protected
+    //procedure WMPowerBroadcast(var Msg: TWMHotKey);message WM_POWERBROADCAST;
+    procedure WndProc(var Msg: TMessage); override;
+
   public
     { Public declarations }
   end;
@@ -60,7 +65,7 @@ implementation
 
 uses
   WordInput, WordExplain, WordSearch, WordPicture, WordView, WordExtension,
-  WordCatalog, PictureLibrary;
+  WordCatalog, PictureLibrary, CommonInfo;
 
 {$R *.dfm}
 
@@ -155,6 +160,31 @@ begin
 //      SWP_NOMOVE OR SWP_NOSIZE OR SWP_SHOWWINDOW);
 //    SetWindowLong(Handle, GWL_STYLE,
 //                  GetWindowLong(Handle, GWL_STYLE) AND WS_CAPTION);
+end;
+
+//procedure TMainForm.WMPowerBroadcast(var Msg: TWMHotKey);
+//begin
+//
+//end;
+
+procedure TMainForm.WndProc(var Msg: TMessage);
+begin
+  if Msg.Msg = WM_POWERBROADCAST then
+  begin
+    Logger.Warn('WM_POWERBROADCAST');
+
+    if Msg.WParam = PBT_APMQUERYSUSPEND then
+    begin
+        Logger.Warn('PBT_APMQUERYSUSPEND');
+        Msg.Result := BROADCAST_QUERY_DENY;
+        Dispatch(Msg);
+        Logger.Warn('BROADCAST_QUERY_DENY:未经本程序许可，计算机不能休眠');
+        //MessageBox(hwnd, '未经本程序许可，计算机不能休眠！ ', '禁止休眠 ',MB_OK);
+        Exit;
+    end;
+  end;
+
+  inherited;
 end;
 
 initialization

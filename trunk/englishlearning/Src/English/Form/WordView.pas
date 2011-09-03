@@ -9,7 +9,8 @@ uses
   AdvStickyPopupMenu, AdvToolBar,
   AdvGlowButton, ActnList, DB, ADODB, Menus, AdvMenus, StdCtrls,
   AdvMenuStylers, ShellAPI, AdvOfficeImage,
-  ExtCtrls, AdvSplitter, WordViewView, WordViewController, Gauges, WordViewThread;
+  ExtCtrls, AdvSplitter, WordViewView, WordViewController, Gauges, WordViewThread,
+  ImgList;
 
 type
   TWordViewForm = class(TForm, IWordViewView)
@@ -43,7 +44,7 @@ type
     actWordType: TAction;
     tblWordType: TADOTable;
     iltWordType: TImageList;
-    btnManagePicture1: TAdvGlowButton;
+    btnGooglePicture: TAdvGlowButton;
     btnKingExplanation: TAdvGlowButton;
     actKingExplanation: TAction;
     actGooglePicture: TAction;
@@ -66,6 +67,8 @@ type
     btnClientView: TAdvGlowButton;
     actMaxView: TAction;
     spWordPicture: TADOStoredProc;
+    btnManagePictureLibrary: TAdvGlowButton;
+    actManagePictureLibrary: TAction;
     procedure actWordRangeExecute(Sender: TObject);
     procedure lbxPictureItemSelect(Sender: TObject; itemindex: Integer);
     procedure actMainPicExecute(Sender: TObject);
@@ -101,6 +104,7 @@ type
     procedure pmnWordRangePopup(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure actManagePictureLibraryExecute(Sender: TObject);
   private
     FBeginWord:string;
     FEndWord:string;
@@ -134,7 +138,7 @@ implementation
 
 uses
   WordRange, DataModule, WordPicture, WordExplain, FullScreenDialog,
-  CommonInfo;
+  CommonInfo, PictureLibrary;
 
 {$R *.dfm}
 
@@ -275,6 +279,32 @@ begin
 
   finally
     WordPictureForm.Free;
+  end;
+end;
+
+procedure TWordViewForm.actManagePictureLibraryExecute(Sender: TObject);
+begin
+  if (lbxPicture.Items.Count = 0) or (lbxPicture.SelectedItemIndex = -1) then
+  begin
+    MessageDlg('没有选择单词对象，请选择对象后再进行该处理！', mtError, [mbOK], 0);
+    exit;
+  end;
+
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := spWord.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+      spWord.Close;
+      spWord.Open;
+
+      SetImageList(nil);
+      lbxPicture.ScrollToItem(lbxPicture.SelectedItemIndex);
+    end;
+  finally
+    PictureLibraryForm.Free;
   end;
 end;
 

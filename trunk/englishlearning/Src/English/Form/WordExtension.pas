@@ -7,7 +7,7 @@ uses
   Dialogs, AdvAppStyler, AdvToolBar, AdvToolBarStylers, AdvShapeButton,
   StdCtrls, Grids, AdvGrid, DBAdvGrid, AdvOfficePager,
   WordExtensionView, WordExtensionController, ADODB, DB, ViewData, Menus,
-  AdvMenus, ActnList, AdvGlowButton, AsgFindDialog;
+  AdvMenus, ActnList, AdvGlowButton, AsgFindDialog, ImgList, AdvObj, BaseGrid;
 
 type
   TWordExtensionForm = class(TAdvToolBarForm, IWordExtensionView)
@@ -139,6 +139,18 @@ type
     actDeleteCongenerExtention: TAction;
     actCongenerViewExplanation: TAction;
     actCongenerViewPicture: TAction;
+    actViewPictureLibrary: TAction;
+    mnuViewPictureLibrary: TMenuItem;
+    actResemblanceViewPictureLibrary: TAction;
+    actSynonymViewPictureLibrary: TAction;
+    mnuResemblanceViewPictureLibrary: TMenuItem;
+    mnuSynonymViewPictureLibrary: TMenuItem;
+    actAntonymViewPictureLibrary: TAction;
+    mnuAntonymViewPictureLibrary: TMenuItem;
+    actHomoionymViewPictureLibrary: TAction;
+    mnuHomoionymViewPictureLibrary: TMenuItem;
+    actCongenerViewPictureLibrary: TAction;
+    mnuCongenerViewPictureLibrary: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure grdWordRowChanging(Sender: TObject; OldRow, NewRow: Integer;
       var Allow: Boolean);
@@ -188,6 +200,12 @@ type
     procedure actCongenerViewExplanationExecute(Sender: TObject);
     procedure actCongenerViewPictureExecute(Sender: TObject);
     procedure actResemblanceViewPictureExecute(Sender: TObject);
+    procedure actViewPictureLibraryExecute(Sender: TObject);
+    procedure actResemblanceViewPictureLibraryExecute(Sender: TObject);
+    procedure actSynonymViewPictureLibraryExecute(Sender: TObject);
+    procedure actAntonymViewPictureLibraryExecute(Sender: TObject);
+    procedure actHomoionymViewPictureLibraryExecute(Sender: TObject);
+    procedure actCongenerViewPictureLibraryExecute(Sender: TObject);
   private
     { Private declarations }
     FWordExtensionController:TWordExtensionController;
@@ -218,7 +236,7 @@ var
 implementation
 
 uses {TypeWordExtentionDialog, }WordPicture, WordExplain,
-  SynonymWordExtentionDialog, DerivativeWordExtentionDialog;
+  SynonymWordExtentionDialog, DerivativeWordExtentionDialog, PictureLibrary;
 
 {$R *.dfm}
 
@@ -397,6 +415,30 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actAntonymViewPictureLibraryExecute(
+  Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsAntonymExtention.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdAntonymWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdAntonymWordExtention.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
+  end;
+end;
+
 procedure TWordExtensionForm.actCongenerViewExplanationExecute(Sender: TObject);
 begin
   try
@@ -443,6 +485,30 @@ begin
     end;
   finally
     WordPictureForm.Free;
+  end;
+end;
+
+procedure TWordExtensionForm.actCongenerViewPictureLibraryExecute(
+  Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsCongenerExtention.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdCongenerWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdCongenerWordExtention.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
   end;
 end;
 
@@ -730,6 +796,30 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actHomoionymViewPictureLibraryExecute(
+  Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsHomoionymExtention.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdHomoionymWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdHomoionymWordExtention.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
+  end;
+end;
+
 procedure TWordExtensionForm.actNextPageExecute(Sender: TObject);
 begin
   SendMessage(grdWord.Handle, WM_KEYDOWN, VK_NEXT, 0);
@@ -947,6 +1037,30 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actResemblanceViewPictureLibraryExecute(
+  Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsResemblanceExtention.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdResemblanceWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdResemblanceWordExtention.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
+  end;
+end;
+
 procedure TWordExtensionForm.actSynonymViewExplanationExecute(Sender: TObject);
 begin
   try
@@ -996,6 +1110,29 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actSynonymViewPictureLibraryExecute(
+  Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsSynonymExtention.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdSynonymWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdSynonymWordExtention.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
+  end;
+end;
 procedure TWordExtensionForm.actUpdateAntonymExtentionExecute(Sender: TObject);
 var
   antonymWordExtendInfo, oldAntonymWordExtendInfo:TAntonymExtention;
@@ -1373,6 +1510,29 @@ begin
   end;
 end;
 
+procedure TWordExtensionForm.actViewPictureLibraryExecute(Sender: TObject);
+begin
+  try
+    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm.Word := dsDerivativeExtention.DataSet.FieldByName('Word').AsString;
+    PictureLibraryForm.ShowModal;
+
+    if PictureLibraryForm.IsChanged then
+    begin
+//      FIsChanged := True;
+
+//      ExplanationID := qryWordExplanation.FieldByName('ExplanationID').AsInteger;
+
+      grdDerivativeWordExtention.BeginUpdate;
+//      ShowWordExplanation;
+//      qryWordExplanation.Locate('ExplanationID', ExplanationID, []);
+      grdDerivativeWordExtention.EndUpdate;
+    end;
+  finally
+    PictureLibraryForm.Free;
+  end;
+end;
+
 procedure TWordExtensionForm.advpmn1Popup(Sender: TObject);
 begin
   mnuAddExplanation.Enabled := (dsWord.DataSet.RecordCount > 0) and
@@ -1382,6 +1542,8 @@ begin
   mnuDelete.Enabled := (dsDerivativeExtention.DataSet.RecordCount > 0) and
    (grdDerivativeWordExtention.RowSelectCount > 0);
   mnuViewPicture.Enabled := (dsDerivativeExtention.DataSet.RecordCount > 0) and
+   (grdDerivativeWordExtention.RowSelectCount > 0);
+  mnuViewPictureLibrary.Enabled := (dsDerivativeExtention.DataSet.RecordCount > 0) and
    (grdDerivativeWordExtention.RowSelectCount > 0);
   mnuViewExplanation.Enabled := (dsDerivativeExtention.DataSet.RecordCount > 0) and
    (grdDerivativeWordExtention.RowSelectCount > 0);
@@ -1398,6 +1560,8 @@ begin
    (grdResemblanceWordExtention.RowSelectCount > 0);
   mnuResemblanceViewPicture.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
    (grdResemblanceWordExtention.RowSelectCount > 0);
+  mnuResemblanceViewPictureLibrary.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
+   (grdResemblanceWordExtention.RowSelectCount > 0);
   mnuResemblanceViewExplanation.Enabled := (dsResemblanceExtention.DataSet.RecordCount > 0) and
    (grdResemblanceWordExtention.RowSelectCount > 0);
 end;
@@ -1411,6 +1575,8 @@ begin
   mnuDeleteSynonymExtention.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
    (grdSynonymWordExtention.RowSelectCount > 0);
   mnuSynonymViewPicture.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
+   (grdSynonymWordExtention.RowSelectCount > 0);
+  mnuSynonymViewPictureLibrary.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
    (grdSynonymWordExtention.RowSelectCount > 0);
   mnuSynonymViewExplanation.Enabled := (dsSynonymExtention.DataSet.RecordCount > 0) and
    (grdSynonymWordExtention.RowSelectCount > 0);
@@ -1426,6 +1592,8 @@ begin
    (grdAntonymWordExtention.RowSelectCount > 0);
   mnuAntonymViewPicture.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
    (grdAntonymWordExtention.RowSelectCount > 0);
+  mnuAntonymViewPictureLibrary.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
+   (grdAntonymWordExtention.RowSelectCount > 0);
   mnuAntonymViewExplanation.Enabled := (dsAntonymExtention.DataSet.RecordCount > 0) and
    (grdAntonymWordExtention.RowSelectCount > 0);
 end;
@@ -1440,6 +1608,8 @@ begin
    (grdHomoionymWordExtention.RowSelectCount > 0);
   mnuHomoionymViewPicture.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
    (grdHomoionymWordExtention.RowSelectCount > 0);
+  mnuHomoionymViewPictureLibrary.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
+   (grdHomoionymWordExtention.RowSelectCount > 0);
   mnuHomoionymViewExplanation.Enabled := (dsHomoionymExtention.DataSet.RecordCount > 0) and
    (grdHomoionymWordExtention.RowSelectCount > 0);
 end;
@@ -1453,6 +1623,8 @@ begin
   mnuDeleteCongenerExtention.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
    (grdCongenerWordExtention.RowSelectCount > 0);
   mnuCongenerViewPicture.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
+   (grdCongenerWordExtention.RowSelectCount > 0);
+  mnuCongenerViewPictureLibrary.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
    (grdCongenerWordExtention.RowSelectCount > 0);
   mnuCongenerViewExplanation.Enabled := (dsCongenerExtention.DataSet.RecordCount > 0) and
    (grdCongenerWordExtention.RowSelectCount > 0);

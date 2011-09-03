@@ -78,10 +78,6 @@ begin
     Close;
     ModalResult := mrOk;
   end;
-
-//  if not WordExplainForm.Showing then
-//    WordExplainForm.ShowModal;
-
 end;
 
 procedure TWordSearchForm.dbdvgrd1ScrollCell(Sender: TObject; ACol, ARow,
@@ -98,8 +94,10 @@ end;
 procedure TWordSearchForm.edtWordKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-//  if Key = 13 then
-//    ShowWords(edtWord.Text);
+  if Key = VK_RETURN then
+  begin
+    LocateWord;
+  end;
 end;
 
 procedure TWordSearchForm.FormCreate(Sender: TObject);

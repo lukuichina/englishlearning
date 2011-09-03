@@ -54,6 +54,9 @@
 			<DCCReference Include="FullScreen\FullScreen.pas"/>
 			<DCCReference Include="Excel\LynDataToXls.pas"/>
 			<DCCReference Include="TransPanel\TransPanel.pas"/>
+			<DCCReference Include="GlassPanel\GlassPanel.pas"/>
+			<DCCReference Include="TransparentPanel\TransparentPanel.pas"/>
+			<DCCReference Include="TransPanel\GMPub.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

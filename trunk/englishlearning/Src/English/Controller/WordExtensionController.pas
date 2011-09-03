@@ -19,10 +19,6 @@ type
     property View: IWordExtensionView read GetView write SetView;
 
     procedure ShowWord;
-//    procedure ShowTypeWordExtention(const value:TWord);
-//    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
-//    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
-//    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
     procedure ShowDerivativeExtention(const value:TWord);
     procedure InsertDerivativeExtention(const value:TDerivativeExtention);
     procedure UpdateDerivativeExtention(const value, oldValue:TDerivativeExtention);
@@ -52,16 +48,7 @@ type
     procedure InsertCongenerExtention(const value:TCongenerExtention);
     procedure UpdateCongenerExtention(const value, oldValue:TCongenerExtention);
     procedure DeleteCongenerExtention(const value:TCongenerExtention);
-////    procedure SetWordCatalogDialogInfo;
-//
-//    procedure ShowCatalogWord;
-//    procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
-//    procedure DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
-//    procedure InsertCatalogWords({const catalog:TWordCatalog;}const words:TWords);
-//
-//    procedure InsertCatalogRelation(const value:TCatalogRelation);
-//    procedure DeleteCatalogRelation; overload;
-//    procedure DeleteCatalogRelation(const value:TCatalogRelation); overload;
+
   end;
 
   TWordExtensionController = class(TController, IWordExtensionController)
@@ -87,10 +74,6 @@ type
 
     constructor Create(view:IWordExtensionView);
     procedure ShowWord;
-//    procedure ShowTypeWordExtention(const value:TWord);
-//    procedure InsertTypeWordExtention(const value:TTypeWordExtention);
-//    procedure UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
-//    procedure DeleteTypeWordExtention(const value:TTypeWordExtention);
 
     procedure ShowDerivativeExtention(const value:TWord);
     procedure InsertDerivativeExtention(const value:TDerivativeExtention);
@@ -121,17 +104,7 @@ type
     procedure InsertCongenerExtention(const value:TCongenerExtention);
     procedure UpdateCongenerExtention(const value, oldValue:TCongenerExtention);
     procedure DeleteCongenerExtention(const value:TCongenerExtention);
-////    procedure SetWordCatalogDialogInfo;
-//
-//    procedure ShowCatalogWord;
-//    procedure InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
-//    procedure DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
-//
-//    procedure InsertCatalogWords({const catalog:TWordCatalog;}const words:TWords);
-//
-//    procedure InsertCatalogRelation(const value:TCatalogRelation);
-//    procedure DeleteCatalogRelation; overload;
-//    procedure DeleteCatalogRelation(const value:TCatalogRelation); overload;
+
   end;
 
 implementation
@@ -180,29 +153,6 @@ begin
   ds := GetModel.QueryWord;
   GetView.ShowWord(ds);
 end;
-
-//procedure TWordExtensionController.ShowTypeWordExtention(const value:TWord);
-//var
-// ds:TCustomADODataSet;
-//begin
-//  ds := GetModel.QueryTypeWordExtention(value);
-//  GetView.ShowTypeWordExtention(ds);
-//end;
-//
-//procedure TWordExtensionController.InsertTypeWordExtention(const value:TTypeWordExtention);
-//begin
-//  Model.InsertTypeWordExtention(value);
-//end;
-//
-//procedure TWordExtensionController.UpdateTypeWordExtention(const value, oldValue:TTypeWordExtention);
-//begin
-//  Model.UpdateTypeWordExtention(value, oldValue);
-//end;
-//
-//procedure TWordExtensionController.DeleteTypeWordExtention(const value:TTypeWordExtention);
-//begin
-//  Model.DeleteTypeWordExtention(value);
-//end;
 
 procedure TWordExtensionController.ShowDerivativeExtention(const value:TWord);
 var
@@ -341,60 +291,5 @@ procedure TWordExtensionController.DeleteCongenerExtention(const value:TCongener
 begin
   FCongenerModel.DeleteCongenerExtention(value)
 end;
-//procedure TWordExtensionController.SetWordCatalogDialogInfo;
-//begin
-//
-//end;
-
-//procedure TWordExtensionController.ShowCatalogWord;
-//var
-// ds:TCustomADODataSet;
-//begin
-//  if GetView.CatalogInfo.CatalogID = '' then
-//    exit;
-//
-//  ds := FCatalogWordModel.QueryCatalogWord(GetView.CatalogInfo);
-//  GetView.ShowCatalogWord(ds);
-//end;
-//
-//procedure TWordExtensionController.InsertCatalogWord({const catalog:TWordCatalog;}const word:TWord);
-//begin
-//  FCatalogWordModel.InsertCatalogWord(GetView.CatalogInfo, word);
-//end;
-//
-//procedure TWordExtensionController.DeleteCatalogWord({const catalog:TWordCatalog;}const word:TWord);
-//begin
-//  FCatalogWordModel.DeleteCatalogWord(GetView.CatalogInfo, word);
-//end;
-//
-//procedure TWordExtensionController.InsertCatalogWords({const catalog:TWordCatalog;}const words:TWords);
-//var
-//  i:integer;
-//begin
-//  for i := Low(words) to High(words) do
-//  begin
-//    if FCatalogWordModel.Exist(GetView.CatalogInfo, words[i]) then
-//      Continue;
-//
-//    FCatalogWordModel.InsertCatalogWord(GetView.CatalogInfo, words[i]);
-//  end;
-//
-//end;
-//
-//procedure TWordExtensionController.InsertCatalogRelation(const value:TCatalogRelation);
-//begin
-//  FCatalogRelationModel.InsertCatalogRelation(value);
-//end;
-//
-//procedure TWordExtensionController.DeleteCatalogRelation;
-//begin
-//  FCatalogRelationModel.DeleteCatalogRelation(GetView.CatalogRelationInfo);
-//end;
-//
-//procedure TWordExtensionController.DeleteCatalogRelation(const value:TCatalogRelation);
-//begin
-//  FCatalogRelationModel.DeleteCatalogRelation(value);
-//end;
-
 
 end.
