@@ -39,6 +39,8 @@ type
 
 implementation
 
+uses SysUtils;
+
 constructor TPictureLibraryModel.Create;
 begin
   inherited Create;
@@ -98,14 +100,16 @@ const
 'INNER JOIN' + #13#10 +
 '    Difficulty on Difficulty.ID = Word.DifficultyLevel' + #13#10 +
 'WHERE' + #13#10 +
-'    PictureLibrary.Word = :Word' + #13#10 +
+'    PictureLibrary.Word = ''%s''' + #13#10 +
+//'    PictureLibrary.Word = :Word' + #13#10 +
 //'    PictureLibrary.PictureID = :PictureID' + #13#10 +
 'ORDER BY' + #13#10 +
 '    PictureLibrary.Word ASC, PictureLibrary.PictureID ASC';
 begin
-  SetSelectSql(sql);
+  SetSelectSql(Format(sql, [value.Word]));
+//  SetSelectSql(sql);
 
-  Query.Parameters.ParamByName('Word').Value := value.Word;
+//  Query.Parameters.ParamByName('Word').Value := value.Word;
 
   Result := DoSelect;
 end;
