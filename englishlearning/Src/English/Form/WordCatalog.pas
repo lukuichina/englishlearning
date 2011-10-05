@@ -115,6 +115,15 @@ type
     btnRefreshCatalog: TAdvGlowButton;
     actViewPictureLibrary: TAction;
     mnuViewPictureLibrary: TMenuItem;
+    tbDirection: TAdvToolBar;
+    btnFirst: TAdvGlowButton;
+    actFirst: TAction;
+    actLast: TAction;
+    btnPreviousPage: TAdvGlowButton;
+    btnNextPage: TAdvGlowButton;
+    btnLast: TAdvGlowButton;
+    actPreviousPage: TAction;
+    actNextPage: TAction;
     procedure FormCreate(Sender: TObject);
     procedure actAddCatalogExecute(Sender: TObject);
     procedure actUpdateCatalogExecute(Sender: TObject);
@@ -160,6 +169,10 @@ type
     procedure actViewWordExecute(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure actViewPictureLibraryExecute(Sender: TObject);
+    procedure actFirstExecute(Sender: TObject);
+    procedure actLastExecute(Sender: TObject);
+    procedure actPreviousPageExecute(Sender: TObject);
+    procedure actNextPageExecute(Sender: TObject);
   private
     { Private declarations }
     FWordCatalogController:IWordCatalogController;
@@ -351,6 +364,11 @@ begin
   grdWord.EndUpdate;
 end;
 
+procedure TWordCatalogForm.actFirstExecute(Sender: TObject);
+begin
+  dsWord.DataSet.First;
+end;
+
 procedure TWordCatalogForm.actImportCatalogToExcelExecute(Sender: TObject);
 begin
   try
@@ -366,6 +384,11 @@ end;
 procedure TWordCatalogForm.actImportWordToExcelExecute(Sender: TObject);
 begin
   CopyDbAdvDataToExcel([grdWord]);
+end;
+
+procedure TWordCatalogForm.actLastExecute(Sender: TObject);
+begin
+  dsWord.DataSet.Last;
 end;
 
 procedure TWordCatalogForm.actLocateCatalogWordExecute(Sender: TObject);
@@ -425,6 +448,16 @@ begin
   finally
     WordSearchDialogForm.Free;
   end;
+end;
+
+procedure TWordCatalogForm.actNextPageExecute(Sender: TObject);
+begin
+  SendMessage(grdWord.Handle, WM_KEYDOWN, VK_NEXT, 0);
+end;
+
+procedure TWordCatalogForm.actPreviousPageExecute(Sender: TObject);
+begin
+  SendMessage(grdWord.Handle, WM_KEYDOWN, VK_PRIOR, 0);
 end;
 
 procedure TWordCatalogForm.actRefreshCatalogExecute(Sender: TObject);
@@ -916,6 +949,7 @@ begin
     FWordCatalogController.ShowCatalogWord;
 
   tbWordCatalog.Enabled := opClient.ActivePageIndex = 0;
+  tbDirection.Enabled := opClient.ActivePageIndex = 2;
   btnWordSearh.Enabled := opClient.ActivePageIndex = 2;
   btnWordInfo.Enabled := opClient.ActivePageIndex = 2;
 end;
