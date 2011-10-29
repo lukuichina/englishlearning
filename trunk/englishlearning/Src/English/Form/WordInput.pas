@@ -164,6 +164,8 @@ begin
   grdWord.EndUpdate;
 
   ResetCursor;
+
+  dmManager.InitWordList;
 end;
 
 procedure TWordInputForm.actImportToExcelExecute(Sender: TObject);
@@ -351,6 +353,8 @@ begin
   grdWord.EndUpdate;
 
   ResetCursor;
+
+  dmManager.InitWordList;
 end;
 
 procedure TWordInputForm.btnWordClick(Sender: TObject);
@@ -371,6 +375,8 @@ begin
   edtWord.Clear;
 
   ResetCursor;
+
+  dmManager.InitWordList;
 end;
 
 procedure TWordInputForm.grdWordCanSort(Sender: TObject; ACol: Integer;

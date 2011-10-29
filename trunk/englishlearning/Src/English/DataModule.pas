@@ -15,9 +15,11 @@ type
   private
     { Private declarations }
     FWordList:TStrings;
-    procedure InitWordList;
+
   public
     { Public declarations }
+    procedure InitWordList;
+
     property WordList:TStrings read FWordList write FWordList;
   end;
 
@@ -90,8 +92,10 @@ end;
 
 procedure TdmManager.InitWordList;
 begin
+  tblWord.Active := False;
   tblWord.Active := True;
 
+  FWordList.Clear;
   while not tblWord.Eof do
   begin
     FWordList.Add(tblWord.FieldByName('Word').AsString);
