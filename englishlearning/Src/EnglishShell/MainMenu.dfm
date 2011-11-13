@@ -33,7 +33,6 @@ object MainMenuForm: TMainMenuForm
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
     Align = alClient
-    ExplicitWidth = 761
     object AdvSmoothExpanderGroup2: TAdvSmoothExpanderGroup
       Left = 0
       Top = 0
@@ -2467,7 +2466,6 @@ object MainMenuForm: TMainMenuForm
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
     Align = alBottom
-    ExplicitWidth = 761
     object btnExit: TAdvSmoothButton
       Left = 673
       Top = 1
@@ -2892,7 +2890,7 @@ object MainMenuForm: TMainMenuForm
     Left = 600
     Top = 8
     Bitmap = {
-      494C010103000800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000BABABA455F5F5FA06060609FBDBDBD42000000000000
