@@ -451,6 +451,17 @@ begin
 
     lbxPicture.Items.EndUpdate;
   end;
+
+  if self.Owner <> nil then
+  begin
+    btnBatAddPicture.Enabled := True;
+    btnWord.Enabled := True;
+  end
+  else
+  begin
+    btnBatAddPicture.Enabled := False;
+    btnWord.Enabled := False;
+  end;
 end;
 
 procedure TPictureLibraryForm.lbxPictureItemSelect(Sender: TObject;

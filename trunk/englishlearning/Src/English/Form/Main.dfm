@@ -33,6 +33,7 @@ object MainForm: TMainForm
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
     Align = alClient
+    ExplicitWidth = 761
     object pnl1: TAdvSmoothPanel
       Left = 144
       Top = 30

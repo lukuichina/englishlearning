@@ -100,7 +100,7 @@ begin
 //  finally
 //    PictureLibraryForm.Free;
 //  end;
-  ShowForm('PictureLibraryForm', Handle);
+  ShowForm('PictureLibraryForm', Handle, Self);
 end;
 
 procedure TMainForm.actManageWordExecute(Sender: TObject);

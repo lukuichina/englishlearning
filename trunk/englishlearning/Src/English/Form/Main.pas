@@ -97,7 +97,7 @@ end;
 procedure TMainForm.actManagePictureLibraryExecute(Sender: TObject);
 begin
   try
-    PictureLibraryForm := TPictureLibraryForm.Create(nil);
+    PictureLibraryForm := TPictureLibraryForm.Create(Self);
     PictureLibraryForm.ShowModal;
   finally
     PictureLibraryForm.Free;

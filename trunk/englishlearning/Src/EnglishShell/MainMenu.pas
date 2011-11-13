@@ -104,7 +104,7 @@ begin
 //  finally
 //    PictureLibraryForm.Free;
 //  end;
-  ShowForm('PictureLibraryForm', Handle);
+  ShowForm('PictureLibraryForm', Handle, Self);
 end;
 
 procedure TMainMenuForm.actManageWordExecute(Sender: TObject);
