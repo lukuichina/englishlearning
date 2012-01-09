@@ -2,6 +2,6 @@
 <BorlandProject>
 	<Transactions/>
 	<Default.Personality>
-		<Projects ActiveProject="E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\English\RebusEnglish.dproj"/>
+		<Projects ActiveProject="E:\Documents\OpenSource\englishlearning\trunk\englishlearning\Src\RebusEnglishShell\RebusEnglishShell.dproj"/>
 	</Default.Personality>
 </BorlandProject>

@@ -3,7 +3,7 @@
 			<ProjectGuid>{405EB495-614B-433F-9F6F-AD09BD1CE0C1}</ProjectGuid>
 		</PropertyGroup>
 		<ItemGroup>
-			<Projects Include="English\RebusEnglish.dproj">
+			<Projects Include="RebusEnglish\RebusEnglish.dproj">
 				<Dependencies/>
 			</Projects>
 			<Projects Include="ControlLib\ControlLib.dproj">
@@ -18,10 +18,10 @@
 			<Projects Include="CommonLib\CommonLib.dproj">
 				<Dependencies/>
 			</Projects>
-			<Projects Include="EnglishShell\RebusEnglishShell.dproj">
+			<Projects Include="RebusEnglishShell\RebusEnglishShell.dproj">
 				<Dependencies/>
 			</Projects>
-			<Projects Include="EnglishForms\RebushEnglishForms.dproj">
+			<Projects Include="RebusEnglishForms\RebusEnglishForms.dproj">
 				<Dependencies/>
 			</Projects>
 		</ItemGroup>
@@ -33,13 +33,13 @@
 			</BorlandProject>
 		</ProjectExtensions>
 		<Target Name="RebusEnglish">
-			<MSBuild Projects="English\RebusEnglish.dproj"/>
+			<MSBuild Projects="RebusEnglish\RebusEnglish.dproj"/>
 		</Target>
 		<Target Name="RebusEnglish:Clean">
-			<MSBuild Projects="English\RebusEnglish.dproj" Targets="Clean"/>
+			<MSBuild Projects="RebusEnglish\RebusEnglish.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="RebusEnglish:Make">
-			<MSBuild Projects="English\RebusEnglish.dproj" Targets="Make"/>
+			<MSBuild Projects="RebusEnglish\RebusEnglish.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="ControlLib">
 			<MSBuild Projects="ControlLib\ControlLib.dproj"/>
@@ -78,31 +78,31 @@
 			<MSBuild Projects="CommonLib\CommonLib.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="RebusEnglishShell">
-			<MSBuild Projects="EnglishShell\RebusEnglishShell.dproj"/>
+			<MSBuild Projects="RebusEnglishShell\RebusEnglishShell.dproj"/>
 		</Target>
 		<Target Name="RebusEnglishShell:Clean">
-			<MSBuild Projects="EnglishShell\RebusEnglishShell.dproj" Targets="Clean"/>
+			<MSBuild Projects="RebusEnglishShell\RebusEnglishShell.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="RebusEnglishShell:Make">
-			<MSBuild Projects="EnglishShell\RebusEnglishShell.dproj" Targets="Make"/>
+			<MSBuild Projects="RebusEnglishShell\RebusEnglishShell.dproj" Targets="Make"/>
 		</Target>
-		<Target Name="RebushEnglishForms">
-			<MSBuild Projects="EnglishForms\RebushEnglishForms.dproj"/>
+		<Target Name="RebusEnglishForms">
+			<MSBuild Projects="RebusEnglishForms\RebusEnglishForms.dproj"/>
 		</Target>
-		<Target Name="RebushEnglishForms:Clean">
-			<MSBuild Projects="EnglishForms\RebushEnglishForms.dproj" Targets="Clean"/>
+		<Target Name="RebusEnglishForms:Clean">
+			<MSBuild Projects="RebusEnglishForms\RebusEnglishForms.dproj" Targets="Clean"/>
 		</Target>
-		<Target Name="RebushEnglishForms:Make">
-			<MSBuild Projects="EnglishForms\RebushEnglishForms.dproj" Targets="Make"/>
+		<Target Name="RebusEnglishForms:Make">
+			<MSBuild Projects="RebusEnglishForms\RebusEnglishForms.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="RebusEnglish;ControlLib;PictureSaver;PictureDownloader;CommonLib;RebusEnglishShell;RebushEnglishForms"/>
+			<CallTarget Targets="RebusEnglish;ControlLib;PictureSaver;PictureDownloader;CommonLib;RebusEnglishShell;RebusEnglishForms"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="RebusEnglish:Clean;ControlLib:Clean;PictureSaver:Clean;PictureDownloader:Clean;CommonLib:Clean;RebusEnglishShell:Clean;RebushEnglishForms:Clean"/>
+			<CallTarget Targets="RebusEnglish:Clean;ControlLib:Clean;PictureSaver:Clean;PictureDownloader:Clean;CommonLib:Clean;RebusEnglishShell:Clean;RebusEnglishForms:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="RebusEnglish:Make;ControlLib:Make;PictureSaver:Make;PictureDownloader:Make;CommonLib:Make;RebusEnglishShell:Make;RebushEnglishForms:Make"/>
+			<CallTarget Targets="RebusEnglish:Make;ControlLib:Make;PictureSaver:Make;PictureDownloader:Make;CommonLib:Make;RebusEnglishShell:Make;RebusEnglishForms:Make"/>
 		</Target>
 		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>
