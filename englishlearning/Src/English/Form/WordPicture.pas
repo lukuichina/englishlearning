@@ -119,6 +119,7 @@ type
     advtlbrWord: TAdvToolBar;
     btnWord: TAdvGlowButton;
     actWordSelection: TAction;
+    qryPictureLibrary: TADOQuery;
 
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -187,7 +188,7 @@ implementation
 
 uses
   DataModule,PictureDispDialog, AdvAPI,
-  WordSearch, CommonInfo;
+  WordSearch, CommonInfo, UserStrUtils;
 
 {$R *.dfm}
 
@@ -348,7 +349,7 @@ procedure TWordPictureForm.actRemovePictureExecute(Sender: TObject);
 var
   mainlist,list:TAdvSmoothImageListBox;
   index:integer;
-  strPicName,strTmpName:string;
+  strPicName,strTmpName,strRtfName:string;
   MainItemIndex,ItemIndex:Integer;
 begin
   index := tgr1.ActivePageIndex;
@@ -360,6 +361,7 @@ begin
 
   spPictureList[index].RecNo := list.SelectedItemIndex + 1;
   strPicName := ConfigInfo.PicPath + spPictureList[index].FieldByName('PictureName').AsString;
+  strRtfName := ConfigInfo.RtfPath + ChangeFileExt(spPictureList[index].FieldByName('PictureName').AsString, '.rtf');
 
   cmdDelete.Parameters.ParamByName('Word').Value := FWord;
   cmdDelete.Parameters.ParamByName('WordType').Value := tgr1.ActivePageIndex;
@@ -375,6 +377,10 @@ begin
   strTmpName := configInfo.TmpPath + ExtractFileName(strPicName);
   if FileExists(strPicName) then
     MoveFileEx(PWideChar(strPicName), PWideChar(strTmpName), MOVEFILE_REPLACE_EXISTING);
+
+  if FileExists(strRtfName) then
+    DeleteFile(strRtfName);
+    //MoveFileEx(PWideChar(strPicName), PWideChar(strTmpName), MOVEFILE_REPLACE_EXISTING);
 
   MainItemIndex := mainlist.SelectedItemIndex;
   ItemIndex := list.SelectedItemIndex;
@@ -688,8 +694,8 @@ end;
 procedure TWordPictureForm.mnuExplanationItemClick(Sender: TObject;
   Index: Integer);
 var
-  strPicName,strTmpName :string;
-  i:Integer;
+  strPicName,strTmpName,strLibRtfName,strRtfName,strPicID, strRtfDir :string;
+  i,idx:Integer;
 begin
   if DirectoryExists(ConfigInfo.LibInfo.PicPath + UpperCase(FWord[1]) + '\' + FWord) then
     dlgOpenPic1.InitialDir := ConfigInfo.LibInfo.PicPath + UpperCase(FWord[1] + '\' + FWord)
@@ -719,15 +725,14 @@ begin
         qryExplanation.FieldByName('ExplanationID').AsInteger;
     qryPictureMaxID.Open;
 
-//    strPicName := Format('%s\%s\%s_%s_%d_%d%s', [UpperCase(FWord[1]),
-//        FWord,FWord,qryExplanation.FieldByName('WordType').AsString,
-//        qryExplanation.FieldByName('ExplanationID').AsInteger,
-//        qryPictureMaxID.FieldByName('PictureID').AsInteger,
-//        ExtractFileExt(dlgOpenPic1.Files[i])]);
     strPicName := GetFilePath(FWord, qryExplanation.FieldByName('WordType').AsString,
         qryExplanation.FieldByName('ExplanationID').AsInteger,
         qryPictureMaxID.FieldByName('PictureID').AsInteger,
         dlgOpenPic1.Files[i], ftPicType);
+    strRtfName := GetFilePath(FWord, qryExplanation.FieldByName('WordType').AsString,
+        qryExplanation.FieldByName('ExplanationID').AsInteger,
+        qryPictureMaxID.FieldByName('PictureID').AsInteger,
+        dlgOpenPic1.Files[i], ftRtfType);
 
     cmdAdd.Parameters.ParamByName('Word').Value := FWord;
     cmdAdd.Parameters.ParamByName('WordType').Value := tgr1.ActivePageIndex;
@@ -744,6 +749,33 @@ begin
     cmdAdd.Parameters.ParamByName('PictureName').Value := strPicName;
 
     strPicName := ConfigInfo.PicPath + strPicName;
+    strRtfName := ConfigInfo.RtfPath + strRtfName;
+    strPicID := GetMd5(ExtractFileName(dlgOpenPic1.Files[i]));
+
+    qryPictureLibrary.Close;
+    qryPictureLibrary.Parameters.ParamByName('Word').Value := FWord;
+    qryPictureLibrary.Parameters.ParamByName('PictureID').Value := strPicID;
+    qryPictureLibrary.Open;
+
+    cmdAdd.Parameters.ParamByName('PictureDisp').Value :=
+      qryPictureLibrary.FieldByName('PictureDisp').AsString;
+
+    if not qryPictureLibrary.FieldByName('PictureDisp').IsNull then
+    begin
+//      strRtfName := qryPictureLibrary.FieldByName('PictureName').AsString;
+//      idx := Pos(strRtfName, strPicName);
+//      strRtfDir := ExtractFileDir(Copy(strPicName, 1, idx-2);
+//      idx := LastDelimiter(PathDelim, strRtfDir);
+      strLibRtfName := ChangeFileExt(dlgOpenPic1.Files[i], '.rtf');
+
+      strLibRtfName :=  StringReplace(strLibRtfName, 'pic\', 'rtf\', [rfReplaceAll]);
+
+      if not DirectoryExists(ExtractFileDir(strRtfName)) then
+        ForceDirectories( PWideChar(ExtractFileDir(strRtfName)));
+
+      CopyFile(PWideChar(strLibRtfName), PWideChar(strRtfName), False);
+    end;
+
     cmdAdd.Execute;
 
     FIsChanged := True;
@@ -959,6 +991,11 @@ begin
   mainlist := TDBAdvSmoothImageListBox(tgr1.AdvSmoothTabPages[0].FindChildControl('dblbx' + IntToStr(0)));
   list := TAdvSmoothImageListBox(tgr1.AdvSmoothTabPages[0].FindChildControl('img' + IntToStr(0)));
 
+  mainlist.Header.Caption := '';
+  mainlist.Footer.Caption := '';
+  list.Header.Caption := '';
+  list.Footer.Caption := '';
+
   if button in [AddMainPicButton,RemoveMainPicButton,RemovePicButton,RefreshPicButton] then
   begin
     mainlist.Items.BeginUpdate;
@@ -1040,6 +1077,11 @@ begin
 
   mainlist := TDBAdvSmoothImageListBox(tgr1.AdvSmoothTabPages[index].FindChildControl('dblbx' + IntToStr(index)));
   list := TAdvSmoothImageListBox(tgr1.AdvSmoothTabPages[index].FindChildControl('img' + IntToStr(index)));
+
+  mainlist.Header.Caption := '';
+  mainlist.Footer.Caption := '';
+  list.Header.Caption := '';
+  list.Footer.Caption := '';
 
   if button in [AddMainPicButton,RemoveMainPicButton,RemovePicButton,RefreshPicButton] then
   begin

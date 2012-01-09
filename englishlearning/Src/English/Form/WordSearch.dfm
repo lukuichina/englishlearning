@@ -27,7 +27,6 @@ object WordSearchForm: TWordSearchForm
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
-    ExplicitWidth = 880
     object lblWord: TLabel
       Left = 16
       Top = 20
@@ -88,8 +87,8 @@ object WordSearchForm: TWordSearchForm
       TabOrder = 2
     end
     object btnOK: TBitBtn
-      Left = 794
-      Top = 53
+      Left = 898
+      Top = 15
       Width = 75
       Height = 25
       Caption = 'OK'
@@ -158,6 +157,20 @@ object WordSearchForm: TWordSearchForm
         #22270#29255#26080)
       TabOrder = 5
     end
+    object rgLibraryOption: TRadioGroup
+      Left = 770
+      Top = 44
+      Width = 232
+      Height = 38
+      Caption = #32032#26448
+      Columns = 3
+      ItemIndex = 0
+      Items.Strings = (
+        #24573#30053
+        #32032#26448#26377
+        #32032#26448#26080)
+      TabOrder = 8
+    end
   end
   object grpWord: TGroupBox
     Left = 0
@@ -170,8 +183,6 @@ object WordSearchForm: TWordSearchForm
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
-    ExplicitWidth = 880
-    ExplicitHeight = 518
     object dbdvgrd1: TDBAdvGrid
       Left = 2
       Top = 15
@@ -787,8 +798,6 @@ object WordSearchForm: TWordSearchForm
         80000001C0000003C0000003E0000007F000000FF800001FFC00003FFF0000FF
         FFC003FF}
       ShowUnicode = False
-      ExplicitWidth = 876
-      ExplicitHeight = 501
       ColWidths = (
         20
         64
@@ -818,8 +827,6 @@ object WordSearchForm: TWordSearchForm
       item
         Width = 50
       end>
-    ExplicitTop = 615
-    ExplicitWidth = 880
   end
   object dsWord: TDataSource
     DataSet = qryWord
@@ -871,6 +878,18 @@ object WordSearchForm: TWordSearchForm
       end
       item
         Name = 'PictureOption2'
+        DataType = ftWideString
+        Size = 1
+        Value = #215
+      end
+      item
+        Name = 'LibraryOption1'
+        DataType = ftWideString
+        Size = 1
+        Value = #9675
+      end
+      item
+        Name = 'LibraryOption2'
         DataType = ftWideString
         Size = 1
         Value = #215
@@ -936,6 +955,10 @@ object WordSearchForm: TWordSearchForm
         '    AND CASE WHEN (SELECT COUNT(*) FROM Picture WHERE Picture.Wo' +
         'rd = Word.Word) > 0 THEN '#39#9675#39' ELSE '#39#215#39' END IN (:PictureOption1,:P' +
         'ictureOption2)'
+      
+        '    AND CASE WHEN (SELECT COUNT(*) FROM PictureLibrary WHERE Pic' +
+        'tureLibrary.Word = Word.Word) > 0 THEN '#39#9675#39' ELSE '#39#215#39' END IN (:Lib' +
+        'raryOption1,:LibraryOption2)'
       'ORDER BY'
       '    Word.Word ASC')
     Left = 32

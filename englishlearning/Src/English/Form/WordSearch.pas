@@ -31,6 +31,7 @@ type
     rgCatalogOption: TRadioGroup;
     rgExplanationOption: TRadioGroup;
     rgPictureOption: TRadioGroup;
+    rgLibraryOption: TRadioGroup;
     procedure edtWordExit(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
     procedure dbdvgrd1DblClick(Sender: TObject);
@@ -171,6 +172,24 @@ begin
     begin
       qryWord.Parameters.ParamByName('PictureOption1').Value := '¡Á';
       qryWord.Parameters.ParamByName('PictureOption2').Value := '¡Á';
+    end;
+  end;
+
+  case rgLibraryOption.ItemIndex of
+    0:
+    begin
+      qryWord.Parameters.ParamByName('LibraryOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('LibraryOption2').Value := '¡Á';
+    end;
+    1:
+    begin
+      qryWord.Parameters.ParamByName('LibraryOption1').Value := '¡ð';
+      qryWord.Parameters.ParamByName('LibraryOption2').Value := '¡ð';
+    end;
+    2:
+    begin
+      qryWord.Parameters.ParamByName('LibraryOption1').Value := '¡Á';
+      qryWord.Parameters.ParamByName('LibraryOption2').Value := '¡Á';
     end;
   end;
 

@@ -1,4 +1,4 @@
-program English;
+program RebusEnglish;
 
 uses
   Forms,
