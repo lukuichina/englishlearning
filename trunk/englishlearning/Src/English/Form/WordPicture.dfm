@@ -5569,11 +5569,12 @@ object WordPictureForm: TWordPictureForm
   object cmdAdd: TADOCommand
     CommandText = 
       'insert into Picture'#13#10'(Word, WordType, ExplanationID, PictureID, ' +
-      'PictureName, MainPicture, CreateTime) '#13#10'values'#13#10'(:Word,  :WordTy' +
-      'pe,  :ExplanationID,'#13#10' (SELECT CASE WHEN MAX(PictureID) IS NULL ' +
-      'THEN 1 ELSE MAX(PictureID) + 1 END FROM Picture WHERE Word = :Wo' +
-      'rd2 AND WordType = :WordType2 AND ExplanationID = :ExplanationID' +
-      '2)'#13#10', :PictureName, :MainPicture, GETDATE())'
+      'PictureName, PictureDisp, MainPicture, CreateTime) '#13#10'values'#13#10'(:W' +
+      'ord,  :WordType,  :ExplanationID,'#13#10' (SELECT CASE WHEN MAX(Pictur' +
+      'eID) IS NULL THEN 1 ELSE MAX(PictureID) + 1 END FROM Picture WHE' +
+      'RE Word = :Word2 AND WordType = :WordType2 AND ExplanationID = :' +
+      'ExplanationID2)'#13#10', :PictureName, :PictureDisp, :MainPicture, GET' +
+      'DATE())'
     Connection = dmManager.conEnglish
     Parameters = <
       item
@@ -5631,6 +5632,15 @@ object WordPictureForm: TWordPictureForm
         NumericScale = 255
         Precision = 255
         Size = 256
+        Value = Null
+      end
+      item
+        Name = 'PictureDisp'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 1000
         Value = Null
       end
       item
@@ -6489,5 +6499,39 @@ object WordPictureForm: TWordPictureForm
       end>
     Left = 304
     Top = 440
+  end
+  object qryPictureLibrary: TADOQuery
+    Connection = dmManager.conEnglish
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'Word'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = 'PictureID'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 32
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT '
+      '    PictureLibrary.Word,'
+      '    PictureLibrary.PictureID,'
+      '    PictureLibrary.PictureName,'
+      '    PictureLibrary.PictureDisp'
+      'FROM'
+      '    PictureLibrary'
+      'WHERE'
+      '    PictureLibrary.Word = :Word AND'
+      '    PictureLibrary.PictureID = :PictureID')
+    Left = 96
+    Top = 136
   end
 end
