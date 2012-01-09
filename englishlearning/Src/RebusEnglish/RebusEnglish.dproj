@@ -1,0 +1,217 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{E621DCD4-4BE4-498B-8040-4AA8071905ED}</ProjectGuid>
+			<MainSource>RebusEnglish.dpr</MainSource>
+			<ProjectVersion>12.3</ProjectVersion>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform>Win32</Platform>
+			<AppType>Application</AppType>
+			<FrameworkType>VCL</FrameworkType>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UsePackage>vcl;vclx;VclSmp;rtl;vclimg;svnui;svn;bdertl;TeeUI;TeeDB;Tee;vclactnband;vcldb;dbrtl;vcldbx;vcltouch;xmlrtl;dsnap;dsnapcon;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_110_150;Intraweb_110_150;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapClient;dbxcds;DataSnapServer;AzureCloud;DBXInterBaseDriver;DBXMySQLDriver;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;KWizardD6R;dclRouteMap;tmsd2011;tmsexd2011;tmswizd2011;tmsxlsd2011;RaizeComponentsVcl;RaizeComponentsVclDb;FpSpread;dxCoreD15;dacvcl150;dac150;crcontrols150;unidacvcl150;unidac150;ControlLib</DCC_UsePackage>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_DcuOutput>.\$(Config)\$(Platform)</DCC_DcuOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_ExeOutput>.\$(Config)\$(Platform)</DCC_ExeOutput>
+			<DCC_E>false</DCC_E>
+			<DCC_N>false</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_F>false</DCC_F>
+			<DCC_K>false</DCC_K>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_ExeOutput>..\..\Bin\</DCC_ExeOutput>
+			<DCC_UnitSearchPath>..\..\Dcu;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_DcuOutput>..\..\Dcu\</DCC_DcuOutput>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="RebusEnglish.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="DataModule.pas">
+				<Form>dmManager</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="CommonLib\Excel.pas"/>
+			<DCCReference Include="Dialog\ExplanationInput.pas">
+				<Form>ExplanationInputForm</Form>
+			</DCCReference>
+			<DCCReference Include="Dialog\Basic.pas">
+				<Form>BasicForm</Form>
+			</DCCReference>
+			<DCCReference Include="Dialog\BasicDialog.pas">
+				<Form>BasicDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Dialog\WordRange.pas">
+				<Form>WordRangeForm</Form>
+			</DCCReference>
+			<DCCReference Include="Dialog\PictureDispDialog.pas">
+				<Form>PictureDispDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="CommonLib\AdvAPI.pas"/>
+			<DCCReference Include="Dialog\FullScreenDialog.pas">
+				<Form>FullScreenDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="CommonLib\EnglishConsts.pas"/>
+			<DCCReference Include="Form\Main.pas">
+				<Form>MainForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordExplain.pas">
+				<Form>WordExplainForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordInput.pas">
+				<Form>WordInputForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordPicture.pas">
+				<Form>WordPictureForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordSearch.pas">
+				<Form>WordSearchForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordView.pas">
+				<Form>WordViewForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordExtension.pas">
+				<Form>WordExtensionForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\WordCatalog.pas">
+				<Form>WordCatalogForm</Form>
+			</DCCReference>
+			<DCCReference Include="CommonLib\MVC.pas"/>
+			<DCCReference Include="Controller\WordCatalogController.pas"/>
+			<DCCReference Include="View\WordCatalogView.pas"/>
+			<DCCReference Include="Model\WordCatalogModel.pas"/>
+			<DCCReference Include="Dialog\WordCatalogDialog.pas">
+				<Form>WordCatalogDialogFrom</Form>
+			</DCCReference>
+			<DCCReference Include="CommonLib\InterfaceDef.pas"/>
+			<DCCReference Include="CommonLib\ViewData.pas"/>
+			<DCCReference Include="Model\WordModel.pas"/>
+			<DCCReference Include="Model\CatalogWordModel.pas"/>
+			<DCCReference Include="Model\CatalogRelationModel.pas"/>
+			<DCCReference Include="Controller\CatalogRelationController.pas"/>
+			<DCCReference Include="Dialog\ExplanationInputDialog.pas">
+				<Form>ExplanationInputDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Dialog\WordSearchDialog.pas">
+				<Form>WordSearchDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Controller\WordExtensionController.pas"/>
+			<DCCReference Include="View\WordExtensionView.pas"/>
+			<DCCReference Include="Model\WordExtensionModel.pas"/>
+			<DCCReference Include="Dialog\DerivativeWordExtentionDialog.pas">
+				<Form>DerivativeWordExtentionDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Model\SynonymModel.pas"/>
+			<DCCReference Include="Dialog\SynonymWordExtentionDialog.pas">
+				<Form>SynonymWordExtentionDialogForm</Form>
+			</DCCReference>
+			<DCCReference Include="Model\AntonymModel.pas"/>
+			<DCCReference Include="Model\WordExplanationModel.pas"/>
+			<DCCReference Include="Controller\SynonymWordExtentionController.pas"/>
+			<DCCReference Include="View\SynonymWordExtentionView.pas"/>
+			<DCCReference Include="CommonLib\CommonInfo.pas"/>
+			<DCCReference Include="Model\WordViewModel.pas"/>
+			<DCCReference Include="Controller\WordViewController.pas"/>
+			<DCCReference Include="View\WordViewView.pas"/>
+			<DCCReference Include="Thread\WordViewThread.pas"/>
+			<DCCReference Include="Model\DerivativeModel.pas"/>
+			<DCCReference Include="Model\HomoionymModel.pas"/>
+			<DCCReference Include="CommonLib\DBGridToExcel.pas"/>
+			<DCCReference Include="CommonLib\XLSFile.pas"/>
+			<DCCReference Include="CommonLib\TsycFunctionSet.pas"/>
+			<DCCReference Include="CommonLib\uExportXls.pas"/>
+			<DCCReference Include="Model\ResemblanceModel.pas"/>
+			<DCCReference Include="Model\CongenerModel.pas"/>
+			<DCCReference Include="Form\PictureLibrary.pas">
+				<Form>PictureLibraryForm</Form>
+			</DCCReference>
+			<DCCReference Include="Form\MainMenu.pas">
+				<Form>MainMenuForm</Form>
+			</DCCReference>
+			<DCCReference Include="CommonLib\AutoComplete.pas"/>
+			<DCCReference Include="Controller\PictureLibraryController.pas"/>
+			<DCCReference Include="Model\PictureLibraryModel.pas"/>
+			<DCCReference Include="View\PictureLibraryView.pas"/>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2052</VersionInfo>
+						<VersionInfo Name="CodePage">936</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">RebusEnglish.dpr</Source>
+					</Source>
+				</Delphi.Personality>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
